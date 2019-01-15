@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout_home"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:gravity="end"
+    tools:openDrawer="right">
+
+    <include
+        layout="@layout/activity_main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view_home"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
+        android:background="@color/splash_screen_bg"
+        android:fitsSystemWindows="true"
+        android:layoutDirection="rtl">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/image_nav_header"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/nav_main_header_height"
+                android:layout_alignParentTop="true"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/top_gradient" />
+
+            <ImageView
+                android:id="@+id/image_icon_header"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_above="@+id/linear_user_details"
+                android:layout_centerHorizontal="true"
+                android:src="@mipmap/app_icon" />
+
+            <LinearLayout
+                android:id="@+id/linear_user_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/image_nav_header"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:layout_marginBottom="@dimen/dimen_5"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <dev.hamed.pollerproject.Utilities.CustomTextView
+                    android:id="@+id/text_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="نام کاربر" />
+
+                <LinearLayout
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <dev.hamed.pollerproject.Utilities.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="موجودی : "
+                        android:textColor="@color/colorPrimaryDark" />
+
+                    <dev.hamed.pollerproject.Utilities.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:id="@+id/text_point"
+                        android:layout_height="wrap_content"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/text_divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/image_nav_header"
+                android:layout_marginStart="@dimen/dimen_10"
+                android:layout_marginTop="@dimen/dimen_5"
+                android:layout_marginEnd="@dimen/dimen_10"
+                android:background="@color/indicator_color" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/drawer_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_divider"
+                android:layout_marginTop="@dimen/dimen4"
+                >
+
+            </android.support.v7.widget.RecyclerView>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/drawer_rv"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/linear_invite_friend"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_34"
+                    android:layout_marginTop="@dimen/dimen_3"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/dimen_5"
+                    android:paddingEnd="@dimen/dimen_0">
+
+                    <ImageView
+                        android:layout_width="@dimen/dimen_34"
+                        android:layout_height="match_parent"
+                        android:padding="@dimen/dimen_9"
+                        android:src="@drawable/invite_friend"
+                        android:tint="#818181" />
+
+                    <dev.hamed.pollerproject.Utilities.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="دعوت از دوستان"
+                        android:textSize="@dimen/font_13" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linear_exit"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_34"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="@dimen/dimen_3"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/dimen_5"
+                    android:paddingEnd="@dimen/dimen_0">
+
+                    <ImageView
+                        android:layout_width="@dimen/dimen_34"
+                        android:layout_height="match_parent"
+                        android:padding="@dimen/dimen_9"
+                        android:src="@drawable/logout"
+                        android:tint="#818181" />
+
+                    <dev.hamed.pollerproject.Utilities.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="خروج"
+                        android:textSize="@dimen/font_13" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <dev.hamed.pollerproject.Utilities.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="@dimen/dimen_12"
+                android:layout_marginBottom="@dimen/dimen_10"
+                android:text="نسخه 1.1.4"
+                android:textSize="@dimen/font_13" />
+
+        </RelativeLayout>
+
+    </android.support.design.widget.NavigationView>
+
+</android.support.v4.widget.DrawerLayout>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/linear_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/dimen_5"
+            android:layout_weight="1"
+            android:src="@drawable/survey_header" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:padding="@dimen/dimen_9"
+                android:src="@drawable/arrow"
+                android:tint="@color/minor_gray" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_1"
+                android:layout_marginEnd="@dimen/dimen_12"
+                android:background="@color/minor_gray" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <dev.hamed.pollerproject.Utilities.CustomTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:id="@+id/text_no_active_survey"
+        android:gravity="center"
+        android:paddingBottom="@dimen/dimen_2"
+        android:text="هیچ نظرسنجی فعالی برای شما وجود ندارد!" />
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/survey_rv"
+            android:background="@color/minor_white"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/dimen_2" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</LinearLayout>

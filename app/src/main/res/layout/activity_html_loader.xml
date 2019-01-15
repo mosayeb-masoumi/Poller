@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layoutDirection="rtl"
+    android:layout_height="match_parent"
+    tools:context=".Ui.activities.HtmlLoaderActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layoutDirection="ltr"
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/linear_exit"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:src="@drawable/close"
+                    android:padding="@dimen/dimen_10"
+                    android:layout_width="@dimen/dimen_30"
+                    android:layout_gravity="center_vertical"
+                    android:layout_height="@dimen/dimen_30" />
+
+                <dev.hamed.pollerproject.Utilities.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:textSize="@dimen/font_15"
+                    android:text="بازگشت"
+                    android:textColor="@color/main_page_toolbar"
+                    android:layout_gravity="center_vertical"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <WebView
+        android:layout_below="@+id/app_bar"
+        android:id="@+id/web_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/av_loading"
+        app:indicatorColor="@color/colorPrimary"
+        android:layout_width="@dimen/dimen_40"
+        android:layout_height="@dimen/dimen_40"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dimen_20"
+        android:padding="@dimen/dimen_2"
+        app:indicatorName="BallPulseSyncIndicator" />
+
+</RelativeLayout>

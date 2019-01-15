@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimen_34"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginStart="0dp"
+    android:layout_marginTop="@dimen/dimen_3"
+    android:foreground="?attr/selectableItemBackground"
+    android:layoutDirection="rtl"
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/dimen_5"
+    android:paddingEnd="@dimen/dimen_0">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/image_drawer"
+        app:actualImageScaleType="fitXY"
+        android:padding="6.3dp"
+        android:layout_width="@dimen/dimen_34"
+        android:layout_height="match_parent"
+        android:tint="#818181" />
+
+    <dev.hamed.pollerproject.Utilities.CustomTextView
+        android:id="@+id/text_drawer"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:layout_marginStart="@dimen/dimen_2"
+        android:textSize="@dimen/font_13" />
+
+</LinearLayout>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/splash_screen_bg"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/splash_gradient_height"
+        android:layout_alignParentTop="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/top_gradient" />
+
+    <RelativeLayout
+        android:id="@+id/image_sc"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_input_height"
+        android:layout_centerVertical="true">
+
+        <ImageView
+            android:id="@+id/image_mobile"
+            android:layout_width="@dimen/dimen_45"
+            android:layout_height="@dimen/dimen_34"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/dimen_40"
+            android:src="@drawable/mobile_login" />
+
+        <EditText
+            android:id="@+id/et_user_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/text_indicator"
+            android:layout_marginStart="@dimen/dimen_51"
+            android:layout_marginBottom="@dimen/dimen_5"
+            android:layout_toStartOf="@+id/image_mobile"
+            android:background="@null"
+            android:gravity="center"
+            android:hint="@string/user_login_hint"
+            android:imeOptions="actionDone"
+            android:inputType="numberDecimal"
+            android:paddingStart="@dimen/dimen_7"
+            android:paddingEnd="@dimen/dimen_2"
+            android:textSize="@dimen/font_15" />
+
+        <TextView
+            android:id="@+id/text_indicator"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_1"
+            android:layout_alignBottom="@id/image_mobile"
+            android:layout_marginStart="@dimen/dimen_51"
+            android:layout_toStartOf="@id/image_mobile"
+            android:background="@color/indicator_color" />
+
+        <dev.hamed.pollerproject.Utilities.CustomTextView
+            android:id="@+id/button_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dimen_90"
+            android:layout_marginStart="@dimen/dimen_90"
+            android:layout_below="@+id/text_indicator"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dimen_40"
+            android:padding="@dimen/dimen_3"
+            android:textColor="@color/main_page_toolbar"
+            android:background="@drawable/button_bg_corner_shape"
+            android:gravity="center"
+            android:text="@string/login_button_text"
+            android:textSize="@dimen/font_17" />
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/av_login"
+            android:layout_width="@dimen/dimen_34"
+            android:layout_height="@dimen/dimen_34"
+            android:layout_alignTop="@+id/button_submit"
+            android:layout_alignBottom="@+id/button_submit"
+            android:layout_centerHorizontal="true"
+            android:paddingStart="@dimen/dimen_5"
+            android:visibility="invisible"
+            android:paddingEnd="@dimen/dimen_5"
+            app:indicatorName="BallPulseIndicator" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:tint="@color/colorPrimaryDark"
+        android:layout_width="@dimen/dimen_75"
+        android:layout_height="@dimen/dimen_75"
+        android:layout_above="@+id/image_sc"
+        android:layout_marginBottom="-47dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/user_login" />
+
+</RelativeLayout>

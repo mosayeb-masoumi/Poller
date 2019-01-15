@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+    android:orientation="vertical"
+    android:padding="@dimen/dimen_1">
+
+    <RelativeLayout
+        android:id="@+id/rl_news_pager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/news_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.rd.PageIndicatorView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/dimen_15"
+            app:piv_radius="@dimen/dimen4"
+            app:piv_selectedColor="@color/colorPrimary"
+            app:piv_unselectedColor="@color/minor_gray"
+            app:piv_viewPager="@id/news_pager" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layoutDirection="ltr"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/dimen4"
+        android:layout_weight="0.65"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_40"
+            android:background="@color/colorPrimary"
+            android:gravity="center">
+
+            <dev.hamed.pollerproject.Utilities.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:id="@+id/text_balance"
+                android:paddingTop="5dp"
+                android:textColor="@color/main_page_toolbar"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:padding="@dimen/dimen_7"
+                android:src="@drawable/wallet"
+                android:tint="@color/main_page_toolbar" />
+
+        </LinearLayout>
+
+        <dev.hamed.pollerproject.Utilities.CustomTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_no_active_survey"
+            android:gravity="center"
+            android:visibility="gone"
+            android:layout_marginTop="@dimen/dimen_7"
+            android:paddingBottom="@dimen/dimen_2"
+            android:text="هیچ نظرسنجی فعالی برای شما وجود ندارد!" />
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:background="@color/minor_white"
+                android:id="@+id/home_survey_rv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/dimen_1" />
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

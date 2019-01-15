@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layoutDirection="rtl"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/dimen4">
+
+
+    <LinearLayout
+        android:layoutDirection="ltr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/survey_bg_shape"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/dimen_2">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_42">
+
+            <RelativeLayout
+                android:id="@+id/rl_admin_ans"
+                android:layout_width="88dp"
+                android:layout_height="36dp"
+                android:layout_centerVertical="true">
+
+                <dev.hamed.pollerproject.Utilities.CustomTextView
+                    android:id="@+id/text_survey_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorPrimary"
+                    android:gravity="center"
+                    android:textColor="@color/main_page_toolbar"
+                    android:textSize="@dimen/font_13" />
+
+            </RelativeLayout>
+
+
+            <dev.hamed.pollerproject.Utilities.CustomTextView
+                android:id="@+id/text_survey_title"
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="-35dp"
+                android:layout_toStartOf="@+id/txt_survey_number"
+                android:layout_toEndOf="@+id/rl_admin_ans"
+                android:background="#fff"
+                android:elevation="7dp"
+                android:gravity="center"
+                android:maxLines="2"
+                android:paddingStart="0dp"
+                android:paddingEnd="20dp"
+                android:textSize="14sp"
+                android:translationZ="-10dp"
+                tools:targetApi="lollipop" />
+
+            <dev.hamed.pollerproject.Utilities.CustomTextView
+                android:id="@+id/txt_survey_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="-6dp"
+                android:background="@drawable/number_bg_shape"
+                android:gravity="center"
+                android:paddingStart="10dp"
+                android:paddingEnd="0dp"
+                android:text="۱"
+                android:textColor="#fff"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/image_expired"
+                android:paddingStart="@dimen/dimen_7"
+                android:paddingEnd="0dp"
+                android:src="@drawable/forbidden"
+                android:visibility="gone"
+                android:layout_alignTop="@id/txt_survey_number"
+                android:layout_alignBottom="@id/txt_survey_number"
+                android:layout_alignStart="@id/txt_survey_number"
+                android:layout_alignEnd="@id/txt_survey_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_2"
+            android:paddingBottom="1dp">
+
+            <LinearLayout
+                android:id="@+id/date_linear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:orientation="vertical">
+
+                <dev.hamed.pollerproject.Utilities.CustomTextView
+                    android:id="@+id/txt_survey_date"
+                    android:layout_width="88dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="@dimen/font_12" />
+
+            </LinearLayout>
+
+            <dev.hamed.pollerproject.Utilities.CustomTextView
+                android:id="@+id/text_survey_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@+id/txt_view"
+                 />
+
+            <dev.hamed.pollerproject.Utilities.CustomTextView
+                android:id="@+id/txt_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="center"
+                android:layout_marginEnd="24dp"
+                android:text="موضوع :‌ "
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/font_13" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

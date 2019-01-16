@@ -22,7 +22,7 @@
                 android:layout_width="@dimen/dimen_34"
                 android:layout_height="@dimen/dimen_34" />
 
-            <dev.hamed.pollerproject.Utilities.CustomTextView
+            <com.rahbarbazaar.poller.Utilities.CustomTextView
                 android:layout_width="wrap_content"
                 android:textSize="@dimen/font_13"
                 android:id="@+id/text_header_date"
@@ -40,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <dev.hamed.pollerproject.Utilities.NotSwipeableViewPager
+    <com.rahbarbazaar.poller.Utilities.NotSwipeableViewPager
         android:layout_below="@+id/app_bar"
         android:id="@+id/main_view_pager"
         android:layout_above="@+id/bottom_navigation"

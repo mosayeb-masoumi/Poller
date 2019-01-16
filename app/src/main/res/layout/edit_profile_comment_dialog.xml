@@ -14,7 +14,7 @@
         android:layout_marginTop="@dimen/dimen_10"
         android:src="@drawable/comment_dialog" />
 
-    <dev.hamed.pollerproject.Utilities.CustomTextView
+    <com.rahbarbazaar.poller.Utilities.CustomTextView
         android:layoutDirection="ltr"
         android:layout_width="wrap_content"
         android:id="@+id/text_title"
@@ -42,7 +42,7 @@
         android:layout_marginBottom="@dimen/dimen_8"
         android:orientation="horizontal">
 
-        <dev.hamed.pollerproject.Utilities.CustomTextView
+        <com.rahbarbazaar.poller.Utilities.CustomTextView
             android:id="@+id/btn_cancel_dialog"
             android:layout_width="0dp"
             android:layout_height="@dimen/dimen_42"
@@ -53,7 +53,7 @@
             android:text="انصراف"
             android:textColor="@color/main_page_toolbar" />
 
-        <dev.hamed.pollerproject.Utilities.CustomTextView
+        <com.rahbarbazaar.poller.Utilities.CustomTextView
             android:id="@+id/btn_send_dialog"
             android:layout_width="0dp"
             android:layout_height="@dimen/dimen_42"

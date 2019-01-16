@@ -1,22 +1,15 @@
 apply plugin: 'com.android.application'
-apply plugin: 'io.fabric'
+//apply plugin: 'io.fabric'
 
 android {
-    signingConfigs {
-        Hamed_developer {
-            keyAlias 'Hamed'
-            keyPassword '1540253619'
-            storeFile file('/Users/hamed-mac/Documents/Hamed_keyStore')
-            storePassword '1540253619'
-        }
-    }
+    
     compileSdkVersion 27
     defaultConfig {
-        applicationId "dev.hamed.pollerproject"
+        applicationId "com.rahbarbazaar.poller"
         minSdkVersion 19
         targetSdkVersion 27
         versionCode 1
-        versionName "1.1.5"
+        versionName "1.1.6"
     }
     buildTypes {
         release {
@@ -49,7 +42,9 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.1.9'
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
     implementation 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
-    implementation 'com.google.firebase:firebase-core:16.0.1'
-    implementation 'com.crashlytics.sdk.android:crashlytics:2.9.8'
+
+    //TODO: you can enable it after generate new google-service.json file from firebase console
+    //implementation 'com.google.firebase:firebase-core:16.0.1'
+    //implementation 'com.crashlytics.sdk.android:crashlytics:2.9.8'
 }
-apply plugin: 'com.google.gms.google-services'
+//apply plugin: 'com.google.gms.google-services'

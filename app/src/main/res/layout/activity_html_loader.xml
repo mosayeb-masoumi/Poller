@@ -31,7 +31,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_height="@dimen/dimen_30" />
 
-                <dev.hamed.pollerproject.Utilities.CustomTextView
+                <com.rahbarbazaar.poller.Utilities.CustomTextView
                     android:layout_width="wrap_content"
                     android:textSize="@dimen/font_15"
                     android:text="بازگشت"

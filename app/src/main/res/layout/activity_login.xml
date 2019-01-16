@@ -55,7 +55,7 @@
             android:layout_toStartOf="@id/image_mobile"
             android:background="@color/indicator_color" />
 
-        <dev.hamed.pollerproject.Utilities.CustomTextView
+        <com.rahbarbazaar.poller.Utilities.CustomTextView
             android:id="@+id/button_submit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

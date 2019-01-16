@@ -21,7 +21,7 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <dev.hamed.pollerproject.Utilities.CustomTextView
+            <com.rahbarbazaar.poller.Utilities.CustomTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="97/08/21"
@@ -45,7 +45,7 @@
             android:layout_centerInParent="true"
             android:orientation="horizontal">
 
-            <dev.hamed.pollerproject.Utilities.CustomTextView
+            <com.rahbarbazaar.poller.Utilities.CustomTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -55,7 +55,7 @@
                 android:textColor="@color/light_black"
                 android:textSize="@dimen/font_14" />
 
-            <dev.hamed.pollerproject.Utilities.CustomTextView
+            <com.rahbarbazaar.poller.Utilities.CustomTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -65,7 +65,7 @@
 
         </LinearLayout>
 
-        <dev.hamed.pollerproject.Utilities.CustomTextView
+        <com.rahbarbazaar.poller.Utilities.CustomTextView
             android:id="@+id/text_cart_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

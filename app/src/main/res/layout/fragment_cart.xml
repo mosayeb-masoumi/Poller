@@ -12,7 +12,7 @@
         android:layout_height="@dimen/dimen_55"
         android:gravity="center">
 
-        <dev.hamed.pollerproject.Utilities.CustomTextView
+        <com.rahbarbazaar.poller.Utilities.CustomTextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/txt_balance"
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_10">
 
-        <dev.hamed.pollerproject.Utilities.CustomTextView
+        <com.rahbarbazaar.poller.Utilities.CustomTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -46,7 +46,7 @@
             android:textSize="@dimen/font_15"
             android:textStyle="bold" />
 
-        <dev.hamed.pollerproject.Utilities.CustomTextView
+        <com.rahbarbazaar.poller.Utilities.CustomTextView
             android:layout_width="wrap_content"
             android:text="۰"
             android:id="@+id/txt_point"

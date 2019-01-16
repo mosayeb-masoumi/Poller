@@ -53,7 +53,7 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <dev.hamed.pollerproject.Utilities.CustomTextView
+                <com.rahbarbazaar.poller.Utilities.CustomTextView
                     android:id="@+id/text_username"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -66,13 +66,13 @@
                     android:orientation="horizontal">
 
 
-                    <dev.hamed.pollerproject.Utilities.CustomTextView
+                    <com.rahbarbazaar.poller.Utilities.CustomTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="موجودی : "
                         android:textColor="@color/colorPrimaryDark" />
 
-                    <dev.hamed.pollerproject.Utilities.CustomTextView
+                    <com.rahbarbazaar.poller.Utilities.CustomTextView
                         android:layout_width="wrap_content"
                         android:id="@+id/text_point"
                         android:layout_height="wrap_content"
@@ -126,7 +126,7 @@
                         android:src="@drawable/invite_friend"
                         android:tint="#818181" />
 
-                    <dev.hamed.pollerproject.Utilities.CustomTextView
+                    <com.rahbarbazaar.poller.Utilities.CustomTextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
@@ -153,7 +153,7 @@
                         android:src="@drawable/logout"
                         android:tint="#818181" />
 
-                    <dev.hamed.pollerproject.Utilities.CustomTextView
+                    <com.rahbarbazaar.poller.Utilities.CustomTextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
@@ -165,7 +165,7 @@
 
             </LinearLayout>
 
-            <dev.hamed.pollerproject.Utilities.CustomTextView
+            <com.rahbarbazaar.poller.Utilities.CustomTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"

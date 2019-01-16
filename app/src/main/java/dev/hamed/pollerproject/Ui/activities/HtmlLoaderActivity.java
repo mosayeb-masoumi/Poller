@@ -39,6 +39,7 @@ public class HtmlLoaderActivity extends AppCompatActivity
 
         //initialize view
         defineView();
+        createTokenDialog();
 
         //check intent and get url
         String url = null;
@@ -87,6 +88,8 @@ public class HtmlLoaderActivity extends AppCompatActivity
             }
         });
 
+
+
     }
 
 
@@ -114,6 +117,12 @@ public class HtmlLoaderActivity extends AppCompatActivity
                 //doesn't do any action here
             }
         }, null, true);
+    }
+
+    //
+    private void createTokenDialog(){
+
+        new DialogFactory(HtmlLoaderActivity.this).createTokenDialog(findViewById(R.id.html_root));
     }
 
     @Override

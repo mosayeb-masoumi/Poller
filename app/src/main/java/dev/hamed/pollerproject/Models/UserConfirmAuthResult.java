@@ -72,6 +72,15 @@ public class UserConfirmAuthResult {
     private int balance;
     private int sum_points;
     private String token;
+    private String identity;
+
+    public String getIdentity() {
+        return identity;
+    }
+
+    public void setIdentity(String identity) {
+        this.identity = identity;
+    }
 
     public int getSum_points() {
         return sum_points;

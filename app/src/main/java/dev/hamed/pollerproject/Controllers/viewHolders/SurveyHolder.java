@@ -49,9 +49,27 @@ public class SurveyHolder extends RecyclerView.ViewHolder {
 
         if (data.isExpired()||remaining_day==0)
             image_expired.setVisibility(View.VISIBLE);
-        else
-            image_expired.setVisibility(View.GONE);
+        else{
 
+            switch (data.getStatus()) {
+
+                case 1:
+                    image_expired.setVisibility(View.GONE);
+                    break;
+
+                case 2:
+                    text_number.setText("");
+                    image_expired.setVisibility(View.VISIBLE);
+                    image_expired.setImageResource(R.drawable.inprogress_survey);
+                    break;
+
+                case 3:
+                    text_number.setText("");
+                    image_expired.setVisibility(View.VISIBLE);
+                    image_expired.setImageResource(R.drawable.done_survey);
+                    break;
+            }
+        }
     }
 
     private int getRemainingDate(String start, String end) {

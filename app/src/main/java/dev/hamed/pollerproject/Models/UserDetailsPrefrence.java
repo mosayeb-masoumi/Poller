@@ -6,6 +6,15 @@ public class UserDetailsPrefrence {
     private String user_id;
     private int balance;
     private int sum_points;
+    private String identity;
+
+    public String getIdentity() {
+        return identity;
+    }
+
+    public void setIdentity(String identity) {
+        this.identity = identity;
+    }
 
     public int getSum_points() {
         return sum_points;

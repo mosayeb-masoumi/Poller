@@ -198,10 +198,7 @@ public class VerificationActivity extends AppCompatActivity
             @Override
             public void onAcceptButtonClicked(String param) {
 
-                //go to main activity
-                startActivity(new Intent(VerificationActivity.this, MainActivity.class));
-                VerificationActivity.this.finish();
-                overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+                acceptUserAgreement();
             }
 
             @Override
@@ -210,6 +207,29 @@ public class VerificationActivity extends AppCompatActivity
                 //this callback doesn't use
             }
         }, findViewById(R.id.rl_root));
+    }
+
+    //accept user agreement
+    private void acceptUserAgreement(){
+
+        disposable.add(provider.getmService().acceptAgreement().
+                subscribeOn(Schedulers.io()).
+                observeOn(AndroidSchedulers.mainThread()).
+                subscribeWith(new DisposableSingleObserver<GeneralStatusResult>() {
+            @Override
+            public void onSuccess(GeneralStatusResult generalStatusResult) {
+
+                //go to main activity
+                startActivity(new Intent(VerificationActivity.this, MainActivity.class));
+                VerificationActivity.this.finish();
+                overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+        }));
     }
 
     //get user profile information and save it in preference for access in other segment of app
@@ -231,6 +251,7 @@ public class VerificationActivity extends AppCompatActivity
                             prefrence.setName(result.getName());
                             prefrence.setSum_points(result.getSum_points());
                             prefrence.setUser_id(String.valueOf(result.getId()));
+                            prefrence.setIdentity(result.getIdentity());
                             PreferenceStorage storage = PreferenceStorage.getInstance();
                             storage.saveUserDetails(new Gson().toJson(prefrence), VerificationActivity.this);
                         }

@@ -171,7 +171,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="@dimen/dimen_12"
                 android:layout_marginBottom="@dimen/dimen_10"
-                android:text="نسخه 1.1.4"
+                android:text="نسخه 1.1.5"
                 android:textSize="@dimen/font_13" />
 
         </RelativeLayout>

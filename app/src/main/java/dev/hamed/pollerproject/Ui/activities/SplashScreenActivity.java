@@ -163,6 +163,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                             prefrence.setName(result.getName());
                             prefrence.setSum_points(result.getSum_points());
                             prefrence.setUser_id(String.valueOf(result.getId()));
+                            prefrence.setIdentity(result.getIdentity());
                             PreferenceStorage storage = PreferenceStorage.getInstance();
                             storage.saveUserDetails(new Gson().toJson(prefrence), SplashScreenActivity.this);
                         }

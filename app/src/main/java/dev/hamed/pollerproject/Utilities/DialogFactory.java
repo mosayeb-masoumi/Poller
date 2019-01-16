@@ -15,9 +15,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import dev.hamed.pollerproject.Models.SurveyMainModel;
+import dev.hamed.pollerproject.Models.UserDetailsPrefrence;
 import dev.hamed.pollerproject.R;
 
 public class DialogFactory {
@@ -261,6 +263,30 @@ public class DialogFactory {
 
         });
         btn_cancel_dialog.setOnClickListener(view -> dialog.dismiss());
+        dialog.show();
+    }
+
+    public void createTokenDialog(View root) {
+
+        View customLayout = LayoutInflater.from(context).inflate(R.layout.token_verify_dialog, (ViewGroup) root, false);
+
+        //define views inside of dialog
+        TextView text_body = customLayout.findViewById(R.id.text_body);
+        PreferenceStorage preference = PreferenceStorage.getInstance();
+        String user_details = preference.retriveUserDetails(context);
+
+        UserDetailsPrefrence userDetails = new Gson().fromJson(user_details, UserDetailsPrefrence.class);
+        text_body.setText(new StringBuilder().append("توکن (نشانه) شما این ").append(userDetails.getIdentity() == null || userDetails.getIdentity().equals("") ? "- - - -" : userDetails.getIdentity()).append(" است لطفا آن را در فرم زیر وارد کنید."));
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setView(customLayout);
+
+        //create dialog and set background transparent
+        AlertDialog dialog = builder.create();
+        if (dialog.getWindow() != null) {
+
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
         dialog.show();
     }
 

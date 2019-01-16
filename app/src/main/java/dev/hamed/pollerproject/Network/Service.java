@@ -45,9 +45,6 @@ public interface Service {
     @GET("survey")
     Single<SurveyMainModel> getSurveyDetails(@Query("survey_id") String survey_id);
 
-    @GET("setting/global")
-    Single<GetGlobalInfoResult> getGlobalInformation();
-
     @GET("news")
     Single<GetNewsListResult> getNewsList();
 

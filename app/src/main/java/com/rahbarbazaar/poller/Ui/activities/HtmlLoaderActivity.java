@@ -11,10 +11,9 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
 
-import com.wang.avi.AVLoadingIndicatorView;
-
 import com.rahbarbazaar.poller.R;
 import com.rahbarbazaar.poller.Utilities.DialogFactory;
+import com.wang.avi.AVLoadingIndicatorView;
 
 public class HtmlLoaderActivity extends AppCompatActivity
         implements View.OnClickListener {
@@ -39,7 +38,6 @@ public class HtmlLoaderActivity extends AppCompatActivity
 
         //initialize view
         defineView();
-        createTokenDialog();
 
         //check intent and get url
         String url = null;
@@ -49,6 +47,10 @@ public class HtmlLoaderActivity extends AppCompatActivity
             id = getIntent().getIntExtra("id", 0);
             isSurveyDetails = getIntent().getBooleanExtra("surveyDetails", false);
         }
+
+        //check for show token dialog
+        if (isSurveyDetails)
+            createTokenDialog();
 
         //config web view setting for support multi action and java scripts
         webView.getSettings().setJavaScriptEnabled(true);
@@ -89,7 +91,6 @@ public class HtmlLoaderActivity extends AppCompatActivity
         });
 
 
-
     }
 
 
@@ -120,7 +121,7 @@ public class HtmlLoaderActivity extends AppCompatActivity
     }
 
     //
-    private void createTokenDialog(){
+    private void createTokenDialog() {
 
         new DialogFactory(HtmlLoaderActivity.this).createTokenDialog(findViewById(R.id.html_root));
     }

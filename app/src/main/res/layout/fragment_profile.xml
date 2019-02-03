@@ -21,7 +21,7 @@
             android:src="@drawable/user_login"
             android:tint="@color/colorPrimary" />
 
-        <com.rahbarbazaar.poller.Utilities.CustomTextView
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
             android:layout_width="wrap_content"
             android:id="@+id/text_username"
             android:layout_height="wrap_content"
@@ -37,13 +37,13 @@
             android:layout_marginTop="@dimen/dimen_2"
             android:orientation="horizontal">
 
-            <com.rahbarbazaar.poller.Utilities.CustomTextView
+            <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/text_point"
                 android:text="0" />
 
-            <com.rahbarbazaar.poller.Utilities.CustomTextView
+            <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="موجودی : "
@@ -90,13 +90,13 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <com.rahbarbazaar.poller.Utilities.CustomTextView
+                    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="پروژه های شرکت کرده : "
                         android:textColor="@color/colorPrimaryDark" />
 
-                    <com.rahbarbazaar.poller.Utilities.CustomTextView
+                    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/text_project_count"
@@ -111,13 +111,13 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <com.rahbarbazaar.poller.Utilities.CustomTextView
+                    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="افراد دعوت کرده : "
                         android:textColor="@color/colorPrimaryDark" />
 
-                    <com.rahbarbazaar.poller.Utilities.CustomTextView
+                    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"/>
@@ -142,7 +142,7 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <com.rahbarbazaar.poller.Utilities.CustomTextView
+                <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:id="@+id/text_mobile"
@@ -183,10 +183,12 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <com.rahbarbazaar.poller.Utilities.CustomTextView
-                    android:layout_width="match_parent"
+                <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                     android:id="@+id/text_age"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="0dp"
                     android:gravity="center"
                     android:textSize="@dimen/font_13" />
 
@@ -203,7 +205,7 @@
                 android:layout_width="@dimen/dimen_45"
                 android:layout_height="@dimen/dimen_45"
                 android:background="@drawable/circle_stroke"
-                android:padding="@dimen/dimen_8"
+                android:padding="@dimen/dimen_6"
                 android:src="@drawable/profile_age"
                 android:tint="@color/colorPrimaryDark" />
 
@@ -223,7 +225,7 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <com.rahbarbazaar.poller.Utilities.CustomTextView
+                <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                     android:layout_width="match_parent"
                     android:id="@+id/text_gender"
                     android:layout_height="match_parent"
@@ -269,7 +271,7 @@
                 android:src="@drawable/logout"
                 android:tint="#808080" />
 
-            <com.rahbarbazaar.poller.Utilities.CustomTextView
+            <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/img_logout"
@@ -304,7 +306,7 @@
                 android:src="@drawable/edit_profile"
                 android:tint="#808080" />
 
-            <com.rahbarbazaar.poller.Utilities.CustomTextView
+            <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/img_edit"

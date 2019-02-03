@@ -25,7 +25,7 @@
                 android:layout_height="36dp"
                 android:layout_centerVertical="true">
 
-                <com.rahbarbazaar.poller.Utilities.CustomTextView
+                <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                     android:id="@+id/text_survey_price"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -37,7 +37,7 @@
             </RelativeLayout>
 
 
-            <com.rahbarbazaar.poller.Utilities.CustomTextView
+            <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                 android:id="@+id/text_survey_title"
                 android:layout_width="wrap_content"
                 android:layout_height="37dp"
@@ -55,7 +55,7 @@
                 android:translationZ="-10dp"
                 tools:targetApi="lollipop" />
 
-            <com.rahbarbazaar.poller.Utilities.CustomTextView
+            <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                 android:id="@+id/txt_survey_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -99,7 +99,7 @@
                 android:layout_marginTop="3dp"
                 android:orientation="vertical">
 
-                <com.rahbarbazaar.poller.Utilities.CustomTextView
+                <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                     android:id="@+id/txt_survey_date"
                     android:layout_width="88dp"
                     android:layout_height="wrap_content"
@@ -108,14 +108,15 @@
 
             </LinearLayout>
 
-            <com.rahbarbazaar.poller.Utilities.CustomTextView
+            <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                 android:id="@+id/text_survey_description"
                 android:layout_width="match_parent"
+                android:gravity="right"
                 android:layout_height="wrap_content"
                 android:layout_toStartOf="@+id/txt_view"
                  />
 
-            <com.rahbarbazaar.poller.Utilities.CustomTextView
+            <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                 android:id="@+id/txt_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

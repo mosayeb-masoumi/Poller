@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "196753164439",
+    "firebase_url": "https://poller-d2c61.firebaseio.com",
+    "project_id": "poller-d2c61",
+    "storage_bucket": "poller-d2c61.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:196753164439:android:6f64870ad121e57c",
+        "android_client_info": {
+          "package_name": "com.rahbarbazaar.poller.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "196753164439-3h2om71eth211t7aask15arp3kanddta.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwaT8n8LJhKA-HCfjZDYMyQt6pXHkh2wU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

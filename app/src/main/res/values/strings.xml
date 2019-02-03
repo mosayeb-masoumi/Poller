@@ -8,9 +8,11 @@
     <string name="login_button_text">ثبت</string>
     <string name="user_login_hint">شماره موبایل خود را وارد کنید</string>
     <string name="token_verify_message">شما برای شرکت در این نظرسنجی به توکن (نشانه) معتبر نیاز دارید:</string>
+    <string name="no_register_message">شماره موبایل شما قبلا تایید و ثبت نشده، برای ادامه فرآیند عضویت لطفا اینجا را کلیک نمایید</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="exit_profile_text_dialog">آیا اطمینان دارید که میخواهید از حساب کاربری خود خارج شوید؟</string>
     <string name="survey_exit_confirm">آیا اطمینان دارید که میخواهید از نظرسنجی خود خارج شوید؟</string>
+    <string name="download_body_text">ورژن جدید برنامه با قابلیت های جدید و رفع مشکلات جزیی منتشر شده برای دانلود کلیک کنید</string>
 </resources>

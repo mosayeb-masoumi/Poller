@@ -41,7 +41,7 @@
                 android:layout_height="70dp"
                 android:layout_above="@+id/linear_user_details"
                 android:layout_centerHorizontal="true"
-                android:src="@mipmap/app_icon" />
+                android:src="@drawable/drawer_icon" />
 
             <LinearLayout
                 android:id="@+id/linear_user_details"
@@ -53,7 +53,7 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <com.rahbarbazaar.poller.Utilities.CustomTextView
+                <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                     android:id="@+id/text_username"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -66,13 +66,13 @@
                     android:orientation="horizontal">
 
 
-                    <com.rahbarbazaar.poller.Utilities.CustomTextView
+                    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="موجودی : "
                         android:textColor="@color/colorPrimaryDark" />
 
-                    <com.rahbarbazaar.poller.Utilities.CustomTextView
+                    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                         android:layout_width="wrap_content"
                         android:id="@+id/text_point"
                         android:layout_height="wrap_content"
@@ -126,7 +126,7 @@
                         android:src="@drawable/invite_friend"
                         android:tint="#818181" />
 
-                    <com.rahbarbazaar.poller.Utilities.CustomTextView
+                    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
@@ -153,11 +153,11 @@
                         android:src="@drawable/logout"
                         android:tint="#818181" />
 
-                    <com.rahbarbazaar.poller.Utilities.CustomTextView
+                    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
-                        android:text="خروج"
+                        android:text="خروج از حساب کاربری"
                         android:textSize="@dimen/font_13" />
 
                 </LinearLayout>
@@ -165,13 +165,13 @@
 
             </LinearLayout>
 
-            <com.rahbarbazaar.poller.Utilities.CustomTextView
+            <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="@dimen/dimen_12"
                 android:layout_marginBottom="@dimen/dimen_10"
-                android:text="نسخه 1.1.7"
+                android:text="نسخه 4.0.7"
                 android:textSize="@dimen/font_13" />
 
         </RelativeLayout>

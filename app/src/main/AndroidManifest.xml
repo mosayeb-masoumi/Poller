@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.rahbarbazaar.poller">
+    package="com.rahbarbazaar.poller.android">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.RECEIVE_SMS" />
-    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
+
+    <!--<uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />-->
 
     <application
         android:icon="@mipmap/app_icon"
@@ -17,10 +20,10 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name="com.rahbarbazaar.poller.Ui.activities.MainActivity"
+            android:name=".Ui.activities.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.rahbarbazaar.poller.Ui.activities.SplashScreenActivity"
+            android:name=".Ui.activities.SplashScreenActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,21 +33,31 @@
         </activity>
 
         <activity
-            android:name="com.rahbarbazaar.poller.Ui.activities.LoginActivity"
+            android:name=".Ui.activities.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.rahbarbazaar.poller.Ui.activities.VerificationActivity"
+            android:name=".Ui.activities.VerificationActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.rahbarbazaar.poller.Ui.activities.HtmlLoaderActivity"
+            android:name=".Ui.activities.HtmlLoaderActivity"
             android:screenOrientation="portrait" />
 
-        <receiver android:name="com.rahbarbazaar.poller.Utilities.SmsObserver">
+      <!--  <receiver android:name="SmsObserver">
             <intent-filter android:priority="1000">
 
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
-        </receiver>
+        </receiver>-->
+
+        <provider
+            android:name=".Utilities.GenericFileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths"/>
+        </provider>
 
     </application>
 

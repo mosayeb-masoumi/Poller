@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:id="@+id/login_root"
     android:layout_height="match_parent"
     android:background="@color/splash_screen_bg"
     android:descendantFocusability="beforeDescendants"
@@ -55,7 +56,7 @@
             android:layout_toStartOf="@id/image_mobile"
             android:background="@color/indicator_color" />
 
-        <com.rahbarbazaar.poller.Utilities.CustomTextView
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
             android:id="@+id/button_submit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

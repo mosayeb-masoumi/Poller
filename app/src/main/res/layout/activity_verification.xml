@@ -21,7 +21,7 @@
         android:paddingTop="@dimen/dimen_20"
         android:src="@drawable/verification_top" />
 
-    <com.rahbarbazaar.poller.Utilities.CustomTextView
+    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
         android:id="@+id/text_user_mobile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
         android:textColor="@color/av_indicator_bg"
         android:textSize="@dimen/font_15" />
 
-    <com.rahbarbazaar.poller.Utilities.CustomTextView
+    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/text_user_mobile"
@@ -43,7 +43,7 @@
         android:textSize="@dimen/font_15" />
 
 
-    <com.rahbarbazaar.poller.Utilities.CustomTextView
+    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
         android:id="@+id/text_edit_mobile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -71,19 +71,19 @@
             android:layout_marginEnd="@dimen/dimen_5"
             android:orientation="horizontal">
 
-            <com.rahbarbazaar.poller.Utilities.CustomTextView
+            <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                 android:id="@+id/text_min"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary" />
 
-            <com.rahbarbazaar.poller.Utilities.CustomTextView
+            <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=":"
                 android:textColor="@color/colorPrimary" />
 
-            <com.rahbarbazaar.poller.Utilities.CustomTextView
+            <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                 android:id="@+id/text_sec"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -91,7 +91,7 @@
 
         </LinearLayout>
 
-        <com.rahbarbazaar.poller.Utilities.CustomTextView
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -104,6 +104,8 @@
 
 
     <RelativeLayout
+        android:focusableInTouchMode="true"
+        android:descendantFocusability="beforeDescendants"
         android:id="@+id/rl_middle"
         android:layout_width="match_parent"
         android:layout_height="@dimen/login_input_height"
@@ -129,10 +131,11 @@
             android:gravity="center"
             android:hint="@string/verification_hint"
             android:imeOptions="actionDone"
-            android:inputType="numberDecimal"
+            android:inputType="textNoSuggestions"
             android:paddingStart="@dimen/dimen4"
             android:paddingEnd="@dimen/dimen_0"
-            android:textSize="@dimen/font_15" />
+            android:textSize="@dimen/font_15"
+             />
 
         <TextView
             android:id="@+id/text_indicator"
@@ -143,7 +146,7 @@
             android:layout_toStartOf="@id/image_mobile"
             android:background="@color/indicator_color" />
 
-        <com.rahbarbazaar.poller.Utilities.CustomTextView
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
             android:id="@+id/button_verify"
             android:layout_width="@dimen/dimen_55"
             android:layout_height="@dimen/dimen_55"

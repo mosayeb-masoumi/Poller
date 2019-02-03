@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layoutDirection="rtl"
     android:layout_height="match_parent"
-    tools:context=".Ui.activities.HtmlLoaderActivity">
+    tools:context=".android.Ui.activities.HtmlLoaderActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layoutDirection="ltr"
@@ -31,7 +31,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_height="@dimen/dimen_30" />
 
-                <com.rahbarbazaar.poller.Utilities.CustomTextView
+                <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                     android:layout_width="wrap_content"
                     android:textSize="@dimen/font_15"
                     android:text="بازگشت"

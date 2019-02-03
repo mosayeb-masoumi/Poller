@@ -15,7 +15,7 @@
         android:layout_marginTop="@dimen/dimen_10"
         android:src="@drawable/agreement" />
 
-    <com.rahbarbazaar.poller.Utilities.CustomTextView
+    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_10"
@@ -56,7 +56,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <com.rahbarbazaar.poller.Utilities.CustomTextView
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="قوانین و مقررات را مطالعه کرده و قبول دارم" />
@@ -71,7 +71,7 @@
         android:layout_marginBottom="@dimen/dimen_8"
         android:orientation="horizontal">
 
-        <com.rahbarbazaar.poller.Utilities.CustomTextView
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
             android:id="@+id/btn_cancel_dialog"
             android:layout_width="0dp"
             android:layout_height="@dimen/dimen_42"
@@ -82,7 +82,7 @@
             android:text="انصراف"
             android:textColor="@color/main_page_toolbar" />
 
-        <com.rahbarbazaar.poller.Utilities.CustomTextView
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
             android:id="@+id/btn_login_dialog"
             android:layout_width="0dp"
             android:layout_height="@dimen/dimen_42"

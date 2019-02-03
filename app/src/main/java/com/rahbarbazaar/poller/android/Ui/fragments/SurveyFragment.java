@@ -337,7 +337,7 @@ public class SurveyFragment extends Fragment implements SurveyItemInteraction {
         UserDetailsPrefrence user_details = new Gson().fromJson(PreferenceStorage.getInstance().retriveUserDetails(getContext()), UserDetailsPrefrence.class);
 
 
-        disposable.add(service.changeSurveyStatus(id, user_details.getType(), qStatus.equals("2") ? "3" : "2")
+        disposable.add(service.changeSurveyStatus(id, user_details.getUser_id(), qStatus.equals("2") ? "3" : "2")
                 .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).
                         subscribeWith(new DisposableSingleObserver<ChangeSurveyStatusResult>() {
                             @Override

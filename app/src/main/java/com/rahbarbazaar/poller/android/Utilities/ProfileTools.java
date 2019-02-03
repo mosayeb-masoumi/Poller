@@ -57,6 +57,7 @@ public class ProfileTools {
                             userDetailsPrefrence.setName(result.getName());
                             userDetailsPrefrence.setSum_points(result.getSum_points());
                             userDetailsPrefrence.setType(result.getType());
+                            userDetailsPrefrence.setUser_id(result.getId());
                             userDetailsPrefrence.setIdentity(result.getIdentity());
                             userDetailsPrefrence.setPhone_number(result.getMobile());
 

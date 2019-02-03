@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,10 +15,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import com.rahbarbazaar.poller.android.Controllers.adapters.CartRecyclerAdapter;
 import com.rahbarbazaar.poller.android.Models.GetTransactionResult;
 import com.rahbarbazaar.poller.android.Models.RefreshBalanceEvent;
@@ -30,6 +27,9 @@ import com.rahbarbazaar.poller.android.Utilities.PreferenceStorage;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -51,6 +51,7 @@ public class CartFragment extends Fragment {
     List<GetTransactionResult> cartList;
     CartRecyclerAdapter adapter;
     CompositeDisposable disposable;
+    SwipeRefreshLayout cart_refresh;
     //end pf region
 
     public CartFragment() {
@@ -78,13 +79,16 @@ public class CartFragment extends Fragment {
         configRecyclerView();
         getCartList();
 
+        //change refresh color
+        cart_refresh.setColorSchemeResources(R.color.colorPrimary);
+
         //get user info from preference and set to views
         initialUserInformation();
 
         return v;
     }
 
-    private void initialUserInformation(){
+    private void initialUserInformation() {
 
         PreferenceStorage storage = PreferenceStorage.getInstance();
         String user_details = storage.retriveUserDetails(getContext());
@@ -104,6 +108,9 @@ public class CartFragment extends Fragment {
         cart_rv = view.findViewById(R.id.cart_rv);
         text_pint = view.findViewById(R.id.txt_point);
         txt_balance = view.findViewById(R.id.txt_balance);
+        cart_refresh = view.findViewById(R.id.cart_refresh);
+
+        cart_refresh.setOnRefreshListener(this::getCartList);
     }
 
     //config cart recycler view
@@ -155,11 +162,14 @@ public class CartFragment extends Fragment {
                                     cartList.addAll(result);
                                     adapter.notifyDataSetChanged();
                                 }
+
+                                cart_refresh.post(() -> cart_refresh.setRefreshing(false));
                             }
 
                             @Override
                             public void onError(Throwable e) {
 
+                                cart_refresh.post(() -> cart_refresh.setRefreshing(false));
                             }
                         }));
     }
@@ -177,9 +187,9 @@ public class CartFragment extends Fragment {
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onRefeshBalance(RefreshBalanceEvent event) {
+    public void onRefeshBalance(RefreshBalanceEvent v) {
 
         initialUserInformation();
+        getCartList();
     }
-
 }

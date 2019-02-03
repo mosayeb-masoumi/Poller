@@ -13,10 +13,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
 import com.rahbarbazaar.poller.android.Models.GeneralStatusResult;
 import com.rahbarbazaar.poller.android.Models.UserConfirmAuthResult;
-import com.rahbarbazaar.poller.android.Models.UserDetailsPrefrence;
 import com.rahbarbazaar.poller.android.Network.Service;
 import com.rahbarbazaar.poller.android.Network.ServiceProvider;
 import com.rahbarbazaar.poller.android.R;
@@ -165,22 +163,39 @@ public class VerificationActivity extends AppCompatActivity
                         @Override
                         public void onSuccess(UserConfirmAuthResult result) {
 
-
                             if (result != null) {
 
-                                if (result.getStatus().equals("otp expired")){
+                                if (result.getStatus() != null) {
 
-                                    new CustomToast().createToast("کد تایید منقضی شده لطفا بر روی ارسال مجدد کلیک کنید",VerificationActivity.this);
 
-                                }else {
+                                    switch (result.getStatus()) {
+                                        case "otp expired":
 
-                                    if (result.getToken() != null && !result.getToken().equals("")) {
+                                            customToast.createToast("کد تایید منقضی شده لطفا بر روی ارسال مجدد کلیک کنید", VerificationActivity.this);
 
-                                        //call verification code and mobile if response ok:
-                                        PreferenceStorage.getInstance().saveToken(result.getToken(), VerificationActivity.this);
+                                            break;
+                                        case "otp wrong":
 
-                                        //check user agreement:
-                                        checkUserAgreement();
+                                            customToast.createToast("کد تایید اشتباه است", VerificationActivity.this);
+                                            break;
+
+                                        case "already used":
+
+                                            customToast.createToast("کد تایید تکراری است", VerificationActivity.this);
+                                            break;
+
+                                        case "user confirmed":
+
+                                            if (result.getToken() != null && !result.getToken().equals("")) {
+
+                                                //call verification code and mobile if response ok:
+                                                PreferenceStorage.getInstance().saveToken(result.getToken(), VerificationActivity.this);
+
+                                                //check user agreement:
+                                                checkUserAgreement();
+                                            }
+
+                                            break;
                                     }
                                 }
                             }
@@ -195,7 +210,7 @@ public class VerificationActivity extends AppCompatActivity
                             av_verify.smoothToHide();
                             button_verify.setText("ورود");
                             button_verify.setEnabled(true);
-                            new CustomToast().createToast("مشکل در ارتباط",VerificationActivity.this);
+                            new CustomToast().createToast("مشکل در ارتباط", VerificationActivity.this);
                         }
                     }));
 

@@ -2,7 +2,7 @@ package com.rahbarbazaar.poller.android.Models;
 
 public class UserConfirmAuthResult {
 
-    private int id;
+    private String id;
     private String name;
     private String mobile;
     private String status;
@@ -64,7 +64,7 @@ public class UserConfirmAuthResult {
         this.participated_project_count = participated_project_count;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -76,7 +76,7 @@ public class UserConfirmAuthResult {
         this.type = type;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

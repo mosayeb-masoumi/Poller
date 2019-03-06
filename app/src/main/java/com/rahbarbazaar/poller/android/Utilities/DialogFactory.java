@@ -9,6 +9,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextPaint;
@@ -82,6 +83,7 @@ public class DialogFactory {
             case 3:
                 status = "تکمیل شده";
                 btn_go_dialog.setEnabled(false);
+                text_time.setText(new StringBuilder().append("زمان نظرسنجی :").append(" در ").append(data.getComplete_date(),0,10).append("پاسخ داده اید"));
                 break;
 
             case 0:
@@ -356,7 +358,8 @@ public class DialogFactory {
         View customLayout = LayoutInflater.from(context).inflate(R.layout.check_update_dialog, (ViewGroup) view, false);
         //define views inside of dialog
         TextView btn_dl_dialog = customLayout.findViewById(R.id.btn_dl_dialog);
-        TextView btn_cancel_dialog = customLayout.findViewById(R.id.btn_cancel_dialog);
+        ConstraintLayout google_layout = customLayout.findViewById(R.id.layout_gplay);
+        ConstraintLayout bazaar_layout = customLayout.findViewById(R.id.layout_bazaar);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setView(customLayout);
@@ -370,10 +373,24 @@ public class DialogFactory {
         }
 
         //set click listener for views inside of dialog
-        //btn_cancel_dialog.setOnClickListener(v -> dialog.dismiss());
-        btn_cancel_dialog.setVisibility(View.GONE);
         btn_dl_dialog.setOnClickListener(v -> listener.onAcceptButtonClicked(null)
         );
+
+        google_layout.setOnClickListener(v -> {
+
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("https://play.google.com/store/apps/details?id=com.rahbarbazaar.poller.android"));
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        });
+
+        bazaar_layout.setOnClickListener(v->{
+
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("https://cafebazaar.ir/app/com.rahbarbazaar.poller.android/?l=fa"));
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        });
 
         dialog.show();
         return dialog;

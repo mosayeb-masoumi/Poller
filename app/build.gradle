@@ -1,26 +1,37 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
 apply plugin: 'io.fabric'
 
 android {
-    
+
     compileSdkVersion 27
     defaultConfig {
+        multiDexEnabled true
         applicationId "com.rahbarbazaar.poller.android"
         minSdkVersion 19
         targetSdkVersion 27
-        versionCode 10
+        versionCode 11
         versionName "4.0.8"
     }
     buildTypes {
+
         release {
+
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            applicationVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = "Poller V${defaultConfig.versionName}.apk"
+                }
+            }
         }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
 }
 
 dependencies {
@@ -42,9 +53,13 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.1.9'
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
     implementation 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
-
     implementation 'com.google.firebase:firebase-core:16.0.1'
     implementation 'com.crashlytics.sdk.android:crashlytics:2.9.8'
     implementation 'com.birbit:android-priority-jobqueue:2.0.1'
+    implementation 'co.ronash.android:pushe-base:1.4.3'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 apply plugin: 'com.google.gms.google-services'
+repositories {
+    mavenCentral()
+}

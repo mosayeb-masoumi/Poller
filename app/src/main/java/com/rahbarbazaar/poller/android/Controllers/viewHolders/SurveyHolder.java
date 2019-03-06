@@ -47,29 +47,27 @@ public class SurveyHolder extends RecyclerView.ViewHolder {
             text_date.setTextColor(Color.parseColor("#ff1a1a"));
 
         if (data.isExpired() || remaining_day == 0) {
+
             text_number.setText("");
             image_expired.setVisibility(View.VISIBLE);
-        } else {
-
-            switch (data.getStatus()) {
-
-                case 1:
-                    image_expired.setVisibility(View.GONE);
-                    break;
-
-                case 2:
-                    text_number.setText("");
-                    image_expired.setVisibility(View.VISIBLE);
-                    image_expired.setImageResource(R.drawable.inprogress_survey);
-                    break;
-
-                case 3:
-                    text_number.setText("");
-                    image_expired.setVisibility(View.VISIBLE);
-                    image_expired.setImageResource(R.drawable.done_survey);
-                    break;
-            }
         }
+
+        switch (data.getStatus()) {
+
+            case 2:
+                text_number.setText("");
+                image_expired.setVisibility(View.VISIBLE);
+                image_expired.setImageResource(R.drawable.inprogress_survey);
+                break;
+
+            case 3:
+                text_number.setText("");
+                image_expired.setVisibility(View.VISIBLE);
+                image_expired.setImageResource(R.drawable.done_survey);
+
+                break;
+        }
+
     }
 
     private int getRemainingDate(String start, String end) {
@@ -119,6 +117,8 @@ public class SurveyHolder extends RecyclerView.ViewHolder {
 
         if (!data.isExpired()) {
 
+            //TODO: this body can be improve
+
             String status = null;
             switch (data.getStatus()) {
 
@@ -138,18 +138,18 @@ public class SurveyHolder extends RecyclerView.ViewHolder {
             if (data.getStatus() < 3) {
 
                 String finalStatus = status;
-                itemView.setOnClickListener(view -> listener.onClicked(data.getId(), getRemainingDate(data.getCurrent_date(), data.getEnd_date()) == 0,data.getUrl_type(),finalStatus));
+                itemView.setOnClickListener(view -> listener.onClicked(data.getId(), getRemainingDate(data.getCurrent_date(), data.getEnd_date()) == 0, data.getUrl_type(), finalStatus));
 
             } else {
 
                 // this is complete survey
-                itemView.setOnClickListener(view -> listener.onClicked(data.getId(), false,1,"تکمیل شده" ));
+                itemView.setOnClickListener(view -> listener.onClicked(data.getId(), false, 1, "تکمیل شده"));
             }
 
         } else {
 
             //this is expired state / url type is not important
-            itemView.setOnClickListener(view -> listener.onClicked(data.getId(), true,1,"منقضی"));
+            itemView.setOnClickListener(view -> listener.onClicked(data.getId(), data.getStatus() != 3, 1, data.getStatus() == 3 ? "تکمیل شده" : "منقضی شده"));
         }
     }
 }

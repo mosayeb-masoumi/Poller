@@ -2,9 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/white_corner_bg"
-    android:layoutDirection="rtl"
     android:gravity="center"
+    android:layoutDirection="rtl"
     android:orientation="vertical">
 
     <ImageView
@@ -25,44 +26,97 @@
         android:id="@+id/text_body"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:paddingStart="@dimen/dimen_5"
-        android:lineSpacingMultiplier="1.2"
-        android:paddingEnd="@dimen/dimen_5"
         android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:lineSpacingMultiplier="1.2"
+        android:paddingStart="@dimen/dimen_5"
+        android:paddingEnd="@dimen/dimen_5"
         android:text="@string/download_body_text"
         android:textSize="@dimen/font_14" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layoutDirection="ltr"
         android:layout_marginTop="@dimen/dimen_15"
-        android:layout_marginBottom="@dimen/dimen_8"
+        android:layout_marginBottom="@dimen/dimen4"
+        android:paddingStart="@dimen/dimen_6"
+        android:paddingEnd="@dimen/dimen_6"
+        android:layoutDirection="ltr"
         android:orientation="horizontal">
 
-        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
-            android:id="@+id/btn_cancel_dialog"
+        <android.support.constraint.ConstraintLayout
             android:layout_width="0dp"
             android:layout_height="@dimen/dimen_42"
-            android:layout_marginStart="@dimen/dimen_10"
+            android:id="@+id/layout_bazaar"
+            android:layout_marginEnd="@dimen/dimen_3"
+            android:layout_marginStart="@dimen/dimen_2"
             android:layout_weight="1"
-            android:background="@drawable/btn_bg_grey"
-            android:gravity="center"
-            android:text="انصراف"
-            android:textColor="@color/main_page_toolbar" />
+            android:background="@drawable/btn_bg_dark_blue"
+            >
+
+            <ImageView
+                android:src="@drawable/cafe_bazar"
+                android:layout_width="@dimen/dimen_0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:paddingStart="@dimen/dimen_9"
+                android:paddingEnd="@dimen/dimen_5"
+                app:layout_constraintWidth_percent="0.5"
+                android:layout_height="match_parent" />
+
+            <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_width="@dimen/dimen_0"
+                android:text="دریافت از"
+                android:textColor="@color/main_page_toolbar"
+                android:gravity="center"
+                app:layout_constraintWidth_percent="0.5"
+                android:layout_height="match_parent" />
+
+        </android.support.constraint.ConstraintLayout>
 
         <com.rahbarbazaar.poller.android.Utilities.CustomTextView
             android:id="@+id/btn_dl_dialog"
             android:layout_width="0dp"
+            android:visibility="gone"
             android:layout_height="@dimen/dimen_42"
-            android:layout_marginStart="@dimen/dimen_10"
-            android:layout_marginEnd="@dimen/dimen_10"
-            android:layout_weight="1"
+            android:layout_marginStart="@dimen/dimen_2"
+            android:layout_marginEnd="@dimen/dimen_2"
+            android:layout_weight="0.4"
             android:background="@drawable/btn_bg_dark_blue"
             android:gravity="center"
-            android:text="بله،دانلود کن"
+            android:text="دریافت از لینک مستقیم"
             android:textColor="@color/main_page_toolbar" />
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dimen_42"
+            android:layout_marginStart="@dimen/dimen_3"
+            android:layout_weight="1"
+            android:id="@+id/layout_gplay"
+            android:layout_marginEnd="@dimen/dimen_2"
+            android:background="@drawable/btn_bg_dark_blue"
+            >
+
+            <ImageView
+                android:src="@drawable/google_play"
+                android:layout_width="@dimen/dimen_0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:paddingTop="@dimen/dimen_6"
+                android:paddingBottom="@dimen/dimen_6"
+                app:layout_constraintWidth_percent="0.3"
+                android:layout_height="match_parent" />
+
+            <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_width="@dimen/dimen_0"
+                android:text="دریافت از گوگل پلی"
+                android:textColor="@color/main_page_toolbar"
+                android:gravity="center"
+                app:layout_constraintWidth_percent="0.7"
+                android:layout_height="match_parent" />
+
+        </android.support.constraint.ConstraintLayout>
+
 
     </LinearLayout>
 

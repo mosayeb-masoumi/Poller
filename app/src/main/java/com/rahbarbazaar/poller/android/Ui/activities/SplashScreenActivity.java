@@ -1,23 +1,17 @@
 package com.rahbarbazaar.poller.android.Ui.activities;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 
-import com.google.gson.Gson;
 import com.rahbarbazaar.poller.android.Models.GetCurrencyResult;
-import com.rahbarbazaar.poller.android.Models.UserConfirmAuthResult;
-import com.rahbarbazaar.poller.android.Models.UserDetailsPrefrence;
 import com.rahbarbazaar.poller.android.Network.Service;
 import com.rahbarbazaar.poller.android.Network.ServiceProvider;
 import com.rahbarbazaar.poller.android.R;
 import com.rahbarbazaar.poller.android.Utilities.CustomHandler;
 import com.rahbarbazaar.poller.android.Utilities.DialogFactory;
+import com.rahbarbazaar.poller.android.Utilities.GeneralTools;
 import com.rahbarbazaar.poller.android.Utilities.PreferenceStorage;
 import com.rahbarbazaar.poller.android.Utilities.ProfileTools;
 
@@ -32,6 +26,7 @@ public class SplashScreenActivity extends AppCompatActivity {
     CompositeDisposable disposable;
     ServiceProvider provider;
     boolean isValidToken;
+    GeneralTools tools;
     //end of region
 
     @Override
@@ -41,6 +36,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         provider = new ServiceProvider(this);
         disposable = new CompositeDisposable();
+        tools = GeneralTools.getInstance();
 
         //check token validation
         isValidToken = !PreferenceStorage.getInstance().retriveToken(this).equals("0");
@@ -62,7 +58,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
     private void checkAccessibility() {
 
-        if (checkInternetConnection()) {
+        if (tools.checkInternetConnection(this)) {
 
             if (!isValidToken) {
 
@@ -124,26 +120,9 @@ public class SplashScreenActivity extends AppCompatActivity {
         }));
     }
 
-    //check network connectivity
-    private boolean checkInternetConnection() {
-
-        ConnectivityManager manager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (manager != null) {
-            NetworkInfo info = manager.getActiveNetworkInfo();
-
-            if (info != null) {
-
-                return info.isConnected();
-
-            } else {
-
-                return false;
-            }
-
-        } else {
-
-            return false;
-        }
+    @Override
+    protected void onDestroy() {
+        disposable.dispose();
+        super.onDestroy();
     }
-
 }

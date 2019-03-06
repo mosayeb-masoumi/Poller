@@ -23,6 +23,7 @@ import com.rahbarbazaar.poller.android.Network.Service;
 import com.rahbarbazaar.poller.android.Network.ServiceProvider;
 import com.rahbarbazaar.poller.android.R;
 import com.rahbarbazaar.poller.android.Utilities.PreferenceStorage;
+import com.rahbarbazaar.poller.android.Utilities.ProfileTools;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -90,15 +91,16 @@ public class CartFragment extends Fragment {
 
     private void initialUserInformation() {
 
-        PreferenceStorage storage = PreferenceStorage.getInstance();
-        String user_details = storage.retriveUserDetails(getContext());
-
         //if user details not empty
-        if (user_details != null && !user_details.equals("")) {
+        UserDetailsPrefrence user_details = ProfileTools.getInstance().retriveUserInformation(getContext());
+        PreferenceStorage storage = PreferenceStorage.getInstance();
 
-            UserDetailsPrefrence prefrence = new Gson().fromJson(user_details, UserDetailsPrefrence.class);
-            txt_balance.setText(new StringBuilder().append("موجودی :").append(" ").append(String.valueOf(prefrence.getBalance())).append(" ").append(storage.retriveCurrency(getContext())));
-            text_pint.setText(String.valueOf(prefrence.getSum_points()));
+        if (user_details != null) {
+
+            txt_balance.setText(new StringBuilder().append("موجودی :").append(" ").
+                    append(String.valueOf(user_details.getBalance())).append(" ").
+                    append(storage.retriveCurrency(getContext())));
+            text_pint.setText(String.valueOf(user_details.getSum_points()));
         }
     }
 

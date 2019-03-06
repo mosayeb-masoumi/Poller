@@ -3,10 +3,15 @@ package com.rahbarbazaar.poller.android.Ui.activities;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -20,6 +25,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
@@ -33,10 +39,10 @@ import com.rahbarbazaar.poller.android.Controllers.adapters.DrawerRecyclerAdapte
 import com.rahbarbazaar.poller.android.Controllers.adapters.MainViewPagerAdapter;
 import com.rahbarbazaar.poller.android.Models.DownloadQueue;
 import com.rahbarbazaar.poller.android.Models.GetDownloadResult;
+import com.rahbarbazaar.poller.android.Models.GetNotificationListResult;
 import com.rahbarbazaar.poller.android.Models.GetPagesResult;
 import com.rahbarbazaar.poller.android.Models.GetReferralResult;
 import com.rahbarbazaar.poller.android.Models.RefreshBalanceEvent;
-import com.rahbarbazaar.poller.android.Models.RefreshSurveyEvent;
 import com.rahbarbazaar.poller.android.Models.UserDetailsPrefrence;
 import com.rahbarbazaar.poller.android.Network.Service;
 import com.rahbarbazaar.poller.android.Network.ServiceProvider;
@@ -47,6 +53,7 @@ import com.rahbarbazaar.poller.android.Ui.fragments.ProfileFragment;
 import com.rahbarbazaar.poller.android.Ui.fragments.SurveyFragment;
 import com.rahbarbazaar.poller.android.Utilities.CustomToast;
 import com.rahbarbazaar.poller.android.Utilities.DialogFactory;
+import com.rahbarbazaar.poller.android.Utilities.GeneralTools;
 import com.rahbarbazaar.poller.android.Utilities.NotSwipeableViewPager;
 import com.rahbarbazaar.poller.android.Utilities.PreferenceStorage;
 import com.rahbarbazaar.poller.android.Utilities.SolarCalendar;
@@ -59,6 +66,7 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.ArrayList;
 import java.util.List;
 
+import co.ronash.pushe.Pushe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableSingleObserver;
@@ -74,8 +82,10 @@ public class MainActivity extends AppCompatActivity implements
     ImageView image_drawer;
     DrawerLayout drawer_layout_home;
     NotSwipeableViewPager main_view_pager;
-    TextView text_header_date, text_username, text_point;
-    LinearLayout linear_invite_friend, linear_exit;
+    TextView text_header_date, text_username, text_point, text_notify_count;
+    LinearLayout linear_invite_friend, linear_exit,
+            linear_telegram, linear_instagram, linear_shopping;
+    RelativeLayout rl_notification;
     RecyclerView drawer_rv;
 
     //end of region
@@ -92,8 +102,10 @@ public class MainActivity extends AppCompatActivity implements
     DialogFactory dialogFactory;
     String download_url, update_version = null;
     final int WRITE_PERMISSION_REQUEST = 14;
+    final int NOTIFIY_ACTIVITY_REQUEST = 18;
     AlertDialog dialog;
     int selectedTabPosition;
+    BroadcastReceiver connectivityReceiver = null;
     //end of region
 
     @SuppressLint("SetTextI18n")
@@ -102,8 +114,10 @@ public class MainActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //initial fresco and services
+        //initial fresco , pushe services
         Fresco.initialize(this);
+        Pushe.initialize(this, true);
+
         disposable = new CompositeDisposable();
         service = new ServiceProvider(this).getmService();
 
@@ -114,6 +128,7 @@ public class MainActivity extends AppCompatActivity implements
         getDrawerPages();
         initializeBottomNavigation();
         initializeViewPager();
+        getNotifyCount();
 
         //initial Dialog factory
         dialogFactory = new DialogFactory(MainActivity.this);
@@ -131,6 +146,26 @@ public class MainActivity extends AppCompatActivity implements
 
         //check update availbility:
         checkUpdateNeeded();
+
+        //check network broadcast reciever
+        GeneralTools tools = GeneralTools.getInstance();
+        connectivityReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+
+                tools.doCheckNetwork(MainActivity.this, findViewById(R.id.drawer_layout_home));
+            }
+        };
+
+        if (!tools.checkPackageInstalled("org.telegram.messenger", this)) {
+
+            linear_telegram.setVisibility(View.GONE);
+        }
+
+        if (!tools.checkPackageInstalled("com.instagram.android", this)) {
+
+            linear_instagram.setVisibility(View.GONE);
+        }
     }
 
     //define view of activity here
@@ -141,10 +176,14 @@ public class MainActivity extends AppCompatActivity implements
         drawer_layout_home = findViewById(R.id.drawer_layout_home);
         main_view_pager = findViewById(R.id.main_view_pager);
         linear_invite_friend = findViewById(R.id.linear_invite_friend);
+        linear_shopping = findViewById(R.id.linear_shopping);
+        rl_notification = findViewById(R.id.rl_notification);
+        linear_instagram = findViewById(R.id.linear_instagram);
+        linear_telegram = findViewById(R.id.linear_telegram);
         linear_exit = findViewById(R.id.linear_exit);
         text_header_date = findViewById(R.id.text_header_date);
         drawer_rv = findViewById(R.id.drawer_rv);
-
+        text_notify_count = findViewById(R.id.text_notify_count);
         text_username = findViewById(R.id.text_username);
         text_point = findViewById(R.id.text_point);
     }
@@ -154,6 +193,10 @@ public class MainActivity extends AppCompatActivity implements
 
         image_drawer.setOnClickListener(this);
         linear_invite_friend.setOnClickListener(this);
+        linear_instagram.setOnClickListener(this);
+        linear_telegram.setOnClickListener(this);
+        linear_shopping.setOnClickListener(this);
+        rl_notification.setOnClickListener(this);
         linear_exit.setOnClickListener(this);
         // Set bottom navigation listener
         bottom_navigation.setOnTabSelectedListener(this);
@@ -361,7 +404,7 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     @SuppressLint("SetTextI18n")
-    private void setInitialUserInformation(){
+    private void setInitialUserInformation() {
 
         PreferenceStorage storage = PreferenceStorage.getInstance();
         String user_details = storage.retriveUserDetails(this);
@@ -411,6 +454,46 @@ public class MainActivity extends AppCompatActivity implements
             case R.id.linear_exit:
                 createConfirmExitDialog();
                 break;
+
+            case R.id.linear_instagram:
+
+                Uri uriInstagram = Uri.parse("http://instagram.com/_u/poller.ir");
+                Intent intentInstagram = new Intent(Intent.ACTION_VIEW, uriInstagram);
+                intentInstagram.setPackage("com.instagram.android");
+
+                try {
+                    startActivity(intentInstagram);
+
+                } catch (ActivityNotFoundException e) {
+
+                    e.printStackTrace();
+                }
+                break;
+
+            case R.id.linear_telegram:
+
+                Uri uriTelegram = Uri.parse("https://t.me/Polleriran");
+                Intent intentTelegram = new Intent(Intent.ACTION_VIEW, uriTelegram);
+                intentTelegram.setPackage("org.telegram.messenger");
+
+                try {
+                    startActivity(intentTelegram);
+
+                } catch (ActivityNotFoundException e) {
+
+                    e.printStackTrace();
+                }
+                break;
+
+            case R.id.linear_shopping:
+
+                startActivity(new Intent(this, ShopActivity.class));
+                break;
+
+            case R.id.rl_notification:
+
+                startActivityForResult(new Intent(this, NotificationActivity.class),NOTIFIY_ACTIVITY_REQUEST);
+                break;
         }
 
     }
@@ -435,6 +518,39 @@ public class MainActivity extends AppCompatActivity implements
                 //did on dialog factory
             }
         }, drawer_layout_home, false);
+    }
+
+    //get notification count by calling this api
+    private void getNotifyCount() {
+
+        disposable.add(service.getNotificationList().
+                subscribeOn(Schedulers.io()).
+                observeOn(AndroidSchedulers.mainThread()).
+                subscribeWith(new DisposableSingleObserver<GetNotificationListResult>() {
+                    @Override
+                    public void onSuccess(GetNotificationListResult result) {
+
+                        int unReadCount = result.getUnread();
+
+                        if (unReadCount != 0) {
+
+                            text_notify_count.setVisibility(View.VISIBLE);
+                            if (unReadCount > 99)
+                                text_notify_count.setText("...");
+                            else
+                                text_notify_count.setText(String.valueOf(unReadCount));
+
+                        } else {
+
+                            text_notify_count.setVisibility(View.GONE);
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+                }));
     }
 
     @Override
@@ -487,6 +603,7 @@ public class MainActivity extends AppCompatActivity implements
         disposable.dispose();
         if (adapter != null)
             adapter.setListener(null);
+        unregisterReceiver(connectivityReceiver);
 
         //TODO: if you have trouble with shared preference you can delete them when activity destroy
         //getSharedPreferences("currency", Context.MODE_PRIVATE).edit().remove("currency").apply();
@@ -519,6 +636,13 @@ public class MainActivity extends AppCompatActivity implements
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode==NOTIFIY_ACTIVITY_REQUEST)
+            getNotifyCount();
+    }
+
     //this is callback of update dialog:
     @Override
     public void onAcceptButtonClicked(String param) {
@@ -547,9 +671,16 @@ public class MainActivity extends AppCompatActivity implements
         EventBus.getDefault().unregister(this);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        registerReceiver(connectivityReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+    }
+
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onRefeshBalance(RefreshBalanceEvent event) {
 
         setInitialUserInformation();
+
     }
 }

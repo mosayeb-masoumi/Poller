@@ -3,13 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.rahbarbazaar.poller.android">
 
+    <uses-sdk tools:overrideLibrary="co.ronash.pushe" />
+
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
-    <!--<uses-permission android:name="android.permission.RECEIVE_SMS" />
-    <uses-permission android:name="android.permission.READ_SMS" />-->
+    <permission
+        android:name="com.rahbarbazaar.poller.android.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.rahbarbazaar.poller.android.permission.C2D_MESSAGE" />
 
     <application
         android:icon="@mipmap/app_icon"
@@ -19,6 +24,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".Ui.activities.NotificationActivity"></activity>
+        <activity android:name=".Ui.activities.ShopActivity" />
+        <activity android:name=".Ui.activities.AppIntroActivity" />
         <activity
             android:name=".Ui.activities.MainActivity"
             android:screenOrientation="portrait" />
@@ -31,7 +39,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".Ui.activities.LoginActivity"
             android:screenOrientation="portrait" />
@@ -41,13 +48,41 @@
         <activity
             android:name=".Ui.activities.HtmlLoaderActivity"
             android:screenOrientation="portrait" />
-
-      <!--  <receiver android:name="SmsObserver">
+        <!--
+  <receiver android:name="SmsObserver">
             <intent-filter android:priority="1000">
 
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
-        </receiver>-->
+        </receiver>
+        -->
+        <receiver android:name="co.ronash.pushe.receiver.UpdateReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REPLACED" />
+
+                <data
+                    android:path="com.rahbarbazaar.poller.android"
+                    android:scheme="package" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.google.android.gms.gcm.GcmReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <category android:name="com.rahbarbazaar.poller.android" />
+            </intent-filter>
+        </receiver>
+
+        <meta-data
+            android:name="co.ronash.pushe.token"
+            android:value="PUSHE_493773417507" />
+        <meta-data
+            android:name="co.ronash.pushe.cr"
+            android:value="Tm9uZQ==" />
 
         <provider
             android:name=".Utilities.GenericFileProvider"
@@ -56,9 +91,8 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/provider_paths"/>
+                android:resource="@xml/provider_paths" />
         </provider>
-
     </application>
 
 </manifest>

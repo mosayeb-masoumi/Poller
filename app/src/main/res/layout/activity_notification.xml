@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Ui.activities.NotificationActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/image_exit"
+                    android:layout_width="@dimen/dimen_30"
+                    android:layout_height="@dimen/dimen_30"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:padding="@dimen/dimen_6"
+                    android:src="@drawable/close"
+                    android:tint="@color/main_page_toolbar" />
+
+                <com.wang.avi.AVLoadingIndicatorView
+                    android:id="@+id/av_loading"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/dimen_3"
+                    android:layout_width="@dimen/dimen_20"
+                    android:layout_height="@dimen/dimen_20"
+                    android:paddingTop="@dimen/dimen_6"
+                    app:indicatorName="BallPulseSyncIndicator"
+                    android:layout_toStartOf="@+id/text_title"
+                     />
+
+                <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                    android:id="@+id/text_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:text="پیام های دریافتی"
+                    android:textColor="@color/main_page_toolbar"
+                    android:textSize="@dimen/font_15" />
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/notify_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="@dimen/dimen_3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/app_bar" />
+
+</android.support.constraint.ConstraintLayout>

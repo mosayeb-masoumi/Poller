@@ -29,8 +29,10 @@ public class DrawerRecyclerAdapter extends RecyclerView.Adapter<DrawerHolder> {
     public void onBindViewHolder(@NonNull DrawerHolder drawerHolder, int i) {
 
         //bind listener and data for drawer recyclerview
-        drawerHolder.bindDrawerData(items.get(i));
-        drawerHolder.setDrawerHolderListener(listener,items.get(i).getContent());
+        GetPagesResult data = items.get(i);
+
+        drawerHolder.bindDrawerData(data);
+        drawerHolder.setDrawerHolderListener(listener,data.getContent());
     }
 
     private OnDrawerItemClickListener listener = null;

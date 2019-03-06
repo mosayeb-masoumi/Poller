@@ -2,6 +2,8 @@ package com.rahbarbazaar.poller.android.Ui.activities;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -20,6 +22,7 @@ import com.rahbarbazaar.poller.android.Network.ServiceProvider;
 import com.rahbarbazaar.poller.android.R;
 import com.rahbarbazaar.poller.android.Utilities.CustomToast;
 import com.rahbarbazaar.poller.android.Utilities.DialogFactory;
+import com.rahbarbazaar.poller.android.Utilities.GeneralTools;
 import com.rahbarbazaar.poller.android.Utilities.PreferenceStorage;
 import com.rahbarbazaar.poller.android.Utilities.ProfileTools;
 import com.rahbarbazaar.poller.android.Utilities.TypeFaceGenerator;
@@ -51,6 +54,7 @@ public class VerificationActivity extends AppCompatActivity
     ServiceProvider provider;
     CountDownTimer countDownTimer;
     CompositeDisposable disposable;
+    BroadcastReceiver connectivityReceiver;
     //SmsObserver smsObserver;
 
     //end of region
@@ -70,7 +74,7 @@ public class VerificationActivity extends AppCompatActivity
         if (getIntent() != null) {
 
             user_mobile = getIntent().getStringExtra("user_mobile");
-            text_user_mobile.setText("+98" + user_mobile.substring(1, user_mobile.length()));
+            text_user_mobile.setText("+98" + user_mobile.substring(1));
         }
 
         //start count down timer and disable resend code linear
@@ -84,9 +88,19 @@ public class VerificationActivity extends AppCompatActivity
         customToast = new CustomToast();
 
         //create instance of smsObserver and set callback listener and check recive sms permission
-        checkReadSmsPremission();
+        //checkReadSmsPremission();
         // smsObserver = new SmsObserver();
         //smsObserver.setOnSmsObserverListener(this);
+
+        //check network broadcast reciever
+        GeneralTools tools = GeneralTools.getInstance();
+        connectivityReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+
+                tools.doCheckNetwork(VerificationActivity.this, findViewById(R.id.rl_root));
+            }
+        };
     }
 
     //define views of activity
@@ -315,6 +329,7 @@ public class VerificationActivity extends AppCompatActivity
 
             countDownTimer.cancel();
         }
+        disposable.dispose();
         super.onDestroy();
     }
 

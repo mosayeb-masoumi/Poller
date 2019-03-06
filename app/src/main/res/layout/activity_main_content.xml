@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
@@ -24,10 +25,41 @@
 
             <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                 android:layout_width="wrap_content"
-                android:textSize="@dimen/font_13"
+                tools:text="جمعه ۱۰ اسفند"
+                android:textSize="@dimen/font_14"
                 android:id="@+id/text_header_date"
                 android:textColor="@color/minor_white"
                 android:layout_height="wrap_content" />
+
+            <RelativeLayout
+                android:tint="@color/main_page_toolbar"
+                android:id="@+id/rl_notification"
+                android:layout_width="38dp"
+                android:layout_height="38dp">
+
+                <ImageView
+                    android:paddingEnd="@dimen/dimen_11"
+                    android:paddingStart="@dimen/dimen_6"
+                    android:tint="@color/main_page_toolbar"
+                    android:src="@drawable/notifiy_badge"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                    android:id="@+id/text_notify_count"
+                    android:background="@drawable/red_circle_shape"
+                    android:textSize="@dimen/font_13"
+                    android:layout_marginTop="@dimen/dimen_2"
+                    android:layout_marginEnd="@dimen/dimen_2"
+                    android:layout_alignParentEnd="true"
+                    tools:textt="13"
+                    android:gravity="center"
+                    android:visibility="invisible"
+                    android:textColor="@color/main_page_toolbar"
+                    android:layout_width="@dimen/dimen_20"
+                    android:layout_height="@dimen/dimen_20" />
+
+            </RelativeLayout>
 
         </android.support.v7.widget.Toolbar>
 

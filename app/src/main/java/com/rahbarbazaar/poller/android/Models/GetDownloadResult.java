@@ -9,11 +9,29 @@ public class GetDownloadResult {
      * {
      *   version : 4.0.1
      *   url : something for download
+     *   play_url: something
+     *   bazaar_url : something
      * }
      *
      */
 
-    private String version,url;
+    private String version,url,bazaar_url,play_url;
+
+    public String getBazaar_url() {
+        return bazaar_url;
+    }
+
+    public void setBazaar_url(String bazaar_url) {
+        this.bazaar_url = bazaar_url;
+    }
+
+    public String getPlay_url() {
+        return play_url;
+    }
+
+    public void setPlay_url(String play_url) {
+        this.play_url = play_url;
+    }
 
     public String getUrl() {
         return url;

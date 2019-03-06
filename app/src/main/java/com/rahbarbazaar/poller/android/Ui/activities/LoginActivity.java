@@ -1,6 +1,10 @@
 package com.rahbarbazaar.poller.android.Ui.activities;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -8,15 +12,15 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.rahbarbazaar.poller.android.R;
-import com.rahbarbazaar.poller.android.Utilities.DialogFactory;
-import com.wang.avi.AVLoadingIndicatorView;
-
 import com.rahbarbazaar.poller.android.Models.GeneralStatusResult;
 import com.rahbarbazaar.poller.android.Network.Service;
 import com.rahbarbazaar.poller.android.Network.ServiceProvider;
+import com.rahbarbazaar.poller.android.R;
 import com.rahbarbazaar.poller.android.Utilities.CustomToast;
+import com.rahbarbazaar.poller.android.Utilities.GeneralTools;
 import com.rahbarbazaar.poller.android.Utilities.TypeFaceGenerator;
+import com.wang.avi.AVLoadingIndicatorView;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableSingleObserver;
@@ -33,6 +37,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     //******************************************
 
     //region of property
+    BroadcastReceiver connectivityReceiver;
     CompositeDisposable disposable;
     CustomToast customToast;
     //end of region
@@ -47,6 +52,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         et_user_login.setTypeface(TypeFaceGenerator.getInstance().getByekanFont(this));
         customToast = new CustomToast();
         disposable = new CompositeDisposable();
+
+        //check network broadcast reciever
+        GeneralTools tools = GeneralTools.getInstance();
+        connectivityReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+
+                tools.doCheckNetwork(LoginActivity.this, findViewById(R.id.login_root));
+            }
+        };
     }
 
     //define views of activity
@@ -73,7 +88,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         if (!phone.equals("")) {
 
-            Snackbar.make(findViewById(R.id.login_root),"فرآیند ورود شما درحال پردازش است لطفا صبور باشید ...",Snackbar.LENGTH_INDEFINITE).show();
+            Snackbar.make(findViewById(R.id.login_root), "فرآیند ورود شما درحال پردازش است لطفا صبور باشید ...", Snackbar.LENGTH_INDEFINITE).show();
             av_login.smoothToShow();
             button_submit.setText("");
             button_submit.setEnabled(false);
@@ -87,7 +102,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             if (result != null) {
 
                                 //if response ok:
-                                if (result.getStatus().equals("otp sent")||result.getStatus().equals("unknown number")) {
+                                if (result.getStatus().equals("otp sent") || result.getStatus().equals("unknown number")) {
 
                                     Intent intent = new Intent(LoginActivity.this, VerificationActivity.class);
                                     intent.putExtra("user_mobile", et_user_login.getText().toString());
@@ -107,7 +122,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             button_submit.setText("ثبت");
                             button_submit.setEnabled(true);
                             av_login.smoothToHide();
-                            new CustomToast().createToast("مشکل در ارتباط",LoginActivity.this);
+                            new CustomToast().createToast("مشکل در ارتباط", LoginActivity.this);
                         }
                     }));
 
@@ -124,5 +139,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             sendLoginRequest();
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        registerReceiver(connectivityReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+    }
+
+    @Override
+    protected void onDestroy() {
+        disposable.dispose();
+        unregisterReceiver(connectivityReceiver);
+        super.onDestroy();
     }
 }

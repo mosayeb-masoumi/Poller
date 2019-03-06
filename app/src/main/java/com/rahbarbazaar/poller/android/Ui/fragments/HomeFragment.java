@@ -120,11 +120,12 @@ public class HomeFragment extends Fragment implements SurveyItemInteraction {
     private void initialUserInformation() {
 
         PreferenceStorage storage = PreferenceStorage.getInstance();
-        String user_details = storage.retriveUserDetails(getContext());
+        userDetailsPrefrence = ProfileTools.getInstance().retriveUserInformation(getContext());
 
-        if (user_details != null && !user_details.equals("")) {
-            userDetailsPrefrence = new Gson().fromJson(user_details, UserDetailsPrefrence.class);
-            text_balance.setText(new StringBuilder().append("موجودی :").append(" ").append(userDetailsPrefrence.getBalance()).append(" ").append(storage.retriveCurrency(getContext())));
+        if (userDetailsPrefrence != null) {
+            text_balance.setText(new StringBuilder().append("موجودی :").append(" ").
+                    append(userDetailsPrefrence.getBalance()).append(" ").
+                    append(storage.retriveCurrency(getContext())));
         }
     }
 

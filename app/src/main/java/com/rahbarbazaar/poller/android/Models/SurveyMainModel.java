@@ -28,11 +28,20 @@ public class SurveyMainModel {
     private String start_date;
     private String end_date;
     private String current_date;
+    private String complete_date;
     private int point;
     private int active;
     private int status;
     private int url_type;
     private boolean isExpired;
+
+    public String getComplete_date() {
+        return complete_date;
+    }
+
+    public void setComplete_date(String complete_date) {
+        this.complete_date = complete_date;
+    }
 
     public int getUrl_type() {
         return url_type;

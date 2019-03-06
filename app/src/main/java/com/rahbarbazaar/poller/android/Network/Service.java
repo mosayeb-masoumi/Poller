@@ -5,8 +5,10 @@ import com.rahbarbazaar.poller.android.Models.GeneralStatusResult;
 import com.rahbarbazaar.poller.android.Models.GetCurrencyResult;
 import com.rahbarbazaar.poller.android.Models.GetDownloadResult;
 import com.rahbarbazaar.poller.android.Models.GetNewsListResult;
+import com.rahbarbazaar.poller.android.Models.GetNotificationListResult;
 import com.rahbarbazaar.poller.android.Models.GetPagesResult;
 import com.rahbarbazaar.poller.android.Models.GetReferralResult;
+import com.rahbarbazaar.poller.android.Models.GetShopListResult;
 import com.rahbarbazaar.poller.android.Models.GetSurveyHistoryListResult;
 import com.rahbarbazaar.poller.android.Models.GetTransactionResult;
 import com.rahbarbazaar.poller.android.Models.SurveyMainModel;
@@ -15,9 +17,13 @@ import com.rahbarbazaar.poller.android.Models.UserConfirmAuthResult;
 import java.util.List;
 
 import io.reactivex.Single;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Query;
 import retrofit2.http.Url;
 
@@ -64,11 +70,22 @@ public interface Service {
     Single<GetCurrencyResult> getCurrency();
 
     @POST("survey")
-    Single<ChangeSurveyStatusResult> changeSurveyStatus(@Query("survey_id") String survey_id, @Query("user_id") String user_id, @Query("status") String status);
-
+    Single<ChangeSurveyStatusResult> changeSurveyStatus(@Query("survey_id") String survey_id,
+                                                        @Query("user_id") String user_id,
+                                                        @Query("status") String status);
     @GET("settings/apk")
     Single<GetDownloadResult> checkUpdate();
 
     @GET
-    Single<ResponseBody> downloadWithUrl (@Url String url);
+    Single<ResponseBody> downloadWithUrl(@Url String url);
+
+    @GET("shop/items")
+    Single<List<GetShopListResult>> getShopItems();
+
+    @GET("messages")
+    Single<GetNotificationListResult> getNotificationList();
+
+    @Multipart
+    @POST("message/seen")
+    Single<GeneralStatusResult> seenMessage(@Part("message_id") RequestBody message_id);
 }

@@ -1,7 +1,11 @@
 package com.rahbarbazaar.poller.android.Ui.activities;
 
 import android.annotation.SuppressLint;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +19,7 @@ import android.widget.LinearLayout;
 
 import com.rahbarbazaar.poller.android.R;
 import com.rahbarbazaar.poller.android.Utilities.DialogFactory;
+import com.rahbarbazaar.poller.android.Utilities.GeneralTools;
 import com.wang.avi.AVLoadingIndicatorView;
 
 public class HtmlLoaderActivity extends AppCompatActivity
@@ -29,7 +34,8 @@ public class HtmlLoaderActivity extends AppCompatActivity
 
     //region of property
     int id, url_type;
-    boolean isSurveyDetails, isUserStartSurvey = false;
+    BroadcastReceiver connectivityReceiver = null;
+    boolean isSurveyDetails, isShopping, isUserStartSurvey = false;
     //end of region
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -49,11 +55,8 @@ public class HtmlLoaderActivity extends AppCompatActivity
             id = getIntent().getIntExtra("id", 0);
             isSurveyDetails = getIntent().getBooleanExtra("surveyDetails", false);
             url_type = getIntent().getIntExtra("type", 1);
+            isShopping = getIntent().getBooleanExtra("isShopping", false);
         }
-
-        //check for show token dialog
-        if (isSurveyDetails && url_type != 2)
-            createTokenDialog();
 
         //config web view setting for support multi action and java scripts
         webView.getSettings().setJavaScriptEnabled(true);
@@ -72,17 +75,27 @@ public class HtmlLoaderActivity extends AppCompatActivity
         String pish = "<html><head><style type=\"text/css\">@font-face {font-family: MyFont;src: url(\"file:///android_asset/fonts/BYekan.ttf\")}body {font-family: MyFont;font-size: medium;text-align: justify;}</style></head><body>";
         String pas = "</body></html>";
 
-        if (isSurveyDetails)
+        if (isSurveyDetails) {
+
+            //check for show token dialog
+            if (url_type != 2)
+                createTokenDialog();
+
             webView.loadUrl(url);
-        else
-            webView.loadDataWithBaseURL("", pish + url + pas, "text/html", "UTF-8", "");
+
+        } else {
+
+            if (isShopping)
+                webView.loadUrl(url);
+            else
+                webView.loadDataWithBaseURL("", pish + url + pas, "text/html", "UTF-8", "");
+        }
 
         webView.setWebViewClient(new WebViewClient() {
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 view.loadUrl(url);
-                Log.e("web_view", "msg : survey done! you can get Q status");
                 return false;
             }
 
@@ -92,6 +105,16 @@ public class HtmlLoaderActivity extends AppCompatActivity
                 av_loading.smoothToHide();
             }
         });
+
+        //check network broadcast reciever
+        GeneralTools tools = GeneralTools.getInstance();
+        connectivityReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+
+                tools.doCheckNetwork(HtmlLoaderActivity.this, findViewById(R.id.rl_root));
+            }
+        };
 
     }
 
@@ -187,5 +210,17 @@ public class HtmlLoaderActivity extends AppCompatActivity
                 finish();
 
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        registerReceiver(connectivityReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+    }
+
+    @Override
+    protected void onDestroy() {
+        unregisterReceiver(connectivityReceiver);
+        super.onDestroy();
     }
 }

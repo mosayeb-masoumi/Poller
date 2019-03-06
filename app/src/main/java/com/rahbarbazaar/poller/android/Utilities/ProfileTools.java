@@ -77,6 +77,18 @@ public class ProfileTools {
         return this;
     }
 
+    public UserDetailsPrefrence retriveUserInformation(Context context) {
+
+        PreferenceStorage storage = PreferenceStorage.getInstance();
+        String user_details = storage.retriveUserDetails(context);
+
+        //if user details not empty
+        if (user_details != null && !user_details.equals(""))
+            return new Gson().fromJson(user_details, UserDetailsPrefrence.class);
+        else
+            return null;
+    }
+
     public void setListener(UserProfileInteraction listener) {
         this.listener = listener;
     }

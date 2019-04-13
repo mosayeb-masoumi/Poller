@@ -91,165 +91,174 @@
                 android:layout_marginEnd="@dimen/dimen_10"
                 android:background="@color/indicator_color" />
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/drawer_rv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+            <ScrollView
+                android:fillViewport="true"
+                android:layout_above="@+id/linear_social_media"
                 android:layout_below="@+id/text_divider"
-                android:layout_marginTop="@dimen/dimen4">
-
-            </android.support.v7.widget.RecyclerView>
-
-
-            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/drawer_rv"
-                android:orientation="vertical">
+                android:layout_height="match_parent">
 
                 <LinearLayout
-                    android:id="@+id/linear_shopping"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_34"
-                    android:layout_marginTop="@dimen/dimen_3"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:orientation="horizontal"
-                    android:paddingStart="@dimen/dimen_5"
-                    android:paddingEnd="@dimen/dimen_0">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-                    <ImageView
-                        android:layout_width="@dimen/dimen_34"
-                        android:layout_height="match_parent"
-                        android:padding="@dimen/dimen_6"
-                        android:src="@drawable/shopping_icon"
-                        android:tint="#818181" />
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/drawer_rv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen4"/>
 
-                    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                    <LinearLayout
+                        android:id="@+id/linear_shopping"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_34"
+                        android:layout_marginTop="@dimen/dimen_3"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:orientation="horizontal"
+                        android:paddingStart="@dimen/dimen_5"
+                        android:paddingEnd="@dimen/dimen_0">
+
+                        <ImageView
+                            android:layout_width="@dimen/dimen_34"
+                            android:layout_height="match_parent"
+                            android:padding="@dimen/dimen_6"
+                            android:src="@drawable/shopping_icon"
+                            android:tint="#818181" />
+
+                        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:text="@string/shop_drawer_text"
+                            android:textSize="@dimen/font_13" />
+
+                    </LinearLayout>
+
+                    <include layout="@layout/drawer_support_items" />
+
+                    <LinearLayout
+                        android:id="@+id/linear_notify_drawer"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_34"
+                        android:layout_marginTop="@dimen/dimen_3"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:orientation="horizontal"
+                        android:paddingStart="@dimen/dimen_5"
+                        android:paddingEnd="@dimen/dimen_0">
+
+                        <ImageView
+                            android:layout_width="@dimen/dimen_34"
+                            android:layout_height="match_parent"
+                            android:padding="@dimen/dimen_9"
+                            android:src="@drawable/notifiy_badge"
+                            android:tint="#818181" />
+
+                        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:text="@string/notify_drawer_text"
+                            android:textSize="@dimen/font_13" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linear_invite_friend"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_34"
+                        android:layout_marginTop="@dimen/dimen_3"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:orientation="horizontal"
+                        android:paddingStart="@dimen/dimen_5"
+                        android:paddingEnd="@dimen/dimen_0">
+
+                        <ImageView
+                            android:layout_width="@dimen/dimen_34"
+                            android:layout_height="match_parent"
+                            android:padding="@dimen/dimen_9"
+                            android:src="@drawable/invite_friend"
+                            android:tint="#818181" />
+
+                        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:text="@string/share_poller"
+                            android:textSize="@dimen/font_13" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/linear_exit"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:text="بازارچه"
-                        android:textSize="@dimen/font_13" />
+                        android:layout_height="@dimen/dimen_34"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="@dimen/dimen_3"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:orientation="horizontal"
+                        android:paddingStart="@dimen/dimen_5"
+                        android:paddingEnd="@dimen/dimen_0">
+
+                        <ImageView
+                            android:layout_width="@dimen/dimen_34"
+                            android:layout_height="match_parent"
+                            android:padding="@dimen/dimen_9"
+                            android:src="@drawable/logout"
+                            android:tint="#818181" />
+
+                        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:text="@string/exit_user_account"
+                            android:textSize="@dimen/font_13" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/linear_invite_friend"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_34"
-                    android:layout_marginTop="@dimen/dimen_3"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:orientation="horizontal"
-                    android:paddingStart="@dimen/dimen_5"
-                    android:paddingEnd="@dimen/dimen_0">
+            </ScrollView>
 
-                    <ImageView
-                        android:layout_width="@dimen/dimen_34"
-                        android:layout_height="match_parent"
-                        android:padding="@dimen/dimen_9"
-                        android:src="@drawable/invite_friend"
-                        android:tint="#818181" />
-
-                    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:text="دعوت از دوستان"
-                        android:textSize="@dimen/font_13" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/linear_telegram"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_34"
-                    android:layout_marginTop="@dimen/dimen_3"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:orientation="horizontal"
-                    android:paddingStart="@dimen/dimen_5"
-                    android:paddingEnd="@dimen/dimen_0">
-
-                    <ImageView
-                        android:layout_width="@dimen/dimen_34"
-                        android:layout_height="match_parent"
-                        android:padding="@dimen/dimen_9"
-                        android:src="@drawable/telegram"
-                        android:tint="#818181" />
-
-                    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:text="تلگرام ما را دنبال کنید"
-                        android:textSize="@dimen/font_13" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/linear_instagram"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_34"
-                    android:layout_marginTop="@dimen/dimen_3"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:orientation="horizontal"
-                    android:paddingStart="@dimen/dimen_5"
-                    android:paddingEnd="@dimen/dimen_0">
-
-                    <ImageView
-                        android:layout_width="@dimen/dimen_34"
-                        android:layout_height="match_parent"
-                        android:padding="@dimen/dimen_9"
-                        android:src="@drawable/instagram"
-                        android:tint="#818181" />
-
-                    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:text="اینستاگرام ما را دنبال کنید"
-                        android:textSize="@dimen/font_13" />
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:id="@+id/linear_exit"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_34"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginTop="@dimen/dimen_3"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:orientation="horizontal"
-                    android:paddingStart="@dimen/dimen_5"
-                    android:paddingEnd="@dimen/dimen_0">
-
-                    <ImageView
-                        android:layout_width="@dimen/dimen_34"
-                        android:layout_height="match_parent"
-                        android:padding="@dimen/dimen_9"
-                        android:src="@drawable/logout"
-                        android:tint="#818181" />
-
-                    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:text="خروج از حساب کاربری"
-                        android:textSize="@dimen/font_13" />
-
-                </LinearLayout>
-
-
-            </LinearLayout>
 
             <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                android:id="@+id/text_version"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="@dimen/dimen_12"
                 android:layout_marginBottom="@dimen/dimen_10"
-                android:text="نسخه 4.0.8"
+                android:text="نسخه 4.0.9"
                 android:textSize="@dimen/font_13" />
+
+            <LinearLayout
+                android:id="@+id/linear_social_media"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="@dimen/dimen_10"
+                android:layout_toEndOf="@+id/text_version"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:id="@+id/image_telegram"
+                    android:layout_width="@dimen/dimen_34"
+                    android:layout_height="@dimen/dimen_34"
+                    android:padding="@dimen/dimen_9"
+                    android:src="@drawable/telegram"
+                    android:tint="#818181" />
+
+                <ImageView
+                    android:id="@+id/image_instagram"
+                    android:layout_width="@dimen/dimen_34"
+                    android:layout_height="@dimen/dimen_34"
+                    android:padding="@dimen/dimen_9"
+                    android:src="@drawable/instagram"
+                    android:tint="#818181" />
+
+            </LinearLayout>
 
         </RelativeLayout>
 

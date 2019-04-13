@@ -2,7 +2,6 @@ package com.rahbarbazaar.poller.android.Utilities;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -37,7 +36,7 @@ public class DialogFactory {
 
     public interface DialogFactoryInteraction {
 
-        void onAcceptButtonClicked(String param);
+        void onAcceptButtonClicked(String... strings);
 
         void onDeniedButtonClicked(boolean cancel_dialog);
     }
@@ -83,7 +82,7 @@ public class DialogFactory {
             case 3:
                 status = "تکمیل شده";
                 btn_go_dialog.setEnabled(false);
-                text_time.setText(new StringBuilder().append("زمان نظرسنجی :").append(" در ").append(data.getComplete_date(),0,10).append("پاسخ داده اید"));
+                text_time.setText(new StringBuilder().append("زمان نظرسنجی :").append(" در ").append(data.getComplete_date(), 0, 10).append("پاسخ داده اید"));
                 break;
 
             case 0:
@@ -139,7 +138,7 @@ public class DialogFactory {
 
         //set click listener for views inside of dialog
         btn_cancel_dialog.setOnClickListener(v -> dialog.dismiss());
-        btn_exit_dialog.setOnClickListener(v -> listener.onAcceptButtonClicked(null)
+        btn_exit_dialog.setOnClickListener(v -> listener.onAcceptButtonClicked("")
         );
 
         dialog.show();
@@ -174,7 +173,7 @@ public class DialogFactory {
         }
 
         //set click listener for views inside of dialog
-        btn_wifi_dialog.setOnClickListener(view -> listener.onAcceptButtonClicked(null));
+        btn_wifi_dialog.setOnClickListener(view -> listener.onAcceptButtonClicked(""));
         btn_data_dialog.setOnClickListener(view -> listener.onDeniedButtonClicked(false));
 
         //if dialog dismissed, this action will be called
@@ -187,15 +186,12 @@ public class DialogFactory {
 
         View customLayout = LayoutInflater.from(context).inflate(R.layout.edit_profile_comment_dialog, (ViewGroup) root, false);
         //define views inside of dialog
-        TextView text_title = customLayout.findViewById(R.id.text_title);
         EditText edt_comment = customLayout.findViewById(R.id.edt_comment);
         TextView btn_send = customLayout.findViewById(R.id.btn_send_dialog);
         TextView btn_cancel_dialog = customLayout.findViewById(R.id.btn_cancel_dialog);
 
-        //set default values of views
+        //set default typeface of views
         edt_comment.setTypeface(Typeface.createFromAsset(context.getAssets(), "fonts/BYekan.ttf"));
-        text_title.setText("لطفا برای تغییر اطلاعات حساب خود درخواست دهید");
-        btn_send.setText("ارسال درخواست");
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setView(customLayout);
@@ -220,6 +216,42 @@ public class DialogFactory {
                 new CustomToast().createToast("قسمت توضیحات نمیتواند خالی باشد", context);
         });
         btn_cancel_dialog.setVisibility(ViewGroup.GONE);
+
+        dialog.show();
+    }
+
+    public void createReportIssueDialog(DialogFactoryInteraction listener, View root) {
+
+        View customLayout = LayoutInflater.from(context).inflate(R.layout.report_issue_dialog, (ViewGroup) root, false);
+        //define views inside of dialog
+        EditText edt_title = customLayout.findViewById(R.id.edt_title);
+        EditText edt_description = customLayout.findViewById(R.id.edt_description);
+        TextView btn_send = customLayout.findViewById(R.id.btn_send_dialog);
+        TextView btn_cancel_dialog = customLayout.findViewById(R.id.btn_cancel_dialog);
+
+        //set default values of views
+        edt_title.setTypeface(Typeface.createFromAsset(context.getAssets(), "fonts/BYekan.ttf"));
+        edt_description.setTypeface(Typeface.createFromAsset(context.getAssets(), "fonts/BYekan.ttf"));
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setView(customLayout);
+
+        //create dialog and set background transparent
+        AlertDialog dialog = builder.create();
+        if (dialog.getWindow() != null) {
+
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
+
+        //set click listener for views inside of dialog
+
+        btn_send.setOnClickListener(view -> {
+
+            listener.onAcceptButtonClicked(edt_title.getText().toString(), edt_description.getText().toString());
+            dialog.dismiss();
+        });
+
+        btn_cancel_dialog.setOnClickListener(view -> dialog.dismiss());
 
         dialog.show();
     }
@@ -270,7 +302,7 @@ public class DialogFactory {
         btn_send.setOnClickListener(view -> {
 
             if (checkbox_agreement.isChecked())
-                listener.onAcceptButtonClicked(null);
+                listener.onAcceptButtonClicked("");
             else
                 new CustomToast().createToast("برای ورود به برنامه باید قوانین و مقررات را قبول کنید", context);
 
@@ -306,7 +338,7 @@ public class DialogFactory {
     }
 
     //we can use create token dialog with little modify too:
-    public void createNoRegisterDialog(View root,DialogFactoryInteraction listener) {
+    public void createNoRegisterDialog(View root, DialogFactoryInteraction listener) {
 
         View customLayout = LayoutInflater.from(context).inflate(R.layout.no_register_dialog, (ViewGroup) root, false);
 
@@ -373,7 +405,7 @@ public class DialogFactory {
         }
 
         //set click listener for views inside of dialog
-        btn_dl_dialog.setOnClickListener(v -> listener.onAcceptButtonClicked(null)
+        btn_dl_dialog.setOnClickListener(v -> listener.onAcceptButtonClicked("")
         );
 
         google_layout.setOnClickListener(v -> {
@@ -384,7 +416,7 @@ public class DialogFactory {
             context.startActivity(intent);
         });
 
-        bazaar_layout.setOnClickListener(v->{
+        bazaar_layout.setOnClickListener(v -> {
 
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse("https://cafebazaar.ir/app/com.rahbarbazaar.poller.android/?l=fa"));

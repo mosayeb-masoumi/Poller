@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.rahbarbazaar.poller.android.BuildConfig;
 import com.rahbarbazaar.poller.android.Models.GeneralStatusResult;
 import com.rahbarbazaar.poller.android.Models.RefreshBalanceEvent;
 import com.rahbarbazaar.poller.android.Models.UserConfirmAuthResult;
@@ -40,8 +41,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
     //region of views
     RelativeLayout rl_logout, rl_edit_profile;
-    TextView text_mobile, text_gender, text_point,
-            text_age, text_username, text_project_count;
+    TextView text_mobile, text_gender, text_point,text_user_state,
+            text_age, text_username, text_project_count,text_score;
     //end of region
 
     //region of property
@@ -83,6 +84,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         text_username = view.findViewById(R.id.text_username);
         text_point = view.findViewById(R.id.text_point);
         text_project_count = view.findViewById(R.id.text_project_count);
+        text_user_state = view.findViewById(R.id.text_user_state);
+        text_score = view.findViewById(R.id.text_score);
     }
 
     //define views click listener will be appear here
@@ -98,7 +101,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         DialogFactory dialogFactory = new DialogFactory(getContext());
         dialogFactory.createConfirmExitDialog(new DialogFactory.DialogFactoryInteraction() {
             @Override
-            public void onAcceptButtonClicked(String param) {
+            public void onAcceptButtonClicked(String...params) {
 
                 PreferenceStorage.getInstance().saveToken("0", getContext());
                 if (getActivity()!=null) {
@@ -134,6 +137,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                     String currency = PreferenceStorage.getInstance().retriveCurrency(getContext());
                     text_point.setText(result.getBalance() +" "+ currency);
                     text_project_count.setText("" + result.getParticipated_project_count());
+                    text_user_state.setText(result.getMembership());
+                    text_score.setText(String.valueOf(result.getScore()));
                 }
             }
 
@@ -182,9 +187,9 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
             new DialogFactory(getContext()).createCommentDialog(new DialogFactory.DialogFactoryInteraction() {
                 @Override
-                public void onAcceptButtonClicked(String comment) {
+                public void onAcceptButtonClicked(String...params) {
 
-                    sendEditProfileRequest(comment);
+                    sendEditProfileRequest(params[0]);
                 }
 
                 @Override

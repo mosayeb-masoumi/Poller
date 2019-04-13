@@ -76,7 +76,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
             new DialogFactory(this).createNoInternetDialog(new DialogFactory.DialogFactoryInteraction() {
                 @Override
-                public void onAcceptButtonClicked(String param) {
+                public void onAcceptButtonClicked(String...params) {
 
                     //go to wifi setting
                     startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));

@@ -21,12 +21,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
@@ -38,6 +40,7 @@ import com.rahbarbazaar.poller.android.BuildConfig;
 import com.rahbarbazaar.poller.android.Controllers.adapters.DrawerRecyclerAdapter;
 import com.rahbarbazaar.poller.android.Controllers.adapters.MainViewPagerAdapter;
 import com.rahbarbazaar.poller.android.Models.DownloadQueue;
+import com.rahbarbazaar.poller.android.Models.GeneralStatusResult;
 import com.rahbarbazaar.poller.android.Models.GetDownloadResult;
 import com.rahbarbazaar.poller.android.Models.GetNotificationListResult;
 import com.rahbarbazaar.poller.android.Models.GetPagesResult;
@@ -56,6 +59,7 @@ import com.rahbarbazaar.poller.android.Utilities.DialogFactory;
 import com.rahbarbazaar.poller.android.Utilities.GeneralTools;
 import com.rahbarbazaar.poller.android.Utilities.NotSwipeableViewPager;
 import com.rahbarbazaar.poller.android.Utilities.PreferenceStorage;
+import com.rahbarbazaar.poller.android.Utilities.ProfileTools;
 import com.rahbarbazaar.poller.android.Utilities.SolarCalendar;
 import com.rahbarbazaar.poller.android.Utilities.TypeFaceGenerator;
 
@@ -69,8 +73,11 @@ import java.util.List;
 import co.ronash.pushe.Pushe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.observers.DisposableCompletableObserver;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 
 public class MainActivity extends AppCompatActivity implements
         View.OnClickListener, AHBottomNavigation.OnTabSelectedListener, DialogFactory.DialogFactoryInteraction,
@@ -79,12 +86,12 @@ public class MainActivity extends AppCompatActivity implements
     //region of views
 
     AHBottomNavigation bottom_navigation;
-    ImageView image_drawer;
+    ImageView image_drawer, image_instagram, image_telegram;
     DrawerLayout drawer_layout_home;
     NotSwipeableViewPager main_view_pager;
     TextView text_header_date, text_username, text_point, text_notify_count;
-    LinearLayout linear_invite_friend, linear_exit,
-            linear_telegram, linear_instagram, linear_shopping;
+    LinearLayout linear_invite_friend, linear_exit, linear_shopping, linear_notify_drawer,
+            linear_support, linear_report_issue, linear_faq, linear_videos, linear_submenu;
     RelativeLayout rl_notification;
     RecyclerView drawer_rv;
 
@@ -103,8 +110,11 @@ public class MainActivity extends AppCompatActivity implements
     String download_url, update_version = null;
     final int WRITE_PERMISSION_REQUEST = 14;
     final int NOTIFIY_ACTIVITY_REQUEST = 18;
+    final int SHOP_ACTIVITY_REQUEST = 19;
     AlertDialog dialog;
+    boolean isSupportLayoutClicked = false;
     int selectedTabPosition;
+    GeneralTools tools;
     BroadcastReceiver connectivityReceiver = null;
     //end of region
 
@@ -148,7 +158,7 @@ public class MainActivity extends AppCompatActivity implements
         checkUpdateNeeded();
 
         //check network broadcast reciever
-        GeneralTools tools = GeneralTools.getInstance();
+        tools = GeneralTools.getInstance();
         connectivityReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -157,14 +167,14 @@ public class MainActivity extends AppCompatActivity implements
             }
         };
 
-        if (!tools.checkPackageInstalled("org.telegram.messenger", this)) {
+        if (tools.checkPackageInstalled("org.telegram.messenger", this)) {
 
-            linear_telegram.setVisibility(View.GONE);
+            image_telegram.setVisibility(View.INVISIBLE);
         }
 
-        if (!tools.checkPackageInstalled("com.instagram.android", this)) {
+        if (tools.checkPackageInstalled("com.instagram.android", this)) {
 
-            linear_instagram.setVisibility(View.GONE);
+            image_instagram.setVisibility(View.INVISIBLE);
         }
     }
 
@@ -177,9 +187,15 @@ public class MainActivity extends AppCompatActivity implements
         main_view_pager = findViewById(R.id.main_view_pager);
         linear_invite_friend = findViewById(R.id.linear_invite_friend);
         linear_shopping = findViewById(R.id.linear_shopping);
+        linear_notify_drawer = findViewById(R.id.linear_notify_drawer);
+        linear_support = findViewById(R.id.linear_support);
+        linear_report_issue = findViewById(R.id.linear_report_issue);
+        linear_faq = findViewById(R.id.linear_faq);
+        linear_videos = findViewById(R.id.linear_videos);
+        linear_submenu = findViewById(R.id.linear_submenu);
         rl_notification = findViewById(R.id.rl_notification);
-        linear_instagram = findViewById(R.id.linear_instagram);
-        linear_telegram = findViewById(R.id.linear_telegram);
+        image_instagram = findViewById(R.id.image_instagram);
+        image_telegram = findViewById(R.id.image_telegram);
         linear_exit = findViewById(R.id.linear_exit);
         text_header_date = findViewById(R.id.text_header_date);
         drawer_rv = findViewById(R.id.drawer_rv);
@@ -193,11 +209,16 @@ public class MainActivity extends AppCompatActivity implements
 
         image_drawer.setOnClickListener(this);
         linear_invite_friend.setOnClickListener(this);
-        linear_instagram.setOnClickListener(this);
-        linear_telegram.setOnClickListener(this);
+        image_instagram.setOnClickListener(this);
+        image_telegram.setOnClickListener(this);
         linear_shopping.setOnClickListener(this);
         rl_notification.setOnClickListener(this);
         linear_exit.setOnClickListener(this);
+        linear_support.setOnClickListener(this);
+        linear_notify_drawer.setOnClickListener(this);
+        linear_faq.setOnClickListener(this);
+        linear_videos.setOnClickListener(this);
+        linear_report_issue.setOnClickListener(this);
         // Set bottom navigation listener
         bottom_navigation.setOnTabSelectedListener(this);
 
@@ -286,7 +307,7 @@ public class MainActivity extends AppCompatActivity implements
                                             append(" برای عضویت در اپلیکیشن نظرسنجی پولر دعوت شدید،درصورت تمایل از طریق لینک زیر اقدام نمایید ").
                                             append("\n").append(result.getUrl()))
                                     .setType("text/plain")
-                                    .setChooserTitle("اشتراک با دوستان")
+                                    .setChooserTitle("پولر را به اشتراک بگذارید")
                                     .startChooser();
                         }
                     }
@@ -455,7 +476,7 @@ public class MainActivity extends AppCompatActivity implements
                 createConfirmExitDialog();
                 break;
 
-            case R.id.linear_instagram:
+            case R.id.image_instagram:
 
                 Uri uriInstagram = Uri.parse("http://instagram.com/_u/poller.ir");
                 Intent intentInstagram = new Intent(Intent.ACTION_VIEW, uriInstagram);
@@ -470,7 +491,7 @@ public class MainActivity extends AppCompatActivity implements
                 }
                 break;
 
-            case R.id.linear_telegram:
+            case R.id.image_telegram:
 
                 Uri uriTelegram = Uri.parse("https://t.me/Polleriran");
                 Intent intentTelegram = new Intent(Intent.ACTION_VIEW, uriTelegram);
@@ -487,13 +508,53 @@ public class MainActivity extends AppCompatActivity implements
 
             case R.id.linear_shopping:
 
-                startActivity(new Intent(this, ShopActivity.class));
+                startActivityForResult(new Intent(this, ShopActivity.class), SHOP_ACTIVITY_REQUEST);
+                MainActivity.this.overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                 break;
 
             case R.id.rl_notification:
+            case R.id.linear_notify_drawer: {
 
-                startActivityForResult(new Intent(this, NotificationActivity.class),NOTIFIY_ACTIVITY_REQUEST);
+                startActivityForResult(new Intent(this, NotificationActivity.class), NOTIFIY_ACTIVITY_REQUEST);
+                MainActivity.this.overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                 break;
+            }
+
+            case R.id.linear_support:
+
+                if (!isSupportLayoutClicked) {
+
+                    tools.expand(linear_submenu);
+                } else
+                    tools.collapse(linear_submenu);
+
+                isSupportLayoutClicked = !isSupportLayoutClicked;
+                break;
+
+            case R.id.linear_faq:
+
+                goToHtmlActivity("http://pollerws.rahbarbazaar.com:2296/poller/support/faq",true);
+                break;
+
+            case R.id.linear_report_issue:
+                dialogFactory.createReportIssueDialog(new DialogFactory.DialogFactoryInteraction() {
+                    @Override
+                    public void onAcceptButtonClicked(String...params) {
+
+                        sendReportIssueRequest(params[0],params[1]);
+                    }
+
+                    @Override
+                    public void onDeniedButtonClicked(boolean cancel_dialog) {
+
+                    }
+                },drawer_layout_home);
+                break;
+
+            case R.id.linear_videos:
+                goToHtmlActivity("http://pollerws.rahbarbazaar.com:2296/poller/support/videos",true);
+                break;
+
         }
 
     }
@@ -504,7 +565,7 @@ public class MainActivity extends AppCompatActivity implements
         Context context = MainActivity.this;
         dialogFactory.createConfirmExitDialog(new DialogFactory.DialogFactoryInteraction() {
             @Override
-            public void onAcceptButtonClicked(String param) {
+            public void onAcceptButtonClicked(String...params) {
 
                 PreferenceStorage.getInstance().saveToken("0", context);
 
@@ -551,6 +612,38 @@ public class MainActivity extends AppCompatActivity implements
 
                     }
                 }));
+    }
+
+    private void sendReportIssueRequest(String t,String d){
+
+        RequestBody title = RequestBody.create(MediaType.parse("text/plain"), t);
+        RequestBody description = RequestBody.create(MediaType.parse("text/plain"), d);
+
+        disposable.add(service.reportIssues(title,description).
+                subscribeOn(Schedulers.io()).
+                observeOn(AndroidSchedulers.mainThread()).
+                subscribeWith(new DisposableCompletableObserver() {
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                    }
+
+                }));
+    }
+
+    private void goToHtmlActivity(String url,boolean shouldBeLoadUrl){
+
+        Intent intent = new Intent(MainActivity.this, HtmlLoaderActivity.class);
+        intent.putExtra("url", url);
+        intent.putExtra("surveyDetails", false);
+        intent.putExtra("isShopping", shouldBeLoadUrl);
+        startActivity(intent);
+        MainActivity.this.overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
     }
 
     @Override
@@ -624,10 +717,7 @@ public class MainActivity extends AppCompatActivity implements
         //if drawer item url content was not null so we going to htmLoader activity
         if (content != null && !content.equals("")) {
 
-            Intent intent = new Intent(MainActivity.this, HtmlLoaderActivity.class);
-            intent.putExtra("url", content);
-            intent.putExtra("surveyDetails", false);
-            startActivity(intent);
+            goToHtmlActivity(content,false);
             MainActivity.this.overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
 
         } else {
@@ -639,13 +729,25 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode==NOTIFIY_ACTIVITY_REQUEST)
-            getNotifyCount();
+
+        switch (requestCode) {
+
+            case NOTIFIY_ACTIVITY_REQUEST:
+                getNotifyCount();
+                break;
+
+            case SHOP_ACTIVITY_REQUEST:
+
+                ProfileTools.getInstance().saveProfileInformation(this).setListener(() ->
+                        EventBus.getDefault().post(new RefreshBalanceEvent())
+                );
+                break;
+        }
     }
 
     //this is callback of update dialog:
     @Override
-    public void onAcceptButtonClicked(String param) {
+    public void onAcceptButtonClicked(String...params) {
 
         if (checkWriteStoragePermission())
             downloadApkQeue();

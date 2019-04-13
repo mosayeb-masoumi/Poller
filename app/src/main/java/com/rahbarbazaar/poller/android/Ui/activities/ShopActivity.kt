@@ -23,7 +23,6 @@ import org.greenrobot.eventbus.EventBus
 
 class ShopActivity : AppCompatActivity(), GeneralItemIntraction {
 
-    private val HtmlActivityRequest: Int = 10
     val disposable = CompositeDisposable()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,11 +30,6 @@ class ShopActivity : AppCompatActivity(), GeneralItemIntraction {
         setContentView(R.layout.activity_shop)
         getShopItems()
         image_exit.setOnClickListener { finish() }
-    }
-
-    fun initialUserInfo() {
-
-
     }
 
     fun getShopItems() {
@@ -81,16 +75,6 @@ class ShopActivity : AppCompatActivity(), GeneralItemIntraction {
                 }))
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == HtmlActivityRequest) {
-
-            ProfileTools.getInstance().saveProfileInformation(this)
-                    .setListener { EventBus.getDefault().post(RefreshBalanceEvent()) }
-        }
-    }
-
     override fun <T> invokeItem(vararg param: T) {
 
         val userInformation = ProfileTools.getInstance().retriveUserInformation(this)
@@ -100,7 +84,7 @@ class ShopActivity : AppCompatActivity(), GeneralItemIntraction {
             it.putExtra("url", param[0] as String + userInformation.user_id)
             it.putExtra("surveyDetails", false)
             it.putExtra("isShopping", true)
-            startActivityForResult(it, HtmlActivityRequest)
+            startActivity(it)
         }
     }
 

@@ -359,19 +359,19 @@ public class HomeFragment extends Fragment implements SurveyItemInteraction {
 
         new DialogFactory(getActivity()).createSurveyDetailsDialog(new DialogFactory.DialogFactoryInteraction() {
             @Override
-            public void onAcceptButtonClicked(String url) {
+            public void onAcceptButtonClicked(String...params) {
 
                 if (userDetailsPrefrence.getType().equalsIgnoreCase("1")) {
 
                     if (result.getPoint() == 0) {
 
-                        sendToHtmlActivity(url, url_type, result);
+                        sendToHtmlActivity(params[0], url_type, result);
 
                     } else {
 
                         new DialogFactory(getContext()).createNoRegisterDialog(getView(), new DialogFactory.DialogFactoryInteraction() {
                             @Override
-                            public void onAcceptButtonClicked(String param) {
+                            public void onAcceptButtonClicked(String...params) {
 
                                 //params
                             }
@@ -385,7 +385,7 @@ public class HomeFragment extends Fragment implements SurveyItemInteraction {
                     }
                 } else {
 
-                    sendToHtmlActivity(url, url_type, result);
+                    sendToHtmlActivity(params[0], url_type, result);
                 }
             }
 

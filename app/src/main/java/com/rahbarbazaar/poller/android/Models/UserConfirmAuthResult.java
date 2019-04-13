@@ -36,9 +36,27 @@ public class UserConfirmAuthResult {
     private int rate;
     private int block;
     private int balance;
+    private int score;
     private int sum_points;
     private String token;
     private String identity;
+    private String membership;
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public String getMembership() {
+        return membership;
+    }
+
+    public void setMembership(String membership) {
+        this.membership = membership;
+    }
 
     public String getIdentity() {
         return identity;

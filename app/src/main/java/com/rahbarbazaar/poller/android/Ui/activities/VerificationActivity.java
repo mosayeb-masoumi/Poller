@@ -240,7 +240,7 @@ public class VerificationActivity extends AppCompatActivity
 
         new DialogFactory(this).createAgreementDialog(new DialogFactory.DialogFactoryInteraction() {
             @Override
-            public void onAcceptButtonClicked(String param) {
+            public void onAcceptButtonClicked(String...params) {
 
                 acceptUserAgreement();
             }

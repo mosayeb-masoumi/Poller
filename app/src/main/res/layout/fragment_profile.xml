@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layoutDirection="rtl"
     android:fillViewport="true">
 
@@ -31,25 +31,56 @@
             android:textStyle="bold" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/dimen_2"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <com.rahbarbazaar.poller.android.Utilities.CustomTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/text_point"
-                android:text="0" />
 
-            <com.rahbarbazaar.poller.android.Utilities.CustomTextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="موجودی : "
-                android:textColor="@color/colorPrimaryDark" />
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_point"
+                    android:text="0" />
+
+                <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="موجودی : "
+                    android:textColor="@color/colorPrimaryDark" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_score"
+                    android:text="0" />
+
+                <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="امتیاز : "
+                    android:textColor="@color/colorPrimaryDark" />
+
+            </LinearLayout>
 
         </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -114,13 +145,16 @@
                     <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="افراد دعوت کرده : "
+                        android:text="وضعیت کاربر : "
                         android:textColor="@color/colorPrimaryDark" />
 
                     <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                        android:id="@+id/text_user_state"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0"/>
+                        android:paddingStart="@dimen/dimen_5"
+                        android:paddingEnd="@dimen/dimen_0"
+                        tools:text="مهمان ویژه"/>
 
                 </LinearLayout>
 

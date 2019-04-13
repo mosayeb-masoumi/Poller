@@ -15,4 +15,9 @@
     <string name="exit_profile_text_dialog">آیا اطمینان دارید که میخواهید از حساب کاربری خود خارج شوید؟</string>
     <string name="survey_exit_confirm">آیا اطمینان دارید که میخواهید از نظرسنجی خود خارج شوید؟</string>
     <string name="download_body_text">ورژن جدید برنامه با قابلیت های جدید و رفع مشکلات جزیی منتشر شده برای دانلود کلیک کنید</string>
+    <string name="share_poller">پولر را به اشتراک بگذارید</string>
+    <string name="exit_user_account">خروج از حساب کاربری</string>
+    <string name="shop_drawer_text">بازارچه</string>
+    <string name="notify_drawer_text">پیام های دریافتی</string>
+    <string name="edit_profile_dialog_title">لطفا برای تغییر اطلاعات حساب خود درخواست دهید</string>
 </resources>

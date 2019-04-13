@@ -25,6 +25,7 @@ import okhttp3.RequestBody
 class NotificationActivity : AppCompatActivity(), GeneralItemIntraction {
 
     private val disposable = CompositeDisposable()
+    private val MessagePreviewRequest = 13
     private lateinit var serviceProvider: ServiceProvider
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -101,7 +102,7 @@ class NotificationActivity : AppCompatActivity(), GeneralItemIntraction {
 
                                 it.putExtra("isSurveyDetails", false)
                                 it.putExtra("url", param[0] as String)
-                                startActivity(it)
+                                startActivityForResult(it,MessagePreviewRequest)
                             }
                         }
 
@@ -112,6 +113,11 @@ class NotificationActivity : AppCompatActivity(), GeneralItemIntraction {
         }
 
         seenMessageById()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode==MessagePreviewRequest){getNotificationList()}
     }
 
     override fun onDestroy() {

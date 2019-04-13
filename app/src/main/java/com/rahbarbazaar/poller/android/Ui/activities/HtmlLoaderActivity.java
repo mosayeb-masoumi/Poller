@@ -9,10 +9,11 @@ import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceError;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
@@ -70,6 +71,7 @@ public class HtmlLoaderActivity extends AppCompatActivity
         webView.getSettings().setMinimumFontSize(1);
         webView.getSettings().setMinimumLogicalFontSize(1);
         webView.setClickable(true);
+        webView.clearCache(true);
 
         //config web view for show url content
         String pish = "<html><head><style type=\"text/css\">@font-face {font-family: MyFont;src: url(\"file:///android_asset/fonts/BYekan.ttf\")}body {font-family: MyFont;font-size: medium;text-align: justify;}</style></head><body>";
@@ -97,6 +99,12 @@ public class HtmlLoaderActivity extends AppCompatActivity
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 view.loadUrl(url);
                 return false;
+            }
+
+            @Override
+            public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
+                super.onReceivedError(view, request, error);
+                view.setVisibility(View.GONE);
             }
 
             @Override
@@ -133,7 +141,7 @@ public class HtmlLoaderActivity extends AppCompatActivity
 
         new DialogFactory(HtmlLoaderActivity.this).createConfirmExitDialog(new DialogFactory.DialogFactoryInteraction() {
             @Override
-            public void onAcceptButtonClicked(String str) {
+            public void onAcceptButtonClicked(String...params) {
 
                 finish();
             }

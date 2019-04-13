@@ -16,8 +16,8 @@ import com.rahbarbazaar.poller.android.Models.UserConfirmAuthResult;
 
 import java.util.List;
 
+import io.reactivex.Completable;
 import io.reactivex.Single;
-import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.http.GET;
@@ -73,6 +73,7 @@ public interface Service {
     Single<ChangeSurveyStatusResult> changeSurveyStatus(@Query("survey_id") String survey_id,
                                                         @Query("user_id") String user_id,
                                                         @Query("status") String status);
+
     @GET("settings/apk")
     Single<GetDownloadResult> checkUpdate();
 
@@ -88,4 +89,10 @@ public interface Service {
     @Multipart
     @POST("message/seen")
     Single<GeneralStatusResult> seenMessage(@Part("message_id") RequestBody message_id);
+
+    @Multipart
+    @POST("support/request")
+    Completable reportIssues(@Part("title") RequestBody title,
+                             @Part("description") RequestBody description
+    );
 }

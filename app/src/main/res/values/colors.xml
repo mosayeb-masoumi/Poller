@@ -12,6 +12,7 @@
     <color name="indicator_color">#a7a7a7</color>
     <color name="main_page_toolbar">#ffffff</color>
     <color name="minor_white">#eeeeee</color>
+    <color name="default_text_color">#757575</color>
     <color name="advertise_field_color">#999999</color>
     <color name="main_page_header">#4D4D4D</color>
 </resources>

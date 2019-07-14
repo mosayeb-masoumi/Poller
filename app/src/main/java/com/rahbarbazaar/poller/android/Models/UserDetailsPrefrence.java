@@ -6,9 +6,27 @@ public class UserDetailsPrefrence {
     private String type;
     private int balance;
     private int sum_points;
+    private int sum_score;
+    private int score;
     private String identity;
     private String phone_number;
     private String user_id;
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public int getSum_score() {
+        return sum_score;
+    }
+
+    public void setSum_score(int sum_score) {
+        this.sum_score = sum_score;
+    }
 
     public String getUser_id() {
         return user_id;

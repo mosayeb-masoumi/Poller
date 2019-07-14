@@ -8,7 +8,7 @@ import com.rahbarbazaar.poller.android.Controllers.viewHolders.ShopViewHolder
 import com.rahbarbazaar.poller.android.Models.GetShopListResult
 import com.rahbarbazaar.poller.android.R
 
-class ShopRecyclerAdapter(private val shopList: List<GetShopListResult>, val listener: GeneralItemIntraction) :
+class ShopRecyclerAdapter(private val shopList: List<GetShopListResult>, val listener: GeneralItemIntraction<GetShopListResult>) :
         RecyclerView.Adapter<ShopViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShopViewHolder {

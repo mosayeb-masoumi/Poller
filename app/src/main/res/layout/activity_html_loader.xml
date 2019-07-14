@@ -2,13 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layoutDirection="rtl"
     android:id="@+id/rl_root"
     android:layout_height="match_parent"
     >
 
     <android.support.design.widget.AppBarLayout
-        android:layoutDirection="ltr"
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -35,7 +33,7 @@
                 <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                     android:layout_width="wrap_content"
                     android:textSize="@dimen/font_15"
-                    android:text="بازگشت به اپلیکیشن"
+                    android:text="@string/back_to_app"
                     android:textColor="@color/main_page_toolbar"
                     android:layout_gravity="center_vertical"
                     android:layout_height="wrap_content" />

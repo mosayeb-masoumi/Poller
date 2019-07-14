@@ -23,7 +23,7 @@ import com.rahbarbazaar.poller.android.Utilities.DialogFactory;
 import com.rahbarbazaar.poller.android.Utilities.GeneralTools;
 import com.wang.avi.AVLoadingIndicatorView;
 
-public class HtmlLoaderActivity extends AppCompatActivity
+public class HtmlLoaderActivity extends CustomBaseActivity
         implements View.OnClickListener {
 
     //region of view

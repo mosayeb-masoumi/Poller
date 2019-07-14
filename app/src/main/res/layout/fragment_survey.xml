@@ -2,12 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layoutDirection="ltr"
     android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/linear_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/minor_white"
         android:orientation="vertical">
 
         <ImageView
@@ -17,37 +19,54 @@
             android:layout_weight="1"
             android:src="@drawable/survey_header" />
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
             android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:padding="@dimen/dimen_9"
-                android:src="@drawable/arrow"
-                android:tint="@color/minor_gray" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_1"
                 android:layout_marginEnd="@dimen/dimen_12"
-                android:background="@color/minor_gray" />
+                android:layout_centerVertical="true"
+                android:background="@color/colorPrimaryDark" />
 
-        </LinearLayout>
+            <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/text_price"
+                android:textColor="@color/colorPrimaryDark"
+                android:background="@color/minor_white"
+                android:padding="@dimen/dimen_9"
+                android:textSize="@dimen/font_13"
+                 />
+
+            <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@color/minor_white"
+                android:padding="@dimen/dimen_5"
+                android:paddingStart="@dimen/dimen_5"
+                android:paddingEnd="@dimen/dimen_5"
+                android:text="@string/subject_text"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/font_13"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
 
     </LinearLayout>
 
     <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+        android:id="@+id/text_no_active_survey"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:id="@+id/text_no_active_survey"
         android:gravity="center"
         android:paddingBottom="@dimen/dimen_2"
-        android:text="هیچ نظرسنجی فعالی برای شما وجود ندارد!" />
+        android:text="@string/no_active_survey"
+        android:visibility="gone" />
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh"
@@ -56,9 +75,9 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/survey_rv"
-            android:background="@color/minor_white"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/minor_white"
             android:padding="@dimen/dimen_2" />
 
     </android.support.v4.widget.SwipeRefreshLayout>

@@ -1,6 +1,7 @@
 package com.rahbarbazaar.poller.android.Controllers.viewHolders;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -33,16 +34,17 @@ public class SurveyHolder extends RecyclerView.ViewHolder {
     @SuppressLint("SetTextI18n")
     public void bindSurveyData(SurveyMainModel data, int pos) {
 
+        Context context = itemView.getContext();
         text_title.setText(data.getTitle());
         text_description.setText(data.getDescription());
-        text_price.setText(new StringBuilder().append("مبلغ ").append(": ").append(data.getPoint()).append(" ").append(data.getCurrency().getName()));
+        text_price.setText(new StringBuilder().append(data.getPoint()).append(" ").append(data.getCurrency().getName()));
         text_number.setText(String.valueOf(pos + 1));
         int remaining_day = getRemainingDate(data.getCurrent_date(), data.getEnd_date());
 
         if (remaining_day != 0)
-            text_date.setText(String.valueOf(remaining_day) + " روز باقی مانده");
+            text_date.setText(remaining_day +" "+ context.getString(R.string.text_remaining_day));
         else
-            text_date.setText("منقضی شده");
+            text_date.setText(context.getString(R.string.text_expired));
         if (remaining_day <= 1)
             text_date.setTextColor(Color.parseColor("#ff1a1a"));
 
@@ -78,42 +80,50 @@ public class SurveyHolder extends RecyclerView.ViewHolder {
 
         int start_day = Integer.valueOf(start_array[2]);
         int start_month = Integer.valueOf(start_array[1]);
+        int start_year = Integer.valueOf(start_array[0]);
 
         int end_day = Integer.valueOf(end_array[2]);
         int end_month = Integer.valueOf(end_array[1]);
+        int end_year = Integer.valueOf(end_array[0]);
 
         int sum;
 
-        if (end_month > start_month) { //if this condition was true, so we Certainly have remaining day
-
-            sum = (end_month - start_month) * 30;
-
-            if (start_day > end_day) {
-
-                sum = sum - (start_day - end_day);
-
-            } else if (end_day > start_day) {
-
-                sum = sum + (end_day - start_day);
-            }
-
-        } else if (start_month > end_month) {// if this condition was true, so survey certainly expired
+        if (start_year>end_year){
 
             sum = 0;
+        }else {
 
-        } else {// if this condition was true, so end and start month is equal so we have to check days
+            if (end_month > start_month) { //if this condition was true, so we Certainly have remaining day
 
-            if (end_day > start_day)
-                sum = end_day - start_day;
-            else
+                sum = (end_month - start_month) * 30;
+
+                if (start_day > end_day) {
+
+                    sum = sum - (start_day - end_day);
+
+                } else if (end_day > start_day) {
+
+                    sum = sum + (end_day - start_day);
+                }
+
+            } else if (start_month > end_month) {// if this condition was true, so survey certainly expired
+
                 sum = 0;
-        }
 
+            } else {// if this condition was true, so end and start month is equal so we have to check days
+
+                if (end_day > start_day)
+                    sum = end_day - start_day;
+                else
+                    sum = 0;
+            }
+        }
         return sum;
     }
 
     public void setOnSurveyHolderListener(SurveyItemInteraction listener, SurveyMainModel data) {
 
+        Context context = itemView.getContext();
 
         if (!data.isExpired()) {
 
@@ -123,15 +133,15 @@ public class SurveyHolder extends RecyclerView.ViewHolder {
             switch (data.getStatus()) {
 
                 case 1:
-                    status = "مشاهده نظرسنجی";
+                    status = context.getString(R.string.text_survey_view);
                     break;
 
                 case 2:
-                    status = "مشاهده نظرسنجی";
+                    status = context.getString(R.string.text_survey_view);
                     break;
 
                 case 0:
-                    status = "ناقص";
+                    status = context.getString(R.string.text_survey_incomplete);
                     break;
             }
 
@@ -143,13 +153,13 @@ public class SurveyHolder extends RecyclerView.ViewHolder {
             } else {
 
                 // this is complete survey
-                itemView.setOnClickListener(view -> listener.onClicked(data.getId(), false, 1, "تکمیل شده"));
+                itemView.setOnClickListener(view -> listener.onClicked(data.getId(), false, 1, context.getString(R.string.text_survey_complete)));
             }
 
         } else {
 
             //this is expired state / url type is not important
-            itemView.setOnClickListener(view -> listener.onClicked(data.getId(), data.getStatus() != 3, 1, data.getStatus() == 3 ? "تکمیل شده" : "منقضی شده"));
+            itemView.setOnClickListener(view -> listener.onClicked(data.getId(), data.getStatus() != 3, 1, data.getStatus() == 3 ? context.getString(R.string.text_survey_complete) : context.getString(R.string.text_expired)));
         }
     }
 }

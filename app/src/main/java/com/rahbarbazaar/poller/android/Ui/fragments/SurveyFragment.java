@@ -21,6 +21,7 @@ import com.google.gson.Gson;
 import com.rahbarbazaar.poller.android.Controllers.adapters.SurveyRecyclerAdapter;
 import com.rahbarbazaar.poller.android.Controllers.viewHolders.SurveyItemInteraction;
 import com.rahbarbazaar.poller.android.Models.ChangeSurveyStatusResult;
+import com.rahbarbazaar.poller.android.Models.GetCurrencyListResult;
 import com.rahbarbazaar.poller.android.Models.GetSurveyHistoryListResult;
 import com.rahbarbazaar.poller.android.Models.RefreshBalanceEvent;
 import com.rahbarbazaar.poller.android.Models.RefreshSurveyEvent;
@@ -30,9 +31,9 @@ import com.rahbarbazaar.poller.android.Network.Service;
 import com.rahbarbazaar.poller.android.Network.ServiceProvider;
 import com.rahbarbazaar.poller.android.R;
 import com.rahbarbazaar.poller.android.Ui.activities.HtmlLoaderActivity;
-import com.rahbarbazaar.poller.android.Ui.activities.MainActivity;
-import com.rahbarbazaar.poller.android.Utilities.CustomSnackBar;
-import com.rahbarbazaar.poller.android.Utilities.CustomToast;
+import com.rahbarbazaar.poller.android.Utilities.ClientConfig;
+import com.rahbarbazaar.poller.android.Utilities.SnackBarFactory;
+import com.rahbarbazaar.poller.android.Utilities.ToastFactory;
 import com.rahbarbazaar.poller.android.Utilities.DialogFactory;
 import com.rahbarbazaar.poller.android.Utilities.PreferenceStorage;
 import com.rahbarbazaar.poller.android.Utilities.ProfileTools;
@@ -70,20 +71,33 @@ public class SurveyFragment extends Fragment implements SurveyItemInteraction {
     List<SurveyMainModel> surveyList;
     boolean isSurveyItemClickable = true;
     UserDetailsPrefrence userDetailsPrefrence;
-
+    GetCurrencyListResult parcelable;
+    String lang;
     //end of region
 
     public SurveyFragment() {
         // Required empty public constructor
     }
 
-    public static SurveyFragment newInstance() {
-        return new SurveyFragment();
+    public static SurveyFragment newInstance(GetCurrencyListResult parcelable, String lang) {
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("parcel_data",parcelable);
+        bundle.putString("lang",lang);
+
+        SurveyFragment fragment =new SurveyFragment();
+        fragment.setArguments(bundle);
+
+        return fragment;
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (getArguments()!=null){
+            parcelable = this.getArguments().getParcelable("parcel_data");
+            lang = getArguments().getString("lang");
+        }
         disposable = new CompositeDisposable();
     }
 
@@ -106,8 +120,8 @@ public class SurveyFragment extends Fragment implements SurveyItemInteraction {
 
         }
 
-        PreferenceStorage storage = PreferenceStorage.getInstance();
-        String user_details = storage.retriveUserDetails(getContext());
+        PreferenceStorage storage = PreferenceStorage.getInstance(getContext());
+        String user_details = storage.retriveUserDetails();
 
         if (user_details != null && !user_details.equals("")) {
             userDetailsPrefrence = new Gson().fromJson(user_details, UserDetailsPrefrence.class);
@@ -166,7 +180,7 @@ public class SurveyFragment extends Fragment implements SurveyItemInteraction {
         ServiceProvider provider = new ServiceProvider(getContext());
         Service service = provider.getmService();
 
-        disposable.add(service.getSurveyHistoryList().subscribeOn(Schedulers.io())
+        disposable.add(service.getSurveyHistoryList(ClientConfig.API_V1).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).
                         subscribeWith(new DisposableSingleObserver<GetSurveyHistoryListResult>() {
                             @Override
@@ -175,7 +189,7 @@ public class SurveyFragment extends Fragment implements SurveyItemInteraction {
                                 if (result != null) {
 
                                     initializSurveys();
-                                    bindHomeSurveys(result);
+                                    bindSurveyHistory(result);
                                 }
                                 swipe_refesh.post(() -> swipe_refesh.setRefreshing(false));
                             }
@@ -189,7 +203,7 @@ public class SurveyFragment extends Fragment implements SurveyItemInteraction {
     }
 
     //bind data of user survey history
-    private void bindHomeSurveys(GetSurveyHistoryListResult data) {
+    private void bindSurveyHistory(GetSurveyHistoryListResult data) {
 
         List<SurveyMainModel> items = new ArrayList<>();
 
@@ -205,7 +219,7 @@ public class SurveyFragment extends Fragment implements SurveyItemInteraction {
                     if (model.getStatus() == 1)
                         active_count++;
                 }
-                if (active_count != 0)
+                if (active_count != 0 && interaction != null)
                     interaction.activeSurveyCount(String.valueOf(active_count));//badge count for survey page
 
             } else if (data.getActives().size() == 0)
@@ -234,7 +248,7 @@ public class SurveyFragment extends Fragment implements SurveyItemInteraction {
 
         Service service = new ServiceProvider(getContext()).getmService();
 
-        disposable.add(service.getSurveyDetails(survey_id).subscribeOn(Schedulers.io())
+        disposable.add(service.getSurveyDetails(ClientConfig.API_V1, survey_id).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).
                         subscribeWith(new DisposableSingleObserver<SurveyMainModel>() {
                             @Override
@@ -260,19 +274,19 @@ public class SurveyFragment extends Fragment implements SurveyItemInteraction {
 
         new DialogFactory(getActivity()).createSurveyDetailsDialog(new DialogFactory.DialogFactoryInteraction() {
             @Override
-            public void onAcceptButtonClicked(String...params) {
+            public void onAcceptButtonClicked(String... params) {
 
-                if (userDetailsPrefrence.getType().equalsIgnoreCase("1")){
+                if (userDetailsPrefrence.getType().equalsIgnoreCase("1")) {
 
-                    if (result.getPoint()==0){
+                    if (result.getPoint() == 0) {
 
-                        sendToHtmlActivity(params[0],url_type,result);
+                        sendToHtmlActivity(params[0], url_type, result);
 
-                    }else {
+                    } else {
 
                         new DialogFactory(getContext()).createNoRegisterDialog(getView(), new DialogFactory.DialogFactoryInteraction() {
                             @Override
-                            public void onAcceptButtonClicked(String...params) {
+                            public void onAcceptButtonClicked(String... params) {
 
                                 //params
                             }
@@ -284,9 +298,9 @@ public class SurveyFragment extends Fragment implements SurveyItemInteraction {
                             }
                         });
                     }
-                }else {
+                } else {
 
-                    sendToHtmlActivity(params[0],url_type,result);
+                    sendToHtmlActivity(params[0], url_type, result);
                 }
             }
 
@@ -298,7 +312,7 @@ public class SurveyFragment extends Fragment implements SurveyItemInteraction {
         }, result, getView(), button_status);
     }
 
-    private void sendToHtmlActivity(String url,int url_type,SurveyMainModel result){
+    private void sendToHtmlActivity(String url, int url_type, SurveyMainModel result) {
 
         if (!url.equals("")) {
 
@@ -327,17 +341,17 @@ public class SurveyFragment extends Fragment implements SurveyItemInteraction {
             getActivity().overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
 
         } else
-            new CustomToast().createToast("آدرس موجود نیست", getContext());
+            new ToastFactory().createToast(R.string.text_no_address, getContext());
     }
 
     //after user back to app we have to call change survey status service
     private void changeSurveyStatus(String id, String qStatus) {
 
         Service service = new ServiceProvider(getContext()).getmService();
-        UserDetailsPrefrence user_details = new Gson().fromJson(PreferenceStorage.getInstance().retriveUserDetails(getContext()), UserDetailsPrefrence.class);
+        UserDetailsPrefrence user_details = new Gson().fromJson(PreferenceStorage.getInstance(getContext()).retriveUserDetails(), UserDetailsPrefrence.class);
 
 
-        disposable.add(service.changeSurveyStatus(id, user_details.getUser_id(), qStatus.equals("2") ? "3" : "2")
+        disposable.add(service.changeSurveyStatus(ClientConfig.API_V1, id, user_details.getUser_id(), qStatus.equals("2") ? "3" : "2")
                 .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).
                         subscribeWith(new DisposableSingleObserver<ChangeSurveyStatusResult>() {
                             @Override
@@ -350,7 +364,7 @@ public class SurveyFragment extends Fragment implements SurveyItemInteraction {
                                         getUserSurveyHistory();
                                         EventBus.getDefault().post(new RefreshSurveyEvent());
                                         ProfileTools.getInstance().saveProfileInformation(getContext()).setListener(() -> EventBus.getDefault().post(new RefreshBalanceEvent()));
-                                        new CustomSnackBar().showResultSnackbar(getView(), getContext()).show();
+                                        SnackBarFactory.getInstance().showResultSnackbar(getView(), getContext()).show();
                                     }
                                 }
                             }
@@ -382,12 +396,12 @@ public class SurveyFragment extends Fragment implements SurveyItemInteraction {
     }
 
     @Override
-    public void onClicked(int survey_id, boolean isExpired, int url_type,String status) {
+    public void onClicked(int survey_id, boolean isExpired, int url_type, String status) {
 
         if (isSurveyItemClickable) {
 
             if (isExpired)
-                status = "منقضی شده";
+                status = getString(R.string.text_expired);
 
             getSurveyDetails(String.valueOf(survey_id), status, url_type);
             isSurveyItemClickable = !isSurveyItemClickable;

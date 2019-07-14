@@ -6,7 +6,6 @@
     android:layout_marginStart="0dp"
     android:layout_marginTop="@dimen/dimen_3"
     android:foreground="?attr/selectableItemBackground"
-    android:layoutDirection="rtl"
     android:orientation="horizontal"
     android:paddingStart="@dimen/dimen_5"
     android:paddingEnd="@dimen/dimen_0">

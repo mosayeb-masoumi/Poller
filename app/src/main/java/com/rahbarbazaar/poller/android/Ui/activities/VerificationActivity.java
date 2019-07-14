@@ -5,37 +5,47 @@ import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.graphics.Typeface;
+import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.rahbarbazaar.poller.android.BuildConfig;
+import com.rahbarbazaar.poller.android.Models.GetCurrencyListResult;
 import com.rahbarbazaar.poller.android.Models.GeneralStatusResult;
+import com.rahbarbazaar.poller.android.Models.CurrencyListParcelable;
 import com.rahbarbazaar.poller.android.Models.UserConfirmAuthResult;
 import com.rahbarbazaar.poller.android.Network.Service;
 import com.rahbarbazaar.poller.android.Network.ServiceProvider;
 import com.rahbarbazaar.poller.android.R;
-import com.rahbarbazaar.poller.android.Utilities.CustomToast;
+import com.rahbarbazaar.poller.android.Utilities.ClientConfig;
+import com.rahbarbazaar.poller.android.Utilities.ToastFactory;
 import com.rahbarbazaar.poller.android.Utilities.DialogFactory;
 import com.rahbarbazaar.poller.android.Utilities.GeneralTools;
+import com.rahbarbazaar.poller.android.Utilities.LocaleManager;
 import com.rahbarbazaar.poller.android.Utilities.PreferenceStorage;
 import com.rahbarbazaar.poller.android.Utilities.ProfileTools;
 import com.rahbarbazaar.poller.android.Utilities.TypeFaceGenerator;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import java.math.BigDecimal;
+import java.util.List;
 
+import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
-public class VerificationActivity extends AppCompatActivity
+public class VerificationActivity extends CustomBaseActivity
         implements View.OnClickListener {
 
     //region of views
@@ -50,11 +60,12 @@ public class VerificationActivity extends AppCompatActivity
     int min = 0;
     int sec = 0;
     String user_mobile = null;
-    CustomToast customToast;
+    ToastFactory toastFactory;
     ServiceProvider provider;
     CountDownTimer countDownTimer;
     CompositeDisposable disposable;
     BroadcastReceiver connectivityReceiver;
+    GetCurrencyListResult getCurrencyListResult;
     //SmsObserver smsObserver;
 
     //end of region
@@ -67,7 +78,13 @@ public class VerificationActivity extends AppCompatActivity
 
         defineViews();
         defineViewsListener();
-        et_user_verify.setTypeface(TypeFaceGenerator.getInstance().getByekanFont(this));
+        if (LocaleManager.getLocale(getResources()).getLanguage().equals("fa")) {
+
+            Typeface font = TypeFaceGenerator.getInstance().getByekanFont(this);
+            et_user_verify.setTypeface(font);
+            text_user_mobile.setTypeface(font);
+        }
+
         disposable = new CompositeDisposable();
 
         //get mobile number from intent
@@ -85,7 +102,7 @@ public class VerificationActivity extends AppCompatActivity
         provider = new ServiceProvider(this);
 
         //create instance from custom toast for show multiple message
-        customToast = new CustomToast();
+        toastFactory = new ToastFactory();
 
         //create instance of smsObserver and set callback listener and check recive sms permission
         //checkReadSmsPremission();
@@ -132,7 +149,7 @@ public class VerificationActivity extends AppCompatActivity
         //call service with user_mobile
         if (!user_mobile.equals("")) {
 
-            disposable.add(service.userAuthentication(user_mobile)
+            disposable.add(service.userAuthentication(ClientConfig.API_V1, user_mobile)
                     .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                     .subscribeWith(new DisposableSingleObserver<GeneralStatusResult>() {
                         @Override
@@ -143,7 +160,7 @@ public class VerificationActivity extends AppCompatActivity
                                 //call service if response ok:
                                 if (result.getStatus().equals("otp sent")) {
 
-                                    new CustomToast().createToast("کد ارسال شد", VerificationActivity.this);
+                                    new ToastFactory().createToast(R.string.text_otp_send, VerificationActivity.this);
                                 }
                             }
                         }
@@ -160,18 +177,17 @@ public class VerificationActivity extends AppCompatActivity
     private void sendVerifyRequest() {
 
         Service service = provider.getmService();
-        String verify_code = et_user_verify.getText().toString();
+        String verify_code = et_user_verify.getText().toString().trim();
 
+        if (!verify_code.isEmpty()) {
 
-        if (!verify_code.equals("")) {
-
-            verify_code = new BigDecimal(verify_code).toString();
+            verify_code = new BigDecimal(Long.parseLong(verify_code)).toString();
 
             av_verify.smoothToShow();
             button_verify.setText("");
             button_verify.setEnabled(false);
 
-            disposable.add(service.userConfirmAuthentication(user_mobile, verify_code).
+            disposable.add(service.userConfirmAuthentication(ClientConfig.API_V1, user_mobile, verify_code).
                     subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).
                     subscribeWith(new DisposableSingleObserver<UserConfirmAuthResult>() {
                         @Override
@@ -185,17 +201,17 @@ public class VerificationActivity extends AppCompatActivity
                                     switch (result.getStatus()) {
                                         case "otp expired":
 
-                                            customToast.createToast("کد تایید منقضی شده لطفا بر روی ارسال مجدد کلیک کنید", VerificationActivity.this);
+                                            toastFactory.createToast(R.string.text_otp_expired, VerificationActivity.this);
 
                                             break;
                                         case "otp wrong":
 
-                                            customToast.createToast("کد تایید اشتباه است", VerificationActivity.this);
+                                            toastFactory.createToast(R.string.text_otp_wrong, VerificationActivity.this);
                                             break;
 
                                         case "already used":
 
-                                            customToast.createToast("کد تایید تکراری است", VerificationActivity.this);
+                                            toastFactory.createToast(R.string.text_otp_used, VerificationActivity.this);
                                             break;
 
                                         case "user confirmed":
@@ -203,7 +219,7 @@ public class VerificationActivity extends AppCompatActivity
                                             if (result.getToken() != null && !result.getToken().equals("")) {
 
                                                 //call verification code and mobile if response ok:
-                                                PreferenceStorage.getInstance().saveToken(result.getToken(), VerificationActivity.this);
+                                                PreferenceStorage.getInstance(VerificationActivity.this).saveToken(result.getToken());
 
                                                 //check user agreement:
                                                 checkUserAgreement();
@@ -214,7 +230,7 @@ public class VerificationActivity extends AppCompatActivity
                                 }
                             }
                             av_verify.smoothToHide();
-                            button_verify.setText("ورود");
+                            button_verify.setText(R.string.verification_button_text);
                             button_verify.setEnabled(true);
                         }
 
@@ -222,9 +238,9 @@ public class VerificationActivity extends AppCompatActivity
                         public void onError(Throwable e) {
 
                             av_verify.smoothToHide();
-                            button_verify.setText("ورود");
+                            button_verify.setText(R.string.verification_button_text);
                             button_verify.setEnabled(true);
-                            new CustomToast().createToast("مشکل در ارتباط", VerificationActivity.this);
+                            new ToastFactory().createToast(R.string.text_no_service, VerificationActivity.this);
                         }
                     }));
 
@@ -232,15 +248,35 @@ public class VerificationActivity extends AppCompatActivity
 
     }
 
+    private void sendApkVersion() {
+
+        ServiceProvider provider = new ServiceProvider(this);
+        disposable.add(provider.getmService().sendApkVersion(ClientConfig.API_V1, BuildConfig.VERSION_NAME)
+                .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableSingleObserver<GeneralStatusResult>() {
+                    @Override
+                    public void onSuccess(GeneralStatusResult generalStatusResult) {
+                        System.out.print("ok");
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+                }));
+
+    }
+
     //agreement dialog will bee appear by this function
     private void checkUserAgreement() {
 
-        //get user profile information and save it in preference for access in other segment of app
-        ProfileTools.getInstance().saveProfileInformation(this);
+        saveCurrency();
+        sendApkVersion();
 
-        new DialogFactory(this).createAgreementDialog(new DialogFactory.DialogFactoryInteraction() {
+        //get user profile information and save it in preference for access in other segment of app
+        ProfileTools.getInstance().saveProfileInformation(this).setListener(() -> new DialogFactory(this).createAgreementDialog(new DialogFactory.DialogFactoryInteraction() {
             @Override
-            public void onAcceptButtonClicked(String...params) {
+            public void onAcceptButtonClicked(String... params) {
 
                 acceptUserAgreement();
             }
@@ -250,21 +286,52 @@ public class VerificationActivity extends AppCompatActivity
 
                 //this callback doesn't use
             }
-        }, findViewById(R.id.rl_root));
+        }, findViewById(R.id.rl_root)));
+    }
+
+    private void saveCurrency() {
+
+        ServiceProvider provider = new ServiceProvider(this);
+        disposable.add(provider.getmService().getCurrency(ClientConfig.API_V2).
+                subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableSingleObserver<GetCurrencyListResult>() {
+                    @Override
+                    public void onSuccess(GetCurrencyListResult result) {
+
+                        getCurrencyListResult = result;
+                        Log.e("hamed_verify", "msg : result :" + result.getStatus());
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.e("hamed_verify", "msg : " + e.getMessage());
+                    }
+                }));
     }
 
     //accept user agreement
     private void acceptUserAgreement() {
 
-        disposable.add(new ServiceProvider(this).getmService().acceptAgreement().
+        disposable.add(new ServiceProvider(this).getmService().acceptAgreement(ClientConfig.API_V1).
                 subscribeOn(Schedulers.io()).
                 observeOn(AndroidSchedulers.mainThread()).
                 subscribeWith(new DisposableSingleObserver<GeneralStatusResult>() {
                     @Override
                     public void onSuccess(GeneralStatusResult generalStatusResult) {
 
+                        if (getCurrencyListResult == null) {
+
+                            Log.e("hamed_verify", "msg : result null");
+                        } else {
+
+                            Log.e("hamed_verify", "msg : " + getCurrencyListResult.getStatus());
+                        }
+
                         //go to main activity
-                        startActivity(new Intent(VerificationActivity.this, MainActivity.class));
+                        Intent intent = new Intent(VerificationActivity.this, MainActivity.class);
+                        intent.putExtra("parcel_data", getCurrencyListResult);
+                        startActivity(intent);
                         VerificationActivity.this.finish();
                         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
                     }
@@ -272,7 +339,7 @@ public class VerificationActivity extends AppCompatActivity
                     @Override
                     public void onError(Throwable e) {
 
-                        new CustomToast().createToast("عدم ارتباط با سرور", VerificationActivity.this);
+                        new ToastFactory().createToast(R.string.text_no_service, VerificationActivity.this);
                     }
                 }));
     }
@@ -282,6 +349,7 @@ public class VerificationActivity extends AppCompatActivity
 
         countDownTimer = new CountDownTimer(90000, 1000) {
 
+            @SuppressLint("SetTextI18n")
             public void onTick(long millisUntilFinished) {
 
                 //initialize sec
@@ -289,7 +357,7 @@ public class VerificationActivity extends AppCompatActivity
 
                 //modify minute
                 min = sec / 60;
-                text_min.setText(String.valueOf("0" + min));
+                text_min.setText("0" + min);
 
                 //check if sec bigger than 60 so...
                 if (sec >= 60)
@@ -329,6 +397,7 @@ public class VerificationActivity extends AppCompatActivity
 
             countDownTimer.cancel();
         }
+        unregisterReceiver(connectivityReceiver);
         disposable.dispose();
         super.onDestroy();
     }
@@ -336,6 +405,7 @@ public class VerificationActivity extends AppCompatActivity
     @Override
     protected void onResume() {
         super.onResume();
+        registerReceiver(connectivityReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
         // registerReceiver(smsObserver, new IntentFilter("android.provider.Telephony.SMS_RECEIVED"));
     }
 
@@ -364,6 +434,7 @@ public class VerificationActivity extends AppCompatActivity
                 break;
         }
     }
+
 
    /* @Override
     public void onSmsReceived(String msg) {

@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rl_root"
     android:background="@color/splash_screen_bg">
 
@@ -21,14 +22,14 @@
         android:paddingTop="@dimen/dimen_20"
         android:src="@drawable/verification_top" />
 
-    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+    <TextView
         android:id="@+id/text_user_mobile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/img_verify_top"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/dimen_20"
-        android:text="+989211833813"
+        tools:text="+989211833813"
         android:textColor="@color/av_indicator_bg"
         android:textSize="@dimen/font_15" />
 
@@ -58,6 +59,7 @@
         android:layout_width="140dp"
         android:layout_height="@dimen/dimen_55"
         android:layout_below="@+id/rl_middle"
+        android:layoutDirection="ltr"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/dimen_13"
         android:background="@drawable/border"
@@ -69,10 +71,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginEnd="@dimen/dimen_5"
+            android:layoutDirection="ltr"
             android:orientation="horizontal">
 
             <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                 android:id="@+id/text_min"
+                tools:text="10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary" />
@@ -85,6 +89,7 @@
 
             <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                 android:id="@+id/text_sec"
+                tools:text="20"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary" />
@@ -131,7 +136,7 @@
             android:gravity="center"
             android:hint="@string/verification_hint"
             android:imeOptions="actionDone"
-            android:inputType="textNoSuggestions"
+            android:inputType="numberDecimal"
             android:paddingStart="@dimen/dimen4"
             android:paddingEnd="@dimen/dimen_0"
             android:textSize="@dimen/font_15"

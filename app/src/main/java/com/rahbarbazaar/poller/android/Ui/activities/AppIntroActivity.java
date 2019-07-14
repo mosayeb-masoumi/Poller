@@ -1,25 +1,10 @@
 package com.rahbarbazaar.poller.android.Ui.activities;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.net.ConnectivityManager;
-import android.os.Bundle;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.widget.TextView;
-
-import com.rahbarbazaar.poller.android.Controllers.adapters.IntroPagerAdapter;
-import com.rahbarbazaar.poller.android.R;
-import com.rahbarbazaar.poller.android.Utilities.GeneralTools;
-
-import java.util.ArrayList;
-import java.util.List;
-
+/*
 public class AppIntroActivity extends AppCompatActivity {
 
-    /*int current_pos = 0;
+
+    int current_pos = 0;
     BroadcastReceiver connectivityReceiver = null;
 
     @Override
@@ -100,5 +85,6 @@ public class AppIntroActivity extends AppCompatActivity {
     protected void onDestroy() {
         unregisterReceiver(connectivityReceiver);
         super.onDestroy();
-    }*/
+    }
 }
+*/

@@ -14,6 +14,7 @@ import com.rahbarbazaar.poller.android.Models.GeneralStatusResult
 import com.rahbarbazaar.poller.android.Models.GetNotificationListResult
 import com.rahbarbazaar.poller.android.Network.ServiceProvider
 import com.rahbarbazaar.poller.android.R
+import com.rahbarbazaar.poller.android.Utilities.ClientConfig
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
@@ -22,7 +23,7 @@ import kotlinx.android.synthetic.main.activity_notification.*
 import okhttp3.MediaType
 import okhttp3.RequestBody
 
-class NotificationActivity : AppCompatActivity(), GeneralItemIntraction {
+class NotificationActivity : CustomBaseActivity(), GeneralItemIntraction<GetNotificationListResult.Messages> {
 
     private val disposable = CompositeDisposable()
     private val MessagePreviewRequest = 13
@@ -37,11 +38,11 @@ class NotificationActivity : AppCompatActivity(), GeneralItemIntraction {
         image_exit.setOnClickListener { finish() }
     }
 
-    fun getNotificationList() {
+    private fun getNotificationList() {
 
         val notifyRecyclerView: RecyclerView = findViewById(R.id.notify_recycler)
 
-        fun configeNotifyRecyclerView() {
+        fun configNotifyRecyclerView() {
 
             notifyRecyclerView.apply {
 
@@ -62,13 +63,12 @@ class NotificationActivity : AppCompatActivity(), GeneralItemIntraction {
                 })
             }
         }
-        configeNotifyRecyclerView()
+        configNotifyRecyclerView()
 
-        disposable.add(serviceProvider.getmService().notificationList.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread()).subscribeWith(object : DisposableSingleObserver<GetNotificationListResult>() {
+        disposable.add(serviceProvider.getmService().getNotificationList(ClientConfig.API_V1)
+                .observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribeWith(object : DisposableSingleObserver<GetNotificationListResult>() {
 
                     override fun onSuccess(result: GetNotificationListResult) {
-
                         av_loading.hide()
                         notifyRecyclerView.adapter = NotificationAdapter(result.messages!!, this@NotificationActivity)
                     }
@@ -85,14 +85,14 @@ class NotificationActivity : AppCompatActivity(), GeneralItemIntraction {
      * @param[1] message id
      */
 
-    override fun <T> invokeItem(vararg param: T) {
+    override fun invokeItem(data: GetNotificationListResult.Messages) {
 
         fun seenMessageById() {
 
             av_loading.smoothToShow()
-            val messageId = RequestBody.create(MediaType.parse("text/plain"), param[1].toString())
+            val messageId = RequestBody.create(MediaType.parse("text/plain"), data.pivot?.message_id.toString())
 
-            disposable.add(serviceProvider.getmService().seenMessage(messageId).subscribeOn(Schedulers.io())
+            disposable.add(serviceProvider.getmService().seenMessage(ClientConfig.API_V1, messageId).subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread()).subscribeWith(object : DisposableSingleObserver<GeneralStatusResult>() {
 
                         override fun onSuccess(result: GeneralStatusResult) {
@@ -101,8 +101,8 @@ class NotificationActivity : AppCompatActivity(), GeneralItemIntraction {
                             Intent(this@NotificationActivity, HtmlLoaderActivity::class.java).let {
 
                                 it.putExtra("isSurveyDetails", false)
-                                it.putExtra("url", param[0] as String)
-                                startActivityForResult(it,MessagePreviewRequest)
+                                it.putExtra("url", data.content)
+                                startActivityForResult(it, MessagePreviewRequest)
                             }
                         }
 
@@ -117,7 +117,9 @@ class NotificationActivity : AppCompatActivity(), GeneralItemIntraction {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode==MessagePreviewRequest){getNotificationList()}
+        if (requestCode == MessagePreviewRequest) {
+            getNotificationList()
+        }
     }
 
     override fun onDestroy() {

@@ -7,7 +7,7 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -16,8 +16,10 @@ import com.rahbarbazaar.poller.android.Models.GeneralStatusResult;
 import com.rahbarbazaar.poller.android.Network.Service;
 import com.rahbarbazaar.poller.android.Network.ServiceProvider;
 import com.rahbarbazaar.poller.android.R;
-import com.rahbarbazaar.poller.android.Utilities.CustomToast;
+import com.rahbarbazaar.poller.android.Utilities.ClientConfig;
+import com.rahbarbazaar.poller.android.Utilities.ToastFactory;
 import com.rahbarbazaar.poller.android.Utilities.GeneralTools;
+import com.rahbarbazaar.poller.android.Utilities.LocaleManager;
 import com.rahbarbazaar.poller.android.Utilities.TypeFaceGenerator;
 import com.wang.avi.AVLoadingIndicatorView;
 
@@ -26,7 +28,7 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivity extends CustomBaseActivity implements View.OnClickListener {
 
     //region of views
     AVLoadingIndicatorView av_login;
@@ -39,7 +41,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     //region of property
     BroadcastReceiver connectivityReceiver;
     CompositeDisposable disposable;
-    CustomToast customToast;
+    ToastFactory toastFactory;
     //end of region
 
     @Override
@@ -49,8 +51,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         defineViews();
         defineViewsListener();
-        et_user_login.setTypeface(TypeFaceGenerator.getInstance().getByekanFont(this));
-        customToast = new CustomToast();
+
+       if (LocaleManager.getLocale(getResources()).getLanguage().equals("fa"))
+            et_user_login.setTypeface(TypeFaceGenerator.getInstance().getByekanFont(this));
+
+        toastFactory = new ToastFactory();
         disposable = new CompositeDisposable();
 
         //check network broadcast reciever
@@ -88,12 +93,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         if (!phone.equals("")) {
 
-            Snackbar.make(findViewById(R.id.login_root), "فرآیند ورود شما درحال پردازش است لطفا صبور باشید ...", Snackbar.LENGTH_INDEFINITE).show();
+            Snackbar.make(findViewById(R.id.login_root), R.string.text_login_progress, Snackbar.LENGTH_INDEFINITE).show();
             av_login.smoothToShow();
             button_submit.setText("");
             button_submit.setEnabled(false);
 
-            disposable.add(service.userAuthentication(phone).
+            disposable.add(service.userAuthentication(ClientConfig.API_V1, phone).
                     subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).
                     subscribeWith(new DisposableSingleObserver<GeneralStatusResult>() {
                         @Override
@@ -111,7 +116,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                     overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
                                 }
                             }
-                            button_submit.setText("ثبت");
+                            button_submit.setText(R.string.login_button_text);
                             button_submit.setEnabled(true);
                             av_login.smoothToHide();
                         }
@@ -119,16 +124,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         @Override
                         public void onError(Throwable e) {
 
-                            button_submit.setText("ثبت");
+                            button_submit.setText(R.string.login_button_text);
                             button_submit.setEnabled(true);
                             av_login.smoothToHide();
-                            new CustomToast().createToast("مشکل در ارتباط", LoginActivity.this);
+                            new ToastFactory().createToast(R.string.text_no_service, LoginActivity.this);
                         }
                     }));
 
         } else {
 
-            customToast.createToast("لطفا شماره موبایل خود را وارد کنید", this);
+            toastFactory.createToast(R.string.text_input_mobile, this);
         }
     }
 
@@ -153,4 +158,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         unregisterReceiver(connectivityReceiver);
         super.onDestroy();
     }
+
+
 }

@@ -17,11 +17,34 @@ public class GetTransactionResult {
     private int id;
     private int user_id;
     private String transaction_amount;
+    private String title;
     private int transactionable_id;
+    private int currency_id;
     private String transactionable_type;
+    private String transaction_type;
     private String created_at;
     private String updated_at;
     private TransactionableBean transactionable;
+
+    public int getCurrency_id() {
+        return currency_id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getTransaction_type() {
+        return transaction_type;
+    }
+
+    public void setTransaction_type(String transaction_type) {
+        this.transaction_type = transaction_type;
+    }
 
     public int getId() {
         return id;

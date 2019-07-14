@@ -36,7 +36,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:layout_centerVertical="true"
-                    android:text="بازارچه"
+                    android:text="@string/store"
                     android:textColor="@color/main_page_toolbar"
                     android:textSize="@dimen/font_15" />
 

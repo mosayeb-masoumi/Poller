@@ -7,12 +7,12 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.rahbarbazaar.poller.android.Models.GetNewsListResult;
+import com.rahbarbazaar.poller.android.Models.GetBannersListResult;
 import com.rahbarbazaar.poller.android.Ui.fragments.NewsPagerFragment;
 
 public class NewsPagerAdapter extends FragmentStatePagerAdapter {
 
-    private List<GetNewsListResult.DataBean> items;
+    private List<GetBannersListResult> items;
 
     public NewsPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -31,7 +31,7 @@ public class NewsPagerAdapter extends FragmentStatePagerAdapter {
     }
 
     //add list item dynamically
-    public void addItems(List<GetNewsListResult.DataBean> news) {
+    public void addItems(List<GetBannersListResult> news) {
 
         items.addAll(news);
     }

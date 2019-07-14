@@ -1,5 +1,6 @@
 package com.rahbarbazaar.poller.android.Ui.fragments;
 
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -14,15 +15,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
 import com.rahbarbazaar.poller.android.Controllers.adapters.CartRecyclerAdapter;
+import com.rahbarbazaar.poller.android.Models.GetCurrencyListResult;
 import com.rahbarbazaar.poller.android.Models.GetTransactionResult;
 import com.rahbarbazaar.poller.android.Models.RefreshBalanceEvent;
 import com.rahbarbazaar.poller.android.Models.UserDetailsPrefrence;
 import com.rahbarbazaar.poller.android.Network.Service;
 import com.rahbarbazaar.poller.android.Network.ServiceProvider;
 import com.rahbarbazaar.poller.android.R;
-import com.rahbarbazaar.poller.android.Utilities.PreferenceStorage;
+import com.rahbarbazaar.poller.android.Utilities.ClientConfig;
+import com.rahbarbazaar.poller.android.Utilities.GeneralTools;
 import com.rahbarbazaar.poller.android.Utilities.ProfileTools;
 
 import org.greenrobot.eventbus.EventBus;
@@ -32,6 +34,7 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableSingleObserver;
@@ -43,30 +46,47 @@ import io.reactivex.schedulers.Schedulers;
  * create an instance of this fragment.
  */
 
-public class CartFragment extends Fragment {
+public class CartFragment extends Fragment implements View.OnClickListener {
 
 
     //region of params and property
     RecyclerView cart_rv;
-    TextView text_pint, txt_balance;
+    TextView txt_balance,tv_price_view,tv_total_earned,tv_point_tab,
+            tv_indicator, tv_transaction_tab, tv_point;
     List<GetTransactionResult> cartList;
     CartRecyclerAdapter adapter;
     CompositeDisposable disposable;
     SwipeRefreshLayout cart_refresh;
+    GetCurrencyListResult parcelable;
+    UserDetailsPrefrence user_details;
+    int windowsWidth;
+    String lang;
     //end pf region
 
     public CartFragment() {
         // Required empty public constructor
     }
 
-    public static CartFragment newInstance() {
+    public static CartFragment newInstance(GetCurrencyListResult parcelable, String lang) {
 
-        return new CartFragment();
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("parcel_data",parcelable);
+        bundle.putString("lang",lang);
+
+        CartFragment fragment =new CartFragment();
+        fragment.setArguments(bundle);
+
+        return fragment;
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (getArguments()!=null){
+            parcelable = this.getArguments().getParcelable("parcel_data");
+            lang = getArguments().getString("lang");
+        }
         disposable = new CompositeDisposable();
     }
 
@@ -83,36 +103,49 @@ public class CartFragment extends Fragment {
         //change refresh color
         cart_refresh.setColorSchemeResources(R.color.colorPrimary);
 
+        GeneralTools generalTools = GeneralTools.getInstance();
+        ViewGroup.LayoutParams params = tv_indicator.getLayoutParams();
+        windowsWidth = generalTools.getWindowsWidth(getActivity());
+        params.width = windowsWidth / 2;
+        tv_indicator.setLayoutParams(params);
+
         //get user info from preference and set to views
-        initialUserInformation();
+        initialInformation();
 
         return v;
     }
 
-    private void initialUserInformation() {
+    private void initialInformation() {
 
         //if user details not empty
-        UserDetailsPrefrence user_details = ProfileTools.getInstance().retriveUserInformation(getContext());
-        PreferenceStorage storage = PreferenceStorage.getInstance();
+        user_details = ProfileTools.getInstance().retriveUserInformation(getContext());
 
         if (user_details != null) {
 
-            txt_balance.setText(new StringBuilder().append("موجودی :").append(" ").
-                    append(String.valueOf(user_details.getBalance())).append(" ").
-                    append(storage.retriveCurrency(getContext())));
-            text_pint.setText(String.valueOf(user_details.getSum_points()));
+            txt_balance.setText(new StringBuilder().append(getResources().getString(R.string.inventory)).append(" ").
+                    append(user_details.getBalance()).append(" ").
+                    append(lang.equals("fa") ? parcelable.getItems().get(0).getCurrency_name()
+                            : parcelable.getItems().get(0).getEn_name()));
+            tv_point.setText(String.valueOf(user_details.getSum_points()));
         }
     }
 
     //define view of fragment
     private void defineViews(View view) {
 
+        tv_indicator = view.findViewById(R.id.tv_indicator);
+        tv_transaction_tab= view.findViewById(R.id.tv_transaction_tab);
+        tv_point_tab = view.findViewById(R.id.tv_point_tab);
         cart_rv = view.findViewById(R.id.cart_rv);
-        text_pint = view.findViewById(R.id.txt_point);
         txt_balance = view.findViewById(R.id.txt_balance);
         cart_refresh = view.findViewById(R.id.cart_refresh);
+        tv_price_view = view.findViewById(R.id.tv_cart_price_view);
+        tv_total_earned = view.findViewById(R.id.tv_total_earned);
+        tv_point = view.findViewById(R.id.tv_point);
 
         cart_refresh.setOnRefreshListener(this::getCartList);
+        tv_transaction_tab.setOnClickListener(this);
+        tv_point_tab.setOnClickListener(this);
     }
 
     //config cart recycler view
@@ -141,7 +174,7 @@ public class CartFragment extends Fragment {
         cartList = new ArrayList<>();
         adapter = null;
         cart_rv.setAdapter(null);
-        adapter = new CartRecyclerAdapter(cartList);
+        adapter = new CartRecyclerAdapter(cartList,parcelable,lang);
         cart_rv.setAdapter(adapter);
     }
 
@@ -150,8 +183,11 @@ public class CartFragment extends Fragment {
 
         ServiceProvider provider = new ServiceProvider(getContext());
         Service service = provider.getmService();
+        cart_refresh.post(() -> cart_refresh.setRefreshing(true));
+        Single<List<GetTransactionResult>> observable = tv_transaction_tab.getTag().equals("selected") ? service.getTransactionList(ClientConfig.API_V1)
+                : service.getTransactionScoreList(ClientConfig.API_V1);
 
-        disposable.add(service.getTransactionList().subscribeOn(Schedulers.io())
+        disposable.add(observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).
                         subscribeWith(new DisposableSingleObserver<List<GetTransactionResult>>() {
                             @Override
@@ -176,6 +212,36 @@ public class CartFragment extends Fragment {
                         }));
     }
 
+    //after user click on tabs this function will be called
+    private void changeTab(TextView tv_apear, TextView tv_disapear, boolean appear) {
+
+        /*appear false for transaction price
+         *appear true for transaction point
+         *
+         */
+
+        if (!appear){
+
+            tv_price_view.setText(R.string.text_price);
+            tv_point.setText(String.valueOf(user_details.getSum_points()));
+            tv_total_earned.setText(R.string.total_prices_earned);
+
+        }else {
+
+            tv_price_view.setText(R.string.text_point);
+            tv_point.setText(String.valueOf(user_details.getSum_score()));
+            tv_total_earned.setText(R.string.total_points_earned);
+        }
+
+        getCartList();
+        tv_apear.setTextColor(getResources().getColor(R.color.colorPrimary));
+        tv_disapear.setTextColor(getResources().getColor(R.color.default_text_color));
+        int half_windowsWidth = windowsWidth / 2;
+        ObjectAnimator animator = ObjectAnimator.ofFloat(tv_indicator, "translationX", appear ? half_windowsWidth : 0);
+        animator.setDuration(400);
+        animator.start();
+    }
+
     @Override
     public void onStart() {
         super.onStart();
@@ -191,7 +257,22 @@ public class CartFragment extends Fragment {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onRefeshBalance(RefreshBalanceEvent v) {
 
-        initialUserInformation();
+        initialInformation();
         getCartList();
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        if (v.getId() == R.id.tv_transaction_tab) {
+
+            tv_transaction_tab.setTag("selected");
+            changeTab(tv_transaction_tab, tv_point_tab, false);
+
+        } else {
+
+            tv_transaction_tab.setTag("deselected");
+            changeTab(tv_point_tab, tv_transaction_tab, true);
+        }
     }
 }

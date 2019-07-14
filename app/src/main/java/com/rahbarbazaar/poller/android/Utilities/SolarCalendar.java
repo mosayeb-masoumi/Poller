@@ -5,8 +5,9 @@ import java.util.Locale;
 
 public class SolarCalendar {
 
-    public String strWeekDay = "";
-    public String strMonth = "";
+    private String strWeekDay = "";
+    private String strMonth = "";
+    private int date,year;
 
     public String getStrWeekDay() {
         return strWeekDay;
@@ -15,10 +16,6 @@ public class SolarCalendar {
     public String getStrMonth() {
         return strMonth;
     }
-
-    int date;
-    int month;
-    int year;
 
     public SolarCalendar() {
         Date MiladiDate = new Date();
@@ -63,6 +60,7 @@ public class SolarCalendar {
         buf2[10] = 305;
         buf2[11] = 335;
 
+        int month;
         if ((miladiYear % 4) != 0) {
             date = buf1[miladiMonth - 1] + miladiDate;
 

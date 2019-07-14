@@ -3,12 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/white_corner_bg"
-    android:layoutDirection="rtl"
     android:gravity="center"
     android:orientation="vertical">
 
     <com.rahbarbazaar.poller.android.Utilities.CustomTextView
-        android:layoutDirection="ltr"
         android:id="@+id/text_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,7 +14,6 @@
         android:textSize="@dimen/font_17" />
 
     <LinearLayout
-        android:layoutDirection="ltr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -30,17 +27,20 @@
 
             <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                 android:id="@+id/text_time"
-                android:layout_width="wrap_content"
+                android:layout_marginStart="@dimen/dimen_11"
+                android:layout_width="0dp"
+                android:layout_weight="0.95"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginEnd="@dimen/dimen_5"
                 android:textSize="@dimen/font_13" />
 
             <ImageView
-                android:layout_width="@dimen/dimen_14"
+                android:layout_width="0dp"
+                android:layout_weight="0.05"
                 android:layout_height="@dimen/dimen_14"
                 android:layout_gravity="center_vertical"
-                android:layout_marginEnd="@dimen/dimen_11"
+                android:layout_marginEnd="@dimen/dimen_8"
                 android:src="@drawable/tick" />
 
         </LinearLayout>
@@ -56,17 +56,20 @@
 
             <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                 android:id="@+id/text_point"
-                android:layout_width="wrap_content"
+                android:layout_marginStart="@dimen/dimen_11"
+                android:layout_width="0dp"
+                android:layout_weight="0.95"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginEnd="@dimen/dimen_5"
                 android:textSize="@dimen/font_13" />
 
             <ImageView
-                android:layout_width="@dimen/dimen_14"
+                android:layout_width="0dp"
+                android:layout_weight="0.05"
                 android:layout_height="@dimen/dimen_14"
                 android:layout_gravity="center_vertical"
-                android:layout_marginEnd="@dimen/dimen_11"
+                android:layout_marginEnd="@dimen/dimen_8"
                 android:src="@drawable/tick" />
 
         </LinearLayout>
@@ -80,17 +83,20 @@
 
             <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                 android:id="@+id/text_status"
-                android:layout_width="wrap_content"
+                android:layout_marginStart="@dimen/dimen_11"
+                android:layout_width="0dp"
+                android:layout_weight="0.95"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginEnd="@dimen/dimen_5"
                 android:textSize="@dimen/font_13" />
 
             <ImageView
-                android:layout_width="@dimen/dimen_14"
+                android:layout_width="0dp"
+                android:layout_weight="0.05"
                 android:layout_height="@dimen/dimen_14"
                 android:layout_gravity="center_vertical"
-                android:layout_marginEnd="@dimen/dimen_11"
+                android:layout_marginEnd="@dimen/dimen_8"
                 android:src="@drawable/tick" />
 
         </LinearLayout>
@@ -99,22 +105,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_10"
-            android:gravity="end"
             android:orientation="horizontal">
 
             <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                 android:id="@+id/text_description"
-                android:layout_width="wrap_content"
+                android:layout_marginStart="@dimen/dimen_11"
+                android:layout_width="0dp"
+                android:layout_weight="0.95"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginEnd="@dimen/dimen_5"
                 android:textSize="@dimen/font_13" />
 
             <ImageView
-                android:layout_width="@dimen/dimen_14"
+                android:layout_width="0dp"
+                android:layout_weight="0.05"
                 android:layout_height="@dimen/dimen_14"
                 android:layout_gravity="center_vertical"
-                android:layout_marginEnd="@dimen/dimen_11"
+                android:layout_marginEnd="@dimen/dimen_8"
                 android:src="@drawable/tick" />
 
         </LinearLayout>
@@ -123,7 +131,6 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layoutDirection="ltr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_15"
@@ -138,7 +145,7 @@
             android:layout_weight="1"
             android:background="@drawable/btn_bg_grey"
             android:gravity="center"
-            android:text="بستن"
+            android:text="@string/close_text"
             android:textColor="@color/main_page_toolbar" />
 
         <com.rahbarbazaar.poller.android.Utilities.CustomTextView

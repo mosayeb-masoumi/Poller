@@ -38,9 +38,18 @@ public class UserConfirmAuthResult {
     private int balance;
     private int score;
     private int sum_points;
+    private int sum_score;
     private String token;
     private String identity;
     private String membership;
+
+    public int getSum_score() {
+        return sum_score;
+    }
+
+    public void setSum_score(int sum_score) {
+        this.sum_score = sum_score;
+    }
 
     public int getScore() {
         return score;

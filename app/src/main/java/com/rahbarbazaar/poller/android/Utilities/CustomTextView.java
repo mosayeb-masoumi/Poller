@@ -2,6 +2,7 @@ package com.rahbarbazaar.poller.android.Utilities;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.support.v4.os.ConfigurationCompat;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 
@@ -24,7 +25,8 @@ public class CustomTextView extends AppCompatTextView {
 
     private void textTypeFace(){
 
-        Typeface typeface = Typeface.createFromAsset(getContext().getAssets(),"fonts/BYekan.ttf");
+        String locale_name = ConfigurationCompat.getLocales(getResources().getConfiguration()).get(0).getLanguage();
+        Typeface typeface = locale_name.equals("fa")?Typeface.createFromAsset(getContext().getAssets(),"fonts/BYekan.ttf"): Typeface.DEFAULT;
         setTypeface(typeface);
     }
 }

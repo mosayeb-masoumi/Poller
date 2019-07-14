@@ -3,9 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/white_corner_bg"
     android:gravity="center"
-    android:layoutDirection="rtl"
     android:orientation="vertical">
 
     <ImageView
@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_20"
-        android:text="آپدیت برنامه"
+        android:text="@string/update_app"
         android:textSize="@dimen/font_17" />
 
     <com.rahbarbazaar.poller.android.Utilities.CustomTextView
@@ -41,7 +41,6 @@
         android:layout_marginBottom="@dimen/dimen4"
         android:paddingStart="@dimen/dimen_6"
         android:paddingEnd="@dimen/dimen_6"
-        android:layoutDirection="ltr"
         android:orientation="horizontal">
 
         <android.support.constraint.ConstraintLayout
@@ -66,7 +65,7 @@
             <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                 app:layout_constraintRight_toRightOf="parent"
                 android:layout_width="@dimen/dimen_0"
-                android:text="دریافت از"
+                android:text="@string/cafe_bazar_text"
                 android:textColor="@color/main_page_toolbar"
                 android:gravity="center"
                 app:layout_constraintWidth_percent="0.5"
@@ -84,7 +83,7 @@
             android:layout_weight="0.4"
             android:background="@drawable/btn_bg_dark_blue"
             android:gravity="center"
-            android:text="دریافت از لینک مستقیم"
+            tools:text="دریافت از لینک مستقیم"
             android:textColor="@color/main_page_toolbar" />
 
         <android.support.constraint.ConstraintLayout
@@ -92,6 +91,7 @@
             android:layout_height="@dimen/dimen_42"
             android:layout_marginStart="@dimen/dimen_3"
             android:layout_weight="1"
+            android:visibility="gone"
             android:id="@+id/layout_gplay"
             android:layout_marginEnd="@dimen/dimen_2"
             android:background="@drawable/btn_bg_dark_blue"
@@ -109,7 +109,7 @@
             <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                 app:layout_constraintRight_toRightOf="parent"
                 android:layout_width="@dimen/dimen_0"
-                android:text="دریافت از گوگل پلی"
+                android:text="@string/google_play_text"
                 android:textColor="@color/main_page_toolbar"
                 android:gravity="center"
                 app:layout_constraintWidth_percent="0.7"

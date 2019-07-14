@@ -5,13 +5,14 @@ import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.os.ConfigurationCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +25,8 @@ import com.rahbarbazaar.poller.android.Controllers.adapters.NewsPagerAdapter;
 import com.rahbarbazaar.poller.android.Controllers.adapters.SurveyRecyclerAdapter;
 import com.rahbarbazaar.poller.android.Controllers.viewHolders.SurveyItemInteraction;
 import com.rahbarbazaar.poller.android.Models.ChangeSurveyStatusResult;
-import com.rahbarbazaar.poller.android.Models.GetNewsListResult;
+import com.rahbarbazaar.poller.android.Models.GetCurrencyListResult;
+import com.rahbarbazaar.poller.android.Models.GetBannersListResult;
 import com.rahbarbazaar.poller.android.Models.RefreshBalanceEvent;
 import com.rahbarbazaar.poller.android.Models.RefreshSurveyEvent;
 import com.rahbarbazaar.poller.android.Models.SurveyMainModel;
@@ -33,10 +35,12 @@ import com.rahbarbazaar.poller.android.Network.Service;
 import com.rahbarbazaar.poller.android.Network.ServiceProvider;
 import com.rahbarbazaar.poller.android.R;
 import com.rahbarbazaar.poller.android.Ui.activities.HtmlLoaderActivity;
+import com.rahbarbazaar.poller.android.Utilities.ClientConfig;
 import com.rahbarbazaar.poller.android.Utilities.CustomHandler;
-import com.rahbarbazaar.poller.android.Utilities.CustomSnackBar;
-import com.rahbarbazaar.poller.android.Utilities.CustomToast;
+import com.rahbarbazaar.poller.android.Utilities.SnackBarFactory;
+import com.rahbarbazaar.poller.android.Utilities.ToastFactory;
 import com.rahbarbazaar.poller.android.Utilities.DialogFactory;
+import com.rahbarbazaar.poller.android.Utilities.GeneralTools;
 import com.rahbarbazaar.poller.android.Utilities.PreferenceStorage;
 import com.rahbarbazaar.poller.android.Utilities.ProfileTools;
 
@@ -70,7 +74,7 @@ public class HomeFragment extends Fragment implements SurveyItemInteraction {
     SwipeRefreshLayout swipe_refesh;
     CustomHandler handler = new CustomHandler(getActivity());
     Runnable runnable;
-    TextView text_balance, text_no_active_survey;
+    TextView text_no_active_survey;
     ViewPager pager;
     int count = -1;
     ServiceProvider provider = null;
@@ -78,14 +82,36 @@ public class HomeFragment extends Fragment implements SurveyItemInteraction {
     CompositeDisposable disposable;
     boolean isSurveyItemClickable = true;
     UserDetailsPrefrence userDetailsPrefrence;
+    GetCurrencyListResult parcelable;
+    String lang;
     //end of region
 
     public HomeFragment() {
         // Required empty public constructor
     }
 
-    public static HomeFragment newInstance() {
-        return new HomeFragment();
+    public static HomeFragment newInstance(GetCurrencyListResult parcelable,String lang) {
+
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("parcel_data",parcelable);
+        bundle.putString("lang",lang);
+
+        HomeFragment fragment =new HomeFragment();
+        fragment.setArguments(bundle);
+
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments()!=null){
+
+            parcelable = getArguments().getParcelable("parcel_data");
+            lang = getArguments().getString("lang");
+        }
+        provider = new ServiceProvider(getContext());
+        disposable = new CompositeDisposable();
     }
 
     @SuppressLint("SetTextI18n")
@@ -95,38 +121,22 @@ public class HomeFragment extends Fragment implements SurveyItemInteraction {
         final View v = inflater.inflate(R.layout.fragment_home, container, false);
 
         defineViews(v);
-        provider = new ServiceProvider(getContext());
-        disposable = new CompositeDisposable();
         getNewsData();
         defineHomeSurveyRecycler();
         getUserLatestSurvey();
         defineViewsListener();
 
-        //calculate height of screen for change dynamically height of layout
-        if (getActivity() != null) {
+        GeneralTools generalTools = GeneralTools.getInstance();
+        ((LinearLayout.LayoutParams) rl_news_pager.getLayoutParams()).height = (generalTools.getWindowsHeight(getActivity())) / 3;
 
-            DisplayMetrics displayMetrics = new DisplayMetrics();
-            getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-            int height = displayMetrics.heightPixels;
-            ((LinearLayout.LayoutParams) rl_news_pager.getLayoutParams()).height = (height) / 3;
+        PreferenceStorage storage = PreferenceStorage.getInstance(getContext());
+        String user_details = storage.retriveUserDetails();
+
+        if (user_details != null && !user_details.equals("")) {
+            userDetailsPrefrence = new Gson().fromJson(user_details, UserDetailsPrefrence.class);
         }
-
-        //get user info from preference and set to views
-        initialUserInformation();
 
         return v;
-    }
-
-    private void initialUserInformation() {
-
-        PreferenceStorage storage = PreferenceStorage.getInstance();
-        userDetailsPrefrence = ProfileTools.getInstance().retriveUserInformation(getContext());
-
-        if (userDetailsPrefrence != null) {
-            text_balance.setText(new StringBuilder().append("موجودی :").append(" ").
-                    append(userDetailsPrefrence.getBalance()).append(" ").
-                    append(storage.retriveCurrency(getContext())));
-        }
     }
 
     //define view and set some property
@@ -134,13 +144,11 @@ public class HomeFragment extends Fragment implements SurveyItemInteraction {
         rl_news_pager = view.findViewById(R.id.rl_news_pager);
         home_survey_rv = view.findViewById(R.id.home_survey_rv);
         pager = view.findViewById(R.id.news_pager);
-        text_balance = view.findViewById(R.id.text_balance);
         text_no_active_survey = view.findViewById(R.id.text_no_active_survey);
 
         swipe_refesh = view.findViewById(R.id.swipe_refresh);
         //set scheme color for swipe refreshing
         swipe_refesh.setColorSchemeResources(R.color.colorPrimary);
-
     }
 
     //define views click listener here
@@ -178,12 +186,11 @@ public class HomeFragment extends Fragment implements SurveyItemInteraction {
         home_survey_rv.setItemAnimator(null);
         home_survey_rv.addItemDecoration(new RecyclerView.ItemDecoration() {
             @Override
-            public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
+            public void getItemOffsets(@NonNull Rect outRect, @NonNull View view,
+                                       @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
 
-                if (parent.getChildLayoutPosition(view) != 0) {
-
+                if (parent.getChildLayoutPosition(view) != 0)
                     outRect.top = 10;
-                }
             }
         });
     }
@@ -192,23 +199,24 @@ public class HomeFragment extends Fragment implements SurveyItemInteraction {
     private void getNewsData() {
 
         Service service = new ServiceProvider(getContext()).getmService();
-        disposable.add(service.getNewsList().subscribeOn(Schedulers.io()).
+        String locale_name = ConfigurationCompat.getLocales(getResources().getConfiguration()).get(0).getLanguage();
+        disposable.add(service.getBannerList(ClientConfig.API_V2, locale_name).subscribeOn(Schedulers.io()).
                 observeOn(AndroidSchedulers.mainThread()).
-                subscribeWith(new DisposableSingleObserver<GetNewsListResult>() {
+                subscribeWith(new DisposableSingleObserver<List<GetBannersListResult>>() {
+
                     @Override
-                    public void onSuccess(GetNewsListResult result) {
+                    public void onSuccess(List<GetBannersListResult> result) {
 
-                        if (result != null) {
-
-                            if (result.getData() != null && result.getData().size() > 0) {
-
+                        if (result != null && result.size() > 0) {
+                            if (isAdded()) {
                                 NewsPagerAdapter adapter = new NewsPagerAdapter(getChildFragmentManager());
-                                adapter.addItems(result.getData());
+                                adapter.addItems(result);
                                 pager.setAdapter(adapter);
                                 pager.setOffscreenPageLimit(4);
                                 slidShow(adapter);
                             }
                         }
+
                     }
 
                     @Override
@@ -253,7 +261,7 @@ public class HomeFragment extends Fragment implements SurveyItemInteraction {
     private void getUserLatestSurvey() {
 
         Service service = provider.getmService();
-        disposable.add(service.getSurveyLatestList("1").
+        disposable.add(service.getSurveyLatestList(ClientConfig.API_V1, "1").
                 subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableSingleObserver<List<SurveyMainModel>>() {
                     @Override
@@ -292,7 +300,6 @@ public class HomeFragment extends Fragment implements SurveyItemInteraction {
                         }
                     }
                 }));
-
     }
 
     //get survey details by survey id, if response was ok we will show dialog
@@ -300,7 +307,7 @@ public class HomeFragment extends Fragment implements SurveyItemInteraction {
 
         Service service = new ServiceProvider(getContext()).getmService();
 
-        disposable.add(service.getSurveyDetails(survey_id)
+        disposable.add(service.getSurveyDetails(ClientConfig.API_V1, survey_id)
                 .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableSingleObserver<SurveyMainModel>() {
                     @Override
@@ -351,7 +358,7 @@ public class HomeFragment extends Fragment implements SurveyItemInteraction {
             getActivity().overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
 
         } else
-            new CustomToast().createToast("آدرس موجود نیست", getContext());
+            new ToastFactory().createToast(R.string.text_no_address, getContext());
     }
 
     //survey details dialog will be appear by this function
@@ -359,7 +366,7 @@ public class HomeFragment extends Fragment implements SurveyItemInteraction {
 
         new DialogFactory(getActivity()).createSurveyDetailsDialog(new DialogFactory.DialogFactoryInteraction() {
             @Override
-            public void onAcceptButtonClicked(String...params) {
+            public void onAcceptButtonClicked(String... params) {
 
                 if (userDetailsPrefrence.getType().equalsIgnoreCase("1")) {
 
@@ -371,7 +378,7 @@ public class HomeFragment extends Fragment implements SurveyItemInteraction {
 
                         new DialogFactory(getContext()).createNoRegisterDialog(getView(), new DialogFactory.DialogFactoryInteraction() {
                             @Override
-                            public void onAcceptButtonClicked(String...params) {
+                            public void onAcceptButtonClicked(String... params) {
 
                                 //params
                             }
@@ -401,9 +408,9 @@ public class HomeFragment extends Fragment implements SurveyItemInteraction {
     private void changeSurveyStatus(String id, String qStatus) {
 
         Service service = new ServiceProvider(getContext()).getmService();
-        UserDetailsPrefrence user_details = new Gson().fromJson(PreferenceStorage.getInstance().retriveUserDetails(getContext()), UserDetailsPrefrence.class);
+        UserDetailsPrefrence user_details = new Gson().fromJson(PreferenceStorage.getInstance(getContext()).retriveUserDetails(), UserDetailsPrefrence.class);
 
-        disposable.add(service.changeSurveyStatus(id, user_details.getUser_id(), qStatus.equals("2") ? "3" : "2").
+        disposable.add(service.changeSurveyStatus(ClientConfig.API_V1, id, user_details.getUser_id(), qStatus.equals("2") ? "3" : "2").
                 subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableSingleObserver<ChangeSurveyStatusResult>() {
                     @Override
@@ -416,7 +423,7 @@ public class HomeFragment extends Fragment implements SurveyItemInteraction {
                                 getUserLatestSurvey();
                                 EventBus.getDefault().post(new RefreshSurveyEvent());
                                 ProfileTools.getInstance().saveProfileInformation(getContext()).setListener(() -> EventBus.getDefault().post(new RefreshBalanceEvent()));
-                                new CustomSnackBar().showResultSnackbar(getView(), getContext()).show();
+                                SnackBarFactory.getInstance().showResultSnackbar(getView(), getContext()).show();
                             }
 
                         }
@@ -464,7 +471,7 @@ public class HomeFragment extends Fragment implements SurveyItemInteraction {
         if (isSurveyItemClickable) {
 
             if (isExpired)
-                status = "منقضی شده";
+                status = getString(R.string.text_expired);
 
             getSurveyDetails(String.valueOf(survey_id), status, url_type);
             isSurveyItemClickable = !isSurveyItemClickable;
@@ -494,11 +501,5 @@ public class HomeFragment extends Fragment implements SurveyItemInteraction {
     public void onRefreshSurveyEvent(RefreshSurveyEvent event) {
 
         getUserLatestSurvey();
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onRefreshBalanceEvent(RefreshBalanceEvent event) {
-
-        initialUserInformation();
     }
 }

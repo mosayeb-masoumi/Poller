@@ -4,7 +4,6 @@
     android:layout_height="wrap_content"
     android:background="@drawable/white_corner_bg"
     android:gravity="center"
-    android:layoutDirection="rtl"
     android:orientation="vertical">
 
     <ImageView
@@ -20,8 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_20"
-        android:text="لطفا مشکل خود را گزارش دهید"
-        android:layoutDirection="ltr"
+        android:text="@string/report_issue_title"
         android:textSize="@dimen/font_15" />
 
     <EditText
@@ -32,9 +30,8 @@
         android:layout_marginEnd="@dimen/dimen_17"
         android:layout_marginTop="@dimen/dimen_10"
         android:gravity="center"
-        android:hint="عنوان"
+        android:hint="@string/text_title"
         android:background="@null"
-        android:layoutDirection="ltr"
         android:textSize="@dimen/font_14" />
 
     <TextView
@@ -53,9 +50,8 @@
         android:layout_marginTop="@dimen/dimen_10"
         android:layout_marginEnd="@dimen/dimen_17"
         android:gravity="center"
-        android:hint="توضیحات"
+        android:hint="@string/description_text"
         android:background="@null"
-        android:layoutDirection="ltr"
         android:textSize="@dimen/font_14" />
     <TextView
         android:layout_width="match_parent"
@@ -70,7 +66,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_15"
         android:layout_marginBottom="@dimen/dimen_8"
-        android:layoutDirection="ltr"
         android:orientation="horizontal">
 
         <com.rahbarbazaar.poller.android.Utilities.CustomTextView
@@ -81,7 +76,7 @@
             android:layout_weight="1"
             android:background="@drawable/btn_bg_grey"
             android:gravity="center"
-            android:text="انصراف"
+            android:text="@string/cancel_text"
             android:textColor="@color/main_page_toolbar" />
 
         <com.rahbarbazaar.poller.android.Utilities.CustomTextView
@@ -93,7 +88,7 @@
             android:layout_weight="1"
             android:background="@drawable/btn_bg_dark_blue"
             android:gravity="center"
-            android:text="گزارش خطا"
+            android:text="@string/report_issue"
             android:textColor="@color/main_page_toolbar" />
 
     </LinearLayout>

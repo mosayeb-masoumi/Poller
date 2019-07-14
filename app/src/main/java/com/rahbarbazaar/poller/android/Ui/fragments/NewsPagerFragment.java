@@ -39,8 +39,6 @@ public class NewsPagerFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        assert getContext() != null;
-        Fresco.initialize(getContext()); // initial fresco library for bind image data
 
         if (getArguments() != null) {
 

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="@dimen/dimen_70"
-    android:layoutDirection="rtl"
     app:cardCornerRadius="@dimen/dimen4"
     app:cardElevation="@dimen/dimen_3">
 
@@ -12,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_65"
         android:layout_gravity="center_vertical"
-        android:layoutDirection="ltr">
+        >
 
         <ImageView
             android:id="@+id/image_msg_status"

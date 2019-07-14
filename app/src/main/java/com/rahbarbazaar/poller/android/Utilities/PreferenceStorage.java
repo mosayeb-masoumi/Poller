@@ -2,62 +2,58 @@ package com.rahbarbazaar.poller.android.Utilities;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 public class PreferenceStorage {
 
     private static PreferenceStorage preferenceStorage;
+    private SharedPreferences preferences;
 
-    private PreferenceStorage() {
+    private PreferenceStorage(Context context) {
+
+        preferences = PreferenceManager.getDefaultSharedPreferences(context);
     }
 
-    public static PreferenceStorage getInstance(){
+    public static PreferenceStorage getInstance(Context context) {
 
-        if (preferenceStorage ==null){
+        if (preferenceStorage == null) {
 
-            return preferenceStorage = new PreferenceStorage();
+            return preferenceStorage = new PreferenceStorage(context);
 
-        }else {
+        } else {
 
             return preferenceStorage;
         }
     }
 
-    public void saveToken(String token, Context context){
-
-        SharedPreferences preferences = context.getSharedPreferences("token",Context.MODE_PRIVATE);
-        preferences.edit().putString("token",token).apply();
+    public void saveToken(String token) {
+        preferences.edit().putString("token", token).apply();
     }
 
-    public String retriveToken(Context context){
+    public String retriveToken() {
 
-        SharedPreferences preference = context.getSharedPreferences("token",Context.MODE_PRIVATE);
-        return preference.getString("token","0");
+        return preferences.getString("token", "0");
     }
 
-    public void saveCurrency(String currency, Context context){
+    void saveUserDetails(String user_details) {
 
-        SharedPreferences preferences = context.getSharedPreferences("currency",Context.MODE_PRIVATE);
-        preferences.edit().putString("currency",currency).apply();
+        preferences.edit().putString("user_details", user_details).apply();
     }
 
-    public String retriveCurrency(Context context){
+    public String retriveUserDetails() {
 
-        SharedPreferences preference = context.getSharedPreferences("currency",Context.MODE_PRIVATE);
-        return preference.getString("currency","تومان");
+        return preferences.getString("user_details", "");
     }
 
 
-    public void saveUserDetails(String user_details, Context context){
+    public boolean isUserLangEmpty() {
 
-        SharedPreferences preferences = context.getSharedPreferences("user_details",0);
-        preferences.edit().putString("user_details",user_details).apply();
+        return preferences.getString("language_key", "").equals("");
     }
 
-    public String retriveUserDetails(Context context){
+    public String retriveLanguage() {
 
-        SharedPreferences preference = context.getSharedPreferences("user_details",0);
-        return preference.getString("user_details","");
+        return preferences.getString("language_key", "");
     }
-
 
 }

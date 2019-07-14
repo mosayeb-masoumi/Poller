@@ -5,7 +5,6 @@
     android:id="@+id/html_root"
     android:background="@drawable/white_corner_bg"
     android:gravity="center"
-    android:layoutDirection="rtl"
     android:orientation="vertical">
 
     <ImageView
@@ -16,7 +15,6 @@
         android:src="@drawable/token_verify" />
 
     <com.rahbarbazaar.poller.android.Utilities.CustomTextView
-        android:layoutDirection="ltr"
         android:layout_width="wrap_content"
         android:gravity="center"
         android:lineSpacingMultiplier="1.5"
@@ -37,7 +35,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layoutDirection="ltr"
         android:layout_marginBottom="@dimen/dimen_8"
         android:orientation="horizontal">
 
@@ -50,7 +47,7 @@
             android:layout_weight="1"
             android:background="@drawable/btn_bg_dark_blue"
             android:gravity="center"
-            android:text="شروع نظرسنجی"
+            android:text="@string/text_start_survey"
             android:textColor="@color/main_page_toolbar" />
 
     </LinearLayout>

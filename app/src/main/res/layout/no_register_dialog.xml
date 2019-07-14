@@ -5,7 +5,6 @@
     android:id="@+id/html_root"
     android:background="@drawable/white_corner_bg"
     android:gravity="center"
-    android:layoutDirection="rtl"
     android:orientation="vertical">
 
     <ImageView

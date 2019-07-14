@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layoutDirection="rtl"
+    android:layoutDirection="ltr"
+    android:background="@color/minor_white"
     android:orientation="vertical"
     android:padding="@dimen/dimen_1">
 
@@ -31,46 +32,62 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:layoutDirection="ltr"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/dimen4"
         android:layout_weight="0.65"
         android:orientation="vertical">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_40"
-            android:background="@color/colorPrimary"
-            android:gravity="center">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:layout_marginEnd="@dimen/dimen_5"
+            android:orientation="horizontal"
+            android:padding="@dimen/dimen_3">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_1"
+                android:layout_centerVertical="true"
+                android:background="@color/colorPrimaryDark" />
 
             <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:id="@+id/text_balance"
-                android:paddingTop="5dp"
-                android:textColor="@color/main_page_toolbar"
-                android:textSize="14sp" />
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/text_price"
+                android:textColor="@color/colorPrimaryDark"
+                android:background="@color/minor_white"
+                android:padding="@dimen/dimen_9"
+                android:textSize="@dimen/font_13"
+                />
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="match_parent"
-                android:padding="@dimen/dimen_7"
-                android:src="@drawable/wallet"
-                android:tint="@color/main_page_toolbar" />
+            <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@color/minor_white"
+                android:padding="@dimen/dimen_5"
+                android:paddingStart="@dimen/dimen_5"
+                android:paddingEnd="@dimen/dimen_5"
+                android:text="@string/subject_text"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/font_13"
+                android:textStyle="bold" />
 
-        </LinearLayout>
+
+        </RelativeLayout>
 
         <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+            android:id="@+id/text_no_active_survey"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/text_no_active_survey"
-            android:gravity="center"
-            android:visibility="gone"
             android:layout_marginTop="@dimen/dimen_7"
+            android:gravity="center"
             android:paddingBottom="@dimen/dimen_2"
-            android:text="هیچ نظرسنجی فعالی برای شما وجود ندارد!" />
+            android:text="@string/no_active_survey"
+            android:visibility="gone" />
 
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/swipe_refresh"
@@ -78,10 +95,10 @@
             android:layout_height="match_parent">
 
             <android.support.v7.widget.RecyclerView
-                android:background="@color/minor_white"
                 android:id="@+id/home_survey_rv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@color/minor_white"
                 android:padding="@dimen/dimen_1" />
 
         </android.support.v4.widget.SwipeRefreshLayout>

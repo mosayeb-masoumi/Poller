@@ -9,7 +9,7 @@ import com.rahbarbazaar.poller.android.Models.GetNotificationListResult
 import com.rahbarbazaar.poller.android.R
 
 class NotificationAdapter(private val notifyList: List<GetNotificationListResult.Messages>,
-                          private val listener: GeneralItemIntraction) : RecyclerView.Adapter<NotificationViewHolder>() {
+                          private val listener: GeneralItemIntraction<GetNotificationListResult.Messages>) : RecyclerView.Adapter<NotificationViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotificationViewHolder {
 

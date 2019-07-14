@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="370dp"
     android:background="@drawable/white_corner_bg"
-    android:layoutDirection="rtl"
     android:gravity="center"
     android:orientation="vertical">
 
@@ -19,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_10"
-        android:text="قوانین و مقرارت"
+        android:text="@string/terms_conditions"
         android:textSize="@dimen/font_17" />
 
     <RelativeLayout
@@ -46,7 +45,6 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:layoutDirection="ltr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -59,12 +57,11 @@
         <com.rahbarbazaar.poller.android.Utilities.CustomTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="قوانین و مقررات را مطالعه کرده و قبول دارم" />
+            android:text="@string/accept_terms_conditions" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:layoutDirection="ltr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_5"
@@ -79,7 +76,7 @@
             android:layout_weight="1"
             android:background="@drawable/btn_bg_grey"
             android:gravity="center"
-            android:text="انصراف"
+            android:text="@string/cancel_text"
             android:textColor="@color/main_page_toolbar" />
 
         <com.rahbarbazaar.poller.android.Utilities.CustomTextView
@@ -91,7 +88,7 @@
             android:layout_weight="1"
             android:background="@drawable/btn_bg_dark_blue"
             android:gravity="center"
-            android:text="ورود"
+            android:text="@string/verification_button_text"
             android:textColor="@color/main_page_toolbar" />
 
     </LinearLayout>

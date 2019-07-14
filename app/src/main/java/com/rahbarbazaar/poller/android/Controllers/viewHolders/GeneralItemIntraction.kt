@@ -1,6 +1,6 @@
 package com.rahbarbazaar.poller.android.Controllers.viewHolders
 
-interface GeneralItemIntraction{
+interface GeneralItemIntraction<T>{
 
-    fun <T> invokeItem(vararg param:T)
+    fun invokeItem(data:T)
 }

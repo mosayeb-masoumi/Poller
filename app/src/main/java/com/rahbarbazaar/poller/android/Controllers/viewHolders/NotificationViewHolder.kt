@@ -7,7 +7,7 @@ import com.rahbarbazaar.poller.android.Models.GetNotificationListResult
 import com.rahbarbazaar.poller.android.R
 import com.rahbarbazaar.poller.android.Utilities.CustomTextView
 
-class NotificationViewHolder(view: View, val listener: GeneralItemIntraction) : RecyclerView.ViewHolder(view) {
+class NotificationViewHolder(view: View, val listener: GeneralItemIntraction<GetNotificationListResult.Messages>) : RecyclerView.ViewHolder(view) {
 
     private val notifyImageStatus = view.findViewById<ImageView>(R.id.image_msg_status)
     private val notifyText = view.findViewById<CustomTextView>(R.id.text_msg_text)
@@ -26,7 +26,7 @@ class NotificationViewHolder(view: View, val listener: GeneralItemIntraction) : 
             notifyDate.text = created_at
         }
 
-        itemView.setOnClickListener { listener.invokeItem(data.content,data.pivot!!.message_id) }
+        itemView.setOnClickListener { listener.invokeItem(data) }
     }
 
 }

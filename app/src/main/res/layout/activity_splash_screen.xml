@@ -24,6 +24,7 @@
 
     <com.wang.avi.AVLoadingIndicatorView
         android:layout_width="@dimen/dimen_40"
+        android:id="@+id/av_loading"
         app:indicatorColor="@color/colorPrimary"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

@@ -1,0 +1,141 @@
+<resources>
+    <string name="app_name">Poller</string>
+    <string name="verification_header">Verification code sent</string>
+    <string name="verification_hint">Verify code</string>
+    <string name="verification_button_text">Login</string>
+    <string name="verification_edit_mobile">Edit phone number...</string>
+    <string name="veriification_resend_code">Resend</string>
+    <string name="login_button_text">Submit</string>
+    <string name="user_login_hint">Enter your phone number</string>
+    <string name="token_verify_message">You need a valid (token) to take a part in this survey</string>
+    <string name="no_register_message">Your mobile number has not already been confirmed and not registered, please click here to proceed</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="exit_profile_text_dialog">Are you sure you want to logout?</string>
+    <string name="survey_exit_confirm">Are you sure you want to exit from your survey?</string>
+    <string name="download_body_text">The new version of app with bugs fixes and new features available now, click to download</string>
+    <string name="share_poller">Share the poller</string>
+    <string name="exit_user_account">Logout</string>
+    <string name="shop_drawer_text">Store</string>
+    <string name="notify_drawer_text">Inbox messages</string>
+    <string name="edit_profile_dialog_title">Please request for change your profile</string>
+    <string name="back_to_app">Back to app</string>
+    <string name="drawer_username">Username</string>
+    <string name="inventory">Balance </string>
+    <string name="app_version">Version </string>
+    <string name="messages_toolbar">Inbox messages</string>
+    <string name="store">Store</string>
+    <string name="terms_conditions">Terms and Conditions</string>
+    <string name="accept_terms_conditions">Read and accept the terms and conditions</string>
+    <string name="cancel_text">Cancel</string>
+    <string name="close_text">Close</string>
+    <string name="subject_text">Subject </string>
+    <string name="text_price">Incentive </string>
+    <string name="text_price_hint">Point</string>
+    <string name="transaction_price">%1$s %2$s</string>
+    <string name="support_center">Support center</string>
+    <string name="faq">FAQ</string>
+    <string name="report_issue">Report issue</string>
+    <string name="videos">Videos</string>
+    <string name="text_point">Point </string>
+    <string name="text_user_type">User type  </string>
+    <string name="text_take_part_project">Surveys #</string>
+    <string name="text_change_profile_req">Change profile information request</string>
+    <string name="update_app">Application update</string>
+    <string name="google_play_text">Get on google play</string>
+    <string name="cafe_bazar_text">Get on</string>
+    <string name="sure_text">Yes, Im sure</string>
+    <string name="attention">Attention!</string>
+    <string name="text_date">Date</string>
+    <string name="send_request">Send request</string>
+    <string name="description_text">Description</string>
+    <string name="total_prices_earned">Total incentives earned</string>
+    <string name="total_points_earned">Total points earned</string>
+    <string name="no_active_survey">There is no active survey for you!</string>
+    <string name="report_issue_title">Please report your issue!</string>
+    <string name="text_title">Title</string>
+    <string name="text_change_lang">Change language</string>
+    <string name="text_start_survey">Start survey</string>
+    <string name="text_access_level">Your access level does not enough.Please click for register</string>
+    <string name="text_understand">I understand</string>
+    <string name="text_calculate_point">Your point will be earned after calculate.</string>
+    <string name="text_no_address">Address does not available</string>
+    <string name="text_expired">Expired</string>
+    <string name="text_request_submitted">Your request submitted</string>
+    <string name="text_otp_send">Code sent</string>
+    <string name="text_no_service">Service not available</string>
+    <string name="text_otp_expired">Your code is expired, click on resend</string>
+    <string name="text_otp_wrong">Your code is wrong</string>
+    <string name="text_otp_used">Your code already used</string>
+    <string name="text_input_mobile">Please input your phone number</string>
+    <string name="text_login_progress">Login in progress, please wait …</string>
+    <string name="text_invite_friend"> invited to poller application, Please click on below link</string>
+    <string name="text_invite_from"> You from </string>
+    <string name="text_survey_time"> Survey time : </string>
+    <string name="text_from">from</string>
+    <string name="text_until"> until </string>
+    <string name="text_in"> in </string>
+    <string name="text_survey_view">Preview survey</string>
+    <string name="text_survey_complete">Completed</string>
+    <string name="text_survey_incomplete">InComplete</string>
+    <string name="text_remaining_day"> Remaining days </string>
+    <string name="text_accept_terms">You should accept terms and conditions to successfully login</string>
+    <string name="text_subject_empty_error">The description field can not be empty</string>
+    <string name="text_pending">Pending</string>
+    <string name="text_no_answer">Not answered</string>
+    <string name="text_answer">You answered</string>
+    <string name="text_survey_status">Survey status : </string>
+    <string name="text_survey_description">Survey description : </string>
+    <string name="text_does_not_have">Does not have</string>
+    <string name="text_no_internet_connection">Make sure you have an internet connection to use the app and try again</string>
+    <string name="text_internet_setting">Internet setting</string>
+    <string name="text_data_setting">Data setting</string>
+    <string name="text_double_click_exit">Click again to exit app</string>
+    <string name="text_lottery">Lottery</string>
+    <string name="text_lottery_join">Take a part</string>
+    <string name="text_pre_lottery">Previous lottery</string>
+    <string name="text_current_lottery">Current lottery</string>
+    <string name="lottery_dialog_title">Please enter your desired point to participate in the lottery</string>
+    <string name="join_lottery_error">Please enter your desired amount</string>
+    <string name="text_convert_point_balance">Convert point to incentive</string>
+    <string name="text_convert_balance_point">Convert incentive to point</string>
+    <string name="text_participation_amount">Participation amount : </string>
+    <string name="text_select_lang">Please select your language :</string>
+    <string name="text_try_again">Try again</string>
+    <string name="text_error_on_login">Error in login please try again</string>
+
+    <!--Exchange dialog status-->
+    <string name="exchange_dialog_title_price">Please enter your desired amount to exchange</string>
+    <string name="exchange_dialog_point_hint">Point</string>
+    <string name="exchange_dialog_price_hint">Incentive</string>
+    <string name="exchange_dialog_title_point">Please enter your desired amount to exchange</string>
+
+    <!--Lottery status message-->
+    <string name="text_success_done">Successfully done</string>
+    <string name="text_success_cancel">Successfully cancel</string>
+    <string name="text_process_failed">Submit failed</string>
+    <string name="text_not_changed">Submitted score not change</string>
+    <string name="text_not_enough_score">Amount is over than your point</string>
+    <string name="text_lower_minimum">Amount is lower than minimum</string>
+
+    <string name="text_date_expired">Lottery date expired</string>
+    <string name="text_not_joined">You are not joined before</string>
+    <string name="text_already_cancel">Has already been canceled</string>
+    <string name="text_wrong_data">Error on server</string>
+
+    <string name="text_not_enough_balance">Not enough balance</string>
+    <string name="text_multiple_100">Amount must be a multiple of 100 </string>
+    <string name="text_not_allow">You are not allow to exchange</string>
+
+    <!--Bottom navigation tabs-->
+    <string name="text_transaction_tab_one">Transaction</string>
+    <string name="text_transaction_tab_two">Point</string>
+
+    <!--Bottom navigation tabs-->
+    <string name="home_tab">Home</string>
+    <string name="survey_tab">Survey</string>
+    <string name="transaction_tab">Transaction</string>
+    <string name="profile_tab">Profile</string>
+
+
+</resources>

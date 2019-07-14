@@ -3,15 +3,13 @@
     <string name="verification_header">کد تایید از طریق پیامک برای شما ارسال گردید.</string>
     <string name="verification_hint">کد تایید</string>
     <string name="verification_button_text">ورود</string>
-    <string name="verification_edit_mobile">ویرایش شماره موبایل...</string>
+    <string name="verification_edit_mobile">ویرایش شماره موبایل …</string>
     <string name="veriification_resend_code">ارسال مجدد</string>
     <string name="login_button_text">ثبت</string>
     <string name="user_login_hint">شماره موبایل خود را وارد کنید</string>
     <string name="token_verify_message">شما برای شرکت در این نظرسنجی به توکن (نشانه) معتبر نیاز دارید:</string>
     <string name="no_register_message">شماره موبایل شما قبلا تایید و ثبت نشده، برای ادامه فرآیند عضویت لطفا اینجا را کلیک نمایید</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="exit_profile_text_dialog">آیا اطمینان دارید که میخواهید از حساب کاربری خود خارج شوید؟</string>
     <string name="survey_exit_confirm">آیا اطمینان دارید که میخواهید از نظرسنجی خود خارج شوید؟</string>
     <string name="download_body_text">ورژن جدید برنامه با قابلیت های جدید و رفع مشکلات جزیی منتشر شده برای دانلود کلیک کنید</string>
@@ -20,4 +18,122 @@
     <string name="shop_drawer_text">بازارچه</string>
     <string name="notify_drawer_text">پیام های دریافتی</string>
     <string name="edit_profile_dialog_title">لطفا برای تغییر اطلاعات حساب خود درخواست دهید</string>
+    <string name="back_to_app">بازگشت به اپلیکیشن</string>
+    <string name="drawer_username">نام کاربر</string>
+    <string name="inventory">موجودی : </string>
+    <string name="app_version">نسخه</string>
+    <string name="messages_toolbar">پیام های دریافتی</string>
+    <string name="store">بازارچه</string>
+    <string name="terms_conditions">قوانین و مقرارت</string>
+    <string name="accept_terms_conditions">قوانین و مقررات را مطالعه کرده و قبول دارم</string>
+    <string name="cancel_text">انصراف</string>
+    <string name="close_text">بستن</string>
+    <string name="subject_text">موضوع  </string>
+    <string name="transaction_price">%1$s %2$s</string>
+    <string name="text_price"> مبلغ  </string>
+    <string name="text_date">تاریخ</string>
+    <string name="text_price_hint">امتیاز</string>
+    <string name="support_center">مرکز پشتیبانی</string>
+    <string name="faq">سوالات متداول</string>
+    <string name="report_issue">گزارش مشکل</string>
+    <string name="videos">ویدیوها</string>
+    <string name="text_point">امتیاز : </string>
+    <string name="text_user_type">وضعیت کاربر : </string>
+    <string name="text_take_part_project">نظرسنجی های شرکت کرده : </string>
+    <string name="text_change_profile_req">ارسال درخواست تغییر اطلاعات کاربری</string>
+    <string name="update_app">آپدیت برنامه</string>
+    <string name="google_play_text">دریافت از گوگل پلی</string>
+    <string name="cafe_bazar_text">دریافت از</string>
+    <string name="sure_text">بله،اطمینان دارم</string>
+    <string name="attention">اخطار!</string>
+    <string name="send_request">ارسال درخواست</string>
+    <string name="description_text">توضیحات</string>
+    <string name="total_prices_earned">جمع مبالغ کسب شده :</string>
+    <string name="total_points_earned">جمع امتیازهای کسب شده :</string>
+    <string name="no_active_survey">هیچ نظرسنجی فعالی برای شما وجود ندارد!</string>
+    <string name="report_issue_title">لطفا مشکل خود را گزارش دهید</string>
+    <string name="text_title">عنوان</string>
+    <string name="text_change_lang">تغییر زبان</string>
+    <string name="text_start_survey">شروع نظرسنجی</string>
+    <string name="text_access_level">سطح دسترسی عضویت شما کافی نیست برای ارتقاء عضویت خود اینجا را کلیک نمایید</string>
+    <string name="text_understand">متوجه شدم</string>
+    <string name="text_calculate_point">امتیاز شما بعد از محاسبه به حسابتان منظور میگردد</string>
+    <string name="text_no_address">آدرس موجود نیست</string>
+    <string name="text_expired">منقضی شده</string>
+    <string name="text_request_submitted">درخواست شما ثبت شد.</string>
+    <string name="text_otp_send">کد ارسال</string>
+    <string name="text_no_service">عدم ارتباط با سرور</string>
+    <string name="text_otp_expired">کد تایید منقضی شده لطفا بر روی ارسال مجدد کلیک کنید</string>
+    <string name="text_otp_wrong">کد تاییداشتباه است</string>
+    <string name="text_otp_used">کد تایید تکراری است</string>
+    <string name="text_input_mobile">لطفا شماره موبایل خود را وارد کنید</string>
+    <string name="text_login_progress">فرآیند ورود شما درحال پردازش است لطفا صبور باشید …</string>
+    <string name="text_invite_friend"> برای عضویت در اپلیکیشن نظرسنجی پولر دعوت شدید،درصورت تمایل از طریق لینک زیر اقدام نمایید</string>
+    <string name="text_invite_from"> شما از طرف </string>
+    <string name="text_survey_time">زمان نظرسنجی : </string>
+    <string name="text_from">از</string>
+    <string name="text_until"> تا </string>
+    <string name="text_in"> در </string>
+    <string name="text_survey_view">مشاهده نظرسنجی</string>
+    <string name="text_survey_complete">تکمیل شده</string>
+    <string name="text_survey_incomplete">ناقص</string>
+    <string name="text_remaining_day"> روز باقی مانده </string>
+    <string name="text_accept_terms">برای ورود به برنامه باید قوانین و مقررات را قبول کنید</string>
+    <string name="text_subject_empty_error">قسمت توضیحات نمیتواند خالی باشد</string>
+    <string name="text_pending">در حال بررسی</string>
+    <string name="text_no_answer">پاسخ داده نشده</string>
+    <string name="text_answer">پاسخ داده اید</string>
+    <string name="text_survey_status">وضعیت نظرسنجی : </string>
+    <string name="text_survey_description">توضیحات نظرسنجی : </string>
+    <string name="text_does_not_have">ندارد</string>
+    <string name="text_no_internet_connection">برای استفاده از برنامه از اتصال به اینترنت مطمئن شوید و دوباره امتحان کنید</string>
+    <string name="text_internet_setting">تنظیمات اینترنت</string>
+    <string name="text_data_setting">تنظیمات دیتا</string>
+    <string name="text_double_click_exit">برای خروج دوباره کلیک کنید</string>
+    <string name="text_lottery">قرعه کشی</string>
+    <string name="text_lottery_join">شرکت کردن</string>
+    <string name="text_pre_lottery">قرعه کشی های گذشته</string>
+    <string name="text_current_lottery">قرعه کشی فعلی</string>
+    <string name="lottery_dialog_title">لطفا امتیاز مورد نظر خود را برای شرکت در قرعه کشی وارد کنید</string>
+    <string name="join_lottery_error">لطفا مبلغ مورد نظر خود را وارد کنید</string>
+    <string name="text_convert_point_balance">تبدیل امتیاز به موجودی</string>
+    <string name="text_convert_balance_point">تبدیل موجودی به امتیاز</string>
+    <string name="text_participation_amount">میزان مشارکت : </string>
+    <string name="text_select_lang">لطفا زبان مورد نظر خود را انتخاب کنید : </string>
+    <string name="text_try_again">تلاش مجدد</string>
+    <string name="text_error_on_login">خطا در ورود لطفا مجددا تلاش کنید</string>
+
+    <!--Exchange dialog status-->
+    <string name="exchange_dialog_point_hint">امتیاز</string>
+    <string name="exchange_dialog_price_hint">مبلغ</string>
+    <string name="exchange_dialog_title_price">لطفا مبلغ مورد نظر خود را برای تبدیل وارد کنید</string>
+    <string name="exchange_dialog_title_point">لطفا امتیاز مورد نظر خود را برای تبدیل وارد کنید</string>
+
+    <!--Lottery status message-->
+    <string name="text_success_done">با موفقیت ثبت شد</string>
+    <string name="text_success_cancel">با موفقیت لغو شد</string>
+    <string name="text_process_failed">خطا در ثبت</string>
+    <string name="text_not_changed">امتیاز تغییر نکرده است</string>
+    <string name="text_lower_minimum">مقدار وارد شده کمتر از حداقل لازم است</string>
+    <string name="text_not_enough_score">مقدار وارد شده بیش از امتیاز شما است</string>
+
+    <string name="text_date_expired">زمان قرعه کشی گذشته است</string>
+    <string name="text_not_joined">شما شرکت نکرده اید</string>
+    <string name="text_already_cancel">قبلا لغو کرده اید</string>
+    <string name="text_wrong_data">خطا در سرور</string>
+
+    <string name="text_not_enough_balance">موجودی کافی نیست</string>
+    <string name="text_multiple_100">مبلغ بایستی ضریبی از ۱۰۰ باشد </string>
+    <string name="text_not_allow">شما اجازه تبدیل ندارید</string>
+
+    <!--Bottom navigation tabs-->
+    <string name="text_transaction_tab_one">تراکنش مبالغ</string>
+    <string name="text_transaction_tab_two">تراکنش امتیازها</string>
+
+    <!--Bottom navigation tabs-->
+    <string name="home_tab">صفحه اصلی</string>
+    <string name="survey_tab">نظرسنجی</string>
+    <string name="transaction_tab">حساب من</string>
+    <string name="profile_tab">پروفایل</string>
+
 </resources>

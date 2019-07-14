@@ -2,6 +2,7 @@ package com.rahbarbazaar.poller.android.Utilities;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.rahbarbazaar.poller.android.Models.UserConfirmAuthResult;
@@ -42,7 +43,7 @@ public class ProfileTools {
 
         CompositeDisposable disposable = new CompositeDisposable();
 
-        disposable.add(new ServiceProvider(context).getmService().getUserProfile()
+        disposable.add(new ServiceProvider(context).getmService().getUserProfile(ClientConfig.API_V1)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableSingleObserver<UserConfirmAuthResult>() {
@@ -60,9 +61,10 @@ public class ProfileTools {
                             userDetailsPrefrence.setUser_id(result.getId());
                             userDetailsPrefrence.setIdentity(result.getIdentity());
                             userDetailsPrefrence.setPhone_number(result.getMobile());
-
-                            PreferenceStorage storage = PreferenceStorage.getInstance();
-                            storage.saveUserDetails(new Gson().toJson(userDetailsPrefrence), context);
+                            userDetailsPrefrence.setSum_score(result.getSum_score());
+                            userDetailsPrefrence.setScore(result.getScore());
+                            PreferenceStorage storage = PreferenceStorage.getInstance(context);
+                            storage.saveUserDetails(new Gson().toJson(userDetailsPrefrence));
                             //after receive data
                             if (listener != null)
                                 listener.onUserDataReceived();
@@ -79,8 +81,8 @@ public class ProfileTools {
 
     public UserDetailsPrefrence retriveUserInformation(Context context) {
 
-        PreferenceStorage storage = PreferenceStorage.getInstance();
-        String user_details = storage.retriveUserDetails(context);
+        PreferenceStorage storage = PreferenceStorage.getInstance(context);
+        String user_details = storage.retriveUserDetails();
 
         //if user details not empty
         if (user_details != null && !user_details.equals(""))

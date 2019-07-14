@@ -13,6 +13,7 @@ import com.rahbarbazaar.poller.android.Models.GetShopListResult
 import com.rahbarbazaar.poller.android.Models.RefreshBalanceEvent
 import com.rahbarbazaar.poller.android.Network.ServiceProvider
 import com.rahbarbazaar.poller.android.R
+import com.rahbarbazaar.poller.android.Utilities.ClientConfig
 import com.rahbarbazaar.poller.android.Utilities.ProfileTools
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -21,7 +22,7 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_shop.*
 import org.greenrobot.eventbus.EventBus
 
-class ShopActivity : AppCompatActivity(), GeneralItemIntraction {
+class ShopActivity : CustomBaseActivity(), GeneralItemIntraction<GetShopListResult> {
 
     val disposable = CompositeDisposable()
 
@@ -59,7 +60,7 @@ class ShopActivity : AppCompatActivity(), GeneralItemIntraction {
         configeRecyclerView()
 
         val serviceProvider = ServiceProvider(this)
-        disposable.add(serviceProvider.getmService().shopItems.subscribeOn(Schedulers.io())
+        disposable.add(serviceProvider.getmService().getShopItems(ClientConfig.API_V1).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).subscribeWith(object : DisposableSingleObserver<List<GetShopListResult>>() {
 
                     override fun onSuccess(result: List<GetShopListResult>) {
@@ -75,13 +76,13 @@ class ShopActivity : AppCompatActivity(), GeneralItemIntraction {
                 }))
     }
 
-    override fun <T> invokeItem(vararg param: T) {
+    override fun invokeItem (data: GetShopListResult) {
 
         val userInformation = ProfileTools.getInstance().retriveUserInformation(this)
 
         Intent(this, HtmlLoaderActivity::class.java).let {
 
-            it.putExtra("url", param[0] as String + userInformation.user_id)
+            it.putExtra("url", data.url + userInformation.user_id)
             it.putExtra("surveyDetails", false)
             it.putExtra("isShopping", true)
             startActivity(it)

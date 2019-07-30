@@ -15,4 +15,12 @@
     <color name="default_text_color">#757575</color>
     <color name="advertise_field_color">#999999</color>
     <color name="main_page_header">#4D4D4D</color>
+
+
+    <color name="colorPrimary1">#62217c</color>
+    <color name="colorAccent1">#eb0a8e</color>
+    <color name="purple">#62217c</color>
+    <color name="colorText">#757575</color>
+
+
 </resources>

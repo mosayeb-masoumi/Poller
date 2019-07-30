@@ -401,11 +401,15 @@ public class MainActivity extends CustomBaseActivity implements
 
                         String current_version = BuildConfig.VERSION_NAME;
 
+
+                        //todo add optional update
+
                         if (!result.getVersion().equals(current_version)) {
 
                             //params doesn't useful here
                             download_url = result.getUrl();
                             update_version = result.getVersion();
+//                            dialog = dialogFactory.createCheckUpdateDialog(drawer_layout_home, MainActivity.this);
                             dialog = dialogFactory.createCheckUpdateDialog(drawer_layout_home, MainActivity.this);
                         }
                     }

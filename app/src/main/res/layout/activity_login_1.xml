@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:id="@+id/login_root"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/splash1_bg" />
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="@dimen/_80sdp"
+        android:scaleType="fitXY"
+        android:src="@drawable/semi_oval" />
+
+    <ImageView
+        android:id="@+id/original_logo"
+        android:layout_width="@dimen/_120sdp"
+        android:layout_height="@dimen/_130sdp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:scaleType="fitXY"
+        android:src="@drawable/orginal_logo" />
+
+
+    <EditText
+        android:id="@+id/et_user_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/original_logo"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/_50sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_50sdp"
+        android:background="@drawable/edtphone_shape"
+        android:gravity="center"
+        android:hint="@string/enter_your_mobile_number"
+        android:inputType="phone"
+        android:maxLength="11"
+        android:padding="@dimen/_10sdp"
+        android:paddingBottom="@dimen/_3sdp"
+        android:textColorHint="@color/purple"
+        android:textDirection="rtl"
+        android:textSize="@dimen/_13ssp" />
+
+
+    <!--<com.rahbarbazaar.poller.android.Utilities.CustomTextView-->
+    <!--android:id="@+id/button_submit"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginEnd="@dimen/dimen_90"-->
+    <!--android:layout_marginStart="@dimen/dimen_90"-->
+    <!--android:layout_below="@+id/text_indicator"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_marginTop="@dimen/dimen_40"-->
+    <!--android:padding="@dimen/dimen_3"-->
+    <!--android:textColor="@color/main_page_toolbar"-->
+    <!--android:background="@drawable/button_bg_corner_shape"-->
+    <!--android:gravity="center"-->
+    <!--android:text="@string/login_button_text"-->
+    <!--android:textSize="@dimen/font_17"  />-->
+    <!---->
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_user_login"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:gravity="center">
+
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+            android:id="@+id/button_submit"
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:background="@drawable/btn_phoneregister_shape"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="@string/login_button_text"
+            android:textColor="@color/main_page_toolbar"
+            android:textSize="@dimen/_15ssp" />
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/av_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:visibility="visible"
+            app:indicatorName="BallPulseIndicator" />
+
+
+    </RelativeLayout>
+
+    <!--<Button-->
+    <!--android:layout_width="@dimen/_90sdp"-->
+    <!--android:layout_height="@dimen/_40sdp"-->
+    <!--android:id="@+id/button_submit"-->
+    <!--android:layout_below="@+id/et_user_login"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:textColor="@color/white_gray"-->
+    <!--android:layout_marginTop="@dimen/_20sdp"-->
+    <!--android:text="@string/register"-->
+    <!--android:textSize="@dimen/_18ssp"-->
+    <!--android:background="@drawable/btn_phoneregister_shape"/>-->
+
+
+    <ImageView
+        android:layout_width="@dimen/_90sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:src="@drawable/enterphone_iconpage" />
+
+
+</RelativeLayout>

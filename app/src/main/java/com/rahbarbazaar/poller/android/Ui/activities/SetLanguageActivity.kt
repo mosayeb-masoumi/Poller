@@ -1,46 +1,71 @@
 package com.rahbarbazaar.poller.android.Ui.activities
 
 import android.content.Intent
+import android.graphics.Typeface
+import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
-import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import com.rahbarbazaar.poller.android.Models.GetCurrencyListResult
-import com.rahbarbazaar.poller.android.Models.CurrencyListParcelable
-
 import com.rahbarbazaar.poller.android.Network.ServiceProvider
 import com.rahbarbazaar.poller.android.R
 import com.rahbarbazaar.poller.android.Utilities.*
 import io.reactivex.android.schedulers.AndroidSchedulers
-
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.activity_set_language.*
 import kotlinx.android.synthetic.main.activity_splash_screen.*
 
-class SplashScreenActivity : AppCompatActivity() {
 
-    //property region
+class SetLanguageActivity : AppCompatActivity() {
+
     internal lateinit var disposable: CompositeDisposable
     private var isValidToken: Boolean = false
     internal lateinit var tools: GeneralTools
     private lateinit var dialogFactory: DialogFactory
     private var getCurrencyListResult: GetCurrencyListResult? = null
-    //end of region
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash_screen1)
+        setContentView(R.layout.activity_set_language)
 
         val provider = ServiceProvider(this)
         disposable = CompositeDisposable()
         tools = GeneralTools.getInstance()
-        dialogFactory = DialogFactory(this@SplashScreenActivity)
+        dialogFactory = DialogFactory(this@SetLanguageActivity)
         val preferenceStorage = PreferenceStorage.getInstance(this)
 
         //check token validation
         isValidToken = preferenceStorage.retriveToken() != "0"
+
+
+
+        //todo add these below4 lines to set font (because )
+        val type = Typeface.createFromAsset(assets, "fonts/Vazir-Medium.ttf")
+        text_titleFa.setTypeface(type)
+        btn_fa1.setTypeface(type)
+
+        val type2 = Typeface.createFromAsset(assets, "fonts/arial.ttf")
+        text_titleEn.setTypeface(type2)
+        btn_en1.setTypeface(type2)
+
+
+
+
+
+        btn_en1.setOnClickListener {
+            LocaleManager.setNewLocale(this@SetLanguageActivity, "en")
+            checkAccessibility()
+        }
+
+        btn_fa1.setOnClickListener {
+            LocaleManager.setNewLocale(this@SetLanguageActivity, "fa")
+            checkAccessibility()
+        }
+
+
 
         //save dynamic currency
         fun saveCurrency() {
@@ -60,66 +85,28 @@ class SplashScreenActivity : AppCompatActivity() {
                     }))
         }
         saveCurrency()
-
-        //get user profile information and save it in preference for access in other segment of app
-        if (isValidToken)
-            ProfileTools.getInstance().saveProfileInformation(this)
-
-        if (preferenceStorage.isUserLangEmpty) {
-
-            if (!isFinishing) {
-
-
-                //todo added those 3 below lines insteade of instead of below commented
-                // lines to use activity for set language instead of dialog
-                // and created a new katlin class under the name of setLaguage activity
-                //mine
-                startActivity(Intent(this@SplashScreenActivity, SetLanguageActivity::class.java))
-                this@SplashScreenActivity.finish()
-                overridePendingTransition(R.anim.slide_in, R.anim.slide_out)
-
-
-//                dialogFactory.createSelectLangDialog(findViewById<View>(R.id.rl_root), object : DialogFactory.DialogFactoryInteraction {
-//                    override fun onAcceptButtonClicked(vararg strings: String) {
-//                        LocaleManager.setNewLocale(this@SplashScreenActivity, "fa")
-//                        checkAccessibility()
-//                    }
-//                    override fun onDeniedButtonClicked(cancel_dialog: Boolean) {
-//                        LocaleManager.setNewLocale(this@SplashScreenActivity, "en")
-//                        checkAccessibility()
-//                    }
-//                })
-            }
-
-        } else
-            CustomHandler(this).postDelayed({ this.checkAccessibility() }, 3500)//lambda expression :: you have to enable lambda expression
     }
-
-    /**
-     * check network connection state if available and if user token was valid he/she will go to main
-     * activity in otherwise he/she go to register activity for registration
-     */
 
     private fun checkAccessibility() {
 
         if (tools.checkInternetConnection(this)) {
 
-            av_loading.hide()
+//            av_loading.hide()
 
             if (!isValidToken) {
 
-                startActivity(Intent(this@SplashScreenActivity, LoginActivity::class.java))
-                this@SplashScreenActivity.finish()
+                startActivity(Intent(this@SetLanguageActivity, LoginActivity::class.java))
+                this@SetLanguageActivity.finish()
                 overridePendingTransition(R.anim.slide_in, R.anim.slide_out)
 
             } else {
 
-                Intent(this@SplashScreenActivity, MainActivity::class.java).let {
+                Intent(this@SetLanguageActivity, MainActivity::class.java).let {
 
                     it.putExtra("parcel_data", getCurrencyListResult)
                     startActivity(it)
                 }.also {
-                    this@SplashScreenActivity.finish()
+                    this@SetLanguageActivity.finish()
                     overridePendingTransition(R.anim.slide_in, R.anim.slide_out)
                 }
             }
@@ -151,12 +138,4 @@ class SplashScreenActivity : AppCompatActivity() {
         }
     }
 
-
-
-
-
-    override fun onDestroy() {
-        disposable.dispose()
-        super.onDestroy()
-    }
 }

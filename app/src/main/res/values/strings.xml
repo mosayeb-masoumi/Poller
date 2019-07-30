@@ -135,5 +135,10 @@
     <string name="survey_tab">نظرسنجی</string>
     <string name="transaction_tab">حساب من</string>
     <string name="profile_tab">پروفایل</string>
+    <string name="update_app_optional" translatable="false">بستن</string>
+    <string name="enter_your_mobile_number">شماره موبایل خود را وارد نمایید</string>
+    <string name="register">ثبت</string>
+    <string name="confirmation">تایید</string>
+
 
 </resources>

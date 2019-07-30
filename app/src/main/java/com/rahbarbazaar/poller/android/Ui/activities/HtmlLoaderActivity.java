@@ -159,35 +159,40 @@ public class HtmlLoaderActivity extends CustomBaseActivity
         new DialogFactory(HtmlLoaderActivity.this).createTokenDialog(findViewById(R.id.html_root));
     }
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        // Check if the key event was the Back button and if there's history
-        if (isSurveyDetails) {
-            if ((keyCode == KeyEvent.KEYCODE_BACK) && webView.canGoBack()) {
+//    @Override
+//    public boolean onKeyDown(int keyCode, KeyEvent event) {
+//        // Check if the key event was the Back button and if there's history
+//        if (isSurveyDetails) {
+//            if ((keyCode == KeyEvent.KEYCODE_BACK) && webView.canGoBack()) {
+//                isUserStartSurvey = true;
+//                //webView.goBack();
+//            }
+//
+//
+//
+//            Intent intent = new Intent();
+//            intent.putExtra("id", id);
+//            intent.putExtra("isUserStartSurvey", isUserStartSurvey);
+//
+//            Uri uri = Uri.parse(webView.getUrl());
+//            String qStatus = uri.getQueryParameter("qstatus");
+//
+//            if (qStatus == null || qStatus.equals(""))
+//                qStatus = "1";
+//
+//            intent.putExtra("qstatus", qStatus);
+//            setResult(RESULT_OK, intent);
+//            createConfirmExitDialog();
+//
+//        } else
+//            finish();
+//
+//        return super.onKeyDown(keyCode, event);
+//    }
 
-                isUserStartSurvey = true;
-                //webView.goBack();
-            }
 
-            Intent intent = new Intent();
-            intent.putExtra("id", id);
-            intent.putExtra("isUserStartSurvey", isUserStartSurvey);
 
-            Uri uri = Uri.parse(webView.getUrl());
-            String qStatus = uri.getQueryParameter("qstatus");
 
-            if (qStatus == null || qStatus.equals(""))
-                qStatus = "1";
-
-            intent.putExtra("qstatus", qStatus);
-            setResult(RESULT_OK, intent);
-            createConfirmExitDialog();
-
-        } else
-            finish();
-
-        return super.onKeyDown(keyCode, event);
-    }
 
     @Override
     public void onClick(View view) {

@@ -23,7 +23,7 @@ public class TypeFaceGenerator {
     }
 
     public Typeface getByekanFont(Context context){
-
-     return Typeface.createFromAsset(context.getAssets(),"fonts/BYekan.ttf");
+//     return Typeface.createFromAsset(context.getAssets(),"fonts/BYekan.ttf");
+     return Typeface.createFromAsset(context.getAssets(),"fonts/Vazir-Medium.ttf");
     }
 }

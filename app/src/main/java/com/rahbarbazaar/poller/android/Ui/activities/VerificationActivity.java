@@ -17,11 +17,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.rahbarbazaar.poller.android.BuildConfig;
 import com.rahbarbazaar.poller.android.Models.GetCurrencyListResult;
 import com.rahbarbazaar.poller.android.Models.GeneralStatusResult;
-import com.rahbarbazaar.poller.android.Models.CurrencyListParcelable;
 import com.rahbarbazaar.poller.android.Models.UserConfirmAuthResult;
 import com.rahbarbazaar.poller.android.Network.Service;
 import com.rahbarbazaar.poller.android.Network.ServiceProvider;
@@ -35,11 +33,7 @@ import com.rahbarbazaar.poller.android.Utilities.PreferenceStorage;
 import com.rahbarbazaar.poller.android.Utilities.ProfileTools;
 import com.rahbarbazaar.poller.android.Utilities.TypeFaceGenerator;
 import com.wang.avi.AVLoadingIndicatorView;
-
 import java.math.BigDecimal;
-import java.util.List;
-
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableSingleObserver;
@@ -51,6 +45,7 @@ public class VerificationActivity extends CustomBaseActivity
     //region of views
     TextView text_min, text_sec, text_edit_mobile,
             button_verify, text_user_mobile;
+
     EditText et_user_verify;
     AVLoadingIndicatorView av_verify;
     LinearLayout linear_recode;
@@ -74,7 +69,7 @@ public class VerificationActivity extends CustomBaseActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_verification);
+        setContentView(R.layout.activity_verification_1);
 
         defineViews();
         defineViewsListener();

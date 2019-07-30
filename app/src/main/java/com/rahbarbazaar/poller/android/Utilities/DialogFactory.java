@@ -23,6 +23,7 @@ import android.webkit.WebViewClient;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -433,6 +434,58 @@ public class DialogFactory {
         dialog.show();
         return dialog;
     }
+
+    public AlertDialog createCheckUpdateOptionalDialog(View view, DialogFactoryInteraction listener) {
+
+        View customLayout = LayoutInflater.from(context).inflate(R.layout.check_update_dialog_optional, (ViewGroup) view, false);
+        //define views inside of dialog
+        TextView btn_dl_dialog = customLayout.findViewById(R.id.btn_dl_dialog);
+        ConstraintLayout google_layout = customLayout.findViewById(R.id.layout_gplay);
+        ConstraintLayout bazaar_layout = customLayout.findViewById(R.id.layout_bazaar);
+
+        RelativeLayout rl_close_dialog = customLayout.findViewById(R.id.rl_close_dialog);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setView(customLayout);
+        builder.setCancelable(false);
+
+        //create dialog and set background transparent
+        AlertDialog dialog = builder.create();
+        if (dialog.getWindow() != null) {
+
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
+
+        //set click listener for views inside of dialog
+        btn_dl_dialog.setOnClickListener(v -> listener.onAcceptButtonClicked("")
+        );
+
+        google_layout.setOnClickListener(v -> {
+
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("https://play.google.com/store/apps/details?id=com.rahbarbazaar.poller.android"));
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        });
+
+        bazaar_layout.setOnClickListener(v -> {
+
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("https://cafebazaar.ir/app/com.rahbarbazaar.poller.android/?l=fa"));
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        });
+
+        rl_close_dialog.setOnClickListener(v -> {
+            dialog.dismiss();
+        });
+
+
+
+        dialog.show();
+        return dialog;
+    }
+
 
     public void createSelectLangDialog(View view, DialogFactoryInteraction interaction) {
 

@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_root"
+    android:background="@color/splash_screen_bg">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/splash1_bg" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="@dimen/_80sdp"
+        android:scaleType="fitXY"
+        android:src="@drawable/semi_oval" />
+    <ImageView
+        android:id="@+id/original_logo"
+        android:layout_width="@dimen/_120sdp"
+        android:layout_height="@dimen/_130sdp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:scaleType="fitXY"
+        android:src="@drawable/orginal_logo" />
+
+
+
+    <RelativeLayout
+        android:id="@+id/rl"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_25sdp"
+        android:layout_below="@+id/original_logo"
+        android:layout_marginTop="@dimen/_7sdp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginStart="@dimen/_60sdp"
+            android:layout_marginEnd="@dimen/_60sdp"
+            android:src="@drawable/btn_phoneregister_pink_shape" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginStart="@dimen/_70sdp"
+            android:layout_marginEnd="@dimen/_70sdp"
+            android:src="@drawable/btn_phoneregister_red_shape" />
+
+        <TextView
+            android:id="@+id/text_user_mobile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img_verify_top"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textColor="@color/white_gray"
+            android:textSize="@dimen/_14ssp"
+            tools:text="+989211833813" />
+
+    </RelativeLayout>
+
+    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl"
+        android:id="@+id/txt"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:text="@string/verification_header"
+        android:textColor="@color/av_indicator_bg"
+        android:textSize="@dimen/font_15" />
+
+    <EditText
+        android:id="@+id/et_user_verify"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginStart="@dimen/_60sdp"
+        android:layout_marginEnd="@dimen/_60sdp"
+        android:background="@drawable/edt_shape"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:layout_below="@+id/txt"
+        android:hint="@string/verification_hint"
+        android:imeOptions="actionDone"
+        android:inputType="numberDecimal"
+        android:textSize="@dimen/_15ssp" />
+
+    <RelativeLayout
+        android:id="@+id/rlconfirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_below="@+id/et_user_verify">
+
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+            android:id="@+id/button_verify"
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_below="@+id/text_indicator"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/btn_phoneregister_shape"
+            android:gravity="center"
+            android:text="@string/confirmation"
+            android:textColor="@color/main_page_toolbar"
+            android:textSize="@dimen/_15ssp" />
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/av_verify"
+            android:layout_width="@dimen/dimen_34"
+            android:layout_height="@dimen/dimen_34"
+            android:layout_alignTop="@+id/button_verify"
+            android:layout_alignBottom="@+id/button_verify"
+            android:layout_centerHorizontal="true"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:visibility="invisible"
+            app:indicatorName="BallPulseIndicator" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rlconfirm"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layoutDirection="ltr"
+        android:orientation="horizontal">
+
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+            android:id="@+id/text_min"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent1"
+            tools:text="10" />
+
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=":"
+            android:textColor="@color/colorAccent1" />
+
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+            android:id="@+id/text_sec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent1"
+            tools:text="20" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linear_recode"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_20sdp"
+        android:layout_below="@+id/ll3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:gravity="center"
+        android:layoutDirection="ltr"
+        android:orientation="horizontal">
+
+
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:text="@string/veriification_resend_code"
+            android:textColor="@color/colorPrimary" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_refresh" />
+
+    </LinearLayout>
+
+    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+        android:id="@+id/text_edit_mobile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linear_recode"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:drawableRight="@drawable/ic_edit_new"
+        android:text="@string/verification_edit_mobile"
+        android:textColor="@color/colorPrimary" />
+
+
+    <ImageView
+        android:layout_width="@dimen/_90sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:src="@drawable/enterphone_iconpage" />
+
+</RelativeLayout>

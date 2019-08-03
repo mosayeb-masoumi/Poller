@@ -53,8 +53,6 @@ class SetLanguageActivity : AppCompatActivity() {
 
 
 
-
-
         btn_en1.setOnClickListener {
             LocaleManager.setNewLocale(this@SetLanguageActivity, "en")
             checkAccessibility()

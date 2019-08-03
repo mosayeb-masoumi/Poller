@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/splash1_bg" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_200sdp"
+        android:layout_alignParentStart="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/rules_topback" />
+
+    <ImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="@dimen/_70sdp"
+        android:layout_height="@dimen/_70sdp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:src="@drawable/orginal_logo" />
+
+    <ImageView
+        android:layout_width="@dimen/_140sdp"
+        android:layout_height="@dimen/_90sdp"
+        android:layout_below="@+id/imgLogo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:src="@drawable/rules_icon" />
+
+
+    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/rl5"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:gravity="center"
+        android:id="@+id/txtTermsConditions"
+        android:text="@string/terms_conditions"
+        android:textColor="@color/yellow"
+        android:textSize="@dimen/_15ssp" />
+
+    <RelativeLayout
+        android:id="@+id/rl5"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_above="@+id/llcheckbox"
+        android:layout_marginStart="@dimen/dimen_12"
+        android:layout_marginEnd="@dimen/dimen_12">
+
+        <WebView
+            android:id="@+id/webview_agreement"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/av_loading"
+            android:layout_width="@dimen/dimen_34"
+            android:layout_height="@dimen/dimen_34"
+            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
+            android:padding="@dimen/dimen_2"
+            app:indicatorColor="@color/colorPrimary"
+            app:indicatorName="BallPulseSyncIndicator" />
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/llcheckbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/rl_page_icon_rules"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+
+        <CheckBox
+            android:id="@+id/checkbox_agreement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/accept_terms_conditions"
+            android:textColor="@color/yellow" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_page_icon_rules"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_3sdp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_height="@dimen/_40sdp">
+
+            <ImageView
+                android:id="@+id/img_rules_enter_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/rules_enter_icon" />
+            <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/_15ssp"
+                android:text="@string/enter"
+                android:textColor="#0C0B0B" />
+        </RelativeLayout>
+
+
+        <ImageView
+            android:id="@+id/img_page_icon_rules"
+            android:layout_width="@dimen/_110sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_centerHorizontal="true"
+            android:visibility="gone"
+            android:src="@drawable/page_icon_rules" />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

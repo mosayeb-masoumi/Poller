@@ -141,6 +141,7 @@
     <string name="enter_your_mobile_number">Enter your Mobile Phone</string>
     <string name="register">Register</string>
     <string name="confirmation">Confirm</string>
+    <string name="enter">Enter</string>
 
 
 </resources>

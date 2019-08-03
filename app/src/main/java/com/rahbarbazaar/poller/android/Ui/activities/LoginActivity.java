@@ -65,10 +65,12 @@ public class LoginActivity extends CustomBaseActivity implements View.OnClickLis
         connectivityReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-
                 tools.doCheckNetwork(LoginActivity.this, findViewById(R.id.login_root));
             }
         };
+
+
+        av_login.setVisibility(View.GONE);
     }
 
     //define views of activity
@@ -99,6 +101,7 @@ public class LoginActivity extends CustomBaseActivity implements View.OnClickLis
             av_login.smoothToShow();
             button_submit.setText("");
             button_submit.setEnabled(false);
+            button_submit.setVisibility(View.GONE);
 
             disposable.add(service.userAuthentication(ClientConfig.API_V1, phone).
                     subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).
@@ -121,6 +124,8 @@ public class LoginActivity extends CustomBaseActivity implements View.OnClickLis
                             button_submit.setText(R.string.login_button_text);
                             button_submit.setEnabled(true);
                             av_login.smoothToHide();
+                            button_submit.setVisibility(View.VISIBLE);
+                            av_login.setVisibility(View.GONE);
                         }
 
                         @Override
@@ -128,6 +133,9 @@ public class LoginActivity extends CustomBaseActivity implements View.OnClickLis
                             button_submit.setText(R.string.login_button_text);
                             button_submit.setEnabled(true);
                             av_login.smoothToHide();
+
+                            button_submit.setVisibility(View.VISIBLE);
+                            av_login.setVisibility(View.GONE);
                             new ToastFactory().createToast(R.string.text_no_service, LoginActivity.this);
                         }
                     }));

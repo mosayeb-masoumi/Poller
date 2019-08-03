@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -92,43 +93,49 @@
         android:inputType="numberDecimal"
         android:textSize="@dimen/_15ssp" />
 
+
     <RelativeLayout
-        android:id="@+id/rlconfirm"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_below="@+id/et_user_verify"
         android:layout_marginTop="@dimen/_10sdp"
-        android:layout_below="@+id/et_user_verify">
+        android:id="@+id/rl6"
+        android:gravity="center">
+
+        <RelativeLayout
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/btn_phoneregister_shape">
+
+            <com.wang.avi.AVLoadingIndicatorView
+                android:id="@+id/av_verify"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                app:indicatorName="BallPulseIndicator" />
+        </RelativeLayout>
 
         <com.rahbarbazaar.poller.android.Utilities.CustomTextView
             android:id="@+id/button_verify"
-            android:layout_width="@dimen/_70sdp"
+            android:layout_width="@dimen/_90sdp"
             android:layout_height="@dimen/_35sdp"
-            android:layout_below="@+id/text_indicator"
             android:layout_centerHorizontal="true"
-            android:background="@drawable/btn_phoneregister_shape"
             android:gravity="center"
-            android:text="@string/confirmation"
+            android:text="@string/login_button_text"
             android:textColor="@color/main_page_toolbar"
             android:textSize="@dimen/_15ssp" />
 
-        <com.wang.avi.AVLoadingIndicatorView
-            android:id="@+id/av_verify"
-            android:layout_width="@dimen/dimen_34"
-            android:layout_height="@dimen/dimen_34"
-            android:layout_alignTop="@+id/button_verify"
-            android:layout_alignBottom="@+id/button_verify"
-            android:layout_centerHorizontal="true"
-            android:paddingStart="5dp"
-            android:paddingEnd="5dp"
-            android:visibility="invisible"
-            app:indicatorName="BallPulseIndicator" />
     </RelativeLayout>
+
+
 
     <LinearLayout
         android:id="@+id/ll3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/rlconfirm"
+        android:layout_below="@+id/rl6"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_vertical"
         android:layout_marginTop="@dimen/_5sdp"

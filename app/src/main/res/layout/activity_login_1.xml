@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
     android:id="@+id/login_root"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 
@@ -53,67 +53,43 @@
         android:textSize="@dimen/_13ssp" />
 
 
-    <!--<com.rahbarbazaar.poller.android.Utilities.CustomTextView-->
-    <!--android:id="@+id/button_submit"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_marginEnd="@dimen/dimen_90"-->
-    <!--android:layout_marginStart="@dimen/dimen_90"-->
-    <!--android:layout_below="@+id/text_indicator"-->
-    <!--android:layout_centerHorizontal="true"-->
-    <!--android:layout_marginTop="@dimen/dimen_40"-->
-    <!--android:padding="@dimen/dimen_3"-->
-    <!--android:textColor="@color/main_page_toolbar"-->
-    <!--android:background="@drawable/button_bg_corner_shape"-->
-    <!--android:gravity="center"-->
-    <!--android:text="@string/login_button_text"-->
-    <!--android:textSize="@dimen/font_17"  />-->
-    <!---->
-
-
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_35sdp"
         android:layout_below="@+id/et_user_login"
         android:layout_marginTop="@dimen/_10sdp"
         android:gravity="center">
+
+        <RelativeLayout
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/btn_phoneregister_shape">
+
+            <com.wang.avi.AVLoadingIndicatorView
+                android:id="@+id/av_login"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                app:indicatorName="BallPulseIndicator" />
+        </RelativeLayout>
 
         <com.rahbarbazaar.poller.android.Utilities.CustomTextView
             android:id="@+id/button_submit"
             android:layout_width="@dimen/_90sdp"
             android:layout_height="@dimen/_35sdp"
-            android:background="@drawable/btn_phoneregister_shape"
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:text="@string/login_button_text"
             android:textColor="@color/main_page_toolbar"
             android:textSize="@dimen/_15ssp" />
 
-        <com.wang.avi.AVLoadingIndicatorView
-            android:id="@+id/av_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:visibility="visible"
-            app:indicatorName="BallPulseIndicator" />
-
-
     </RelativeLayout>
-
-    <!--<Button-->
-    <!--android:layout_width="@dimen/_90sdp"-->
-    <!--android:layout_height="@dimen/_40sdp"-->
-    <!--android:id="@+id/button_submit"-->
-    <!--android:layout_below="@+id/et_user_login"-->
-    <!--android:layout_centerHorizontal="true"-->
-    <!--android:textColor="@color/white_gray"-->
-    <!--android:layout_marginTop="@dimen/_20sdp"-->
-    <!--android:text="@string/register"-->
-    <!--android:textSize="@dimen/_18ssp"-->
-    <!--android:background="@drawable/btn_phoneregister_shape"/>-->
 
 
     <ImageView
+        android:id="@+id/pager"
         android:layout_width="@dimen/_90sdp"
         android:layout_height="@dimen/_40sdp"
         android:layout_alignParentBottom="true"

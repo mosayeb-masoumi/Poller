@@ -26,7 +26,6 @@ import com.rahbarbazaar.poller.android.Network.ServiceProvider;
 import com.rahbarbazaar.poller.android.R;
 import com.rahbarbazaar.poller.android.Utilities.ClientConfig;
 import com.rahbarbazaar.poller.android.Utilities.ToastFactory;
-import com.rahbarbazaar.poller.android.Utilities.DialogFactory;
 import com.rahbarbazaar.poller.android.Utilities.GeneralTools;
 import com.rahbarbazaar.poller.android.Utilities.LocaleManager;
 import com.rahbarbazaar.poller.android.Utilities.PreferenceStorage;
@@ -73,6 +72,8 @@ public class VerificationActivity extends CustomBaseActivity
 
         defineViews();
         defineViewsListener();
+        av_verify.setVisibility(View.GONE);
+
         if (LocaleManager.getLocale(getResources()).getLanguage().equals("fa")) {
 
             Typeface font = TypeFaceGenerator.getInstance().getByekanFont(this);
@@ -171,6 +172,9 @@ public class VerificationActivity extends CustomBaseActivity
     //send verify user request and check accessibility
     private void sendVerifyRequest() {
 
+        button_verify.setVisibility(View.GONE);
+        av_verify.setVisibility(View.VISIBLE);
+
         Service service = provider.getmService();
         String verify_code = et_user_verify.getText().toString().trim();
 
@@ -218,6 +222,9 @@ public class VerificationActivity extends CustomBaseActivity
 
                                                 //check user agreement:
                                                 checkUserAgreement();
+
+                                                button_verify.setVisibility(View.VISIBLE);
+                                                av_verify.setVisibility(View.GONE);
                                             }
 
                                             break;
@@ -267,9 +274,11 @@ public class VerificationActivity extends CustomBaseActivity
 
         saveCurrency();
         sendApkVersion();
-
+        /////////////////////////////////////////////////////////////////
         //get user profile information and save it in preference for access in other segment of app
-        ProfileTools.getInstance().saveProfileInformation(this).setListener(() -> new DialogFactory(this).createAgreementDialog(new DialogFactory.DialogFactoryInteraction() {
+        /* todo main
+        ProfileTools.getInstance().saveProfileInformation(this).setListener(() ->
+                new DialogFactory(this).createAgreementDialog(new DialogFactory.DialogFactoryInteraction() {
             @Override
             public void onAcceptButtonClicked(String... params) {
 
@@ -282,6 +291,17 @@ public class VerificationActivity extends CustomBaseActivity
                 //this callback doesn't use
             }
         }, findViewById(R.id.rl_root)));
+
+        */
+        ////////////////////////////////////////////////////////////////
+        // TODO: 8/3/2019 added instead of upper lines
+
+          ProfileTools.getInstance().saveProfileInformation(this).setListener(() ->
+                  startActivity(new Intent(VerificationActivity.this, AgreementActivity1.class)));
+
+
+
+
     }
 
     private void saveCurrency() {

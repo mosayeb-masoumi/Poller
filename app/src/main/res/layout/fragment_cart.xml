@@ -32,33 +32,33 @@
     </LinearLayout>
 
     <RelativeLayout
-        android:layout_width="match_parent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/dimen_10">
+
+    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_10">
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/dimen_10"
+        android:id="@+id/tv_total_earned"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/font_15"
+        android:textStyle="bold"
+        android:text="@string/total_prices_earned"
+        />
 
-        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="@dimen/dimen_10"
-            android:id="@+id/tv_total_earned"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="@dimen/font_15"
-            android:textStyle="bold"
-            android:text="@string/total_prices_earned"
-             />
+    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+        android:id="@+id/tv_point"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_10"
+        tools:text="۰"
+        android:textColor="@color/light_black"
+        android:textSize="@dimen/font_14"
+        android:textStyle="bold" />
 
-        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
-            android:id="@+id/tv_point"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dimen_10"
-            tools:text="۰"
-            android:textColor="@color/light_black"
-            android:textSize="@dimen/font_14"
-            android:textStyle="bold" />
-
-    </RelativeLayout>
+</RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

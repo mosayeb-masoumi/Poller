@@ -16,7 +16,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import com.rahbarbazaar.poller.android.BuildConfig;
 import com.rahbarbazaar.poller.android.Models.GetCurrencyListResult;
 import com.rahbarbazaar.poller.android.Models.GeneralStatusResult;
@@ -32,7 +34,9 @@ import com.rahbarbazaar.poller.android.Utilities.PreferenceStorage;
 import com.rahbarbazaar.poller.android.Utilities.ProfileTools;
 import com.rahbarbazaar.poller.android.Utilities.TypeFaceGenerator;
 import com.wang.avi.AVLoadingIndicatorView;
+
 import java.math.BigDecimal;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableSingleObserver;
@@ -48,6 +52,7 @@ public class VerificationActivity extends CustomBaseActivity
     EditText et_user_verify;
     AVLoadingIndicatorView av_verify;
     LinearLayout linear_recode;
+    RelativeLayout rl_recode_number;
     //end of region
 
     //region of property
@@ -122,11 +127,12 @@ public class VerificationActivity extends CustomBaseActivity
         text_min = findViewById(R.id.text_min);
         text_sec = findViewById(R.id.text_sec);
         text_user_mobile = findViewById(R.id.text_user_mobile);
-        text_edit_mobile = findViewById(R.id.text_edit_mobile);
+//        text_edit_mobile = findViewById(R.id.text_edit_mobile);
         button_verify = findViewById(R.id.button_verify);
         av_verify = findViewById(R.id.av_verify);
         et_user_verify = findViewById(R.id.et_user_verify);
         linear_recode = findViewById(R.id.linear_recode);
+        rl_recode_number=findViewById(R.id.rl_recode_number);
     }
 
     //define views of activity click listener
@@ -134,7 +140,8 @@ public class VerificationActivity extends CustomBaseActivity
 
         linear_recode.setOnClickListener(this);
         button_verify.setOnClickListener(this);
-        text_edit_mobile.setOnClickListener(this);
+//        text_edit_mobile.setOnClickListener(this);
+        text_user_mobile.setOnClickListener(this);
     }
 
     //if code doesn't receive we have to call login request again
@@ -201,16 +208,22 @@ public class VerificationActivity extends CustomBaseActivity
                                         case "otp expired":
 
                                             toastFactory.createToast(R.string.text_otp_expired, VerificationActivity.this);
+                                            button_verify.setVisibility(View.VISIBLE);
+                                            av_verify.setVisibility(View.GONE);
 
                                             break;
                                         case "otp wrong":
 
                                             toastFactory.createToast(R.string.text_otp_wrong, VerificationActivity.this);
+                                            button_verify.setVisibility(View.VISIBLE);
+                                            av_verify.setVisibility(View.GONE);
                                             break;
 
                                         case "already used":
 
                                             toastFactory.createToast(R.string.text_otp_used, VerificationActivity.this);
+                                            button_verify.setVisibility(View.VISIBLE);
+                                            av_verify.setVisibility(View.GONE);
                                             break;
 
                                         case "user confirmed":
@@ -234,6 +247,8 @@ public class VerificationActivity extends CustomBaseActivity
                             av_verify.smoothToHide();
                             button_verify.setText(R.string.verification_button_text);
                             button_verify.setEnabled(true);
+                            linear_recode.setVisibility(View.VISIBLE);
+                            rl_recode_number.setVisibility(View.GONE);
                         }
 
                         @Override
@@ -242,6 +257,8 @@ public class VerificationActivity extends CustomBaseActivity
                             av_verify.smoothToHide();
                             button_verify.setText(R.string.verification_button_text);
                             button_verify.setEnabled(true);
+                            linear_recode.setVisibility(View.VISIBLE);
+                            rl_recode_number.setVisibility(View.GONE);
                             new ToastFactory().createToast(R.string.text_no_service, VerificationActivity.this);
                         }
                     }));
@@ -296,10 +313,8 @@ public class VerificationActivity extends CustomBaseActivity
         ////////////////////////////////////////////////////////////////
         // TODO: 8/3/2019 added instead of upper lines
 
-          ProfileTools.getInstance().saveProfileInformation(this).setListener(() ->
-                  startActivity(new Intent(VerificationActivity.this, AgreementActivity1.class)));
-
-
+        ProfileTools.getInstance().saveProfileInformation(this).setListener(() ->
+                startActivity(new Intent(VerificationActivity.this, AgreementActivity1.class)));
 
 
     }
@@ -388,6 +403,8 @@ public class VerificationActivity extends CustomBaseActivity
             public void onFinish() {
 
                 linear_recode.setEnabled(true);
+                linear_recode.setVisibility(View.VISIBLE);
+                rl_recode_number.setVisibility(View.GONE);
             }
 
         };
@@ -432,6 +449,9 @@ public class VerificationActivity extends CustomBaseActivity
             case R.id.linear_recode:
 
                 linear_recode.setEnabled(false);
+                linear_recode.setVisibility(View.GONE);
+                rl_recode_number.setVisibility(View.VISIBLE);
+
                 sendLoginRequest();
                 startCountDownTimer();
                 break;
@@ -441,7 +461,8 @@ public class VerificationActivity extends CustomBaseActivity
                 sendVerifyRequest();
                 break;
 
-            case R.id.text_edit_mobile:
+//            case R.id.text_edit_mobile:
+            case R.id.text_user_mobile:
 
                 startActivity(new Intent(VerificationActivity.this, LoginActivity.class));
                 VerificationActivity.this.finish();

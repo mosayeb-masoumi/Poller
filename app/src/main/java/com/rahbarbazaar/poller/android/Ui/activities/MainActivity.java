@@ -11,6 +11,9 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Build;
@@ -51,6 +54,7 @@ import com.rahbarbazaar.poller.android.Ui.fragments.CartFragment;
 import com.rahbarbazaar.poller.android.Ui.fragments.HomeFragment;
 import com.rahbarbazaar.poller.android.Ui.fragments.ProfileFragment;
 import com.rahbarbazaar.poller.android.Ui.fragments.SurveyFragment;
+import com.rahbarbazaar.poller.android.Utilities.App;
 import com.rahbarbazaar.poller.android.Utilities.ClientConfig;
 import com.rahbarbazaar.poller.android.Utilities.SnackBarFactory;
 import com.rahbarbazaar.poller.android.Utilities.ToastFactory;
@@ -81,14 +85,18 @@ import io.reactivex.schedulers.Schedulers;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 
+import static android.graphics.drawable.GradientDrawable.Orientation.TOP_BOTTOM;
+
 public class MainActivity extends CustomBaseActivity implements
         View.OnClickListener, AHBottomNavigation.OnTabSelectedListener, DialogFactory.DialogFactoryInteraction,
         SurveyFragment.ActiveSurveyInteraction, DrawerRecyclerAdapter.OnDrawerItemClickListener {
 
     //region of views
 
+
+
     AHBottomNavigation bottom_navigation;
-    ImageView image_drawer, image_instagram, image_telegram;
+    ImageView image_drawer, image_instagram, image_telegram,img_backbtmbar_left, img_backbtmbar_centerleft, img_backbtmbar_centerright, img_backbtmbar_right;;
     DrawerLayout drawer_layout_home;
     NotSwipeableViewPager main_view_pager;
     TextView text_header_date, text_username, text_point, text_notify_count;
@@ -125,7 +133,7 @@ public class MainActivity extends CustomBaseActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main1);
 
         //pushe services
         Pushe.initialize(this, true);
@@ -181,6 +189,13 @@ public class MainActivity extends CustomBaseActivity implements
 
     //define view and click listener of activity here
     private void configViews() {
+
+
+        img_backbtmbar_left=findViewById(R.id.img_backbtmbar_left);
+        img_backbtmbar_centerleft=findViewById(R.id.img_backbtmbar_centerleft);
+        img_backbtmbar_centerright=findViewById(R.id.img_backbtmbar_centerright);
+        img_backbtmbar_right=findViewById(R.id.img_backbtmbar_right);
+
 
         bottom_navigation = findViewById(R.id.bottom_navigation);
         image_drawer = findViewById(R.id.image_drawer);
@@ -252,10 +267,10 @@ public class MainActivity extends CustomBaseActivity implements
     private void initializeBottomNavigation() {
 
         // Create items
-        AHBottomNavigationItem item1 = new AHBottomNavigationItem(R.string.home_tab, R.drawable.home, 0);
-        AHBottomNavigationItem item2 = new AHBottomNavigationItem(R.string.survey_tab, R.drawable.survey, 0);
-        AHBottomNavigationItem item3 = new AHBottomNavigationItem(R.string.transaction_tab, R.drawable.my_cart, 0);
-        AHBottomNavigationItem item4 = new AHBottomNavigationItem(R.string.profile_tab, R.drawable.user_login, 0);
+        AHBottomNavigationItem item1 = new AHBottomNavigationItem(R.string.home_tab, R.drawable.home1, 0);
+        AHBottomNavigationItem item2 = new AHBottomNavigationItem(R.string.survey_tab, R.drawable.survey1, 0);
+        AHBottomNavigationItem item3 = new AHBottomNavigationItem(R.string.transaction_tab, R.drawable.my_cart1, 0);
+        AHBottomNavigationItem item4 = new AHBottomNavigationItem(R.string.profile_tab, R.drawable.user_login1, 0);
 
         // Add items
         bottom_navigation.addItem(item4);
@@ -263,11 +278,23 @@ public class MainActivity extends CustomBaseActivity implements
         bottom_navigation.addItem(item2);
         bottom_navigation.addItem(item1);
 
+
+
         // Change colors
-        bottom_navigation.setAccentColor(Color.parseColor("#4587b6"));
+//        bottom_navigation.setAccentColor(Color.parseColor("#4587b6"));
+
+        bottom_navigation.setAccentColor(Color.parseColor("#fff200"));
+        bottom_navigation.setInactiveColor(Color.parseColor("#FFFFFF"));
+
+        bottom_navigation.setDefaultBackgroundResource(R.drawable.bg_toolbar1);
+
+
+        //requred api level min 21
+        bottom_navigation.setElevation(0f);
+
 
         // Manage titles
-        bottom_navigation.setTitleState(AHBottomNavigation.TitleState.SHOW_WHEN_ACTIVE);
+        bottom_navigation.setTitleState(AHBottomNavigation.TitleState.ALWAYS_SHOW);
 
         // Set current item programmatically
         bottom_navigation.setCurrentItem(3);
@@ -295,6 +322,7 @@ public class MainActivity extends CustomBaseActivity implements
             text_header_date.setText(formatDate);
         }
     }
+
 
     //initial main view pager will be implement by this function
     private void initializeViewPager(GetCurrencyListResult parcelable, String locale) {
@@ -586,6 +614,7 @@ public class MainActivity extends CustomBaseActivity implements
                     public void onAcceptButtonClicked(String... strings) {
 
                         LocaleManager.setNewLocale(MainActivity.this, "fa");
+//                        App.language = "fa";
                         Intent i = new Intent(MainActivity.this, SplashScreenActivity.class);
                         startActivity(i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
                         System.exit(0);
@@ -594,6 +623,7 @@ public class MainActivity extends CustomBaseActivity implements
                     @Override
                     public void onDeniedButtonClicked(boolean cancel_dialog) {
                         LocaleManager.setNewLocale(MainActivity.this, "en");
+//                        App.language = "en";
                         Intent i = new Intent(MainActivity.this, SplashScreenActivity.class);
                         startActivity(i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
                         System.exit(0);
@@ -609,6 +639,12 @@ public class MainActivity extends CustomBaseActivity implements
         }
 
     }
+
+
+
+
+
+
 
     //create confirm exit dialog
     private void createConfirmExitDialog() {
@@ -699,6 +735,29 @@ public class MainActivity extends CustomBaseActivity implements
 
     @Override
     public boolean onTabSelected(int position, boolean wasSelected) {
+
+        if(position==3){
+            img_backbtmbar_right.setVisibility(View.VISIBLE);
+            img_backbtmbar_centerleft.setVisibility(View.GONE);
+            img_backbtmbar_centerright.setVisibility(View.GONE);
+            img_backbtmbar_left.setVisibility(View.GONE);
+        }else if(position==2){
+            img_backbtmbar_right.setVisibility(View.GONE);
+            img_backbtmbar_centerleft.setVisibility(View.GONE);
+            img_backbtmbar_centerright.setVisibility(View.VISIBLE);
+            img_backbtmbar_left.setVisibility(View.GONE);
+        }else if(position==1){
+            img_backbtmbar_right.setVisibility(View.GONE);
+            img_backbtmbar_centerleft.setVisibility(View.VISIBLE);
+            img_backbtmbar_centerright.setVisibility(View.GONE);
+            img_backbtmbar_left.setVisibility(View.GONE);
+        }else if(position==0){
+            img_backbtmbar_right.setVisibility(View.GONE);
+            img_backbtmbar_centerleft.setVisibility(View.GONE);
+            img_backbtmbar_centerright.setVisibility(View.GONE);
+            img_backbtmbar_left.setVisibility(View.VISIBLE);
+        }
+
 
         if (!wasSelected) {
 

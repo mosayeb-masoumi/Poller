@@ -15,15 +15,15 @@
         app:actualImageScaleType="fitXY"
         android:padding="6.3dp"
         android:layout_width="@dimen/dimen_34"
-        android:layout_height="match_parent"
-        android:tint="#818181" />
+        android:layout_height="match_parent" />
 
     <com.rahbarbazaar.poller.android.Utilities.CustomTextView
         android:id="@+id/text_drawer"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:textColor="@color/white_gray"
         android:gravity="center_vertical"
-        android:layout_marginStart="@dimen/dimen_2"
-        android:textSize="@dimen/font_13" />
+        android:textSize="@dimen/_13ssp" />
 
 </LinearLayout>

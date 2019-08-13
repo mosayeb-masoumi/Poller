@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rl_root"
@@ -15,52 +14,44 @@
         android:scaleType="fitXY"
         android:src="@drawable/splash1_bg" />
 
-    <ImageView
+
+    <RelativeLayout
+        android:id="@+id/rl7"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_200sdp"
-        android:layout_alignParentStart="true"
-        android:scaleType="fitXY"
-        android:src="@drawable/rules_topback" />
+        android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/imgLogo"
-        android:layout_width="@dimen/_70sdp"
-        android:layout_height="@dimen/_70sdp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:src="@drawable/orginal_logo" />
-
-    <ImageView
-        android:layout_width="@dimen/_140sdp"
-        android:layout_height="@dimen/_90sdp"
-        android:layout_below="@+id/imgLogo"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:src="@drawable/rules_icon" />
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_250sdp"
+            android:src="@drawable/rules_logo2" />
 
 
-    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/rl5"
-        android:layout_marginBottom="@dimen/_10sdp"
-        android:gravity="center"
-        android:id="@+id/txtTermsConditions"
-        android:text="@string/terms_conditions"
-        android:textColor="@color/yellow"
-        android:textSize="@dimen/_15ssp" />
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+            android:id="@+id/txtTermsConditions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_220sdp"
+            android:gravity="center"
+            android:text="@string/terms_conditions"
+            android:textColor="@color/yellow"
+            android:textSize="@dimen/_15ssp" />
+
+    </RelativeLayout>
+
 
     <RelativeLayout
         android:id="@+id/rl5"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_above="@+id/llcheckbox"
+        android:layout_height="@dimen/_200sdp"
+        android:layout_below="@+id/rl7"
         android:layout_marginStart="@dimen/dimen_12"
         android:layout_marginEnd="@dimen/dimen_12">
 
         <WebView
             android:id="@+id/webview_agreement"
             android:layout_width="match_parent"
+            android:scrollbarThumbVertical="@drawable/webview_scroll"
             android:layout_height="match_parent" />
 
         <com.wang.avi.AVLoadingIndicatorView
@@ -89,7 +80,8 @@
         <CheckBox
             android:id="@+id/checkbox_agreement"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            app:buttonTint="@color/yellow" />
 
         <com.rahbarbazaar.poller.android.Utilities.CustomTextView
             android:layout_width="wrap_content"
@@ -102,40 +94,43 @@
     <RelativeLayout
         android:id="@+id/rl_page_icon_rules"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_30sdp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/_5sdp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/_3sdp">
+        android:layout_marginTop="@dimen/_2sdp"
+        android:layout_marginBottom="@dimen/_5sdp">
 
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_height="@dimen/_40sdp">
+            android:layout_height="@dimen/_30sdp"
+            android:visibility="visible"
+            android:layout_centerHorizontal="true">
 
             <ImageView
                 android:id="@+id/img_rules_enter_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/rules_enter_icon" />
+
             <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                android:id="@+id/btn_login_dialog"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:textSize="@dimen/_15ssp"
                 android:text="@string/enter"
-                android:textColor="#0C0B0B" />
+                android:textColor="#0C0B0B"
+                android:textSize="@dimen/_15ssp" />
         </RelativeLayout>
 
 
         <ImageView
             android:id="@+id/img_page_icon_rules"
-            android:layout_width="@dimen/_110sdp"
-            android:layout_height="@dimen/_40sdp"
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="@dimen/_30sdp"
             android:layout_centerHorizontal="true"
-            android:visibility="gone"
-            android:src="@drawable/page_icon_rules" />
+            android:src="@drawable/page_icon_rules"
+            android:visibility="gone" />
 
 
     </RelativeLayout>

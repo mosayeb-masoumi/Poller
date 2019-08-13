@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="-3dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/splash1_bg" />
+
+    <ImageView
+        android:layout_width="@dimen/_300sdp"
+        android:layout_height="@dimen/_300sdp"
+        android:id="@+id/logo"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/splash_logo" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_260sdp"
+        android:orientation="vertical">
+
+
+        <TextView
+        android:id="@+id/text_titleFa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="زبان خود را انتخاب کنید"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="@color/white_gray"
+        android:textSize="@dimen/_12ssp" />
+
+
+        <!--<com.rahbarbazaar.poller.android.Utilities.CustomTextView-->
+            <!--android:id="@+id/text_title2"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:gravity="center"-->
+            <!--android:text="please select your language"-->
+            <!--android:textStyle="bold"-->
+            <!--android:textColor="@color/white_gray"-->
+            <!--android:textSize="@dimen/_15ssp" />-->
+
+        <TextView
+            android:id="@+id/text_titleEn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="please select your language"
+            android:textStyle="bold"
+            android:textColor="@color/white_gray"
+            android:textSize="@dimen/_12ssp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logo"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/_35sdp"/>
+        <TextView
+            android:id="@+id/btn_en1"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:layout_marginEnd="@dimen/_3sdp"
+            android:background="@drawable/bg_select_lng_en"
+            android:gravity="center"
+            android:textSize="@dimen/_14ssp"
+            android:text="English"
+            android:textColor="@color/colorAccent1" />
+
+        <TextView
+            android:id="@+id/btn_fa1"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_36sdp"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/_3sdp"
+            android:background="@drawable/bg_select_lng_fa"
+            android:gravity="center"
+            android:textSize="@dimen/_14ssp"
+            android:text="فارسی"
+            android:textColor="@color/colorPrimary1" />
+        <View
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/_35sdp"/>
+    </LinearLayout>
+
+
+    <ImageView
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/splash1_langiconpage" />
+
+</RelativeLayout>

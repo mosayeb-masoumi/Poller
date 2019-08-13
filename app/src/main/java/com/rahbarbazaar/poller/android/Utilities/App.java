@@ -26,5 +26,7 @@ public class App extends MultiDexApplication {
         super.onConfigurationChanged(newConfig);
         LocaleManager.setLocale(this);
     }
+
+    public static String language = "";
 }
 

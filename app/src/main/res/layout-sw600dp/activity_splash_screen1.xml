@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/splash1_bg" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_250sdp"
+        android:layout_marginEnd="@dimen/_40sdp"
+        android:layout_marginStart="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_10sdp">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/splash_logo" />
+
+        <ImageView
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/splash1_poller_ir" />
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/txtPoweredBy"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt"
+            android:gravity="center_horizontal"
+            android:textColor="@color/white_gray"
+            android:text="powered by"/>
+        <ImageView
+            android:layout_width="@dimen/_65sdp"
+            android:layout_height="@dimen/_10sdp"
+            android:id="@+id/rahbartxt"
+            android:layout_below="@+id/txt"
+            android:src="@drawable/rahbartxt"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white_gray"
+            android:id="@+id/vesion"
+            android:layout_below="@+id/rahbartxt"
+            android:text="version "/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/vesion"
+            android:layout_below="@+id/rahbartxt"
+            android:textColor="@color/white_gray"
+            android:id="@+id/txtVersion"/>
+
+    </RelativeLayout>
+
+
+    <!--</LinearLayout>-->
+
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/av_loading"
+        android:layout_width="@dimen/dimen_40"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/txtPoweredBy"
+        android:layout_centerHorizontal="true"
+        app:indicatorColor="@color/white_gray" />
+
+</RelativeLayout>

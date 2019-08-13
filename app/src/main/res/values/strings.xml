@@ -5,7 +5,7 @@
     <string name="verification_button_text">ورود</string>
     <string name="verification_edit_mobile">ویرایش شماره موبایل …</string>
     <string name="veriification_resend_code">ارسال مجدد</string>
-    <string name="login_button_text">ثبت</string>
+    <string name="login_button_text">ارسال</string>
     <string name="user_login_hint">شماره موبایل خود را وارد کنید</string>
     <string name="token_verify_message">شما برای شرکت در این نظرسنجی به توکن (نشانه) معتبر نیاز دارید:</string>
     <string name="no_register_message">شماره موبایل شما قبلا تایید و ثبت نشده، برای ادامه فرآیند عضویت لطفا اینجا را کلیک نمایید</string>
@@ -14,7 +14,7 @@
     <string name="survey_exit_confirm">آیا اطمینان دارید که میخواهید از نظرسنجی خود خارج شوید؟</string>
     <string name="download_body_text">ورژن جدید برنامه با قابلیت های جدید و رفع مشکلات جزیی منتشر شده برای دانلود کلیک کنید</string>
     <string name="share_poller">پولر را به اشتراک بگذارید</string>
-    <string name="exit_user_account">خروج از حساب کاربری</string>
+    <string name="exit_user_account">خروج از حساب</string>
     <string name="shop_drawer_text">بازارچه</string>
     <string name="notify_drawer_text">پیام های دریافتی</string>
     <string name="edit_profile_dialog_title">لطفا برای تغییر اطلاعات حساب خود درخواست دهید</string>

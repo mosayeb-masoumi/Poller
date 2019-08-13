@@ -6,6 +6,7 @@ import android.provider.Settings
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
+import com.rahbarbazaar.poller.android.BuildConfig
 import com.rahbarbazaar.poller.android.Models.GetCurrencyListResult
 import com.rahbarbazaar.poller.android.Models.CurrencyListParcelable
 
@@ -18,6 +19,8 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_splash_screen.*
+import kotlinx.android.synthetic.main.activity_splash_screen.av_loading
+import kotlinx.android.synthetic.main.activity_splash_screen1.*
 
 class SplashScreenActivity : AppCompatActivity() {
 
@@ -32,6 +35,10 @@ class SplashScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen1)
+
+
+
+        txtVersion.setText(BuildConfig.VERSION_NAME)
 
         val provider = ServiceProvider(this)
         disposable = CompositeDisposable()

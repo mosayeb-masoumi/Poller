@@ -14,49 +14,96 @@
         android:src="@drawable/splash1_bg" />
 
 
-    <ImageView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="@dimen/_80sdp"
-        android:scaleType="fitXY"
-        android:src="@drawable/semi_oval" />
+        android:layout_marginTop="@dimen/_10sdp"
+        android:id="@+id/rl7"
+        android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/original_logo"
-        android:layout_width="@dimen/_120sdp"
-        android:layout_height="@dimen/_130sdp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/_40sdp"
-        android:scaleType="fitXY"
-        android:src="@drawable/orginal_logo" />
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_250sdp"
+            android:src="@drawable/splash_logo2" />
 
 
-    <EditText
-        android:id="@+id/et_user_login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/original_logo"
-        android:layout_gravity="center"
-        android:layout_marginStart="@dimen/_50sdp"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:layout_marginEnd="@dimen/_50sdp"
-        android:background="@drawable/edtphone_shape"
-        android:gravity="center"
-        android:hint="@string/enter_your_mobile_number"
-        android:inputType="phone"
-        android:maxLength="11"
-        android:padding="@dimen/_10sdp"
-        android:paddingBottom="@dimen/_3sdp"
-        android:textColorHint="@color/purple"
-        android:textDirection="rtl"
-        android:textSize="@dimen/_13ssp" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_250sdp"
+            android:layout_height="@dimen/_40sdp">
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/_45sdp"
+                android:layout_marginEnd="@dimen/_45sdp"
+                android:src="@drawable/btn_phoneregister_red_shape" />
+            <EditText
+                android:id="@+id/et_user_login"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/_50sdp"
+                android:layout_marginEnd="@dimen/_50sdp"
+                android:background="@drawable/edtphone_shape"
+                android:gravity="center"
+                android:hint="@string/enter_your_mobile_number"
+                android:inputType="phone"
+                android:maxLength="11"
+                android:padding="@dimen/_10sdp"
+                android:paddingBottom="@dimen/_3sdp"
+                android:textColorHint="@color/blue"
+                android:textDirection="rtl"
+                android:textSize="@dimen/_13ssp" />
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+
+    <!--<RelativeLayout-->
+        <!--android:id="@+id/rl"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/_25sdp"-->
+        <!--android:layout_below="@+id/original_logo"-->
+        <!--android:layout_marginTop="@dimen/_7sdp">-->
+
+        <!--<ImageView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="@dimen/_35sdp"-->
+            <!--android:layout_marginStart="@dimen/_60sdp"-->
+            <!--android:layout_marginEnd="@dimen/_60sdp"-->
+            <!--android:src="@drawable/btn_phoneregister_pink_shape" />-->
+
+        <!--<ImageView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="@dimen/_35sdp"-->
+            <!--android:layout_marginStart="@dimen/_70sdp"-->
+            <!--android:layout_marginEnd="@dimen/_70sdp"-->
+            <!--android:src="@drawable/btn_phoneregister_red_shape" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/text_user_mobile"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/img_verify_top"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:textColor="@color/white_gray"-->
+            <!--android:textSize="@dimen/_14ssp"-->
+            <!--tools:text="+989211833813" />-->
+
+    <!--</RelativeLayout>-->
+
+
+
 
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/_35sdp"
-        android:layout_below="@+id/et_user_login"
+        android:layout_below="@+id/rl7"
         android:layout_marginTop="@dimen/_10sdp"
         android:gravity="center">
 
@@ -81,21 +128,20 @@
             android:layout_height="@dimen/_35sdp"
             android:layout_centerHorizontal="true"
             android:gravity="center"
+            android:textSize="@dimen/_15ssp"
             android:text="@string/login_button_text"
-            android:textColor="@color/main_page_toolbar"
-            android:textSize="@dimen/_15ssp" />
+            android:textColor="@color/main_page_toolbar" />
 
     </RelativeLayout>
 
 
-    <ImageView
-        android:id="@+id/pager"
-        android:layout_width="@dimen/_90sdp"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:src="@drawable/enterphone_iconpage" />
 
+    <ImageView
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/enterphone_iconpage"  />
 
 </RelativeLayout>

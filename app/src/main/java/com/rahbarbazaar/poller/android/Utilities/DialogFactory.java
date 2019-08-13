@@ -226,7 +226,9 @@ public class DialogFactory {
 
     public void createReportIssueDialog(DialogFactoryInteraction listener, View root) {
 
-        View customLayout = LayoutInflater.from(context).inflate(R.layout.report_issue_dialog, (ViewGroup) root, false);
+        View customLayout = LayoutInflater.from(context).inflate(R.layout.report_issue_dialog1, (ViewGroup) root, false);
+
+
         //define views inside of dialog
         EditText edt_title = customLayout.findViewById(R.id.edt_title);
         EditText edt_description = customLayout.findViewById(R.id.edt_description);
@@ -489,7 +491,7 @@ public class DialogFactory {
 
     public void createSelectLangDialog(View view, DialogFactoryInteraction interaction) {
 
-        View customView = LayoutInflater.from(context).inflate(R.layout.select_lang_dialog, (ViewGroup) view, false);
+        View customView = LayoutInflater.from(context).inflate(R.layout.select_lang_dialog1, (ViewGroup) view, false);
 
         TextView btn_en = customView.findViewById(R.id.btn_eng);
         TextView btn_fa = customView.findViewById(R.id.btn_fa);

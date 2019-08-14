@@ -14,17 +14,23 @@
 
     <ImageView
         android:layout_width="@dimen/_300sdp"
-        android:layout_height="@dimen/_300sdp"
+        android:layout_height="@dimen/_250sdp"
         android:id="@+id/logo"
-        android:layout_marginTop="@dimen/_40sdp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/splash_logo" />
+        android:src="@drawable/splash_logo2" />
 
+    <!--<ImageView-->
+        <!--android:id="@+id/logo"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/_250sdp"-->
+        <!--android:src="@drawable/splash_logo2" />-->
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_270sdp"
+        android:layout_below="@+id/logo"
+        android:id="@+id/llText"
+        android:layout_marginTop="@dimen/_2sdp"
         android:orientation="vertical">
 
         <!--<com.rahbarbazaar.poller.android.Utilities.CustomTextView-->
@@ -73,8 +79,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/logo"
-        android:layout_marginTop="@dimen/_2sdp"
+        android:layout_below="@+id/llText"
+        android:layout_marginTop="@dimen/_15sdp"
         android:orientation="horizontal">
 
         <View

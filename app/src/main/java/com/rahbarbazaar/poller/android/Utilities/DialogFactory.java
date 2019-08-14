@@ -150,9 +150,11 @@ public class DialogFactory {
 
     public void createNoInternetDialog(DialogFactoryInteraction listener, View root) {
 
-        View customLayout = LayoutInflater.from(context).inflate(R.layout.confirm_exit_dialog, (ViewGroup) root, false);
+//        View customLayout = LayoutInflater.from(context).inflate(R.layout.confirm_exit_dialog, (ViewGroup) root, false);
+        View customLayout = LayoutInflater.from(context).inflate(R.layout.no_internet_dialog1, (ViewGroup) root, false);
+
         //define views inside of dialog
-        ImageView image_dialog = customLayout.findViewById(R.id.image_dialog);
+//        ImageView image_dialog = customLayout.findViewById(R.id.image_dialog);
         TextView text_body = customLayout.findViewById(R.id.text_body);
         TextView btn_wifi_dialog = customLayout.findViewById(R.id.btn_exit_dialog);
         TextView btn_data_dialog = customLayout.findViewById(R.id.btn_cancel_dialog);
@@ -161,7 +163,8 @@ public class DialogFactory {
         text_body.setText(R.string.text_no_internet_connection);
         btn_wifi_dialog.setText(R.string.text_internet_setting);
         btn_data_dialog.setText(R.string.text_data_setting);
-        image_dialog.setImageResource(R.drawable.no_wifi);
+//        image_dialog.setImageResource(R.drawable.no_wifi);
+
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setView(customLayout);

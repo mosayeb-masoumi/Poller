@@ -52,7 +52,9 @@ import com.rahbarbazaar.poller.android.Network.ServiceProvider;
 import com.rahbarbazaar.poller.android.R;
 import com.rahbarbazaar.poller.android.Ui.fragments.CartFragment;
 import com.rahbarbazaar.poller.android.Ui.fragments.HomeFragment;
+import com.rahbarbazaar.poller.android.Ui.fragments.HomeFragment1;
 import com.rahbarbazaar.poller.android.Ui.fragments.ProfileFragment;
+import com.rahbarbazaar.poller.android.Ui.fragments.ProfileFragment1;
 import com.rahbarbazaar.poller.android.Ui.fragments.SurveyFragment;
 import com.rahbarbazaar.poller.android.Utilities.App;
 import com.rahbarbazaar.poller.android.Utilities.ClientConfig;
@@ -291,7 +293,7 @@ public class MainActivity extends CustomBaseActivity implements
 
         //requred api level min 21
         bottom_navigation.setElevation(0f);
-
+//
 
         // Manage titles
         bottom_navigation.setTitleState(AHBottomNavigation.TitleState.ALWAYS_SHOW);
@@ -330,10 +332,12 @@ public class MainActivity extends CustomBaseActivity implements
         main_view_pager.setPagingEnabled(false);
         MainViewPagerAdapter adapter = new MainViewPagerAdapter(getSupportFragmentManager());
 
-        adapter.addFragment(HomeFragment.newInstance(parcelable, locale));
+//        adapter.addFragment(HomeFragment.newInstance(parcelable, locale));
+        adapter.addFragment(HomeFragment1.newInstance(parcelable, locale));
         adapter.addFragment(SurveyFragment.newInstance(parcelable,locale));
         adapter.addFragment(CartFragment.newInstance(parcelable, locale));
-        adapter.addFragment(ProfileFragment.Companion.createInstance(parcelable, locale));
+//        adapter.addFragment(ProfileFragment.Companion.createInstance(parcelable, locale));
+        adapter.addFragment(ProfileFragment1.Companion.createInstance(parcelable, locale));
 
         main_view_pager.setAdapter(adapter);
     }
@@ -557,6 +561,9 @@ public class MainActivity extends CustomBaseActivity implements
 
                     e.printStackTrace();
                 }
+
+
+
                 break;
 
             case R.id.linear_shopping:

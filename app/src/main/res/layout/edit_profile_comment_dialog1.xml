@@ -15,41 +15,20 @@
         android:gravity="center">
 
         <com.rahbarbazaar.poller.android.Utilities.CustomTextView
-            android:id="@+id/text_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/report_issue_title"
             android:textColor="@color/white_gray"
+            android:text="@string/edit_profile_dialog_title"
             android:textSize="@dimen/font_15" />
     </RelativeLayout>
 
 
     <EditText
-        android:id="@+id/edt_title"
+        android:id="@+id/edt_comment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_17"
         android:layout_marginTop="@dimen/dimen_30"
-        android:layout_marginEnd="@dimen/dimen_17"
-        android:background="@null"
-        android:gravity="center"
-        android:hint="@string/text_title"
-        android:textSize="@dimen/font_14" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginStart="@dimen/dimen_17"
-        android:layout_marginTop="@dimen/dimen_6"
-        android:layout_marginEnd="@dimen/dimen_17"
-        android:background="@color/minor_gray" />
-
-    <EditText
-        android:id="@+id/edt_description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dimen_17"
-        android:layout_marginTop="@dimen/dimen_10"
         android:layout_marginEnd="@dimen/dimen_17"
         android:background="@null"
         android:gravity="center"
@@ -64,6 +43,8 @@
         android:layout_marginEnd="@dimen/dimen_17"
         android:background="@color/minor_gray" />
 
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -72,27 +53,18 @@
         android:orientation="horizontal">
 
 
-        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
-            android:id="@+id/btn_cancel_dialog"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/dimen_42"
-            android:layout_marginStart="@dimen/dimen_10"
-            android:layout_weight="1"
-            android:background="@drawable/dialog_btn_shape"
-            android:gravity="center"
-            android:text="@string/cancel_text"
-            android:textColor="@color/blue" />
 
         <com.rahbarbazaar.poller.android.Utilities.CustomTextView
             android:id="@+id/btn_send_dialog"
             android:layout_width="0dp"
             android:layout_height="@dimen/dimen_42"
-            android:layout_marginStart="@dimen/dimen_10"
-            android:layout_marginEnd="@dimen/dimen_10"
+            android:layout_marginStart="@dimen/dimen_100"
+            android:layout_marginEnd="@dimen/dimen_100"
             android:layout_weight="1"
             android:background="@drawable/dialog_btn_shape"
             android:gravity="center"
-            android:text="@string/report_issue"
+            android:textSize="@dimen/_14sdp"
+            android:text="@string/send_request"
             android:textColor="@color/blue" />
 
     </LinearLayout>

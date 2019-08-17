@@ -40,7 +40,7 @@
     <string name="text_point">Point </string>
     <string name="text_user_type">User type  </string>
     <string name="text_take_part_project">Surveys #</string>
-    <string name="text_change_profile_req">Change profile information request</string>
+    <string name="text_change_profile_req">Change profile information</string>
     <string name="update_app">Application update</string>
     <string name="google_play_text">Get on google play</string>
     <string name="cafe_bazar_text">Get on</string>
@@ -142,6 +142,8 @@
     <string name="register">Register</string>
     <string name="confirmation">Confirm</string>
     <string name="enter">Enter</string>
-
+    <string name="text_access_upgrade">User Access Upgrade</string>
+    <string name="convert_toman">convert toman</string>
+    <string name="convert_papasi">convert papasi</string>
 
 </resources>

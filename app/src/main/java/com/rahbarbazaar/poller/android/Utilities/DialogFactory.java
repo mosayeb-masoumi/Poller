@@ -191,11 +191,11 @@ public class DialogFactory {
 
     public void createCommentDialog(DialogFactoryInteraction listener, View root) {
 
-        View customLayout = LayoutInflater.from(context).inflate(R.layout.edit_profile_comment_dialog, (ViewGroup) root, false);
+        View customLayout = LayoutInflater.from(context).inflate(R.layout.edit_profile_comment_dialog1, (ViewGroup) root, false);
         //define views inside of dialog
         EditText edt_comment = customLayout.findViewById(R.id.edt_comment);
         TextView btn_send = customLayout.findViewById(R.id.btn_send_dialog);
-        TextView btn_cancel_dialog = customLayout.findViewById(R.id.btn_cancel_dialog);
+//        TextView btn_cancel_dialog = customLayout.findViewById(R.id.btn_cancel_dialog);
 
         //set default typeface of views
         edt_comment.setTypeface(Typeface.createFromAsset(context.getAssets(), "fonts/BYekan.ttf"));
@@ -222,7 +222,7 @@ public class DialogFactory {
             } else
                 new ToastFactory().createToast(R.string.text_subject_empty_error, context);
         });
-        btn_cancel_dialog.setVisibility(ViewGroup.GONE);
+//        btn_cancel_dialog.setVisibility(ViewGroup.GONE);
 
         dialog.show();
     }
@@ -553,9 +553,10 @@ public class DialogFactory {
 
     public void createExchangeDialog(boolean isBalance, View view, DialogFactoryInteraction interaction) {
 
-        View customView = LayoutInflater.from(context).inflate(R.layout.exchange_dialog, (ViewGroup) view, false);
+        View customView = LayoutInflater.from(context).inflate(R.layout.exchange_dialog1, (ViewGroup) view, false);
 
-        ImageView img_exchange_submit = customView.findViewById(R.id.img_exchange_submit);
+//        ImageView img_exchange_submit = customView.findViewById(R.id.img_exchange_submit);  R.layout.exchange_dialog
+        CustomTextView img_exchange_submit = customView.findViewById(R.id.img_exchange_submit);
         TextView text_title = customView.findViewById(R.id.text_title);
         EditText edt_lottery_amount = customView.findViewById(R.id.edt_exchange_amount);
 

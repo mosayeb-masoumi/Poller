@@ -39,8 +39,8 @@
     <string name="videos">ویدیوها</string>
     <string name="text_point">امتیاز : </string>
     <string name="text_user_type">وضعیت کاربر : </string>
-    <string name="text_take_part_project">نظرسنجی های شرکت کرده : </string>
-    <string name="text_change_profile_req">ارسال درخواست تغییر اطلاعات کاربری</string>
+    <string name="text_take_part_project">نظرسنجی های شرکت کرده</string>
+    <string name="text_change_profile_req">درخواست تغییر اطلاعات</string>
     <string name="update_app">آپدیت برنامه</string>
     <string name="google_play_text">دریافت از گوگل پلی</string>
     <string name="cafe_bazar_text">دریافت از</string>
@@ -138,8 +138,14 @@
     <string name="update_app_optional" translatable="false">بستن</string>
     <string name="enter_your_mobile_number">شماره موبایل خود را وارد نمایید</string>
     <string name="register">ثبت</string>
-    <string name="confirmation">تایید</string>
+    <string name="confirmation">تايید</string>
     <string name="enter">ورود</string>
+    <string name="text_access_upgrade">ارتقاع سطح کاربری</string>
+    <string name="convert_toman">تبدیل تومان</string>
+    <string name="convert_papasi">تبدیل پاپاسی</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

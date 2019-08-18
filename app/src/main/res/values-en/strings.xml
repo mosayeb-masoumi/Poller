@@ -145,5 +145,12 @@
     <string name="text_access_upgrade">User Access Upgrade</string>
     <string name="convert_toman">convert toman</string>
     <string name="convert_papasi">convert papasi</string>
+    <string name="text_polls">Polls</string>
+    <string name="text_whats_up">whats up</string>
+    <string name="text_video">videos</string>
+    <string name="text_newPolls">new poll</string>
+    <string name="text_activePolls">active poll</string>
+    <string name="text_balance">balance</string>
+    <string name="text_your_point">your point</string>
 
 </resources>

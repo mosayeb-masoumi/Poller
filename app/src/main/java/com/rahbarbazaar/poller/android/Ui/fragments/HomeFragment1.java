@@ -1,28 +1,41 @@
 package com.rahbarbazaar.poller.android.Ui.fragments;
 
-
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.TextView;
 import com.rahbarbazaar.poller.android.Models.GetCurrencyListResult;
 import com.rahbarbazaar.poller.android.Network.ServiceProvider;
 import com.rahbarbazaar.poller.android.R;
+import com.rahbarbazaar.poller.android.Ui.activities.HtmlLoaderActivity;
+import com.rahbarbazaar.poller.android.Ui.activities.MainActivity;
+import com.rahbarbazaar.poller.android.Utilities.LocaleManager;
+import com.rahbarbazaar.poller.android.Utilities.NotSwipeableViewPager;
 
 import io.reactivex.disposables.CompositeDisposable;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment1 extends Fragment {
+public class HomeFragment1 extends Fragment implements View.OnClickListener {
 
     GetCurrencyListResult parcelable;
     String lang;
     CompositeDisposable disposable;
     ServiceProvider provider = null;
+
+
+    CardView cardview_home_video,cardview_home_image,cardview_home_polls;
+    TextView text_newpoll_digit,text_activepoll_digit,text_balance_digit,text_yourpoint_digit;
 
     public HomeFragment1() {
         // Required empty public constructor
@@ -62,9 +75,58 @@ public class HomeFragment1 extends Fragment {
 
 
 
-
+         init(view);
+        cardview_home_video.setOnClickListener(this);
+        cardview_home_image.setOnClickListener(this);
+        cardview_home_polls.setOnClickListener(this);
+//         onClick(view);
 
         return view;
     }
+
+
+
+    private void init(View view) {
+        cardview_home_video = view.findViewById(R.id.cardview_home_video);
+        cardview_home_image=view.findViewById(R.id.cardview_home_image);
+        cardview_home_polls=view.findViewById(R.id.cardview_home_polls);
+        text_newpoll_digit=view.findViewById(R.id.text_newpoll_digit);
+        text_activepoll_digit=view.findViewById(R.id.text_activepoll_digit);
+        text_balance_digit=view.findViewById(R.id.text_balance_digit);
+        text_yourpoint_digit=view.findViewById(R.id.text_yourpoint_digit);
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.cardview_home_video:
+                //todo get url from server and replace
+                goToHtmlActivity("http://pollerws.rahbarbazaar.com:2296/poller/v2/support/videos/"
+                        + LocaleManager.getLocale(getResources()).getLanguage(), true);
+                break;
+            case R.id.cardview_home_image:
+                //todo get url from server and replace
+                goToHtmlActivity("http://pollerws.rahbarbazaar.com:2296/poller/v2/support/videos/"
+                        + LocaleManager.getLocale(getResources()).getLanguage(), true);
+                break;
+
+            case R.id.cardview_home_polls:
+                ((MainActivity)getActivity()).onTabSelected(2,false);
+                break;
+        }
+    }
+
+
+    private void goToHtmlActivity(String url, boolean shouldBeLoadUrl) {
+
+        Intent intent = new Intent(getContext(), HtmlLoaderActivity.class);
+        intent.putExtra("url", url);
+        intent.putExtra("surveyDetails", false);
+        intent.putExtra("isShopping", shouldBeLoadUrl);
+        startActivity(intent);
+        getActivity().overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+    }
+
 
 }

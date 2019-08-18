@@ -19,6 +19,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.ShareCompat;
 import android.support.v4.os.ConfigurationCompat;
 import android.support.v4.view.ViewPager;
@@ -96,9 +98,9 @@ public class MainActivity extends CustomBaseActivity implements
     //region of views
 
 
-
     AHBottomNavigation bottom_navigation;
-    ImageView image_drawer, image_instagram, image_telegram,img_backbtmbar_left, img_backbtmbar_centerleft, img_backbtmbar_centerright, img_backbtmbar_right;;
+    ImageView image_drawer, image_instagram, image_telegram, img_backbtmbar_left, img_backbtmbar_centerleft, img_backbtmbar_centerright, img_backbtmbar_right;
+    ;
     DrawerLayout drawer_layout_home;
     NotSwipeableViewPager main_view_pager;
     TextView text_header_date, text_username, text_point, text_notify_count;
@@ -193,10 +195,10 @@ public class MainActivity extends CustomBaseActivity implements
     private void configViews() {
 
 
-        img_backbtmbar_left=findViewById(R.id.img_backbtmbar_left);
-        img_backbtmbar_centerleft=findViewById(R.id.img_backbtmbar_centerleft);
-        img_backbtmbar_centerright=findViewById(R.id.img_backbtmbar_centerright);
-        img_backbtmbar_right=findViewById(R.id.img_backbtmbar_right);
+        img_backbtmbar_left = findViewById(R.id.img_backbtmbar_left);
+        img_backbtmbar_centerleft = findViewById(R.id.img_backbtmbar_centerleft);
+        img_backbtmbar_centerright = findViewById(R.id.img_backbtmbar_centerright);
+        img_backbtmbar_right = findViewById(R.id.img_backbtmbar_right);
 
 
         bottom_navigation = findViewById(R.id.bottom_navigation);
@@ -281,7 +283,6 @@ public class MainActivity extends CustomBaseActivity implements
         bottom_navigation.addItem(item1);
 
 
-
         // Change colors
 //        bottom_navigation.setAccentColor(Color.parseColor("#4587b6"));
 
@@ -334,7 +335,7 @@ public class MainActivity extends CustomBaseActivity implements
 
 //        adapter.addFragment(HomeFragment.newInstance(parcelable, locale));
         adapter.addFragment(HomeFragment1.newInstance(parcelable, locale));
-        adapter.addFragment(SurveyFragment.newInstance(parcelable,locale));
+        adapter.addFragment(SurveyFragment.newInstance(parcelable, locale));
         adapter.addFragment(CartFragment.newInstance(parcelable, locale));
 //        adapter.addFragment(ProfileFragment.Companion.createInstance(parcelable, locale));
         adapter.addFragment(ProfileFragment1.Companion.createInstance(parcelable, locale));
@@ -563,7 +564,6 @@ public class MainActivity extends CustomBaseActivity implements
                 }
 
 
-
                 break;
 
             case R.id.linear_shopping:
@@ -646,11 +646,6 @@ public class MainActivity extends CustomBaseActivity implements
         }
 
     }
-
-
-
-
-
 
 
     //create confirm exit dialog
@@ -743,22 +738,22 @@ public class MainActivity extends CustomBaseActivity implements
     @Override
     public boolean onTabSelected(int position, boolean wasSelected) {
 
-        if(position==3){
+        if (position == 3) {
             img_backbtmbar_right.setVisibility(View.VISIBLE);
             img_backbtmbar_centerleft.setVisibility(View.GONE);
             img_backbtmbar_centerright.setVisibility(View.GONE);
             img_backbtmbar_left.setVisibility(View.GONE);
-        }else if(position==2){
+        } else if (position == 2) {
             img_backbtmbar_right.setVisibility(View.GONE);
             img_backbtmbar_centerleft.setVisibility(View.GONE);
             img_backbtmbar_centerright.setVisibility(View.VISIBLE);
             img_backbtmbar_left.setVisibility(View.GONE);
-        }else if(position==1){
+        } else if (position == 1) {
             img_backbtmbar_right.setVisibility(View.GONE);
             img_backbtmbar_centerleft.setVisibility(View.VISIBLE);
             img_backbtmbar_centerright.setVisibility(View.GONE);
             img_backbtmbar_left.setVisibility(View.GONE);
-        }else if(position==0){
+        } else if (position == 0) {
             img_backbtmbar_right.setVisibility(View.GONE);
             img_backbtmbar_centerleft.setVisibility(View.GONE);
             img_backbtmbar_centerright.setVisibility(View.GONE);
@@ -766,7 +761,7 @@ public class MainActivity extends CustomBaseActivity implements
         }
 
 
-        if (!wasSelected) {
+//        if (!wasSelected) { //remove this clause bacause of onclick in home fragment
 
             if (position == 0 && prefrence != null && prefrence.getType().equals("1"))
                 dialogFactory.createNoRegisterDialog(drawer_layout_home, MainActivity.this);
@@ -775,7 +770,7 @@ public class MainActivity extends CustomBaseActivity implements
 
             if (position == 2)
                 bottom_navigation.setNotification("", 2);
-        }
+//        }
 
         return true;
     }
@@ -888,4 +883,11 @@ public class MainActivity extends CustomBaseActivity implements
         super.onResume();
         registerReceiver(connectivityReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
     }
+
+
+//    public void replaceFragment(Fragment fragment){
+//        FragmentTransaction t = getSupportFragmentManager().beginTransaction();
+//        t.replace(R.id.main_view_pager, fragment).addToBackStack(null);
+//        t.commit();
+//    }
 }

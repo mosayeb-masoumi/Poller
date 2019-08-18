@@ -1,50 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:id="@+id/homeFragment1"
+    android:weightSum="6"
     tools:context=".Ui.fragments.HomeFragment1">
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:padding="@dimen/_2sdp"
+        android:weightSum="2">
+
 
         <android.support.v7.widget.CardView
+            android:id="@+id/cardview_home_video"
             android:layout_width="0dp"
-            android:layout_weight="1"
-            card_view:cardCornerRadius="@dimen/_20sdp"
-            android:layout_marginTop="@dimen/_1sdp"
+            android:layout_height="match_parent"
             android:layout_marginStart="@dimen/_5sdp"
             android:layout_marginEnd="@dimen/_2sdp"
-            android:layout_height="@dimen/_140sdp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_30sdp"
-                    android:background="#CA7D7D"
-                    android:layout_gravity="bottom">
-
-                </RelativeLayout>
-
-            </LinearLayout>
-
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView
-            android:layout_width="0dp"
             android:layout_weight="1"
-            card_view:cardCornerRadius="@dimen/_20sdp"
-            android:layout_marginTop="@dimen/_1sdp"
-            android:layout_marginEnd="@dimen/_5sdp"
-            android:layout_marginStart="@dimen/_2sdp"
-            android:layout_height="@dimen/_140sdp">
+            card_view:cardCornerRadius="@dimen/_20sdp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -52,17 +33,164 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_above="@+id/aa"
-                    android:background="#4CAF50"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/divider_vid">
+
+
+                    <ImageView
+                        android:id="@+id/img_home_video"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#D6CFCF" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:padding="@dimen/_20sdp"
+                        android:src="@drawable/play_icon" />
+
 
                 </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/divider_vid"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_3sdp"
+                    android:layout_above="@+id/vd_bottom"
+                    android:background="#abe1fa"
+                    android:orientation="horizontal" />
+
                 <RelativeLayout
+                    android:id="@+id/vd_bottom"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_30sdp"
-                    android:id="@+id/aa"
-                    android:background="#CA7D7D"
-                    android:layout_alignParentBottom="true">
+                    android:layout_alignParentBottom="true"
+                    android:background="#2e3192"
+                    android:gravity="center">
+
+                    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:gravity="center_vertical"
+                        android:text="@string/text_video"
+                        android:textColor="@color/white_gray"
+                        android:textSize="@dimen/_14ssp" />
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardview_home_image"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_2sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_weight="1"
+            card_view:cardCornerRadius="@dimen/_20sdp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/img_home_whats_up"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/divider_img"
+                    android:background="#D6CFCF" />
+
+                <RelativeLayout
+                    android:id="@+id/divider_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_above="@+id/news_btm"
+                    android:background="#e4b1ff">
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/news_btm"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_alignParentBottom="true"
+                    android:background="#821f9e"
+                    android:gravity="center">
+
+                    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:gravity="center_vertical"
+                        android:text="@string/text_whats_up"
+                        android:textColor="@color/white_gray"
+                        android:textSize="@dimen/_14ssp" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2.7"
+        android:padding="@dimen/_2sdp">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardview_home_polls"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            card_view:cardCornerRadius="@dimen/_20sdp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <ImageView
+                    android:id="@+id/img_home_polls"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/divider_poll"
+                    android:background="#D6CFCF" />
+
+                <RelativeLayout
+                    android:id="@+id/divider_poll"
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_above="@+id/polls_btm"
+                    android:background="#ff9cd0">
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/polls_btm"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_alignParentBottom="true"
+                    android:background="#eb0a8e"
+                    android:gravity="center">
+
+                    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:gravity="center_vertical"
+                        android:text="@string/text_polls"
+                        android:textColor="@color/white_gray"
+                        android:textSize="@dimen/_14ssp" />
 
                 </RelativeLayout>
 
@@ -70,36 +198,238 @@
         </android.support.v7.widget.CardView>
     </LinearLayout>
 
-    <android.support.v7.widget.CardView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_190sdp"
-        card_view:cardCornerRadius="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_2sdp"
-        android:layout_marginStart="@dimen/_5sdp"
-        android:layout_marginEnd="@dimen/_5sdp">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="@dimen/_2sdp">
 
-        <RelativeLayout
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorAccent1">
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_weight="3"
+            card_view:cardCornerRadius="@dimen/_20sdp">
 
-        </RelativeLayout>
-    </android.support.v7.widget.CardView>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_60sdp"
-        card_view:cardCornerRadius="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_2sdp"
-        android:layout_marginStart="@dimen/_5sdp"
-        android:layout_marginEnd="@dimen/_5sdp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/dashboard_btm"
+                    android:background="#dde7ff">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/blue">
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2">
 
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
+                        <ImageView
+                            android:id="@+id/img3"
+                            android:layout_width="@dimen/_25sdp"
+                            android:layout_height="@dimen/_25sdp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:src="@drawable/new_poll" />
+
+                        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                            android:id="@+id/text_home_newpoll"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:gravity="center_vertical"
+                            android:text="@string/text_newPolls"
+                            android:textColor="@color/blue"
+                            android:textSize="@dimen/_10ssp" />
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.03"
+                        android:background="@drawable/home_dashboard_column_gradient">
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2">
+
+                        <ImageView
+                            android:layout_width="@dimen/_25sdp"
+                            android:layout_height="@dimen/_25sdp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:src="@drawable/active_poll" />
+
+                        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                            android:id="@+id/text_home_activepoll"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:gravity="center_vertical"
+                            android:text="@string/text_activePolls"
+                            android:textColor="@color/blue"
+                            android:textSize="@dimen/_10ssp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.03"
+                        android:background="@drawable/home_dashboard_column_gradient">
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2">
+
+                        <ImageView
+                            android:layout_width="@dimen/_25sdp"
+                            android:layout_height="@dimen/_25sdp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:src="@drawable/balance" />
+
+                        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                            android:id="@+id/text_home_balance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:gravity="center_vertical"
+                            android:text="@string/text_balance"
+                            android:textColor="@color/blue"
+                            android:textSize="@dimen/_10ssp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.03"
+                        android:background="@drawable/home_dashboard_column_gradient">
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2">
+
+                        <ImageView
+                            android:layout_width="@dimen/_25sdp"
+                            android:layout_height="@dimen/_25sdp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:src="@drawable/your_point_icon" />
+
+                        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                            android:id="@+id/text_home_yourpoint"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:gravity="center_vertical"
+                            android:text="@string/text_your_point"
+                            android:textColor="@color/blue"
+                            android:textSize="@dimen/_10ssp" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/dashboard_btm"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_alignParentBottom="true"
+                    android:background="#264796"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                            android:id="@+id/text_newpoll_digit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:text="3"
+                            android:textColor="@color/white_gray"
+                            android:textSize="@dimen/_13ssp" />
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                            android:id="@+id/text_activepoll_digit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:text="12"
+                            android:textColor="@color/white_gray"
+                            android:textSize="@dimen/_13ssp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                            android:id="@+id/text_balance_digit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:text="1500"
+                            android:textColor="@color/white_gray"
+                            android:textSize="@dimen/_13ssp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                            android:id="@+id/text_yourpoint_digit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:text="100"
+                            android:textColor="@color/white_gray"
+                            android:textSize="@dimen/_13ssp" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
 
 </LinearLayout>

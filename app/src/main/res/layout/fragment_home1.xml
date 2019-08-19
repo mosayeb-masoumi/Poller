@@ -234,7 +234,7 @@
                             android:layout_height="@dimen/_25sdp"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="@dimen/_2sdp"
-                            android:src="@drawable/new_poll" />
+                            android:src="@drawable/prize" />
 
                         <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                             android:id="@+id/text_home_newpoll"
@@ -244,7 +244,7 @@
                             android:layout_centerHorizontal="true"
                             android:layout_marginStart="@dimen/_10sdp"
                             android:gravity="center_vertical"
-                            android:text="@string/text_newPolls"
+                            android:text="@string/text_leftday"
                             android:textColor="@color/blue"
                             android:textSize="@dimen/_10ssp" />
 
@@ -406,7 +406,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:layout_centerVertical="true"
-                            android:text="1500"
+                            android:text="0"
                             android:textColor="@color/white_gray"
                             android:textSize="@dimen/_13ssp" />
                     </RelativeLayout>
@@ -422,7 +422,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:layout_centerVertical="true"
-                            android:text="100"
+                            android:text="0"
                             android:textColor="@color/white_gray"
                             android:textSize="@dimen/_13ssp" />
                     </RelativeLayout>

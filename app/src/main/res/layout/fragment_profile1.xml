@@ -30,7 +30,7 @@
                     android:layout_centerHorizontal="true"
                     android:gravity="center"
                     android:textStyle="bold"
-                    android:text="پروفایل"
+                    android:text="@string/profile_tab"
                     android:textColor="@color/colorAccent1"
                     android:textSize="@dimen/_18ssp" />
 

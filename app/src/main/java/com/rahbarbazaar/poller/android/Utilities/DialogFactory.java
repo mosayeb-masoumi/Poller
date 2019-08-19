@@ -51,7 +51,8 @@ public class DialogFactory {
     public void createSurveyDetailsDialog(DialogFactoryInteraction listener, SurveyMainModel data, View root, String button_title) {
 
         if (context != null) {
-            View customLayout = LayoutInflater.from(context).inflate(R.layout.survey_details_dialog, (ViewGroup) root, false);
+//            View customLayout = LayoutInflater.from(context).inflate(R.layout.survey_details_dialog, (ViewGroup) root, false);
+            View customLayout = LayoutInflater.from(context).inflate(R.layout.survey_details_dialog1, (ViewGroup) root, false);
             //define views inside of dialog
             TextView text_title = customLayout.findViewById(R.id.text_title);
             TextView text_time = customLayout.findViewById(R.id.text_time);

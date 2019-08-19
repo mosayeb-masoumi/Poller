@@ -77,7 +77,7 @@
     <string name="text_survey_view">مشاهده نظرسنجی</string>
     <string name="text_survey_complete">تکمیل شده</string>
     <string name="text_survey_incomplete">ناقص</string>
-    <string name="text_remaining_day"> روز باقی مانده </string>
+    <string name="text_remaining_day">روز مانده</string>
     <string name="text_accept_terms">برای ورود به برنامه باید قوانین و مقررات را قبول کنید</string>
     <string name="text_subject_empty_error">قسمت توضیحات نمیتواند خالی باشد</string>
     <string name="text_pending">در حال بررسی</string>
@@ -150,6 +150,7 @@
     <string name="text_activePolls">نظرسنجی فعال</string>
     <string name="text_balance">موجودی</string>
     <string name="text_your_point">امتیاز شما</string>
+    <string name="text_leftday">روز مانده</string>
 
 
 

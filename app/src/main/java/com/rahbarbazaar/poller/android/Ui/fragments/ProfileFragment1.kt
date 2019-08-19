@@ -26,6 +26,7 @@ import kotlinx.android.synthetic.main.fragment_profile.*
 
 class ProfileFragment1 : Fragment(), View.OnClickListener {
 
+
     //region of property
     lateinit var provider: ServiceProvider
     lateinit var disposable: CompositeDisposable
@@ -33,6 +34,11 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
     var getCurrencyListResult: GetCurrencyListResult? = null
     var lang: String? = null
     //end of region
+
+
+    var balance: String? =null
+    var score: String? =null
+
 
     companion object {
 
@@ -124,15 +130,21 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
 
                     with(it.items[0]) {
 
-//                        text_point.text = result.balance.toString() + " " + if (lang == "fa")
+                        //                        text_point.text = result.balance.toString() + " " + if (lang == "fa")
 //                            currency_name
 //                        else
 //                            en_name
+                        //todo use event bus to sent below data to home fragment
+//                        balance = result.balance.toString()
+//                        score = result.score.toString()
+
+
+
                     }
 
                     with(it.items[1]) {
 
-//                        text_score.text = result.score.toString() + " " + if (lang == "fa")
+                        //                        text_score.text = result.score.toString() + " " + if (lang == "fa")
 //                            currency_name
 //                        else
 //                            en_name
@@ -279,4 +291,7 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
         print(event.toString())
         getUserProfile()
     }
+
+
+
 }

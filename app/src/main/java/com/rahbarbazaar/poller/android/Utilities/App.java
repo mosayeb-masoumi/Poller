@@ -28,5 +28,7 @@ public class App extends MultiDexApplication {
     }
 
     public static String language = "";
+
+
 }
 

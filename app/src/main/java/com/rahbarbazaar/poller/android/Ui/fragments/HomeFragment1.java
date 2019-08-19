@@ -17,6 +17,7 @@ import com.rahbarbazaar.poller.android.Network.ServiceProvider;
 import com.rahbarbazaar.poller.android.R;
 import com.rahbarbazaar.poller.android.Ui.activities.HtmlLoaderActivity;
 import com.rahbarbazaar.poller.android.Ui.activities.MainActivity;
+import com.rahbarbazaar.poller.android.Utilities.App;
 import com.rahbarbazaar.poller.android.Utilities.LocaleManager;
 import com.rahbarbazaar.poller.android.Utilities.NotSwipeableViewPager;
 
@@ -80,6 +81,12 @@ public class HomeFragment1 extends Fragment implements View.OnClickListener {
         cardview_home_image.setOnClickListener(this);
         cardview_home_polls.setOnClickListener(this);
 //         onClick(view);
+
+
+        //todo use event bus to get info from profile fragment and use here
+//        text_yourpoint_digit.setText(pofileFragment1.getScore());
+//        text_balance_digit.setText(pofileFragment1.getBalance());
+
 
         return view;
     }

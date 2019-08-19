@@ -24,6 +24,8 @@
     <color name="colorText">#757575</color>
     <color name="yellow">#fff200</color>
     <color name="blue">#264796</color>
+    <color name="lightBlue">#00c2f3</color>
+    <color name="brown">#6a3901</color>
 
 
 </resources>

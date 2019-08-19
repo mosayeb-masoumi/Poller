@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/survey_fragment"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_53sdp">
+
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:background="@drawable/dialog_btn_shape"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="@string/survey_tab"
+            android:textColor="@color/colorAccent1"
+            android:textSize="@dimen/_18ssp" />
+
+        <ImageView
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_22sdp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/survey_header_icon"/>
+
+    </RelativeLayout>
+
+    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+        android:id="@+id/text_no_active_survey"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="@dimen/dimen_2"
+        android:text="@string/no_active_survey"
+        android:visibility="gone" />
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/survey_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/dimen_2" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</LinearLayout>

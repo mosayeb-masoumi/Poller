@@ -78,7 +78,7 @@
     <string name="text_survey_view">Preview survey</string>
     <string name="text_survey_complete">Completed</string>
     <string name="text_survey_incomplete">InComplete</string>
-    <string name="text_remaining_day"> Remaining days </string>
+    <string name="text_remaining_day">Remaining days</string>
     <string name="text_accept_terms">You should accept terms and conditions to successfully login</string>
     <string name="text_subject_empty_error">The description field can not be empty</string>
     <string name="text_pending">Pending</string>
@@ -152,5 +152,6 @@
     <string name="text_activePolls">active poll</string>
     <string name="text_balance">balance</string>
     <string name="text_your_point">your point</string>
+    <string name="text_leftday">left day</string>
 
 </resources>

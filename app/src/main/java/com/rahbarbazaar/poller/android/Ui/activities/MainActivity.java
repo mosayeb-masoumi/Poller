@@ -53,6 +53,7 @@ import com.rahbarbazaar.poller.android.Network.Service;
 import com.rahbarbazaar.poller.android.Network.ServiceProvider;
 import com.rahbarbazaar.poller.android.R;
 import com.rahbarbazaar.poller.android.Ui.fragments.CartFragment;
+import com.rahbarbazaar.poller.android.Ui.fragments.CartFragment1;
 import com.rahbarbazaar.poller.android.Ui.fragments.HomeFragment;
 import com.rahbarbazaar.poller.android.Ui.fragments.HomeFragment1;
 import com.rahbarbazaar.poller.android.Ui.fragments.ProfileFragment;
@@ -338,7 +339,8 @@ public class MainActivity extends CustomBaseActivity implements
         adapter.addFragment(HomeFragment1.newInstance(parcelable, locale));
 //        adapter.addFragment(SurveyFragment.newInstance(parcelable, locale));
         adapter.addFragment(SurveyFragment1.newInstance(parcelable, locale));
-        adapter.addFragment(CartFragment.newInstance(parcelable, locale));
+//        adapter.addFragment(CartFragment.newInstance(parcelable, locale));
+        adapter.addFragment(CartFragment1.newInstance(parcelable, locale));
 //        adapter.addFragment(ProfileFragment.Companion.createInstance(parcelable, locale));
         adapter.addFragment(ProfileFragment1.Companion.createInstance(parcelable, locale));
 

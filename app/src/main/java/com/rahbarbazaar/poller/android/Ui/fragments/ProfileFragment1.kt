@@ -135,8 +135,8 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
 //                        else
 //                            en_name
                         //todo use event bus to sent below data to home fragment
-//                        balance = result.balance.toString()
-//                        score = result.score.toString()
+                        balance = result.balance.toString()
+                        score = result.score.toString()
 
 
 

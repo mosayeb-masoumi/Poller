@@ -151,10 +151,7 @@
     <string name="text_balance">موجودی</string>
     <string name="text_your_point">امتیاز شما</string>
     <string name="text_leftday">روز مانده</string>
-
-
-
-
+    <string name="wallet_balance">موجودی کیف پول</string>
 
 
 </resources>

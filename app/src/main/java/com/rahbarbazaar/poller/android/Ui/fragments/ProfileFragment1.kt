@@ -83,7 +83,7 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
 //        rl_logout.setOnClickListener(this)
         rl_edit_profile.setOnClickListener(this)
         rl_balance_point.setOnClickListener(this)
-//        rl_point_balance.setOnClickListener(this)
+        rl_point_balance.setOnClickListener(this)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

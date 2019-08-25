@@ -27,8 +27,10 @@ public class CartRecyclerAdapter extends RecyclerView.Adapter<CartHolder> {
     @NonNull
     @Override
     public CartHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+//        return new CartHolder(LayoutInflater.from(viewGroup.getContext()).
+//        inflate(R.layout.cart_rv_items,viewGroup,false), getCurrencyListResult,lang);
         return new CartHolder(LayoutInflater.from(viewGroup.getContext()).
-                inflate(R.layout.cart_rv_items,viewGroup,false), getCurrencyListResult,lang);
+                inflate(R.layout.cart_rv_items1,viewGroup,false), getCurrencyListResult,lang);
     }
 
     @Override

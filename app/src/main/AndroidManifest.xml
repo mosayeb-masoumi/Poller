@@ -34,9 +34,15 @@
         <activity
             android:name=".Ui.activities.ShopActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".Ui.activities.ShopActivity1"
+            android:screenOrientation="portrait" />
         <activity android:name=".Ui.activities.CustomBaseActivity" />
         <activity
             android:name=".Ui.activities.LotteryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Ui.activities.LotteryActivity1"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Ui.activities.MainActivity"

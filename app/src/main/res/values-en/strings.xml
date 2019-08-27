@@ -138,21 +138,22 @@
     <string name="profile_tab">Profile</string>
 
 
-    <string name="enter_your_mobile_number">Enter your Mobile Phone</string>
+    <string name="enter_your_mobile_number">Enter Your Mobile Phone</string>
     <string name="register">Register</string>
     <string name="confirmation">Confirm</string>
     <string name="enter">Enter</string>
     <string name="text_access_upgrade">User Access Upgrade</string>
-    <string name="convert_toman">convert toman</string>
-    <string name="convert_papasi">convert papasi</string>
+    <string name="convert_toman">Convert Toman</string>
+    <string name="convert_papasi">Convert Papasi</string>
     <string name="text_polls">Polls</string>
-    <string name="text_whats_up">whats up</string>
-    <string name="text_video">videos</string>
-    <string name="text_newPolls">new poll</string>
-    <string name="text_activePolls">active poll</string>
-    <string name="text_balance">balance</string>
-    <string name="text_your_point">your point</string>
-    <string name="text_leftday">left day</string>
-    <string name="wallet_balance">your wallet balance</string>
+    <string name="text_whats_up">Whats Up</string>
+    <string name="text_video">Videos</string>
+    <string name="text_newPolls">New Poll</string>
+    <string name="text_activePolls">Active Poll</string>
+    <string name="text_balance">Balance</string>
+    <string name="text_your_point">Your Point</string>
+    <string name="text_leftday">Left Day</string>
+    <string name="wallet_balance">Your Wallet Balance</string>
+    <string name="text_yearly_lottery">Yearly Lottery</string>
 
 </resources>

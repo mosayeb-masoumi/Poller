@@ -13,7 +13,8 @@ class ShopRecyclerAdapter(private val shopList: List<GetShopListResult>, val lis
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShopViewHolder {
 
-        val shopView = LayoutInflater.from(parent.context).inflate(R.layout.shop_rv_items, parent, false)
+//        val shopView = LayoutInflater.from(parent.context).inflate(R.layout.shop_rv_items, parent, false)
+        val shopView = LayoutInflater.from(parent.context).inflate(R.layout.shop_rv_items1, parent, false)
 
         return ShopViewHolder(shopView, listener)
     }

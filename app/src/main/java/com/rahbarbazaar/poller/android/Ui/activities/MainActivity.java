@@ -572,7 +572,8 @@ public class MainActivity extends CustomBaseActivity implements
 
             case R.id.linear_shopping:
 
-                startActivityForResult(new Intent(this, ShopActivity.class), SHOP_ACTIVITY_REQUEST);
+//                startActivityForResult(new Intent(this, ShopActivity.class), SHOP_ACTIVITY_REQUEST);
+                startActivityForResult(new Intent(this, ShopActivity1.class), SHOP_ACTIVITY_REQUEST);
                 MainActivity.this.overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                 break;
 
@@ -643,7 +644,8 @@ public class MainActivity extends CustomBaseActivity implements
                 break;
 
             case R.id.linear_lottery:
-                startActivityForResult(new Intent(this, LotteryActivity.class), LOTTERY_ACTIVITY_REGUEST);
+//                startActivityForResult(new Intent(this, LotteryActivity.class), LOTTERY_ACTIVITY_REGUEST);
+                startActivityForResult(new Intent(MainActivity.this, LotteryActivity1.class), LOTTERY_ACTIVITY_REGUEST);
                 MainActivity.this.overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                 break;
 

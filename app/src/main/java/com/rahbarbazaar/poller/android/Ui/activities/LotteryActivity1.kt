@@ -287,4 +287,6 @@ class LotteryActivity1 : CustomBaseActivity(),
         super.onDestroy()
     }
 
+
+    ///Tests
 }

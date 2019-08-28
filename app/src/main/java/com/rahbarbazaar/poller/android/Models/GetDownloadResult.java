@@ -15,7 +15,8 @@ public class GetDownloadResult {
      *
      */
 
-    private String version,url,bazaar_url,play_url;
+    private String version,url,bazaar_url,play_url,force_update;
+//    private String version,url,bazaar_url,play_url;
 
     public String getBazaar_url() {
         return bazaar_url;
@@ -47,5 +48,13 @@ public class GetDownloadResult {
 
     public void setVersion(String version) {
         this.version = version;
+    }
+
+    public String getForce_update() {
+        return force_update;
+    }
+
+    public void setForce_update(String force_update) {
+        this.force_update = force_update;
     }
 }

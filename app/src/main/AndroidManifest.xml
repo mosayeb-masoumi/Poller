@@ -32,6 +32,9 @@
             android:name=".Ui.activities.NotificationActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".Ui.activities.NotificationActivity1"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".Ui.activities.ShopActivity"
             android:screenOrientation="portrait" />
         <activity

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,191 +12,278 @@
         android:orientation="vertical">
 
 
+        <RelativeLayout
+            android:id="@+id/header_market"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_65sdp"
+            android:background="#ffffff">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_65sdp"
-        android:background="#ffffff"
-        android:id="@+id/header_market">
+            <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                android:id="@+id/text_title"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/dialog_btn_shape"
+                android:gravity="center"
+                android:text="@string/text_lottery"
+                android:textColor="@color/colorAccent1"
+                android:textSize="@dimen/_18ssp"
+                android:textStyle="bold" />
 
-        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
-            android:id="@+id/text_title"
-            android:layout_width="@dimen/_100sdp"
-            android:layout_height="@dimen/_40sdp"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/dialog_btn_shape"
-            android:text="@string/text_lottery"
-            android:textColor="@color/colorAccent1"
-            android:textSize="@dimen/_18ssp" />
+            <ImageView
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/lottery_header_icon" />
+        </RelativeLayout>
 
-        <ImageView
-            android:layout_width="@dimen/_100sdp"
-            android:layout_height="@dimen/_22sdp"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/lottery_header_icon"/>
-    </RelativeLayout>
-
-
-
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="#fff"
-        android:orientation="vertical"
-        android:layout_weight="2">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:orientation="vertical"
-            android:layout_weight="1">
+            android:layout_weight="2"
+            android:background="#fff"
+            android:orientation="vertical">
+
 
             <RelativeLayout
+                android:id="@+id/rl_yearly_lottery"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_2sdp"
                 android:orientation="vertical">
+
                 <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                    android:id="@+id/txt_title_lottery_yearly"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_25sdp"
-                    android:id="@+id/txt_title_lottery_yearly"
-                    android:layout_marginEnd="@dimen/_15sdp"
                     android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:background="@drawable/bg_lottery_yearly"
                     android:gravity="center"
-                    android:background="@drawable/bg_lottery_active"
                     android:text="@string/text_yearly_lottery"
                     android:textColor="@color/white_gray"
                     android:textSize="@dimen/font_15" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="@dimen/_30sdp"
                     android:layout_below="@+id/txt_title_lottery_yearly"
-                    android:layout_marginEnd="@dimen/_15sdp"
-                    android:layout_marginTop="@dimen/_1sdp"
                     android:layout_marginStart="@dimen/_15sdp"
-                    android:background="@drawable/bg_lottery_active_item">
+                    android:layout_marginTop="@dimen/_1sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:background="@drawable/bg_lottery_yearly_item">
 
                 </LinearLayout>
             </RelativeLayout>
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:orientation="vertical"
-            android:layout_weight="1.2">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_2sdp"
                 android:orientation="vertical">
+
                 <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                    android:id="@+id/txt_title_activelottery"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_25sdp"
-                    android:id="@+id/txt_title_activelottery"
-                    android:layout_marginEnd="@dimen/_15sdp"
                     android:layout_marginStart="@dimen/_15sdp"
-                    android:gravity="center"
+                    android:layout_marginEnd="@dimen/_15sdp"
                     android:background="@drawable/bg_lottery_active"
+                    android:gravity="center"
                     android:text="@string/text_current_lottery"
                     android:textColor="@color/white_gray"
                     android:textSize="@dimen/font_15" />
 
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_below="@+id/txt_title_activelottery"
-                    android:layout_marginEnd="@dimen/_15sdp"
-                    android:layout_marginTop="@dimen/_1sdp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_15sdp"
-                    android:background="@drawable/bg_lottery_active_item">
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:background="@drawable/bg_lottery_active_item"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_2sdp"
+                        android:layout_marginTop="@dimen/_1sdp"
+                        android:layout_marginEnd="@dimen/_2sdp"
+                        android:layout_marginBottom="@dimen/_3sdp"
+                        android:orientation="horizontal">
+
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_30sdp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:textDirection="rtl">
+
+                            <ImageView
+                                android:id="@+id/img_lottery_info"
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/_17sdp"
+                                android:layout_weight="0.3"
+                                android:src="@drawable/bg_lottery_info_icon" />
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/_17sdp"
+                                android:layout_weight="0.3"
+                                android:src="@drawable/bg_lottery_prize_icon" />
+
+                            <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                                android:id="@+id/tv_lottery_title"
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/_30sdp"
+                                android:layout_weight="1.2"
+                                android:gravity="center"
+                                android:textSize="@dimen/_10ssp"
+                                tools:text="تست عنوان" />
+
+
+                            <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/_30sdp"
+                                android:layout_marginStart="@dimen/dimen_3"
+                                android:layout_marginEnd="@dimen/dimen_5"
+                                android:gravity="center"
+                                android:text="@string/text_participation_amount"
+                                android:textSize="@dimen/_10ssp" />
+
+                            <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                                android:id="@+id/tv_lottery_amount"
+                                android:layout_width="@dimen/_30sdp"
+                                android:layout_height="wrap_content"
+                                android:text="200"
+                                android:textSize="@dimen/_10ssp" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linear_actions"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_2sdp"
+                        android:orientation="horizontal">
+
+
+                        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                            android:id="@+id/tv_cancel"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/dimen_34"
+                            android:layout_marginStart="@dimen/dimen_7"
+                            android:layout_weight="1"
+                            android:background="@drawable/dialog_btn_shape"
+                            android:gravity="center"
+                            android:text="@string/cancel_text"
+                            android:textColor="@color/blue"
+                            android:visibility="gone" />
+
+                        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                            android:id="@+id/tv_take_part"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/dimen_34"
+                            android:layout_marginStart="@dimen/dimen_7"
+                            android:layout_marginEnd="@dimen/dimen_7"
+                            android:layout_weight="1"
+                            android:background="@drawable/dialog_btn_shape"
+                            android:gravity="center"
+                            android:text="@string/text_lottery_join"
+                            android:textColor="@color/blue" />
+                    </LinearLayout>
 
                 </LinearLayout>
-            </RelativeLayout>
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2.3"
-            android:orientation="vertical">
+            </LinearLayout>
+
+
             <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_25sdp"
-                android:layout_marginEnd="@dimen/_15sdp"
                 android:layout_marginStart="@dimen/_15sdp"
-                android:gravity="center"
+                android:layout_marginEnd="@dimen/_15sdp"
                 android:background="@drawable/bg_lottery_past"
+                android:gravity="center"
                 android:text="@string/text_pre_lottery"
                 android:textColor="@color/white_gray"
                 android:textSize="@dimen/font_15" />
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/lottery_recycler"
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_3sdp"
                 android:layout_marginEnd="@dimen/_15sdp"
-                android:layout_marginStart="@dimen/_15sdp"
-                android:padding="@dimen/dimen_3" />
+                android:padding="@dimen/dimen_3">
+
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/lottery_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <com.wang.avi.AVLoadingIndicatorView
+                    android:id="@+id/av_loading"
+                    android:layout_width="@dimen/dimen_20"
+                    android:layout_height="@dimen/dimen_20"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    app:indicatorName="BallPulseSyncIndicator" />
+
+            </RelativeLayout>
         </LinearLayout>
 
-
-
-    </LinearLayout>
-
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:elevation="0dp"
-        android:layout_weight="0.8">
-
-        <ImageView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="fitXY"
-            android:layout_marginBottom="@dimen/_30sdp"
-            android:src="@drawable/lorrety_device_icon"/>
+            android:layout_height="0dp"
+            android:layout_weight="0.8"
+            android:elevation="0dp">
 
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_alignParentBottom="true"
-            android:id="@+id/llbtom"
-            android:gravity="end"
-            android:background="@drawable/bg_toolbar1"
-            android:layout_height="@dimen/dimen_55">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/_30sdp"
+                android:scaleType="fitXY"
+                android:src="@drawable/lorrety_device_icon" />
 
             <LinearLayout
-                android:id="@+id/linear_exit"
-                android:layout_width="@dimen/dimen_70"
-                android:paddingTop="@dimen/_10sdp"
-                android:paddingBottom="@dimen/_10sdp"
-                android:layout_marginStart="@dimen/_5sdp"
-                android:layout_height="match_parent">
+                android:id="@+id/llbtom"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_55"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/bg_toolbar1"
+                android:gravity="end">
 
-                <ImageView
-                    android:src="@drawable/arrow_left"
-                    android:layout_centerVertical="true"
-                    android:id="@+id/image_exit"
-                    android:layout_width="match_parent"
-                    android:tint="@color/main_page_toolbar"
-                    android:layout_gravity="center_vertical"
-                    android:layout_height="match_parent" />
+                <LinearLayout
+                    android:id="@+id/linear_exit"
+                    android:layout_width="@dimen/dimen_70"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:paddingTop="@dimen/_10sdp"
+                    android:paddingBottom="@dimen/_10sdp">
+
+                    <ImageView
+                        android:id="@+id/image_exit"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/arrow_left"
+                        android:tint="@color/main_page_toolbar" />
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
-
-    </RelativeLayout>
-
-
+        </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

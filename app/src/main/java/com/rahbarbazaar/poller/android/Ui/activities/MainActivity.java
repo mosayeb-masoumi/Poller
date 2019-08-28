@@ -34,6 +34,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
@@ -157,10 +158,12 @@ public class MainActivity extends CustomBaseActivity implements
 
         GetCurrencyListResult parcelable = getIntent().getParcelableExtra("parcel_data");
 
+
         if (parcelable != null && parcelable.getItems() != null && parcelable.getStatus().equalsIgnoreCase("ok"))
             initializeViewPager(parcelable, locale_name);
         else
             SnackBarFactory.getInstance().showLoginIssueSnackbar(findViewById(R.id.app_bar), this, parcelable);
+
 
         //initial Dialog factory
         dialogFactory = new DialogFactory(MainActivity.this);
@@ -296,7 +299,7 @@ public class MainActivity extends CustomBaseActivity implements
 
         //requred api level min 21
         bottom_navigation.setElevation(0f);
-//
+
 
         // Manage titles
         bottom_navigation.setTitleState(AHBottomNavigation.TitleState.ALWAYS_SHOW);
@@ -436,19 +439,35 @@ public class MainActivity extends CustomBaseActivity implements
                     @Override
                     public void onSuccess(GetDownloadResult result) {
 
-                        String current_version = BuildConfig.VERSION_NAME;
+//                        String current_version = BuildConfig.VERSION_NAME;
+                        int current_version = BuildConfig.VERSION_CODE;
+                        int min_version = Integer.parseInt(result.getForce_update());
+                        int server_version = Integer.parseInt(result.getVersion());
 
 
-                        //todo add optional update
 
-                        if (!result.getVersion().equals(current_version)) {
+//                        if (!result.getVersion().equals(current_version)) {
+//
+//                            //params doesn't useful here
+//                            download_url = result.getUrl();
+//                            update_version = result.getVersion();
+////                            dialog = dialogFactory.createCheckUpdateDialog(drawer_layout_home, MainActivity.this);
+//                            dialog = dialogFactory.createCheckUpdateDialog(drawer_layout_home, MainActivity.this);
+//                        }
 
-                            //params doesn't useful here
+                        if (current_version < min_version) {
+                            Toast.makeText(MainActivity.this, "force", Toast.LENGTH_SHORT).show();
                             download_url = result.getUrl();
                             update_version = result.getVersion();
 //                            dialog = dialogFactory.createCheckUpdateDialog(drawer_layout_home, MainActivity.this);
                             dialog = dialogFactory.createCheckUpdateDialog(drawer_layout_home, MainActivity.this);
                         }
+
+                        if (current_version > min_version && current_version < server_version) {
+                            Toast.makeText(MainActivity.this, "optional", Toast.LENGTH_SHORT).show();
+                        }
+
+
                     }
 
                     @Override
@@ -580,7 +599,8 @@ public class MainActivity extends CustomBaseActivity implements
             case R.id.rl_notification:
             case R.id.linear_notify_drawer: {
 
-                startActivityForResult(new Intent(this, NotificationActivity.class), NOTIFIY_ACTIVITY_REQUEST);
+//                startActivityForResult(new Intent(this, NotificationActivity.class), NOTIFIY_ACTIVITY_REQUEST);
+                startActivityForResult(new Intent(this, NotificationActivity1.class), NOTIFIY_ACTIVITY_REQUEST);
                 MainActivity.this.overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                 break;
             }
@@ -769,13 +789,13 @@ public class MainActivity extends CustomBaseActivity implements
 
 //        if (!wasSelected) { //remove this clause bacause of onclick in home fragment
 
-            if (position == 0 && prefrence != null && prefrence.getType().equals("1"))
-                dialogFactory.createNoRegisterDialog(drawer_layout_home, MainActivity.this);
-            else
-                main_view_pager.setCurrentItem(3 - position, true);
+        if (position == 0 && prefrence != null && prefrence.getType().equals("1"))
+            dialogFactory.createNoRegisterDialog(drawer_layout_home, MainActivity.this);
+        else
+            main_view_pager.setCurrentItem(3 - position, true);
 
-            if (position == 2)
-                bottom_navigation.setNotification("", 2);
+        if (position == 2)
+            bottom_navigation.setNotification("", 2);
 //        }
 
         return true;

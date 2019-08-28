@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/header_market"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_65sdp"
+        android:background="#ffffff">
+
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+            android:id="@+id/text_title"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/dialog_btn_shape"
+            android:gravity="center"
+            android:text="@string/messages_toolbar"
+            android:textColor="@color/colorAccent1"
+            android:textSize="@dimen/_15ssp"
+            android:textStyle="bold" />
+
+
+        <ImageView
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_22sdp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/lottery_header_icon" />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2">
+
+            <com.wang.avi.AVLoadingIndicatorView
+                android:id="@+id/av_loading"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:layout_width="@dimen/dimen_20"
+                android:layout_height="@dimen/dimen_20" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/notify_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.8"
+            android:elevation="0dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/_30sdp"
+                android:scaleType="fitXY"
+                android:src="@drawable/lorrety_device_icon" />
+
+            <LinearLayout
+                android:id="@+id/llbtom"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_55"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/bg_toolbar1"
+                android:gravity="end">
+
+                <LinearLayout
+                    android:id="@+id/linear_exit"
+                    android:layout_width="@dimen/dimen_70"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:paddingTop="@dimen/_10sdp"
+                    android:paddingBottom="@dimen/_10sdp">
+
+                    <ImageView
+                        android:id="@+id/image_exit"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/arrow_left"
+                        android:tint="@color/main_page_toolbar" />
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

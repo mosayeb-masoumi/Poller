@@ -1,51 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?><!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"--><!--xmlns:tools="http://schemas.android.com/tools"--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:layout_margin="@dimen/_5sdp"--><!--android:background="@drawable/dialog_btn_shape"--><!--android:gravity="center"--><!--android:orientation="vertical">-->
 
 
-<!--<RelativeLayout--><!--android:layout_width="match_parent"--><!--android:layout_height="45dp"--><!--android:background="@drawable/dialog_header_shape"--><!--android:gravity="center">-->
-
-<!--<com.rahbarbazaar.poller.android.Utilities.CustomTextView--><!--android:layout_width="wrap_content"--><!--android:layout_height="wrap_content"--><!--android:text="@string/update_app"--><!--android:textColor="@color/white_gray"--><!--android:textSize="@dimen/font_15" />-->
-
-<!--</RelativeLayout>-->
-
-
-<!--<com.rahbarbazaar.poller.android.Utilities.CustomTextView--><!--android:id="@+id/text_body"--><!--android:layout_width="wrap_content"--><!--android:layout_height="wrap_content"--><!--android:layout_marginTop="15dp"--><!--android:gravity="center"--><!--android:lineSpacingMultiplier="1.2"--><!--android:paddingStart="@dimen/dimen_5"--><!--android:paddingEnd="@dimen/dimen_5"--><!--android:textColor="@color/blue"--><!--android:text="@string/download_body_text"--><!--android:textSize="@dimen/font_14" />-->
-
-
-<!--<LinearLayout--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:layout_margin="@dimen/_5sdp"--><!--android:orientation="horizontal">-->
-
-
-<!--<RelativeLayout--><!--android:layout_width="0dp"--><!--android:layout_height="@dimen/dimen_42"--><!--android:layout_marginStart="@dimen/_3sdp"--><!--android:layout_marginEnd="@dimen/_3sdp"--><!--android:layout_weight="1"--><!--android:id="@+id/layout_bazaar"--><!--android:background="@drawable/dialog_btn_shape"--><!--android:orientation="horizontal">-->
-
-<!--<LinearLayout--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--android:gravity="center"--><!--android:orientation="horizontal">-->
-
-<!--<com.rahbarbazaar.poller.android.Utilities.CustomTextView--><!--android:layout_width="wrap_content"--><!--android:layout_height="match_parent"--><!--android:gravity="center"--><!--android:text="@string/cafe_bazar_text"--><!--android:textColor="@color/blue" />--><!--<ImageView--><!--android:layout_width="@dimen/_70sdp"--><!--android:layout_height="match_parent"--><!--android:src="@drawable/cafe_bazar" />-->
-
-
-<!--</LinearLayout>-->
-
-<!--</RelativeLayout>-->
-
-<!--<com.rahbarbazaar.poller.android.Utilities.CustomTextView--><!--android:id="@+id/btn_dl_dialog"--><!--android:layout_width="0dp"--><!--android:layout_height="@dimen/dimen_42"--><!--android:layout_marginStart="@dimen/dimen_2"--><!--android:layout_marginEnd="@dimen/dimen_2"--><!--android:layout_weight="0.4"--><!--android:background="@drawable/dialog_btn_shape"--><!--android:gravity="center"--><!--android:textColor="@color/blue"--><!--android:visibility="gone"--><!--tools:text="دریافت از لینک مستقیم" />-->
-
-
-<!--<RelativeLayout--><!--android:layout_width="0dp"--><!--android:layout_height="@dimen/dimen_42"--><!--android:layout_marginStart="@dimen/_3sdp"--><!--android:layout_marginEnd="@dimen/_3sdp"--><!--android:layout_weight="1"--><!--android:id="@+id/layout_gplay"--><!--android:background="@drawable/dialog_btn_shape"--><!--android:orientation="horizontal">-->
-
-<!--<LinearLayout--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--android:gravity="center"--><!--android:orientation="horizontal">-->
-
-<!--<com.rahbarbazaar.poller.android.Utilities.CustomTextView--><!--android:layout_width="wrap_content"--><!--android:layout_height="match_parent"--><!--android:gravity="center"--><!--android:text="@string/google_play_text"--><!--android:textColor="@color/blue" />--><!--<ImageView--><!--android:layout_width="@dimen/_50sdp"--><!--android:layout_height="match_parent"--><!--android:src="@drawable/google_play" />-->
-
-
-<!--</LinearLayout>-->
-
-<!--</RelativeLayout>-->
-
-<!--</LinearLayout>-->
-
-<!--</LinearLayout>-->
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="@dimen/_5sdp"
     android:background="@drawable/dialog_btn_shape"
     android:gravity="center"
@@ -81,155 +40,6 @@
         android:textSize="@dimen/font_14" />
 
 
-    <!--<LinearLayout-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_marginTop="@dimen/dimen_40"-->
-    <!--android:layout_marginBottom="@dimen/dimen_10"-->
-    <!--android:orientation="horizontal">-->
-
-
-    <!--<com.rahbarbazaar.poller.android.Utilities.CustomTextView-->
-    <!--android:id="@+id/btn_cancel_dialog"-->
-    <!--android:layout_width="0dp"-->
-    <!--android:layout_weight="1"-->
-    <!--android:layout_marginStart="@dimen/dimen_10"-->
-    <!--android:layout_height="@dimen/dimen_42"-->
-    <!--android:background="@drawable/dialog_btn_shape"-->
-    <!--android:textColor="@color/blue"-->
-    <!--android:gravity="center"-->
-    <!--android:text="@string/cancel_text" />-->
-
-    <!--<com.rahbarbazaar.poller.android.Utilities.CustomTextView-->
-    <!--android:id="@+id/btn_exit_dialog"-->
-    <!--android:layout_width="0dp"-->
-    <!--android:layout_height="@dimen/dimen_42"-->
-    <!--android:layout_marginStart="@dimen/dimen_10"-->
-    <!--android:layout_marginEnd="@dimen/dimen_10"-->
-    <!--android:layout_weight="1"-->
-    <!--android:textColor="@color/blue"-->
-    <!--android:background="@drawable/dialog_btn_shape"-->
-    <!--android:gravity="center"-->
-    <!--android:text="@string/report_issue" />-->
-
-    <!--</LinearLayout>-->
-
-
-    <!--<LinearLayout-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_margin="@dimen/_5sdp"-->
-    <!--android:orientation="horizontal">-->
-
-
-    <!--<RelativeLayout-->
-    <!--android:layout_width="0dp"-->
-    <!--android:layout_height="@dimen/dimen_42"-->
-    <!--android:layout_marginStart="@dimen/_3sdp"-->
-    <!--android:layout_marginEnd="@dimen/_3sdp"-->
-    <!--android:layout_weight="1"-->
-    <!--android:id="@+id/layout_bazaar"-->
-    <!--android:background="@drawable/dialog_btn_shape"-->
-    <!--android:orientation="horizontal">-->
-
-    <!--<LinearLayout-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:gravity="center"-->
-    <!--android:orientation="horizontal">-->
-
-    <!--<com.rahbarbazaar.poller.android.Utilities.CustomTextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:gravity="center"-->
-    <!--android:text="@string/cafe_bazar_text"-->
-    <!--android:textColor="@color/blue" />-->
-    <!--<ImageView-->
-    <!--android:layout_width="@dimen/_70sdp"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:src="@drawable/cafe_bazar" />-->
-
-
-    <!--</LinearLayout>-->
-
-    <!--</RelativeLayout>-->
-
-    <!--<com.rahbarbazaar.poller.android.Utilities.CustomTextView-->
-    <!--android:id="@+id/btn_dl_dialog"-->
-    <!--android:layout_width="0dp"-->
-    <!--android:layout_height="@dimen/dimen_42"-->
-    <!--android:layout_marginStart="@dimen/dimen_2"-->
-    <!--android:layout_marginEnd="@dimen/dimen_2"-->
-    <!--android:layout_weight="0.4"-->
-    <!--android:background="@drawable/dialog_btn_shape"-->
-    <!--android:gravity="center"-->
-    <!--android:textColor="@color/blue"-->
-    <!--android:visibility="gone"-->
-    <!--tools:text="دریافت از لینک مستقیم" />-->
-
-
-    <!--<RelativeLayout-->
-    <!--android:layout_width="0dp"-->
-    <!--android:layout_height="@dimen/dimen_42"-->
-    <!--android:layout_marginStart="@dimen/_3sdp"-->
-    <!--android:layout_marginEnd="@dimen/_3sdp"-->
-    <!--android:layout_weight="1"-->
-    <!--android:id="@+id/layout_gplay"-->
-    <!--android:background="@drawable/dialog_btn_shape"-->
-    <!--android:orientation="horizontal">-->
-
-    <!--<LinearLayout-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:gravity="center"-->
-    <!--android:orientation="horizontal">-->
-
-    <!--<com.rahbarbazaar.poller.android.Utilities.CustomTextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:gravity="center"-->
-    <!--android:text="@string/google_play_text"-->
-    <!--android:textColor="@color/blue" />-->
-    <!--<ImageView-->
-    <!--android:layout_width="@dimen/_50sdp"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:src="@drawable/google_play" />-->
-
-
-    <!--</LinearLayout>-->
-
-    <!--</RelativeLayout>-->
-
-    <!--</LinearLayout>-->
-
-
-    <!--<RelativeLayout-->
-    <!--android:layout_width="0dp"-->
-    <!--android:layout_height="@dimen/dimen_42"-->
-    <!--android:layout_marginStart="@dimen/_3sdp"-->
-    <!--android:layout_marginEnd="@dimen/_3sdp"-->
-    <!--android:layout_weight="1"-->
-    <!--android:id="@+id/layout_bazaar"-->
-    <!--android:background="@drawable/dialog_btn_shape"-->
-    <!--android:orientation="horizontal">-->
-
-    <!--<LinearLayout-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:gravity="center"-->
-    <!--android:orientation="horizontal">-->
-
-    <!--<com.rahbarbazaar.poller.android.Utilities.CustomTextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:gravity="center"-->
-    <!--android:text="@string/cafe_bazar_text"-->
-    <!--android:textColor="@color/blue" />-->
-    <!--<ImageView-->
-    <!--android:layout_width="@dimen/_70sdp"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:src="@drawable/cafe_bazar" />-->
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -238,27 +48,70 @@
         android:orientation="horizontal">
 
 
+        <!--<RelativeLayout-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="@dimen/_42sdp"-->
+            <!--android:background="@drawable/dialog_btn_shape"-->
+            <!--android:id="@+id/layout_bazaar"-->
+            <!--android:layout_marginEnd="@dimen/_2sdp"-->
+            <!--android:layout_weight="1">-->
+
+           <!--<LinearLayout-->
+               <!--android:layout_width="match_parent"-->
+               <!--android:layout_height="match_parent">-->
+
+               <!--<ImageView-->
+                   <!--android:layout_width="wrap_content"-->
+                   <!--android:layout_height="wrap_content"-->
+                   <!--android:src="@drawable/cafe_bazar"/>-->
+           <!--</LinearLayout>-->
+
+        <!--</RelativeLayout>-->
+
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="@dimen/_42sdp"
+            android:background="@drawable/dialog_btn_shape"
+            android:id="@+id/layout_bazaar"
+            android:layout_marginStart="@dimen/_70sdp"
+            android:layout_marginEnd="@dimen/_70sdp"
             android:layout_weight="1">
 
-           <LinearLayout
-               android:layout_width="match_parent"
-               android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-               <ImageView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:src="@drawable/cafe_bazar"/>
-           </LinearLayout>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/cafe_bazar"/>
+            </LinearLayout>
 
         </RelativeLayout>
 
 
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+            android:id="@+id/btn_dl_dialog"
+            android:layout_width="0dp"
+            android:visibility="gone"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/dimen_2"
+            android:layout_marginEnd="@dimen/dimen_2"
+            android:layout_weight="0.4"
+            android:background="@drawable/dialog_btn_shape"
+            android:gravity="center"
+            tools:text="دریافت از لینک مستقیم"
+            android:textColor="@color/blue" />
+
+
+
         <RelativeLayout
             android:layout_width="0dp"
-            android:layout_height="@dimen/_42sdp"
+            android:layout_height="match_parent"
+            android:background="@drawable/dialog_btn_shape"
+            android:id="@+id/layout_gplay"
+            android:visibility="gone"
+            android:layout_marginStart="@dimen/_2sdp"
             android:layout_weight="1">
 
             <LinearLayout
@@ -271,86 +124,6 @@
                     android:src="@drawable/google_play"/>
             </LinearLayout>
         </RelativeLayout>
-
-        <!--<RelativeLayoutandroid-->
-        <!--:layout_width="0dp"-->
-        <!--android:layout_height="@dimen/dimen_42"-->
-        <!--android:layout_marginStart="@dimen/_3sdp"-->
-        <!--android:layout_marginEnd="@dimen/_3sdp"-->
-        <!--android:layout_weight="1"-->
-        <!--android:id="@+id/layout_bazaar"-->
-        <!--android:background="@drawable/dialog_btn_shape"-->
-        <!--android:orientation="horizontal">-->
-
-        <!--<LinearLayoutandroid :layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:gravity="center"-->
-        <!--android:orientation="horizontal">-->
-
-        <!--<com.rahbarbazaar.poller.android.Utilities.CustomTextViewandroid-->
-        <!--:layout_width="wrap_content"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:gravity="center"-->
-        <!--android:text="@string/cafe_bazar_text"-->
-        <!--android:textColor="@color/blue" />-->
-        <!--<ImageViewandroid-->
-        <!--:layout_width="@dimen/_70sdp"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:src="@drawable/cafe_bazar" />-->
-
-
-        <!--</LinearLayout>-->
-
-        <!--</RelativeLayout>-->
-
-        <!--<com.rahbarbazaar.poller.android.Utilities.CustomTextViewandroid-->
-        <!--:id="@+id/btn_dl_dialog"-->
-        <!--android:layout_width="0dp"-->
-        <!--android:layout_height="@dimen/dimen_42"-->
-        <!--android:layout_marginStart="@dimen/dimen_2"-->
-        <!--android:layout_marginEnd="@dimen/dimen_2"-->
-        <!--android:layout_weight="0.4"-->
-        <!--android:background="@drawable/dialog_btn_shape"-->
-        <!--android:gravity="center"-->
-        <!--android:textColor="@color/blue"-->
-        <!--android:visibility="gone"-->
-        <!--tools:text="دریافت از لینک مستقیم" />-->
-
-
-        <!--<RelativeLayoutandroid-->
-        <!--:layout_width="0dp"-->
-        <!--android:layout_height="@dimen/dimen_42"-->
-        <!--android:layout_marginStart="@dimen/_3sdp"-->
-        <!--android:layout_marginEnd="@dimen/_3sdp"-->
-        <!--android:layout_weight="1"-->
-        <!--android:id="@+id/layout_gplay"-->
-        <!--android:background="@drawable/dialog_btn_shape"-->
-        <!--android:orientation="horizontal">-->
-
-        <!--<LinearLayoutandroid-->
-        <!--:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:gravity="center"-->
-        <!--android:orientation="horizontal">-->
-
-        <!--<com.rahbarbazaar.poller.android.Utilities.CustomTextViewandroid-->
-        <!--:layout_width="wrap_content"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:gravity="center"-->
-        <!--android:text="@string/google_play_text"-->
-        <!--android:textColor="@color/blue" />-->
-        <!--<ImageViewandroid-->
-        <!--:layout_width="@dimen/_50sdp"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:src="@drawable/google_play" />-->
-
-
-        <!--</LinearLayout>-->
-
-        <!--</RelativeLayout>-->
-
-        <!--</LinearLayout>-->
-
 
     </LinearLayout>
 

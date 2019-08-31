@@ -15,10 +15,9 @@
         android:background="@drawable/dialog_header_shape"
         android:gravity="center">
         <com.rahbarbazaar.poller.android.Utilities.CustomTextView
-            android:id="@+id/text_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/text_select_lang"
+            android:text="@string/text_select_lang_header"
             android:textColor="@color/white_gray"
             android:textSize="@dimen/font_15" />
     </RelativeLayout>
@@ -32,10 +31,20 @@
         <!--android:text="@string/text_select_lang"-->
         <!--android:textSize="@dimen/font_15" />-->
 
+    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+        android:id="@+id/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="@string/text_select_lang"
+        android:textColor="@color/blue"
+        android:textSize="@dimen/font_15" />
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_40"
+        android:layout_marginTop="@dimen/dimen_20"
         android:layout_marginBottom="@dimen/dimen_10"
         android:orientation="horizontal">
 

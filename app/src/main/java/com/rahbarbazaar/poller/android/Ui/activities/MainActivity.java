@@ -108,8 +108,8 @@ public class MainActivity extends CustomBaseActivity implements
     NotSwipeableViewPager main_view_pager;
     TextView text_header_date, text_username, text_point, text_notify_count;
     LinearLayout linear_invite_friend, linear_exit, linear_shopping, linear_notify_drawer, linear_change_lang,
-            linear_support, linear_report_issue, linear_faq, linear_videos, linear_submenu, linear_lottery;
-    RelativeLayout rl_notification;
+            linear_support, linear_report_issue, linear_faq, linear_videos, linear_submenu, linear_lottery, ll_drawer;
+    RelativeLayout rl_notification, rl_curvedbottom;
     RecyclerView drawer_rv;
 
     //end of region
@@ -124,7 +124,7 @@ public class MainActivity extends CustomBaseActivity implements
     DrawerRecyclerAdapter adapter;
     Service service;
     DialogFactory dialogFactory;
-    String download_url, update_version = null;
+    String download_url, update_version = null, locale_name;
     final int WRITE_PERMISSION_REQUEST = 14;
     final int NOTIFIY_ACTIVITY_REQUEST = 18;
     final int LOTTERY_ACTIVITY_REGUEST = 20;
@@ -144,16 +144,28 @@ public class MainActivity extends CustomBaseActivity implements
 
         //pushe services
         Pushe.initialize(this, true);
+        String pusheId = Pushe.getPusheId(MainActivity.this);
 
         disposable = new CompositeDisposable();
         service = new ServiceProvider(this).getmService();
-        String locale_name = ConfigurationCompat.getLocales(getResources().getConfiguration()).get(0).getLanguage();
+        locale_name = ConfigurationCompat.getLocales(getResources().getConfiguration()).get(0).getLanguage();
 
         //call init methods
         configViews();
         configDrawerRv();
         getDrawerPages(locale_name);
         initializeBottomNavigation();
+
+
+        if (locale_name.equals("fa")) {
+            getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+            ll_drawer.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+        } else if (locale_name.equals("en")) {
+            getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+            ll_drawer.setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+        }
+
+
         getNotifyCount();
 
         GetCurrencyListResult parcelable = getIntent().getParcelableExtra("parcel_data");
@@ -194,6 +206,7 @@ public class MainActivity extends CustomBaseActivity implements
         if (tools.checkPackageInstalled("com.instagram.android", this))
             image_instagram.setVisibility(View.INVISIBLE);
 
+
     }
 
     //define view and click listener of activity here
@@ -228,6 +241,9 @@ public class MainActivity extends CustomBaseActivity implements
         drawer_rv = findViewById(R.id.drawer_rv);
         text_notify_count = findViewById(R.id.text_notify_count);
         text_username = findViewById(R.id.text_username);
+
+        ll_drawer = findViewById(R.id.ll_drawer);
+        rl_curvedbottom = findViewById(R.id.rl_curvedbottom);
         //text_point = findViewById(R.id.text_point);
 
         image_drawer.setOnClickListener(this);
@@ -445,7 +461,6 @@ public class MainActivity extends CustomBaseActivity implements
                         int server_version = Integer.parseInt(result.getVersion());
 
 
-
 //                        if (!result.getVersion().equals(current_version)) {
 //
 //                            //params doesn't useful here
@@ -456,6 +471,7 @@ public class MainActivity extends CustomBaseActivity implements
 //                        }
 
                         if (current_version < min_version) {
+//                        if (current_version < 17) {
                             Toast.makeText(MainActivity.this, "force", Toast.LENGTH_SHORT).show();
                             download_url = result.getUrl();
                             update_version = result.getVersion();
@@ -464,11 +480,14 @@ public class MainActivity extends CustomBaseActivity implements
                         }
 
                         if (current_version > min_version && current_version < server_version) {
-                            Toast.makeText(MainActivity.this, "optional", Toast.LENGTH_SHORT).show();
+//                        if (current_version > min_version && current_version < 17) {
+                            download_url = result.getUrl();
+                            update_version = result.getVersion();
+//                            Toast.makeText(MainActivity.this, "optional", Toast.LENGTH_SHORT).show();
+                            dialog = dialogFactory.createCheckUpdateOptionalDialog(drawer_layout_home, MainActivity.this);
                         }
-
-
                     }
+
 
                     @Override
                     public void onError(Throwable e) {
@@ -764,27 +783,52 @@ public class MainActivity extends CustomBaseActivity implements
     @Override
     public boolean onTabSelected(int position, boolean wasSelected) {
 
-        if (position == 3) {
-            img_backbtmbar_right.setVisibility(View.VISIBLE);
-            img_backbtmbar_centerleft.setVisibility(View.GONE);
-            img_backbtmbar_centerright.setVisibility(View.GONE);
-            img_backbtmbar_left.setVisibility(View.GONE);
-        } else if (position == 2) {
-            img_backbtmbar_right.setVisibility(View.GONE);
-            img_backbtmbar_centerleft.setVisibility(View.GONE);
-            img_backbtmbar_centerright.setVisibility(View.VISIBLE);
-            img_backbtmbar_left.setVisibility(View.GONE);
-        } else if (position == 1) {
-            img_backbtmbar_right.setVisibility(View.GONE);
-            img_backbtmbar_centerleft.setVisibility(View.VISIBLE);
-            img_backbtmbar_centerright.setVisibility(View.GONE);
-            img_backbtmbar_left.setVisibility(View.GONE);
-        } else if (position == 0) {
-            img_backbtmbar_right.setVisibility(View.GONE);
-            img_backbtmbar_centerleft.setVisibility(View.GONE);
-            img_backbtmbar_centerright.setVisibility(View.GONE);
-            img_backbtmbar_left.setVisibility(View.VISIBLE);
+        if(locale_name.equals("fa")){
+            if (position == 3) {
+                img_backbtmbar_right.setVisibility(View.VISIBLE);
+                img_backbtmbar_centerleft.setVisibility(View.GONE);
+                img_backbtmbar_centerright.setVisibility(View.GONE);
+                img_backbtmbar_left.setVisibility(View.GONE);
+            } else if (position == 2) {
+                img_backbtmbar_right.setVisibility(View.GONE);
+                img_backbtmbar_centerleft.setVisibility(View.GONE);
+                img_backbtmbar_centerright.setVisibility(View.VISIBLE);
+                img_backbtmbar_left.setVisibility(View.GONE);
+            } else if (position == 1) {
+                img_backbtmbar_right.setVisibility(View.GONE);
+                img_backbtmbar_centerleft.setVisibility(View.VISIBLE);
+                img_backbtmbar_centerright.setVisibility(View.GONE);
+                img_backbtmbar_left.setVisibility(View.GONE);
+            } else if (position == 0) {
+                img_backbtmbar_right.setVisibility(View.GONE);
+                img_backbtmbar_centerleft.setVisibility(View.GONE);
+                img_backbtmbar_centerright.setVisibility(View.GONE);
+                img_backbtmbar_left.setVisibility(View.VISIBLE);
+            }
+        }else if(locale_name.equals("en")){
+            if (position == 3) {
+                img_backbtmbar_right.setVisibility(View.GONE);
+                img_backbtmbar_centerleft.setVisibility(View.GONE);
+                img_backbtmbar_centerright.setVisibility(View.GONE);
+                img_backbtmbar_left.setVisibility(View.VISIBLE);
+            } else if (position == 2) {
+                img_backbtmbar_right.setVisibility(View.GONE);
+                img_backbtmbar_centerleft.setVisibility(View.VISIBLE);
+                img_backbtmbar_centerright.setVisibility(View.GONE);
+                img_backbtmbar_left.setVisibility(View.GONE);
+            } else if (position == 1) {
+                img_backbtmbar_right.setVisibility(View.GONE);
+                img_backbtmbar_centerleft.setVisibility(View.GONE);
+                img_backbtmbar_centerright.setVisibility(View.VISIBLE);
+                img_backbtmbar_left.setVisibility(View.GONE);
+            } else if (position == 0) {
+                img_backbtmbar_right.setVisibility(View.VISIBLE);
+                img_backbtmbar_centerleft.setVisibility(View.GONE);
+                img_backbtmbar_centerright.setVisibility(View.GONE);
+                img_backbtmbar_left.setVisibility(View.GONE);
+            }
         }
+
 
 
 //        if (!wasSelected) { //remove this clause bacause of onclick in home fragment

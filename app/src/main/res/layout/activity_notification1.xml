@@ -20,7 +20,7 @@
             android:gravity="center"
             android:text="@string/messages_toolbar"
             android:textColor="@color/colorAccent1"
-            android:textSize="@dimen/_15ssp"
+            android:textSize="@dimen/_14ssp"
             android:textStyle="bold" />
 
 
@@ -28,7 +28,7 @@
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_22sdp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/lottery_header_icon" />
+            android:src="@drawable/message_header_icon" />
     </RelativeLayout>
 
 
@@ -69,7 +69,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginBottom="@dimen/_30sdp"
                 android:scaleType="fitXY"
-                android:src="@drawable/lorrety_device_icon" />
+                android:src="@drawable/message_bottom_icon" />
 
             <LinearLayout
                 android:id="@+id/llbtom"

@@ -400,14 +400,14 @@ public class DialogFactory {
 
     public AlertDialog createCheckUpdateDialog(View view, DialogFactoryInteraction listener) {
 
-        View customLayout = LayoutInflater.from(context).inflate(R.layout.check_update_dialog, (ViewGroup) view, false);
-//        View customLayout = LayoutInflater.from(context).inflate(R.layout.check_update_dialog1, (ViewGroup) view, false);
+//        View customLayout = LayoutInflater.from(context).inflate(R.layout.check_update_dialog, (ViewGroup) view, false);
+        View customLayout = LayoutInflater.from(context).inflate(R.layout.check_update_dialog1, (ViewGroup) view, false);
         //define views inside of dialog
         TextView btn_dl_dialog = customLayout.findViewById(R.id.btn_dl_dialog);
-        ConstraintLayout google_layout = customLayout.findViewById(R.id.layout_gplay);  // main (old) dialog
-        ConstraintLayout bazaar_layout = customLayout.findViewById(R.id.layout_bazaar);  //  main (old) dialog
-//        RelativeLayout google_layout = customLayout.findViewById(R.id.layout_gplay);
-//        RelativeLayout bazaar_layout = customLayout.findViewById(R.id.layout_bazaar);
+//        ConstraintLayout google_layout = customLayout.findViewById(R.id.layout_gplay);  // main (old) dialog
+//        ConstraintLayout bazaar_layout = customLayout.findViewById(R.id.layout_bazaar);  //  main (old) dialog
+        RelativeLayout google_layout = customLayout.findViewById(R.id.layout_gplay);
+        RelativeLayout bazaar_layout = customLayout.findViewById(R.id.layout_bazaar);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setView(customLayout);
@@ -443,16 +443,19 @@ public class DialogFactory {
         dialog.show();
         return dialog;
     }
+
 
     public AlertDialog createCheckUpdateOptionalDialog(View view, DialogFactoryInteraction listener) {
 
+//        View customLayout = LayoutInflater.from(context).inflate(R.layout.check_update_dialog, (ViewGroup) view, false);
         View customLayout = LayoutInflater.from(context).inflate(R.layout.check_update_dialog_optional, (ViewGroup) view, false);
         //define views inside of dialog
         TextView btn_dl_dialog = customLayout.findViewById(R.id.btn_dl_dialog);
-        ConstraintLayout google_layout = customLayout.findViewById(R.id.layout_gplay);
-        ConstraintLayout bazaar_layout = customLayout.findViewById(R.id.layout_bazaar);
-
-        RelativeLayout rl_close_dialog = customLayout.findViewById(R.id.rl_close_dialog);
+//        ConstraintLayout google_layout = customLayout.findViewById(R.id.layout_gplay);  // main (old) dialog
+//        ConstraintLayout bazaar_layout = customLayout.findViewById(R.id.layout_bazaar);  //  main (old) dialog
+        RelativeLayout google_layout = customLayout.findViewById(R.id.layout_gplay);
+        RelativeLayout bazaar_layout = customLayout.findViewById(R.id.layout_bazaar);
+        ImageView img_close = customLayout.findViewById(R.id.img_close);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setView(customLayout);
@@ -485,15 +488,23 @@ public class DialogFactory {
             context.startActivity(intent);
         });
 
-        rl_close_dialog.setOnClickListener(v -> {
-            dialog.dismiss();
+        img_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
         });
-
-
 
         dialog.show();
         return dialog;
     }
+
+
+
+
+
+
+
 
 
     public void createSelectLangDialog(View view, DialogFactoryInteraction interaction) {

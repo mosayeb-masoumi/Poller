@@ -20,10 +20,8 @@
             android:layout_width="@dimen/dimen_65"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimen_3"
-            android:background="@drawable/dash_circle_bg"
             android:padding="@dimen/dimen_17"
-            android:src="@drawable/close_message"
-            android:tint="#818181" />
+            android:src="@drawable/message_closed_icon" />
 
         <com.rahbarbazaar.poller.android.Utilities.CustomTextView
             android:id="@+id/text_msg_text"
@@ -33,7 +31,7 @@
             android:layout_marginStart="@dimen/dimen_10"
             android:layout_toStartOf="@id/text_msg_date"
             android:layout_toEndOf="@+id/image_msg_status"
-            android:gravity="left"
+            android:gravity="start"
             tools:text="سلام عرض کردم" />
 
         <com.rahbarbazaar.poller.android.Utilities.CustomTextView

@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.rahbarbazaar.poller.android.Models.GetCurrencyListResult;
+import com.rahbarbazaar.poller.android.Models.ModelTranferDataProfileToHome;
 import com.rahbarbazaar.poller.android.Network.ServiceProvider;
 import com.rahbarbazaar.poller.android.R;
 import com.rahbarbazaar.poller.android.Ui.activities.HtmlLoaderActivity;
@@ -20,6 +21,11 @@ import com.rahbarbazaar.poller.android.Ui.activities.MainActivity;
 import com.rahbarbazaar.poller.android.Utilities.App;
 import com.rahbarbazaar.poller.android.Utilities.LocaleManager;
 import com.rahbarbazaar.poller.android.Utilities.NotSwipeableViewPager;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
+import java.util.List;
 
 import io.reactivex.disposables.CompositeDisposable;
 
@@ -71,6 +77,11 @@ public class HomeFragment1 extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
+        // register eventbus to get posted array or etc...
+        EventBus.getDefault().register(this);
+
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home1, container, false);
 
@@ -80,17 +91,15 @@ public class HomeFragment1 extends Fragment implements View.OnClickListener {
         cardview_home_video.setOnClickListener(this);
         cardview_home_image.setOnClickListener(this);
         cardview_home_polls.setOnClickListener(this);
-//         onClick(view);
-
-
-        //todo use event bus to get info from profile fragment and use here
-//        text_yourpoint_digit.setText(pofileFragment1.getScore());
-//        text_balance_digit.setText(pofileFragment1.getBalance());
-
 
         return view;
     }
 
+    @Subscribe
+    public void onEvent(List<ModelTranferDataProfileToHome> event){
+        text_yourpoint_digit.setText(event.get(0).getScore());
+        text_balance_digit.setText(event.get(0).getBalance());
+    }
 
 
     private void init(View view) {

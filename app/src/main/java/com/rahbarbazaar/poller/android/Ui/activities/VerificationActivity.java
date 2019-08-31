@@ -314,9 +314,9 @@ public class VerificationActivity extends CustomBaseActivity
         // TODO: 8/3/2019 added instead of upper lines
 
         ProfileTools.getInstance().saveProfileInformation(this).setListener(() ->
-                startActivity(new Intent(VerificationActivity.this, AgreementActivity1.class)));
 
-
+                        acceptUserAgreement());
+//                startActivity(new Intent(VerificationActivity.this, AgreementActivity1.class)));
     }
 
     private void saveCurrency() {
@@ -359,7 +359,8 @@ public class VerificationActivity extends CustomBaseActivity
                         }
 
                         //go to main activity
-                        Intent intent = new Intent(VerificationActivity.this, MainActivity.class);
+//                        Intent intent = new Intent(VerificationActivity.this, MainActivity.class);
+                        Intent intent = new Intent(VerificationActivity.this, AgreementActivity1.class);
                         intent.putExtra("parcel_data", getCurrencyListResult);
                         startActivity(intent);
                         VerificationActivity.this.finish();

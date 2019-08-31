@@ -155,5 +155,7 @@
     <string name="text_leftday">Left Day</string>
     <string name="wallet_balance">Your Wallet Balance</string>
     <string name="text_yearly_lottery">Yearly Lottery</string>
+    <string name="social_medias">follow us at social network</string>
+    <string name="text_select_lang_header">Change Language</string>
 
 </resources>

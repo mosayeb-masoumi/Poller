@@ -23,6 +23,9 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_profile.*
+import android.graphics.ColorSpace.Model
+import java.util.ArrayList
+
 
 class ProfileFragment1 : Fragment(), View.OnClickListener {
 
@@ -36,8 +39,8 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
     //end of region
 
 
-    var balance: String? =null
-    var score: String? =null
+    var balance: String? = null
+    var score: String? = null
 
 
     companion object {
@@ -65,7 +68,7 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_profile1, container, false)
+        val view = inflater.inflate(com.rahbarbazaar.poller.android.R.layout.fragment_profile1, container, false)
 
         provider = ServiceProvider(context)
         disposable = CompositeDisposable()
@@ -134,11 +137,14 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
 //                            currency_name
 //                        else
 //                            en_name
-                        //todo use event bus to sent below data to home fragment
+
                         balance = result.balance.toString()
                         score = result.score.toString()
 
-
+                        // to send balance and score in profile fragment
+                        val modelDataProfileTohome = ArrayList<ModelTranferDataProfileToHome>()
+                        modelDataProfileTohome.add(ModelTranferDataProfileToHome(balance, score))
+                        EventBus.getDefault().post(modelDataProfileTohome)
 
                     }
 
@@ -291,7 +297,6 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
         print(event.toString())
         getUserProfile()
     }
-
 
 
 }

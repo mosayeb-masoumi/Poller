@@ -17,10 +17,12 @@ class NotificationViewHolder(view: View, val listener: GeneralItemIntraction<Get
 
         with(data) {
 
-            if (pivot?.status=="0")
-                notifyImageStatus.setImageResource(R.drawable.close_message)
+            if (pivot?.status == "0")
+                notifyImageStatus.setImageResource(R.drawable.message_closed_icon)
+//                notifyImageStatus.setImageResource(R.drawable.close_message)  // old verion
             else
-                notifyImageStatus.setImageResource(R.drawable.open_message)
+//               notifyImageStatus.setImageResource(R.drawable.open_message)
+                notifyImageStatus.setImageResource(R.drawable.message_opened_icon)   // old verion
 
             notifyText.text = title
             notifyDate.text = created_at

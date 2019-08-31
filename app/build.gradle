@@ -55,7 +55,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:16.0.1'
     implementation 'com.crashlytics.sdk.android:crashlytics:2.9.8'
     implementation 'com.birbit:android-priority-jobqueue:2.0.1'
-    implementation 'co.ronash.android:pushe-base:1.4.3'
+//    implementation 'co.ronash.android:pushe-base:1.4.3'
+    implementation 'co.ronash.android:pushe-base:1.6.3'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     // extra

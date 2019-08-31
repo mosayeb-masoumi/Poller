@@ -2,59 +2,38 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/white_corner_bg"
+    android:layout_margin="@dimen/_5sdp"
+    android:background="@drawable/dialog_btn_shape"
     android:gravity="center"
     android:orientation="vertical">
 
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="45dp"
+        android:background="@drawable/dialog_header_shape">
 
-        <ImageView
-            android:id="@+id/image_dialog"
-            android:layout_width="@dimen/dimen_60"
-            android:layout_height="@dimen/dimen_60"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/dimen_10"
-            android:src="@drawable/download" />
-
-        <RelativeLayout
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/rl_close_dialog">
+            android:text="@string/update_app"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textColor="@color/white_gray"
+            android:textSize="@dimen/font_15" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="25dp"
-                android:layout_marginEnd="@dimen/dimen_5"
-                android:id="@+id/ic_close_optional"
-                android:src="@drawable/ic_close_optional"/>
-
-            <com.rahbarbazaar.poller.android.Utilities.CustomTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/txt_cancel_update"
-                android:layout_toRightOf="@+id/ic_close_optional"
-                android:layout_marginTop="@dimen/dimen_20"
-                android:text="@string/update_app_optional"
-                android:layout_marginEnd="@dimen/dimen_3"
-                android:textSize="@dimen/font_17" />
-        </RelativeLayout>
-
-
+        <ImageView
+            android:layout_width="@dimen/_40sdp"
+            android:id="@+id/img_close"
+            android:padding="@dimen/_5sdp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:src="@drawable/ic_close_optional"/>
     </RelativeLayout>
 
-
-    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_20"
-        android:text="@string/update_app"
-        android:textSize="@dimen/font_17" />
 
     <com.rahbarbazaar.poller.android.Utilities.CustomTextView
         android:id="@+id/text_body"
@@ -66,94 +45,93 @@
         android:paddingStart="@dimen/dimen_5"
         android:paddingEnd="@dimen/dimen_5"
         android:text="@string/download_body_text"
+        android:textColor="@color/blue"
         android:textSize="@dimen/font_14" />
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_15"
-        android:layout_marginBottom="@dimen/dimen4"
-        android:paddingStart="@dimen/dimen_6"
-        android:paddingEnd="@dimen/dimen_6"
+        android:layout_margin="@dimen/_5sdp"
         android:orientation="horizontal">
 
-        <android.support.constraint.ConstraintLayout
+
+        <!--<RelativeLayout-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="@dimen/_42sdp"-->
+            <!--android:background="@drawable/dialog_btn_shape"-->
+            <!--android:id="@+id/layout_bazaar"-->
+            <!--android:layout_marginEnd="@dimen/_2sdp"-->
+            <!--android:layout_weight="1">-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent">-->
+
+                <!--<ImageView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:src="@drawable/cafe_bazar"/>-->
+            <!--</LinearLayout>-->
+
+        <!--</RelativeLayout>-->
+
+        <RelativeLayout
             android:layout_width="0dp"
-            android:layout_height="@dimen/dimen_42"
+            android:layout_height="@dimen/_42sdp"
+            android:background="@drawable/dialog_btn_shape"
             android:id="@+id/layout_bazaar"
-            android:layout_marginEnd="@dimen/dimen_3"
-            android:layout_marginStart="@dimen/dimen_2"
-            android:layout_weight="1"
-            android:background="@drawable/btn_bg_dark_blue"
-            >
+            android:layout_marginStart="@dimen/_70sdp"
+            android:layout_marginEnd="@dimen/_70sdp"
+            android:layout_weight="1">
 
-            <ImageView
-                android:src="@drawable/cafe_bazar"
-                android:layout_width="@dimen/dimen_0"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:paddingStart="@dimen/dimen_9"
-                android:paddingEnd="@dimen/dimen_5"
-                app:layout_constraintWidth_percent="0.5"
-                android:layout_height="match_parent" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <com.rahbarbazaar.poller.android.Utilities.CustomTextView
-                app:layout_constraintRight_toRightOf="parent"
-                android:layout_width="@dimen/dimen_0"
-                android:text="@string/cafe_bazar_text"
-                android:textColor="@color/main_page_toolbar"
-                android:gravity="center"
-                app:layout_constraintWidth_percent="0.5"
-                android:layout_height="match_parent" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/cafe_bazar"/>
+            </LinearLayout>
 
-        </android.support.constraint.ConstraintLayout>
-
+        </RelativeLayout>
         <com.rahbarbazaar.poller.android.Utilities.CustomTextView
             android:id="@+id/btn_dl_dialog"
             android:layout_width="0dp"
             android:visibility="gone"
-            android:layout_height="@dimen/dimen_42"
+            android:layout_height="match_parent"
             android:layout_marginStart="@dimen/dimen_2"
             android:layout_marginEnd="@dimen/dimen_2"
             android:layout_weight="0.4"
-            android:background="@drawable/btn_bg_dark_blue"
+            android:background="@drawable/dialog_btn_shape"
             android:gravity="center"
             tools:text="دریافت از لینک مستقیم"
-            android:textColor="@color/main_page_toolbar" />
+            android:textColor="@color/blue" />
 
-        <android.support.constraint.ConstraintLayout
+
+
+        <RelativeLayout
             android:layout_width="0dp"
-            android:layout_height="@dimen/dimen_42"
-            android:layout_marginStart="@dimen/dimen_3"
-            android:layout_weight="1"
-            android:visibility="visible"
+            android:layout_height="match_parent"
+            android:background="@drawable/dialog_btn_shape"
             android:id="@+id/layout_gplay"
-            android:layout_marginEnd="@dimen/dimen_2"
-            android:background="@drawable/btn_bg_dark_blue"
-            >
+            android:visibility="gone"
+            android:layout_marginStart="@dimen/_2sdp"
+            android:layout_weight="1">
 
-            <ImageView
-                android:src="@drawable/google_play"
-                android:layout_width="@dimen/dimen_0"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:paddingTop="@dimen/dimen_6"
-                android:paddingBottom="@dimen/dimen_6"
-                app:layout_constraintWidth_percent="0.3"
-                android:layout_height="match_parent" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <com.rahbarbazaar.poller.android.Utilities.CustomTextView
-                app:layout_constraintRight_toRightOf="parent"
-                android:layout_width="@dimen/dimen_0"
-                android:text="@string/google_play_text"
-                android:textColor="@color/main_page_toolbar"
-                android:gravity="center"
-                app:layout_constraintWidth_percent="0.7"
-                android:layout_height="match_parent" />
-
-        </android.support.constraint.ConstraintLayout>
-
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/google_play"/>
+            </LinearLayout>
+        </RelativeLayout>
 
     </LinearLayout>
-
-
 
 </LinearLayout>

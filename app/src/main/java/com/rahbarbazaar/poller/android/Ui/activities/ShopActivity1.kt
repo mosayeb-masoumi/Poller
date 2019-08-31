@@ -3,6 +3,7 @@ package com.rahbarbazaar.poller.android.Ui.activities
 import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
+import android.support.v4.os.ConfigurationCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
@@ -32,6 +33,18 @@ class ShopActivity1 : CustomBaseActivity(), GeneralItemIntraction<GetShopListRes
         setContentView(R.layout.activity_shop1)
         getShopItems()
         image_exit.setOnClickListener { finish() }
+
+
+        var locale_name = ConfigurationCompat.getLocales(resources.configuration).get(0).language
+        if (locale_name.equals("fa")) {
+            window.decorView.layoutDirection = View.LAYOUT_DIRECTION_LTR
+            shop_recycler.layoutDirection = View.LAYOUT_DIRECTION_RTL
+        } else if (locale_name.equals("en")) {
+            window.decorView.layoutDirection = View.LAYOUT_DIRECTION_RTL
+            shop_recycler.layoutDirection = View.LAYOUT_DIRECTION_LTR
+        }
+
+
     }
 
     fun getShopItems() {

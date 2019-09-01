@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/homeFragment1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:id="@+id/homeFragment1"
     android:weightSum="6"
     tools:context=".Ui.fragments.HomeFragment1">
 
@@ -33,15 +34,25 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_above="@+id/divider_vid">
+                    android:layout_above="@+id/divider_vid"
+                    android:background="#F3EEEE"
+                    android:layout_height="match_parent">
 
 
-                    <ImageView
+                    <com.wang.avi.AVLoadingIndicatorView
+                        app:indicatorColor="@color/colorPrimary"
+                        android:layout_width="@dimen/dimen_40"
+                        android:layout_height="@dimen/dimen_40"
+                        android:layout_centerHorizontal="true"
+                        android:padding="@dimen/dimen_2"
+                        android:layout_centerVertical="true"
+                        app:indicatorName="BallPulseSyncIndicator" />
+
+                    <com.facebook.drawee.view.SimpleDraweeView
                         android:id="@+id/img_home_video"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="#D6CFCF" />
+                        android:layout_height="match_parent" />
+
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -51,33 +62,43 @@
                         android:padding="@dimen/_20sdp"
                         android:src="@drawable/play_icon" />
 
+                    <!--<com.rahbarbazaar.poller.android.Utilities.CustomTextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_alignParentBottom="true"-->
+                        <!--android:layout_centerHorizontal="true"-->
+                        <!--android:layout_marginBottom="@dimen/_2sdp"-->
+                        <!--android:gravity="center_vertical"-->
+                        <!--android:text="@string/text_video"-->
+                        <!--android:textColor="@color/white_gray"-->
+                        <!--android:textSize="@dimen/_14ssp" />-->
 
                 </RelativeLayout>
 
                 <LinearLayout
-                    android:id="@+id/divider_vid"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_3sdp"
-                    android:layout_above="@+id/vd_bottom"
-                    android:background="#abe1fa"
-                    android:orientation="horizontal" />
+                android:id="@+id/divider_vid"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_3sdp"
+                android:layout_above="@+id/vd_bottom"
+                android:background="#abe1fa"
+                android:orientation="horizontal" />
 
                 <RelativeLayout
-                    android:id="@+id/vd_bottom"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_30sdp"
-                    android:layout_alignParentBottom="true"
-                    android:background="#2e3192"
-                    android:gravity="center">
+                android:id="@+id/vd_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_alignParentBottom="true"
+                android:background="#2e3192"
+                android:gravity="center">
 
-                    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="@dimen/_10sdp"
-                        android:gravity="center_vertical"
-                        android:text="@string/text_video"
-                        android:textColor="@color/white_gray"
-                        android:textSize="@dimen/_14ssp" />
+                <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:gravity="center_vertical"
+                android:text="@string/text_video"
+                android:textColor="@color/white_gray"
+                android:textSize="@dimen/_14ssp" />
                 </RelativeLayout>
 
             </RelativeLayout>
@@ -96,40 +117,63 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
+                android:background="#F3EEEE"
                 android:layout_height="match_parent">
 
-                <ImageView
+
+                <com.wang.avi.AVLoadingIndicatorView
+                    app:indicatorColor="@color/colorPrimary"
+                    android:layout_width="@dimen/dimen_40"
+                    android:layout_height="@dimen/dimen_40"
+                    android:layout_centerHorizontal="true"
+                    android:padding="@dimen/dimen_2"
+                    android:layout_centerVertical="true"
+                    app:indicatorName="BallPulseSyncIndicator" />
+
+
+                <com.facebook.drawee.view.SimpleDraweeView
                     android:id="@+id/img_home_whats_up"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_above="@+id/divider_img"
-                    android:background="#D6CFCF" />
+                    android:layout_above="@+id/divider_img" />
+
+                <!--<com.rahbarbazaar.poller.android.Utilities.CustomTextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_alignParentBottom="true"-->
+                    <!--android:layout_centerHorizontal="true"-->
+                    <!--android:layout_marginBottom="@dimen/_2sdp"-->
+                    <!--android:gravity="center_vertical"-->
+                    <!--android:text="@string/text_whats_up"-->
+                    <!--android:textColor="@color/white_gray"-->
+                    <!--android:textSize="@dimen/_14ssp" />-->
+
 
                 <RelativeLayout
-                    android:id="@+id/divider_img"
-                    android:layout_width="match_parent"
-                    android:layout_height="3dp"
-                    android:layout_above="@+id/news_btm"
-                    android:background="#e4b1ff">
+                android:id="@+id/divider_img"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_above="@+id/news_btm"
+                android:background="#e4b1ff">
 
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/news_btm"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_30sdp"
-                    android:layout_alignParentBottom="true"
-                    android:background="#821f9e"
-                    android:gravity="center">
+                android:id="@+id/news_btm"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_alignParentBottom="true"
+                android:background="#821f9e"
+                android:gravity="center">
 
-                    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="@dimen/_10sdp"
-                        android:gravity="center_vertical"
-                        android:text="@string/text_whats_up"
-                        android:textColor="@color/white_gray"
-                        android:textSize="@dimen/_14ssp" />
+                <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:gravity="center_vertical"
+                android:text="@string/text_news"
+                android:textColor="@color/white_gray"
+                android:textSize="@dimen/_14ssp" />
 
                 </RelativeLayout>
 
@@ -156,41 +200,63 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
+                android:background="#F3EEEE"
                 android:layout_height="match_parent">
 
 
-                <ImageView
+                <com.wang.avi.AVLoadingIndicatorView
+                    app:indicatorColor="@color/colorPrimary"
+                    android:layout_width="@dimen/dimen_40"
+                    android:layout_height="@dimen/dimen_40"
+                    android:layout_centerHorizontal="true"
+                    android:padding="@dimen/dimen_2"
+                    android:layout_centerVertical="true"
+                    app:indicatorName="BallPulseSyncIndicator" />
+
+                <com.facebook.drawee.view.SimpleDraweeView
                     android:id="@+id/img_home_polls"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_above="@+id/divider_poll"
-                    android:background="#D6CFCF" />
+                   />
+
+                <!--<com.rahbarbazaar.poller.android.Utilities.CustomTextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_alignParentBottom="true"-->
+                    <!--android:layout_centerHorizontal="true"-->
+                    <!--android:layout_marginBottom="@dimen/_2sdp"-->
+                    <!--android:gravity="center_vertical"-->
+                    <!--android:text="@string/text_polls"-->
+                    <!--android:textColor="@color/white_gray"-->
+                    <!--android:textSize="@dimen/_14ssp" />-->
+
 
                 <RelativeLayout
-                    android:id="@+id/divider_poll"
-                    android:layout_width="match_parent"
-                    android:layout_height="3dp"
-                    android:layout_above="@+id/polls_btm"
-                    android:background="#ff9cd0">
+                android:id="@+id/divider_poll"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_above="@+id/polls_btm"
+                android:background="#ff9cd0">
 
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/polls_btm"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_30sdp"
-                    android:layout_alignParentBottom="true"
-                    android:background="#eb0a8e"
-                    android:gravity="center">
+                android:id="@+id/polls_btm"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_alignParentBottom="true"
+                    android:background="#ca1390"
+                android:gravity="center">
 
-                    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="@dimen/_10sdp"
-                        android:gravity="center_vertical"
-                        android:text="@string/text_polls"
-                        android:textColor="@color/white_gray"
-                        android:textSize="@dimen/_14ssp" />
+                <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:gravity="center_vertical"
+                android:text="@string/text_polls"
+                android:textColor="@color/white_gray"
+                android:textSize="@dimen/_14ssp" />
 
                 </RelativeLayout>
 
@@ -368,12 +434,12 @@
                         android:layout_weight="1">
 
                         <com.rahbarbazaar.poller.android.Utilities.CustomTextView
-                            android:id="@+id/text_newpoll_digit"
+                            android:id="@+id/text_leftdays_digit"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:layout_centerVertical="true"
-                            android:text="3"
+                            android:text="-"
                             android:textColor="@color/white_gray"
                             android:textSize="@dimen/_13ssp" />
 
@@ -391,7 +457,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:layout_centerVertical="true"
-                            android:text="12"
+                            android:text="-"
                             android:textColor="@color/white_gray"
                             android:textSize="@dimen/_13ssp" />
                     </RelativeLayout>

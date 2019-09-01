@@ -136,6 +136,8 @@ public class MainActivity extends CustomBaseActivity implements
     BroadcastReceiver connectivityReceiver = null;
     //end of region
 
+    int a = 0;
+
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -783,7 +785,9 @@ public class MainActivity extends CustomBaseActivity implements
     @Override
     public boolean onTabSelected(int position, boolean wasSelected) {
 
-        if(locale_name.equals("fa")){
+
+
+        if (locale_name.equals("fa")) {
             if (position == 3) {
                 img_backbtmbar_right.setVisibility(View.VISIBLE);
                 img_backbtmbar_centerleft.setVisibility(View.GONE);
@@ -805,7 +809,7 @@ public class MainActivity extends CustomBaseActivity implements
                 img_backbtmbar_centerright.setVisibility(View.GONE);
                 img_backbtmbar_left.setVisibility(View.VISIBLE);
             }
-        }else if(locale_name.equals("en")){
+        } else if (locale_name.equals("en")) {
             if (position == 3) {
                 img_backbtmbar_right.setVisibility(View.GONE);
                 img_backbtmbar_centerleft.setVisibility(View.GONE);
@@ -830,7 +834,6 @@ public class MainActivity extends CustomBaseActivity implements
         }
 
 
-
 //        if (!wasSelected) { //remove this clause bacause of onclick in home fragment
 
         if (position == 0 && prefrence != null && prefrence.getType().equals("1"))
@@ -838,9 +841,24 @@ public class MainActivity extends CustomBaseActivity implements
         else
             main_view_pager.setCurrentItem(3 - position, true);
 
-        if (position == 2)
+        if (position == 2) {
             bottom_navigation.setNotification("", 2);
-//        }
+        }
+
+
+
+
+
+        //to remove bug active bottombar when we choose from fragment home by touching imageview
+        if(position == 0 || position==1 || position == 3){
+            a=0;
+        }
+        if (position==2) {
+            if(a == 0){
+                a++;
+                bottom_navigation.setCurrentItem(2);
+            }
+        }
 
         return true;
     }

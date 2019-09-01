@@ -145,8 +145,9 @@
     <string name="text_access_upgrade">User Access Upgrade</string>
     <string name="convert_toman">Convert Toman</string>
     <string name="convert_papasi">Convert Papasi</string>
-    <string name="text_polls">Polls</string>
-    <string name="text_whats_up">Whats Up</string>
+    <string name="text_polls">Surveys</string>
+    <!--<string name="text_whats_up">Whats Up</string>-->
+    <string name="text_news">News</string>
     <string name="text_video">Videos</string>
     <string name="text_newPolls">New Poll</string>
     <string name="text_activePolls">Active Poll</string>

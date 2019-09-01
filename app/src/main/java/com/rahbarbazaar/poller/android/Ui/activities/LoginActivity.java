@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +37,7 @@ public class LoginActivity extends CustomBaseActivity implements View.OnClickLis
     AVLoadingIndicatorView av_login;
     TextView button_submit;
     EditText et_user_login;
+    RelativeLayout rl_av_login;
     //end of region
 
     //******************************************
@@ -79,6 +81,7 @@ public class LoginActivity extends CustomBaseActivity implements View.OnClickLis
         button_submit = findViewById(R.id.button_submit);
         et_user_login = findViewById(R.id.et_user_login);
         av_login = findViewById(R.id.av_login);
+        rl_av_login=findViewById(R.id.rl_av_login);
     }
 
     //define views of activity listener
@@ -99,6 +102,7 @@ public class LoginActivity extends CustomBaseActivity implements View.OnClickLis
 
             Snackbar.make(findViewById(R.id.login_root), R.string.text_login_progress, Snackbar.LENGTH_INDEFINITE).show();
             av_login.smoothToShow();
+            rl_av_login.setVisibility(View.VISIBLE);
             button_submit.setText("");
             button_submit.setEnabled(false);
             button_submit.setVisibility(View.GONE);
@@ -123,6 +127,7 @@ public class LoginActivity extends CustomBaseActivity implements View.OnClickLis
                             }
                             button_submit.setText(R.string.login_button_text);
                             button_submit.setEnabled(true);
+                            rl_av_login.setVisibility(View.GONE);
                             av_login.smoothToHide();
                             button_submit.setVisibility(View.VISIBLE);
                             av_login.setVisibility(View.GONE);
@@ -133,7 +138,7 @@ public class LoginActivity extends CustomBaseActivity implements View.OnClickLis
                             button_submit.setText(R.string.login_button_text);
                             button_submit.setEnabled(true);
                             av_login.smoothToHide();
-
+                            rl_av_login.setVisibility(View.GONE);
                             button_submit.setVisibility(View.VISIBLE);
                             av_login.setVisibility(View.GONE);
                             new ToastFactory().createToast(R.string.text_no_service, LoginActivity.this);

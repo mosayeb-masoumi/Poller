@@ -16,6 +16,7 @@ import com.rahbarbazaar.poller.android.Models.GetTransactionResult;
 import com.rahbarbazaar.poller.android.Models.LotterySettingResult;
 import com.rahbarbazaar.poller.android.Models.SurveyMainModel;
 import com.rahbarbazaar.poller.android.Models.UserConfirmAuthResult;
+import com.rahbarbazaar.poller.android.Models.getimages.GetImages;
 
 import java.util.List;
 
@@ -159,4 +160,14 @@ public interface Service {
     Single<LotterySettingResult> checkAllowExchange(@Path("api") String version
     );
 
+
+    @GET("{api}/user/dashboard")
+    Single<GetImages> getImages(@Path("api") String version
+    );
+
+//    @POST("{api}/user/apk-info")
+//    Single<GetImages> sendUserIfo(@Path("api") String version,
+//                                  @Query("pushe_id") String pushe_id,
+//
+//    );
 }

@@ -31,7 +31,7 @@
             android:layout_marginStart="@dimen/dimen_10"
             android:layout_toStartOf="@id/text_msg_date"
             android:layout_toEndOf="@+id/image_msg_status"
-            android:gravity="start"
+            android:gravity="center"
             tools:text="سلام عرض کردم" />
 
         <com.rahbarbazaar.poller.android.Utilities.CustomTextView

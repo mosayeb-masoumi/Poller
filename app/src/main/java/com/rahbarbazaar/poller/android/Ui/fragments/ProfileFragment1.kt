@@ -24,6 +24,18 @@ import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_profile.*
 import android.graphics.ColorSpace.Model
+import android.support.v4.os.ConfigurationCompat
+import kotlinx.android.synthetic.main.fragment_profile.profile_root
+import kotlinx.android.synthetic.main.fragment_profile.rl_balance_point
+import kotlinx.android.synthetic.main.fragment_profile.rl_edit_profile
+import kotlinx.android.synthetic.main.fragment_profile.rl_point_balance
+import kotlinx.android.synthetic.main.fragment_profile.text_age
+import kotlinx.android.synthetic.main.fragment_profile.text_gender
+import kotlinx.android.synthetic.main.fragment_profile.text_mobile
+import kotlinx.android.synthetic.main.fragment_profile.text_project_count
+import kotlinx.android.synthetic.main.fragment_profile.text_username
+import kotlinx.android.synthetic.main.fragment_profile1.*
+import kotlinx.android.synthetic.main.fragment_profile1.view.*
 import java.util.ArrayList
 
 
@@ -68,7 +80,20 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(com.rahbarbazaar.poller.android.R.layout.fragment_profile1, container, false)
+        val view = inflater.inflate(R.layout.fragment_profile1, container, false)
+
+
+        var locale_name = ConfigurationCompat.getLocales(resources.configuration).get(0).language
+
+        if (locale_name.equals("en")) {
+            view.arrow_username.rotation = 180f
+            view.arrow_mobile.rotation = 180F
+            view.arrow_age.rotation = 180F
+            view.arrow_sex.rotation = 180F
+            view.arrow_project_count.rotation = 180F
+        }
+
+
 
         provider = ServiceProvider(context)
         disposable = CompositeDisposable()

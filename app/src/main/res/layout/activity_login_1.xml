@@ -135,6 +135,7 @@
         <RelativeLayout
             android:layout_width="@dimen/_90sdp"
             android:layout_height="@dimen/_35sdp"
+            android:id="@+id/rl_av_login"
             android:layout_centerHorizontal="true"
             android:background="@drawable/btn_phoneregister_shape">
 
@@ -153,6 +154,7 @@
             android:layout_height="@dimen/_35sdp"
             android:layout_centerHorizontal="true"
             android:gravity="center"
+            android:background="@drawable/btn_phoneregister_shape"
             android:textSize="@dimen/_15ssp"
             android:text="@string/login_button_text"
             android:textColor="@color/main_page_toolbar" />

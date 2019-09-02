@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
@@ -15,7 +16,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.rahbarbazaar.poller.android.BuildConfig;
 import com.rahbarbazaar.poller.android.Models.GeneralStatusResult;
+import com.rahbarbazaar.poller.android.Models.user_phonedata.UserPhoneInfo;
 import com.rahbarbazaar.poller.android.Network.Service;
 import com.rahbarbazaar.poller.android.Network.ServiceProvider;
 import com.rahbarbazaar.poller.android.R;
@@ -26,6 +29,7 @@ import com.rahbarbazaar.poller.android.Utilities.LocaleManager;
 import com.rahbarbazaar.poller.android.Utilities.TypeFaceGenerator;
 import com.wang.avi.AVLoadingIndicatorView;
 
+import co.ronash.pushe.Pushe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableSingleObserver;
@@ -47,16 +51,19 @@ public class LoginActivity extends CustomBaseActivity implements View.OnClickLis
     CompositeDisposable disposable;
     ToastFactory toastFactory;
     //end of region
+    String pushe_id = "";
+    String os_version = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_1);
 
+
         defineViews();
         defineViewsListener();
 
-       if (LocaleManager.getLocale(getResources()).getLanguage().equals("fa"))
+        if (LocaleManager.getLocale(getResources()).getLanguage().equals("fa"))
             et_user_login.setTypeface(TypeFaceGenerator.getInstance().getByekanFont(this));
 
         toastFactory = new ToastFactory();
@@ -81,7 +88,7 @@ public class LoginActivity extends CustomBaseActivity implements View.OnClickLis
         button_submit = findViewById(R.id.button_submit);
         et_user_login = findViewById(R.id.et_user_login);
         av_login = findViewById(R.id.av_login);
-        rl_av_login=findViewById(R.id.rl_av_login);
+        rl_av_login = findViewById(R.id.rl_av_login);
     }
 
     //define views of activity listener
@@ -115,6 +122,7 @@ public class LoginActivity extends CustomBaseActivity implements View.OnClickLis
 
                             if (result != null) {
 
+
                                 //if response ok:
                                 if (result.getStatus().equals("otp sent") || result.getStatus().equals("unknown number")) {
 
@@ -123,6 +131,8 @@ public class LoginActivity extends CustomBaseActivity implements View.OnClickLis
                                     startActivity(intent);
                                     LoginActivity.this.finish();
                                     overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+
+
                                 }
                             }
                             button_submit.setText(R.string.login_button_text);
@@ -131,6 +141,7 @@ public class LoginActivity extends CustomBaseActivity implements View.OnClickLis
                             av_login.smoothToHide();
                             button_submit.setVisibility(View.VISIBLE);
                             av_login.setVisibility(View.GONE);
+
                         }
 
                         @Override
@@ -150,6 +161,7 @@ public class LoginActivity extends CustomBaseActivity implements View.OnClickLis
             toastFactory.createToast(R.string.text_input_mobile, this);
         }
     }
+
 
     @Override
     public void onClick(View view) {

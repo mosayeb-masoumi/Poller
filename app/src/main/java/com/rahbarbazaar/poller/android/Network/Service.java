@@ -2,7 +2,6 @@ package com.rahbarbazaar.poller.android.Network;
 
 import com.rahbarbazaar.poller.android.Models.ChangeSurveyStatusResult;
 import com.rahbarbazaar.poller.android.Models.GeneralStatusResult;
-import com.rahbarbazaar.poller.android.Models.CurrencyListParcelable;
 import com.rahbarbazaar.poller.android.Models.GetCurrencyListResult;
 import com.rahbarbazaar.poller.android.Models.GetDownloadResult;
 import com.rahbarbazaar.poller.android.Models.GetBannersListResult;
@@ -17,6 +16,7 @@ import com.rahbarbazaar.poller.android.Models.LotterySettingResult;
 import com.rahbarbazaar.poller.android.Models.SurveyMainModel;
 import com.rahbarbazaar.poller.android.Models.UserConfirmAuthResult;
 import com.rahbarbazaar.poller.android.Models.getimages.GetImages;
+import com.rahbarbazaar.poller.android.Models.user_phonedata.UserPhoneInfo;
 
 import java.util.List;
 
@@ -165,9 +165,13 @@ public interface Service {
     Single<GetImages> getImages(@Path("api") String version
     );
 
-//    @POST("{api}/user/apk-info")
-//    Single<GetImages> sendUserIfo(@Path("api") String version,
-//                                  @Query("pushe_id") String pushe_id,
-//
-//    );
+    @POST("{api}/user/apk-info")
+    Single<UserPhoneInfo> sendUserIfo(@Path("api") String version,
+                                      @Query("apk_version") String apk_version,
+                                      @Query("pushe_id") String pushe_id,
+                                      @Query("brand") String brand,
+                                      @Query("model") String model,
+                                      @Query("os_type") String os_type,
+                                      @Query("os_version") String os_version
+    );
 }

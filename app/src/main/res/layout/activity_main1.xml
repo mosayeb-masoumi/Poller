@@ -404,6 +404,7 @@
                 <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/text_follow_us"
                     android:layout_gravity="center"
                     android:text="@string/social_medias"
                     android:textColor="#ffffff"

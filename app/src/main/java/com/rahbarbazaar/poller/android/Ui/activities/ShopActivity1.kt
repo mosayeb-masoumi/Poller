@@ -22,6 +22,10 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_shop.*
+import kotlinx.android.synthetic.main.activity_shop.av_loading
+import kotlinx.android.synthetic.main.activity_shop.image_exit
+import kotlinx.android.synthetic.main.activity_shop.shop_recycler
+import kotlinx.android.synthetic.main.activity_shop1.*
 import org.greenrobot.eventbus.EventBus
 
 class ShopActivity1 : CustomBaseActivity(), GeneralItemIntraction<GetShopListResult> {
@@ -39,9 +43,12 @@ class ShopActivity1 : CustomBaseActivity(), GeneralItemIntraction<GetShopListRes
         if (locale_name.equals("fa")) {
             window.decorView.layoutDirection = View.LAYOUT_DIRECTION_LTR
             shop_recycler.layoutDirection = View.LAYOUT_DIRECTION_RTL
+            llbtom.layoutDirection = View.LAYOUT_DIRECTION_RTL
+
         } else if (locale_name.equals("en")) {
             window.decorView.layoutDirection = View.LAYOUT_DIRECTION_RTL
             shop_recycler.layoutDirection = View.LAYOUT_DIRECTION_LTR
+            llbtom.layoutDirection = View.LAYOUT_DIRECTION_LTR
         }
 
 

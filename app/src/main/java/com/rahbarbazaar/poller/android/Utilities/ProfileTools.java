@@ -5,6 +5,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 import com.rahbarbazaar.poller.android.Models.UserConfirmAuthResult;
 import com.rahbarbazaar.poller.android.Models.UserDetailsPrefrence;
 import com.rahbarbazaar.poller.android.Network.ServiceProvider;
@@ -74,6 +75,11 @@ public class ProfileTools {
                     @Override
                     public void onError(Throwable e) {
                         // Network error
+                       int a = ((HttpException) e).code();
+                        if(a == 401){
+
+
+                        }
                     }
                 }));
         return this;

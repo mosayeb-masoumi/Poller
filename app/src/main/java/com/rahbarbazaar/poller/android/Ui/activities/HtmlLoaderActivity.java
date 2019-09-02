@@ -31,7 +31,7 @@ public class HtmlLoaderActivity extends CustomBaseActivity
 
     WebView webView;
     AVLoadingIndicatorView av_loading;
-    LinearLayout linear_exit;
+    LinearLayout linear_exit , web_btnbar;
     //end of region
 
     //region of property
@@ -53,8 +53,10 @@ public class HtmlLoaderActivity extends CustomBaseActivity
        String locale_name = ConfigurationCompat.getLocales(getResources().getConfiguration()).get(0).getLanguage();
         if (locale_name.equals("fa")) {
             getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+            web_btnbar.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         } else if (locale_name.equals("en")) {
             getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+            web_btnbar.setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
         }
 
 
@@ -143,6 +145,7 @@ public class HtmlLoaderActivity extends CustomBaseActivity
         webView = findViewById(R.id.web_view);
         av_loading = findViewById(R.id.av_loading);
         linear_exit = findViewById(R.id.linear_exit);
+        web_btnbar = findViewById(R.id.web_btnbar);
         linear_exit.setOnClickListener(this);
     }
 

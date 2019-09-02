@@ -3,6 +3,7 @@ package com.rahbarbazaar.poller.android.Ui.activities
 import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
+import android.support.v4.os.ConfigurationCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -20,6 +21,13 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_notification.*
+import kotlinx.android.synthetic.main.activity_notification.av_loading
+import kotlinx.android.synthetic.main.activity_notification.image_exit
+import kotlinx.android.synthetic.main.activity_notification1.*
+import kotlinx.android.synthetic.main.activity_shop.*
+import kotlinx.android.synthetic.main.activity_shop.shop_recycler
+import kotlinx.android.synthetic.main.activity_shop1.*
+import kotlinx.android.synthetic.main.activity_shop1.llbtom
 import okhttp3.MediaType
 import okhttp3.RequestBody
 
@@ -36,6 +44,17 @@ class NotificationActivity1 : CustomBaseActivity(), GeneralItemIntraction<GetNot
         serviceProvider = ServiceProvider(this)
         getNotificationList()
         image_exit.setOnClickListener { finish() }
+
+
+        var locale_name = ConfigurationCompat.getLocales(resources.configuration).get(0).language
+        if (locale_name.equals("fa")) {
+            window.decorView.layoutDirection = View.LAYOUT_DIRECTION_LTR
+            llbtom.layoutDirection = View.LAYOUT_DIRECTION_LTR
+
+        } else if (locale_name.equals("en")) {
+            window.decorView.layoutDirection = View.LAYOUT_DIRECTION_RTL
+            llbtom.layoutDirection = View.LAYOUT_DIRECTION_RTL
+        }
     }
 
     private fun getNotificationList() {

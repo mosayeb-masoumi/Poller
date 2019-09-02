@@ -33,7 +33,8 @@ public class ServiceProvider {
             clientBuilder.addInterceptor(chain -> {
                 Request request = chain.request().newBuilder().
                         addHeader("lang", storage.retriveLanguage())
-                        .addHeader("token", PreferenceStorage.getInstance(context).retriveToken()).build();
+                        .addHeader("token", PreferenceStorage.getInstance(context).retriveToken())
+                        .build();
                 return chain.proceed(request);
             });
         }

@@ -31,7 +31,6 @@ public class PreferenceStorage {
     }
 
     public String retriveToken() {
-
         return preferences.getString("token", "0");
     }
 

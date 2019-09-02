@@ -23,6 +23,7 @@ import com.rahbarbazaar.poller.android.BuildConfig;
 import com.rahbarbazaar.poller.android.Models.GetCurrencyListResult;
 import com.rahbarbazaar.poller.android.Models.GeneralStatusResult;
 import com.rahbarbazaar.poller.android.Models.UserConfirmAuthResult;
+import com.rahbarbazaar.poller.android.Models.user_phonedata.UserPhoneInfo;
 import com.rahbarbazaar.poller.android.Network.Service;
 import com.rahbarbazaar.poller.android.Network.ServiceProvider;
 import com.rahbarbazaar.poller.android.R;
@@ -37,6 +38,7 @@ import com.wang.avi.AVLoadingIndicatorView;
 
 import java.math.BigDecimal;
 
+import co.ronash.pushe.Pushe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableSingleObserver;
@@ -69,11 +71,18 @@ public class VerificationActivity extends CustomBaseActivity
 
     //end of region
 
+    String pushe_id = "";
+    String os_version = "";
+
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verification_1);
+
+
+        Pushe.initialize(this, true);
+        pushe_id = Pushe.getPusheId(VerificationActivity.this);
 
         defineViews();
         defineViewsListener();
@@ -243,12 +252,16 @@ public class VerificationActivity extends CustomBaseActivity
                                             break;
                                     }
                                 }
+
+                                sendUserInfo();
                             }
                             av_verify.smoothToHide();
                             button_verify.setText(R.string.verification_button_text);
                             button_verify.setEnabled(true);
                             linear_recode.setVisibility(View.VISIBLE);
                             rl_recode_number.setVisibility(View.GONE);
+
+
                         }
 
                         @Override
@@ -470,6 +483,67 @@ public class VerificationActivity extends CustomBaseActivity
                 overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
                 break;
         }
+    }
+    //todo send user info
+    private void sendUserInfo() {
+
+
+        String apk_version = BuildConfig.VERSION_NAME;
+        String model = Build.MODEL;
+        String brand = Build.BRAND;
+
+        int sdk = Build.VERSION.SDK_INT;
+        if (sdk == 14) {
+            os_version = "android 4.0";
+        } else if (sdk == 15) {
+            os_version = "android 4.0.3";
+        } else if (sdk == 16) {
+            os_version = "android 4.1";
+        } else if (sdk == 17) {
+            os_version = "android 4.2";
+        } else if (sdk == 18) {
+            os_version = "android 4.3";
+        } else if (sdk == 19) {
+            os_version = "android 4.4";
+        } else if (sdk == 20) {
+            os_version = "android 4.4W";
+        } else if (sdk == 21) {
+            os_version = "android 5.0";
+        } else if (sdk == 22) {
+            os_version = "android 5.1";
+        } else if (sdk == 23) {
+            os_version = "android 6.0";
+        } else if (sdk == 24) {
+            os_version = "android 7.0";
+        } else if (sdk == 25) {
+            os_version = "android 7.1";
+        } else if (sdk == 26) {
+            os_version = "android 8.0";
+        } else if (sdk == 27) {
+            os_version = "android 8.1";
+        } else if (sdk == 28) {
+            os_version = "android 9.0";
+        } else if (sdk == 29) {
+            os_version = "android 10";
+        }
+
+        ServiceProvider provider = new ServiceProvider(this);
+        Service service = provider.getmService();
+        disposable.add(service.sendUserIfo(ClientConfig.API_V2, apk_version, pushe_id, brand, model, "android", os_version)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableSingleObserver<UserPhoneInfo>() {
+                    @Override
+                    public void onSuccess(UserPhoneInfo result) {
+                        String a = result.status;
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        e.printStackTrace();
+                    }
+                }));
+
     }
 
 

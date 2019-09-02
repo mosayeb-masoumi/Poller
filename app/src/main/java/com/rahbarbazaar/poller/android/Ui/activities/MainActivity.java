@@ -106,7 +106,7 @@ public class MainActivity extends CustomBaseActivity implements
     ;
     DrawerLayout drawer_layout_home;
     NotSwipeableViewPager main_view_pager;
-    TextView text_header_date, text_username, text_point, text_notify_count;
+    TextView text_header_date, text_username, text_point, text_notify_count,text_follow_us;
     LinearLayout linear_invite_friend, linear_exit, linear_shopping, linear_notify_drawer, linear_change_lang,
             linear_support, linear_report_issue, linear_faq, linear_videos, linear_submenu, linear_lottery, ll_drawer;
     RelativeLayout rl_notification, rl_curvedbottom;
@@ -202,11 +202,17 @@ public class MainActivity extends CustomBaseActivity implements
             }
         };
 
-        if (tools.checkPackageInstalled("org.telegram.messenger", this))
+        if (tools.checkPackageInstalled("org.telegram.messenger", this)){
             image_telegram.setVisibility(View.INVISIBLE);
+            text_follow_us.setVisibility(View.INVISIBLE);
+        }
 
-        if (tools.checkPackageInstalled("com.instagram.android", this))
+
+        if (tools.checkPackageInstalled("com.instagram.android", this)){
             image_instagram.setVisibility(View.INVISIBLE);
+            text_follow_us.setVisibility(View.INVISIBLE);
+        }
+
 
 
     }
@@ -243,6 +249,7 @@ public class MainActivity extends CustomBaseActivity implements
         drawer_rv = findViewById(R.id.drawer_rv);
         text_notify_count = findViewById(R.id.text_notify_count);
         text_username = findViewById(R.id.text_username);
+        text_follow_us=findViewById(R.id.text_follow_us);
 
         ll_drawer = findViewById(R.id.ll_drawer);
         rl_curvedbottom = findViewById(R.id.rl_curvedbottom);
@@ -606,6 +613,11 @@ public class MainActivity extends CustomBaseActivity implements
 
                     e.printStackTrace();
                 }
+
+
+
+
+
 
 
                 break;

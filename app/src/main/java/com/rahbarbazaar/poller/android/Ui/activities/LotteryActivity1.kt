@@ -19,6 +19,7 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_lottery.*
 import android.view.*
 import com.google.gson.Gson
+import com.jakewharton.retrofit2.adapter.rxjava2.HttpException
 import com.rahbarbazaar.poller.android.Models.*
 import com.rahbarbazaar.poller.android.Utilities.*
 import kotlinx.android.synthetic.main.activity_lottery.av_loading
@@ -193,6 +194,7 @@ class LotteryActivity1 : CustomBaseActivity(),
                 .subscribeOn(Schedulers.io()).subscribeWith(object : DisposableSingleObserver<GeneralStatusResult>() {
                     override fun onError(e: Throwable) {
 
+
                         Log.e("lottery_error", "msg :${e.message}")
                     }
 
@@ -255,6 +257,7 @@ class LotteryActivity1 : CustomBaseActivity(),
         }
 
         val dialogFactory = DialogFactory(this)
+//        dialogFactory.createjoinToLotteryDialog(lottery_root, object : DialogFactory.DialogFactoryInteraction {
         dialogFactory.createjoinToLotteryDialog(lottery_root, object : DialogFactory.DialogFactoryInteraction {
             override fun onDeniedButtonClicked(cancel_dialog: Boolean) {
 

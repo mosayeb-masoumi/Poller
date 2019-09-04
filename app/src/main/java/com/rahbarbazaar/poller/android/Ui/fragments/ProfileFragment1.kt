@@ -25,6 +25,7 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_profile.*
 import android.graphics.ColorSpace.Model
 import android.support.v4.os.ConfigurationCompat
+import com.jakewharton.retrofit2.adapter.rxjava2.HttpException
 import kotlinx.android.synthetic.main.fragment_profile.profile_root
 import kotlinx.android.synthetic.main.fragment_profile.rl_balance_point
 import kotlinx.android.synthetic.main.fragment_profile.rl_edit_profile
@@ -187,6 +188,14 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
             }
 
             override fun onError(e: Throwable) {
+//                val error = (e as HttpException).code()
+//                if (error == 401) {
+//                    startActivity(Intent(activity, SplashScreenActivity::class.java))
+//                } else if (error == 403) {
+//                    PreferenceStorage.getInstance(context).saveToken("0")
+//                    startActivity(Intent(context, SplashScreenActivity::class.java))
+//                    activity!!.finish()
+//                }
                 Log.e("profile_tag", "msg profile: ${e.message}")
             }
         }))
@@ -207,6 +216,14 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
             }
 
             override fun onError(e: Throwable) {
+//                val error = (e as HttpException).code()
+//                if (error == 401) {
+//                    startActivity(Intent(activity, SplashScreenActivity::class.java))
+//                } else if (error == 403) {
+//                    PreferenceStorage.getInstance(context).saveToken("0")
+//                    startActivity(Intent(context, SplashScreenActivity::class.java))
+//                    activity!!.finish()
+//                }
 
                 Log.e("profile_tag", "msg edit: ${e.message}")
             }
@@ -218,6 +235,14 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
         disposable.add(provider.getmService().checkAllowExchange(ClientConfig.API_V1).observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io()).subscribeWith(object : DisposableSingleObserver<LotterySettingResult>() {
                     override fun onError(e: Throwable) {
+
+//                        var a: Int = (e as HttpException).code()
+//                        if (a == 401) {
+//                            activity?.let{
+//                                val intent = Intent (it, SplashScreenActivity::class.java)
+//                                it.startActivity(intent)
+//                            }
+//                        }
                         Log.e("profile_tag", "msg allow exchange :${e.message}")
                     }
 
@@ -244,6 +269,15 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
             disposable.add(observable.observeOn(AndroidSchedulers.mainThread())
                     .subscribeOn(Schedulers.io()).subscribeWith(object : DisposableSingleObserver<GeneralStatusResult>() {
                         override fun onError(e: Throwable) {
+//                            val error = (e as HttpException).code()
+//                            if (error == 401) {
+//                                startActivity(Intent(activity, SplashScreenActivity::class.java))
+//                            } else if (error == 403) {
+//                                PreferenceStorage.getInstance(context).saveToken("0")
+//                                startActivity(Intent(context, SplashScreenActivity::class.java))
+//                                activity!!.finish()
+//                            }
+
                             Log.e("profile_tag", "msg exchange :${e.message}")
                         }
 

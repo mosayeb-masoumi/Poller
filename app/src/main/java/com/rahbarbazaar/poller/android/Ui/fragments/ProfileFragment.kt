@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.jakewharton.retrofit2.adapter.rxjava2.HttpException
 import com.rahbarbazaar.poller.android.Models.*
 import com.rahbarbazaar.poller.android.Network.ServiceProvider
 import com.rahbarbazaar.poller.android.R
@@ -182,6 +183,13 @@ class ProfileFragment : Fragment(), View.OnClickListener {
         disposable.add(provider.getmService().checkAllowExchange(ClientConfig.API_V1).observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io()).subscribeWith(object : DisposableSingleObserver<LotterySettingResult>() {
                     override fun onError(e: Throwable) {
+                        var a: Int = (e as HttpException).code()
+                        if (a == 401) {
+                            activity?.let{
+                                val intent = Intent (it, SplashScreenActivity::class.java)
+                                it.startActivity(intent)
+                            }
+                        }
                         Log.e("profile_tag", "msg allow exchange :${e.message}")
                     }
 
@@ -208,6 +216,13 @@ class ProfileFragment : Fragment(), View.OnClickListener {
             disposable.add(observable.observeOn(AndroidSchedulers.mainThread())
                     .subscribeOn(Schedulers.io()).subscribeWith(object : DisposableSingleObserver<GeneralStatusResult>() {
                         override fun onError(e: Throwable) {
+                            var a: Int = (e as HttpException).code()
+                            if (a == 401) {
+                                activity?.let{
+                                    val intent = Intent (it, SplashScreenActivity::class.java)
+                                    it.startActivity(intent)
+                                }
+                            }
                             Log.e("profile_tag", "msg exchange :${e.message}")
                         }
 

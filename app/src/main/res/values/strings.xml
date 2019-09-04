@@ -155,7 +155,10 @@
     <string name="text_yearly_lottery">قرعه کشی سالیانه</string>
     <string name="social_medias">در شبکه های اجتماعی ما را دنبال کنید</string>
     <string name="text_select_lang_header">تغییر زبان</string>
-
+    <string name="error">خطا!</string>
+    <string name="failed_connection_to_server">خطا در برقراری ارتباط با سرور!</string>
+    <string name="try_afewmin_later">لطفا برنامه را ببندید و چند دقیقه دیگر امتحان کنید.</string>
+    <string name="close_app">بستن برنامه</string>
 
 
 </resources>

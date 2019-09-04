@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 import com.rahbarbazaar.poller.android.Models.GetBannersListResult;
 import com.rahbarbazaar.poller.android.Models.GetCurrencyListResult;
 import com.rahbarbazaar.poller.android.Models.ModelTranferDataProfileToHome;
@@ -27,15 +28,18 @@ import com.rahbarbazaar.poller.android.Network.ServiceProvider;
 import com.rahbarbazaar.poller.android.R;
 import com.rahbarbazaar.poller.android.Ui.activities.HtmlLoaderActivity;
 import com.rahbarbazaar.poller.android.Ui.activities.MainActivity;
+import com.rahbarbazaar.poller.android.Ui.activities.SplashScreenActivity;
 import com.rahbarbazaar.poller.android.Utilities.App;
 import com.rahbarbazaar.poller.android.Utilities.ClientConfig;
 import com.rahbarbazaar.poller.android.Utilities.LocaleManager;
 import com.rahbarbazaar.poller.android.Utilities.NotSwipeableViewPager;
+import com.rahbarbazaar.poller.android.Utilities.PreferenceStorage;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import java.util.List;
+import java.util.Objects;
 
 import io.fabric.sdk.android.services.common.SafeToast;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -211,7 +215,14 @@ public class HomeFragment1 extends Fragment implements View.OnClickListener {
 
                     @Override
                     public void onError(Throwable e) {
-                        Toast.makeText(getContext(), "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+//                        int error = ((HttpException) e).code();
+//                        if(error ==401){
+//                            startActivity(new Intent(getActivity(), SplashScreenActivity.class));
+//                        }else if(error ==403){
+//                            PreferenceStorage.getInstance(getContext()).saveToken("0");
+//                            startActivity(new Intent(getContext(), SplashScreenActivity.class));
+//                            Objects.requireNonNull(getActivity()).finish();
+//                        }
                     }
                 }));
     }

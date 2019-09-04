@@ -172,11 +172,10 @@ public class MainActivity extends CustomBaseActivity implements
 
         GetCurrencyListResult parcelable = getIntent().getParcelableExtra("parcel_data");
 
-
         if (parcelable != null && parcelable.getItems() != null && parcelable.getStatus().equalsIgnoreCase("ok"))
             initializeViewPager(parcelable, locale_name);
         else
-            SnackBarFactory.getInstance().showLoginIssueSnackbar(findViewById(R.id.app_bar), this, parcelable);
+//            SnackBarFactory.getInstance().showLoginIssueSnackbar(findViewById(R.id.app_bar), this, parcelable);
 
 
         //initial Dialog factory
@@ -716,7 +715,6 @@ public class MainActivity extends CustomBaseActivity implements
             public void onAcceptButtonClicked(String... params) {
 
                 PreferenceStorage.getInstance(context).saveToken("0");
-
                 startActivity(new Intent(context, SplashScreenActivity.class));
                 MainActivity.this.finish();
             }

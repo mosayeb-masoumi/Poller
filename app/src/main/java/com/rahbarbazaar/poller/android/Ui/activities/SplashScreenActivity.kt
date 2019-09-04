@@ -23,12 +23,12 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_splash_screen.av_loading
 import kotlinx.android.synthetic.main.activity_splash_screen1.*
 import android.os.Build
+import android.widget.Toast
 import com.jakewharton.retrofit2.adapter.rxjava2.HttpException
+
+import com.rahbarbazaar.poller.android.Models.getimages.GetImages
+import com.rahbarbazaar.poller.android.Models.refresh_token.RefreshToken
 import com.rahbarbazaar.poller.android.R
-
-
-
-
 
 
 
@@ -42,17 +42,18 @@ class SplashScreenActivity : AppCompatActivity() {
     private var getCurrencyListResult: GetCurrencyListResult? = null
     //end of region
 
-    var pushe_id: String = ""
+    var m :Int = 0
+//    var pushe_id: String = ""
 
-    var os_version: String = ""
+//    var os_version: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen1)
 
 
-        Pushe.initialize(this, true)
-        pushe_id = Pushe.getPusheId(this@SplashScreenActivity)
+//        Pushe.initialize(this, true)
+//        pushe_id = Pushe.getPusheId(this@SplashScreenActivity)
 
 
         txtVersion.setText(BuildConfig.VERSION_NAME)
@@ -63,27 +64,39 @@ class SplashScreenActivity : AppCompatActivity() {
         dialogFactory = DialogFactory(this@SplashScreenActivity)
         val preferenceStorage = PreferenceStorage.getInstance(this)
 
+
+
         //check token validation
         isValidToken = preferenceStorage.retriveToken() != "0"
 
+
         //save dynamic currency
         fun saveCurrency() {
-
             val service = provider.getmService()
             disposable.add(service.getCurrency(ClientConfig.API_V2).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                     .subscribeWith(object : DisposableSingleObserver<GetCurrencyListResult>() {
                         override fun onSuccess(result: GetCurrencyListResult) {
-
                             getCurrencyListResult = result
-                            var a = 0
+//                            var a  = 5
 
                         }
 
                         override fun onError(e: Throwable) {
-                            //todo add below lines to call refresh token
-                           var a : Int = (e as HttpException).code()
-                            if(a == 401){
 
+
+                            var a: Int = (e as HttpException).code()
+                            if (a == 401) {
+
+                                requestRefreshToken()
+//                                if(m<1){
+//                                    requestRefreshToken()
+//                                    m++
+//                                }else{
+//                                    val intent = Intent(this@SplashScreenActivity,LoginActivity::class.java)
+//                                    startActivity(intent)
+//                                }
+
+                            }else if(a ==403){
 
                             }
 
@@ -102,7 +115,6 @@ class SplashScreenActivity : AppCompatActivity() {
 
             if (!isFinishing) {
 
-
                 //todo added those 3 below lines insteade of instead of below commented
                 // lines to use activity for set language instead of dialog
                 // and created a new katlin class under the name of setLaguage activity
@@ -110,6 +122,11 @@ class SplashScreenActivity : AppCompatActivity() {
                 startActivity(Intent(this@SplashScreenActivity, SetLanguageActivity::class.java))
                 this@SplashScreenActivity.finish()
                 overridePendingTransition(R.anim.slide_in, R.anim.slide_out)
+
+
+
+
+
 
 
 //                dialogFactory.createSelectLangDialog(findViewById<View>(R.id.rl_root), object : DialogFactory.DialogFactoryInteraction {
@@ -126,7 +143,10 @@ class SplashScreenActivity : AppCompatActivity() {
 
         } else
             CustomHandler(this).postDelayed({ this.checkAccessibility() }, 3500)//lambda expression :: you have to enable lambda expression
+
+//        checkAccessibility()
     }
+
 
     /**
      * check network connection state if available and if user token was valid he/she will go to main
@@ -147,17 +167,26 @@ class SplashScreenActivity : AppCompatActivity() {
 
             } else {
 
-//                // todo send user phone info
 //                sendUserInfo()
 
-                Intent(this@SplashScreenActivity, MainActivity::class.java).let {
+//                 if(getCurrencyListResult  ===null){
+                     Intent(this@SplashScreenActivity, MainActivity::class.java).let {
+                         it.putExtra("parcel_data", getCurrencyListResult)
+//                         if(getCurrencyListResult !=null){ // to prevent going to mainActivity
+                             startActivity(it)
+//                         }else{
+////                             saveCurrency()
+//                             Intent(this@SplashScreenActivity, SplashScreenActivity::class.java)
+//                             Toast.makeText(this@SplashScreenActivity,"صبور باشید", Toast.LENGTH_SHORT).show()
+//                         }
 
-                    it.putExtra("parcel_data", getCurrencyListResult)
-                    startActivity(it)
-                }.also {
-                    this@SplashScreenActivity.finish()
-                    overridePendingTransition(R.anim.slide_in, R.anim.slide_out)
-                }
+                     }.also {
+                         this@SplashScreenActivity.finish()
+                         overridePendingTransition(R.anim.slide_in, R.anim.slide_out)
+                     }
+//                 }
+
+
             }
 
         } else {
@@ -187,85 +216,40 @@ class SplashScreenActivity : AppCompatActivity() {
         }
     }
 
-//    private fun sendUserInfo() {
-//        val provider = ServiceProvider(this@SplashScreenActivity)
-//        disposable = CompositeDisposable()
-//        var service = provider.getmService()
-//
-//        var apk_version: String = BuildConfig.VERSION_NAME
-//        var model: String = Build.MODEL // device name
-//
-//        var brand: String = Build.BRAND
-//
-//
-//        var sdk: Int = Build.VERSION.SDK_INT
-//
-//        when (sdk) {
-//            14 -> {
-//                os_version = "android 4.0"
-//            }
-//            15 -> {
-//                os_version = "android 4.0.3"
-//            }
-//            16 -> {
-//                os_version = "android 4.1"
-//            }
-//            17 -> {
-//                os_version = "android 4.2"
-//            }
-//            18 -> {
-//                os_version = "android 4.3"
-//            }
-//            19 -> {
-//                os_version = "android 4.4"
-//            }
-//            20 -> {
-//                os_version = "android 4.4W"
-//            }
-//            21 -> {
-//                os_version = "android 5.0"
-//            }
-//            22 -> {
-//                os_version = "android 5.1"
-//            }
-//            23 -> {
-//                os_version = "android 6.0"
-//            }
-//            24 -> {
-//                os_version = "android 7.0"
-//            }
-//            25 -> {
-//                os_version = "android 7.1"
-//            }
-//            26 -> {
-//                os_version = "android 8.0"
-//            }
-//            27 -> {
-//                os_version = "android 8.1"
-//            }
-//            28 -> {
-//                os_version = "android 9.0"
-//            }
-//            29 -> {
-//                os_version = "android 10"
-//            }
-//        }
-//
-//        disposable.add(service.sendUserIfo(ClientConfig.API_V2, apk_version, pushe_id, brand, model, "android", os_version)
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribeWith(object : DisposableSingleObserver<UserPhoneInfo>() {
-//                    override fun onSuccess(t: UserPhoneInfo) {
-//                    }
-//
-//                    override fun onError(e: Throwable) {
-//                    }
-//                }))
-//    }
+    private fun requestRefreshToken() {
+        val provider = ServiceProvider(this)
+        disposable = CompositeDisposable()
+
+        val service = provider.getmService()
+
+        disposable.add(service.requsetRefreshToken(ClientConfig.API_V1)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableSingleObserver<RefreshToken>() {
+                    override fun onSuccess(result: RefreshToken) {
+
+                        val preferenseStrorage = PreferenceStorage.getInstance(this@SplashScreenActivity)
+                        preferenseStrorage.saveToken(result.getToken())
+
+                        val intent = Intent(this@SplashScreenActivity, SplashScreenActivity::class.java)
+                        startActivity(intent)
+                    }
+
+                    override fun onError(e: Throwable) {
+
+                    }
+                }))
+
+    }
 
 
     override fun onDestroy() {
         disposable.dispose()
         super.onDestroy()
     }
+
 }
+
+
+
+

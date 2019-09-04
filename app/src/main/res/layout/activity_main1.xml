@@ -429,7 +429,7 @@
                         android:layout_height="@dimen/_30sdp"
                         android:layout_marginStart="@dimen/_10sdp"
                         android:layout_toStartOf="@+id/img_instagram"
-                        android:src="@drawable/likedin_icon" />
+                        android:src="@drawable/telegram_icon" />
                 </LinearLayout>
             </LinearLayout>
 

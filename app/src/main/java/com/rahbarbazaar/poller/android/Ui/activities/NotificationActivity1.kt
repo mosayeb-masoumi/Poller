@@ -50,10 +50,12 @@ class NotificationActivity1 : CustomBaseActivity(), GeneralItemIntraction<GetNot
         if (locale_name.equals("fa")) {
             window.decorView.layoutDirection = View.LAYOUT_DIRECTION_LTR
             llbtom.layoutDirection = View.LAYOUT_DIRECTION_LTR
+            ll_recyclere.layoutDirection = View.LAYOUT_DIRECTION_RTL
 
         } else if (locale_name.equals("en")) {
             window.decorView.layoutDirection = View.LAYOUT_DIRECTION_RTL
-            llbtom.layoutDirection = View.LAYOUT_DIRECTION_RTL
+            llbtom.layoutDirection = View.LAYOUT_DIRECTION_LTR
+            ll_recyclere.layoutDirection = View.LAYOUT_DIRECTION_RTL
         }
     }
 

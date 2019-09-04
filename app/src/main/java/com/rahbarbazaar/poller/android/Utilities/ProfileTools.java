@@ -2,6 +2,7 @@ package com.rahbarbazaar.poller.android.Utilities;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -9,6 +10,7 @@ import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 import com.rahbarbazaar.poller.android.Models.UserConfirmAuthResult;
 import com.rahbarbazaar.poller.android.Models.UserDetailsPrefrence;
 import com.rahbarbazaar.poller.android.Network.ServiceProvider;
+import com.rahbarbazaar.poller.android.Ui.activities.SplashScreenActivity1;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -74,12 +76,7 @@ public class ProfileTools {
 
                     @Override
                     public void onError(Throwable e) {
-                        // Network error
-                       int a = ((HttpException) e).code();
-                        if(a == 401){
-
-
-                        }
+                        context.startActivity(new Intent(context, SplashScreenActivity1.class));
                     }
                 }));
         return this;

@@ -30,6 +30,7 @@ import com.google.gson.Gson;
 import com.rahbarbazaar.poller.android.Models.SurveyMainModel;
 import com.rahbarbazaar.poller.android.Models.UserDetailsPrefrence;
 import com.rahbarbazaar.poller.android.R;
+import com.rahbarbazaar.poller.android.Ui.activities.SplashScreenActivity1;
 import com.wang.avi.AVLoadingIndicatorView;
 
 public class DialogFactory {
@@ -606,6 +607,51 @@ public class DialogFactory {
                 dialog.dismiss();
             }
         });
+        dialog.show();
+    }
+
+
+
+
+
+    public void createTryAgainDialog(View view, DialogFactoryInteraction interaction) {
+
+        View customView = LayoutInflater.from(context).inflate(R.layout.try_again_dialog1, (ViewGroup) view, false);
+
+        TextView text_tryAgain = customView.findViewById(R.id.text_tryAgain);
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setView(customView);
+
+        //create dialog and set background transparent
+        AlertDialog dialog = builder.create();
+        if (dialog.getWindow() != null)
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+
+         text_tryAgain.setOnClickListener(v -> {
+             dialog.dismiss();
+         });
+
+        dialog.show();
+    }
+
+
+    public void createCloseAppDialog(View view, DialogFactoryInteraction interaction) {
+
+        View customView = LayoutInflater.from(context).inflate(R.layout.close_app_dialog1, (ViewGroup) view, false);
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setView(customView);
+
+        //create dialog and set background transparent
+        AlertDialog dialog = builder.create();
+        if (dialog.getWindow() != null)
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+
         dialog.show();
     }
 }

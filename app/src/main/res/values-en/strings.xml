@@ -158,5 +158,9 @@
     <string name="text_yearly_lottery">Yearly Lottery</string>
     <string name="social_medias">follow us at social network</string>
     <string name="text_select_lang_header">Change Language</string>
+    <string name="error">Error!</string>
+    <string name="failed_connection_to_server">Connection To Server Failed</string>
+    <string name="try_afewmin_later">Exit And Try Later</string>
+    <string name="close_app">Exit Application</string>
 
 </resources>

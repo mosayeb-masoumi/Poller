@@ -16,6 +16,7 @@ import com.rahbarbazaar.poller.android.Models.LotterySettingResult;
 import com.rahbarbazaar.poller.android.Models.SurveyMainModel;
 import com.rahbarbazaar.poller.android.Models.UserConfirmAuthResult;
 import com.rahbarbazaar.poller.android.Models.getimages.GetImages;
+import com.rahbarbazaar.poller.android.Models.refresh_token.RefreshToken;
 import com.rahbarbazaar.poller.android.Models.user_phonedata.UserPhoneInfo;
 
 import java.util.List;
@@ -173,5 +174,9 @@ public interface Service {
                                       @Query("model") String model,
                                       @Query("os_type") String os_type,
                                       @Query("os_version") String os_version
+    );
+
+    @POST("{api}/token/refresh")
+    Single<RefreshToken> requsetRefreshToken(@Path("api") String version
     );
 }

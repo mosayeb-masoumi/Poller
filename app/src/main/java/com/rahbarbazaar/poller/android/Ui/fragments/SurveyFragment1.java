@@ -19,6 +19,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+
+import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 import com.rahbarbazaar.poller.android.Controllers.adapters.SurveyRecyclerAdapter;
 import com.rahbarbazaar.poller.android.Controllers.adapters.SurveyRecyclerAdapter1;
 import com.rahbarbazaar.poller.android.Controllers.viewHolders.SurveyItemInteraction;
@@ -33,6 +35,7 @@ import com.rahbarbazaar.poller.android.Network.Service;
 import com.rahbarbazaar.poller.android.Network.ServiceProvider;
 import com.rahbarbazaar.poller.android.R;
 import com.rahbarbazaar.poller.android.Ui.activities.HtmlLoaderActivity;
+import com.rahbarbazaar.poller.android.Ui.activities.SplashScreenActivity;
 import com.rahbarbazaar.poller.android.Utilities.ClientConfig;
 import com.rahbarbazaar.poller.android.Utilities.SnackBarFactory;
 import com.rahbarbazaar.poller.android.Utilities.ToastFactory;
@@ -194,6 +197,15 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
                             @Override
                             public void onError(Throwable e) {
 
+//                                int error = ((HttpException) e).code();
+//                                if(error ==401){
+//                                    startActivity(new Intent(getActivity(), SplashScreenActivity.class));
+//                                }else if(error ==403){
+//                                    PreferenceStorage.getInstance(getContext()).saveToken("0");
+//                                    startActivity(new Intent(getContext(), SplashScreenActivity.class));
+//                                    getActivity().finish();
+//                                }
+
                                 swipe_refesh.post(() -> swipe_refesh.setRefreshing(false));
                             }
                         }));
@@ -260,6 +272,14 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
 
                             @Override
                             public void onError(Throwable e) {
+//                                int error = ((HttpException) e).code();
+//                                if(error ==401){
+//                                    startActivity(new Intent(getActivity(), SplashScreenActivity.class));
+//                                }else if(error ==403){
+//                                    PreferenceStorage.getInstance(getContext()).saveToken("0");
+//                                    startActivity(new Intent(getContext(), SplashScreenActivity.class));
+//                                    getActivity().finish();
+//                                }
 
                                 isSurveyItemClickable = true;
                             }
@@ -368,6 +388,14 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
 
                             @Override
                             public void onError(Throwable e) {
+//                                int error = ((HttpException) e).code();
+//                                if(error ==401){
+//                                    startActivity(new Intent(getActivity(), SplashScreenActivity.class));
+//                                }else if(error ==403){
+//                                    PreferenceStorage.getInstance(getContext()).saveToken("0");
+//                                    startActivity(new Intent(getContext(), SplashScreenActivity.class));
+//                                    getActivity().finish();
+//                                }
 
                             }
                         }));

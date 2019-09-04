@@ -20,6 +20,10 @@ import android.view.*
 import com.google.gson.Gson
 import com.rahbarbazaar.poller.android.Models.*
 import com.rahbarbazaar.poller.android.Utilities.*
+import com.rahbarbazaar.poller.android.Utilities.PreferenceStorage
+
+import com.jakewharton.retrofit2.adapter.rxjava2.HttpException
+
 
 class LotteryActivity : CustomBaseActivity(),
         View.OnClickListener,
@@ -69,6 +73,15 @@ class LotteryActivity : CustomBaseActivity(),
         disposable.add(service.getCurrentLottery(ClientConfig.API_V1).observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io()).subscribeWith(object : DisposableSingleObserver<List<GetLotteryListResult>>() {
                     override fun onError(e: Throwable) {
+                        val error = (e as HttpException).code()
+                        if (error == 401) {
+                            startActivity(Intent(this@LotteryActivity, SplashScreenActivity::class.java))
+                        } else if (error == 403) {
+                            PreferenceStorage.getInstance(this@LotteryActivity).saveToken("0")
+                            startActivity(Intent(this@LotteryActivity, SplashScreenActivity::class.java))
+                            this@LotteryActivity.finish()
+                        }
+
                         Log.e("lottery_error", "msg :${e.message}")
                     }
 

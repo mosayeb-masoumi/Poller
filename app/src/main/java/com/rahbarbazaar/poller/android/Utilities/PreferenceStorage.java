@@ -55,4 +55,26 @@ public class PreferenceStorage {
         return preferences.getString("language_key", "");
     }
 
+
+//    public void saveToken(String token) {
+//        preferences.edit().putString("token", token).apply();
+//    }
+//
+//    public String retriveToken() {
+//        return preferences.getString("token", "0");
+//    }
+
+
+
+
+
+
+    public  void setInt(String Key, int value) {
+        preferences.edit().putInt(Key, value).apply();
+    }
+
+    public  int getInt(String Key, int DefaultValue) {
+        return preferences.getInt(Key, DefaultValue);
+    }
+
 }

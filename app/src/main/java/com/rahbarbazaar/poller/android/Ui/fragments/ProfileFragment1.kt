@@ -306,11 +306,9 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
 
         DialogFactory(context).createExchangeDialog(isBalance, profile_root, object : DialogFactory.DialogFactoryInteraction {
             override fun onDeniedButtonClicked(cancel_dialog: Boolean) {
-
             }
 
             override fun onAcceptButtonClicked(vararg strings: String?) {
-
                 sendExchangeRequest(strings[0]!!)
             }
         })

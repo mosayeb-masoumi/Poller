@@ -64,9 +64,13 @@ public class HomeFragment1 extends Fragment implements View.OnClickListener {
     int balance;
     int lotteryDays;
     int score;
-    String newsUrl = "";
-    String surveyUrl = "";
-    String videoUrl = "";
+    String newsImgUrl = "";
+    String surveyImgUrl = "";
+    String videoImgUrl = "";
+    String videoWebUrl = "";
+    String newsWebUrl = "";
+
+
 
 
     public HomeFragment1() {
@@ -155,13 +159,26 @@ public class HomeFragment1 extends Fragment implements View.OnClickListener {
         switch (view.getId()) {
             case R.id.cardview_home_video:
                 //todo get url from server and replace
-                goToHtmlActivity("http://pollerws.rahbarbazaar.com:2296/poller/v2/support/videos/"
-                        + LocaleManager.getLocale(getResources()).getLanguage(), true);
+//                goToHtmlActivity("http://pollerws.rahbarbazaar.com:2296/poller/v2/support/videos/"
+//                        + LocaleManager.getLocale(getResources()).getLanguage(), true);
+                if(lang.equals("fa")){
+                    goToHtmlActivity(videoWebUrl+"/fa"
+                            + LocaleManager.getLocale(getResources()).getLanguage(), true);
+                }else{
+                    goToHtmlActivity(videoWebUrl+"/en"
+                            + LocaleManager.getLocale(getResources()).getLanguage(), true);
+                }
+
                 break;
             case R.id.cardview_home_image:
-                //todo get url from server and replace
-                goToHtmlActivity("http://pollerws.rahbarbazaar.com:2296/poller/v2/support/videos/"
-                        + LocaleManager.getLocale(getResources()).getLanguage(), true);
+                if(lang.equals("fa")){
+                    goToHtmlActivity(newsWebUrl+"/fa"
+                            + LocaleManager.getLocale(getResources()).getLanguage(), true);
+                }else{
+                    goToHtmlActivity(newsWebUrl+"/en"
+                            + LocaleManager.getLocale(getResources()).getLanguage(), true);
+                }
+
                 break;
 
             case R.id.cardview_home_polls:
@@ -184,7 +201,7 @@ public class HomeFragment1 extends Fragment implements View.OnClickListener {
 
     private void getImages() {
         Service service = new ServiceProvider(getContext()).getmService();
-        String locale_name = ConfigurationCompat.getLocales(getResources().getConfiguration()).get(0).getLanguage();
+//        String locale_name = ConfigurationCompat.getLocales(getResources().getConfiguration()).get(0).getLanguage();
         disposable.add(service.getImages(ClientConfig.API_V2).subscribeOn(Schedulers.io()).
                 observeOn(AndroidSchedulers.mainThread()).
                 subscribeWith(new DisposableSingleObserver<GetImages>() {
@@ -197,18 +214,18 @@ public class HomeFragment1 extends Fragment implements View.OnClickListener {
                             balance = result.getImagesDetail.getBalance();
                             lotteryDays = result.getImagesDetail.getLotteryDays();
                             score = result.getImagesDetail.getScore();
-                            newsUrl = result.getImagesDetail.getNews();
-                            surveyUrl = result.getImagesDetail.getSurvey();
-                            videoUrl = result.getImagesDetail.getVideo();
-
+                            newsImgUrl = result.getImagesDetail.getNews();
+                            surveyImgUrl = result.getImagesDetail.getSurvey();
+                            videoImgUrl = result.getImagesDetail.getVideo();
+                            newsWebUrl = result.getImagesDetail.getNews_url();
+                            videoWebUrl= result.getImagesDetail.getVideo_url();
 
                             text_yourpoint_digit.setText(String.valueOf(score));
                             text_balance_digit.setText(String.valueOf(balance));
                             text_activepoll_digit.setText(String.valueOf(activeSurveys));
                             text_leftdays_digit.setText(String.valueOf(lotteryDays));
 
-
-                            setImages(newsUrl, surveyUrl, videoUrl);
+                            setImages(newsImgUrl, surveyImgUrl, videoImgUrl);
                         }
 
                     }
@@ -227,11 +244,11 @@ public class HomeFragment1 extends Fragment implements View.OnClickListener {
                 }));
     }
 
-    private void setImages(String newsUrl, String surveyUrl, String videoUrl) {
+    private void setImages(String newsImgUrl, String surveyImgUrl, String videoImgUrl) {
         //loading image from url
-        Uri uriNewsUrl = Uri.parse(newsUrl);
-        Uri uriVideoUrl = Uri.parse(videoUrl);
-        Uri uriSurveyUrl = Uri.parse(surveyUrl);
+        Uri uriNewsUrl = Uri.parse(newsImgUrl);
+        Uri uriVideoUrl = Uri.parse(videoImgUrl);
+        Uri uriSurveyUrl = Uri.parse(surveyImgUrl);
 
         img_home_whats_up.setImageURI(uriNewsUrl);
         img_home_video.setImageURI(uriVideoUrl);
@@ -239,15 +256,4 @@ public class HomeFragment1 extends Fragment implements View.OnClickListener {
     }
 
 
-//    private void setImages() {
-//
-//        //loading image from url
-//        Uri uriNewsUrl = Uri.parse(newsUrl);
-//        Uri uriVideoUrl = Uri.parse(videoUrl);
-//        Uri uriSurveyUrl = Uri.parse(surveyUrl);
-//
-//        img_home_whats_up.setImageURI(uriNewsUrl);
-//        img_home_video.setImageURI(uriVideoUrl);
-//        img_home_polls.setImageURI(uriSurveyUrl);
-//    }
 }

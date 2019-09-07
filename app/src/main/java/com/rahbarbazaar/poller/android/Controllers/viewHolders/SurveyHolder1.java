@@ -99,10 +99,14 @@ public class SurveyHolder1 extends RecyclerView.ViewHolder {
         } else if (remaining_day > 0 && data.getStatus() == 3) {
             row_survey_imgmobile.setImageResource(R.drawable.survey_item_ok_icon2);
             row_survey_imgLeftday.setImageResource(R.drawable.survey_item_leftday_icon);
-            text_survey_title.setTextColor(ContextCompat.getColor(context, R.color.blue));
-            txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.blue));
-            row_survey_LLbackground.setBackground(ContextCompat.getDrawable(context, R.drawable.row_survey_gradient_border));
-        } else if (remaining_day <= 0 && data.getStatus() == 1) {
+
+            text_survey_title.setTextColor(ContextCompat.getColor(context, R.color.white_gray));
+            txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.white_gray));
+            row_survey_LLbackground.setBackground(ContextCompat.getDrawable(context, R.drawable.row_survey_gray_bg));
+//            text_survey_title.setTextColor(ContextCompat.getColor(context, R.color.blue));
+//            txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.blue));
+//            row_survey_LLbackground.setBackground(ContextCompat.getDrawable(context, R.drawable.row_survey_gradient_border));
+        } else if (remaining_day <= 0 && (data.getStatus() == 1 || data.getStatus() == 2)) {
             row_survey_imgmobile.setImageResource(R.drawable.survey_item_delete_icon2);
             row_survey_imgLeftday.setImageResource(R.drawable.survey_item_expired_icon);
             text_survey_title.setTextColor(ContextCompat.getColor(context, R.color.white_gray));
@@ -132,10 +136,16 @@ public class SurveyHolder1 extends RecyclerView.ViewHolder {
             row_survey_underImg_right.setImageResource(R.drawable.row_survey_under_lightgray);
         }
 
+        if (data.getStatus() == 3) {
+            row_survey_imgCoin.setImageResource(R.drawable.survey_item_graycoin);
+            row_survey_underImg_left.setImageResource(R.drawable.row_survey_under_deepgray);
+            row_survey_underImg_right.setImageResource(R.drawable.row_survey_under_lightgray);
+        }
+
 
         if (remaining_day != 0)
             txt_survey_date.setText(remaining_day + " " + context.getString(R.string.text_remaining_day));
-        else{
+        else {
             txt_survey_date.setText(context.getString(R.string.text_expired));
             txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.white_gray));
         }
@@ -155,13 +165,13 @@ public class SurveyHolder1 extends RecyclerView.ViewHolder {
             case 2:
 //                text_number.setText("");
                 row_survey_imgLeftday.setVisibility(View.VISIBLE);
-                row_survey_imgLeftday.setImageResource(R.drawable.inprogress_survey);
+                row_survey_imgLeftday.setImageResource(R.drawable.survey_item_expired_icon);
                 break;
 
             case 3:
 //                text_number.setText("");
                 row_survey_imgLeftday.setVisibility(View.VISIBLE);
-                row_survey_imgLeftday.setImageResource(R.drawable.done_survey);
+                row_survey_imgLeftday.setImageResource(R.drawable.survey_item_expired_icon);
 
                 break;
         }

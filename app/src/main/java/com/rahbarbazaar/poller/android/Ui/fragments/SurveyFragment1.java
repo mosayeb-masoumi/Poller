@@ -231,8 +231,9 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
                 if (active_count != 0 && interaction != null)
                     interaction.activeSurveyCount(String.valueOf(active_count));//badge count for survey page
 
-            } else if (data.getActives().size() == 0)
+            } else if (data.getActives().size() == 0){
                 text_no_active_survey.setVisibility(View.VISIBLE); //if user doesn't have any active survey , no active survey text will be visible
+            }
         }
 
         //get expired data

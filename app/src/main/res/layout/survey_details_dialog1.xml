@@ -160,6 +160,7 @@
             android:layout_width="0dp"
             android:layout_height="@dimen/dimen_42"
             android:layout_marginStart="@dimen/dimen_10"
+            android:layout_marginEnd="@dimen/_10sdp"
             android:layout_weight="1"
             android:textColor="@color/blue"
             android:background="@drawable/dialog_btn_shape"
@@ -174,6 +175,7 @@
             android:layout_marginStart="@dimen/dimen_10"
             android:layout_marginEnd="@dimen/dimen_10"
             android:layout_weight="1"
+            android:visibility="gone"
             android:textColor="@color/blue"
             android:background="@drawable/dialog_btn_shape"
             android:gravity="center" />

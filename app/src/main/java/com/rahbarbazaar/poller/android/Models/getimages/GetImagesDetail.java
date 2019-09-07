@@ -6,8 +6,12 @@ public class GetImagesDetail {
 
     @SerializedName("news")
     public String news;
+    @SerializedName("news_url")
+    public String news_url;
     @SerializedName("video")
     public String video;
+    @SerializedName("video_url")
+    public String video_url;
     @SerializedName("survey")
     public String survey;
     @SerializedName("balance")
@@ -18,6 +22,9 @@ public class GetImagesDetail {
     public Integer activeSurveys;
     @SerializedName("lottery_days")
     public Integer lotteryDays;
+
+
+
 
     public String getNews() {
         return news;
@@ -73,5 +80,21 @@ public class GetImagesDetail {
 
     public void setLotteryDays(Integer lotteryDays) {
         this.lotteryDays = lotteryDays;
+    }
+
+    public String getNews_url() {
+        return news_url;
+    }
+
+    public void setNews_url(String news_url) {
+        this.news_url = news_url;
+    }
+
+    public String getVideo_url() {
+        return video_url;
+    }
+
+    public void setVideo_url(String video_url) {
+        this.video_url = video_url;
     }
 }

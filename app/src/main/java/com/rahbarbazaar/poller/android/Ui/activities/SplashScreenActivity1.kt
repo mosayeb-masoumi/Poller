@@ -134,6 +134,10 @@ class SplashScreenActivity1 : AppCompatActivity() {
                     }
 
                     override fun onError(e: Throwable) {
+//                        var n = e.message
+//                        if(n.contains("timed out"){
+//
+//                                })
                         rl_root.av_loading.visibility = View.GONE
                         var a: Int = (e as HttpException).code()
                         if (a == 401) {

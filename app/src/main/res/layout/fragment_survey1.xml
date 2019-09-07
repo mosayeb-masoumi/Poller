@@ -37,17 +37,16 @@
         android:id="@+id/text_no_active_survey"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+         android:layout_below="@+id/rl25"
         android:gravity="center"
         android:paddingBottom="@dimen/dimen_2"
         android:text="@string/no_active_survey"
-        android:visibility="gone" />
+        android:visibility="visible" />
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh"
         android:layout_marginTop="@dimen/_10sdp"
-        android:layout_below="@+id/rl25"
+        android:layout_below="@+id/text_no_active_survey"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

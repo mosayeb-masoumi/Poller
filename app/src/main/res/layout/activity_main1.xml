@@ -118,6 +118,7 @@
                 android:id="@+id/scrollDrawer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/_80sdp"
                 android:layout_above="@+id/linear_social_media"
                 android:fillViewport="true">
 
@@ -125,8 +126,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/ll_drawer"
-                    android:layout_marginTop="@dimen/_40sdp"
-
+                    android:layout_marginTop="@dimen/_22sdp"
                     android:orientation="vertical">
                     <!--android:layoutDirection="rtl"-->
 
@@ -193,7 +193,7 @@
                     <LinearLayout
                         android:id="@+id/linear_shopping"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/dimen_34"
+                        android:layout_height="@dimen/dimen_37"
                         android:foreground="?attr/selectableItemBackground"
                         android:orientation="horizontal"
                         android:paddingStart="@dimen/dimen_5"
@@ -219,7 +219,7 @@
                     <LinearLayout
                         android:id="@+id/linear_change_lang"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/dimen_34"
+                        android:layout_height="@dimen/dimen_37"
                         android:foreground="?attr/selectableItemBackground"
                         android:orientation="horizontal"
                         android:paddingStart="@dimen/dimen_5"
@@ -245,7 +245,7 @@
                     <LinearLayout
                         android:id="@+id/linear_lottery"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/dimen_34"
+                        android:layout_height="@dimen/dimen_37"
                         android:foreground="?attr/selectableItemBackground"
                         android:orientation="horizontal"
                         android:paddingStart="@dimen/dimen_5"
@@ -273,7 +273,7 @@
                     <LinearLayout
                         android:id="@+id/linear_notify_drawer"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/dimen_34"
+                        android:layout_height="@dimen/dimen_37"
                         android:foreground="?attr/selectableItemBackground"
                         android:orientation="horizontal"
                         android:paddingStart="@dimen/dimen_5"
@@ -299,7 +299,7 @@
                     <LinearLayout
                         android:id="@+id/linear_invite_friend"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/dimen_34"
+                        android:layout_height="@dimen/dimen_37"
                         android:foreground="?attr/selectableItemBackground"
                         android:orientation="horizontal"
                         android:paddingStart="@dimen/dimen_5"
@@ -369,6 +369,130 @@
                     <!--android:textColor="#ffffff"-->
                     <!--android:textSize="@dimen/_15ssp" />-->
                     <!--</LinearLayout>-->
+
+
+
+
+                    <!--test -->
+                    <!---->
+                    <!--<LinearLayout-->
+                        <!--android:id="@+id/test"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="@dimen/dimen_34"-->
+                        <!--android:foreground="?attr/selectableItemBackground"-->
+                        <!--android:orientation="horizontal"-->
+                        <!--android:paddingStart="@dimen/dimen_5"-->
+                        <!--android:paddingEnd="@dimen/dimen_0">-->
+
+                        <!--<ImageView-->
+                            <!--android:layout_width="@dimen/dimen_34"-->
+                            <!--android:layout_height="match_parent"-->
+                            <!--android:padding="@dimen/dimen_6"-->
+                            <!--android:src="@drawable/share_poller_icon" />-->
+
+                        <!--<com.rahbarbazaar.poller.android.Utilities.CustomTextView-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="match_parent"-->
+                            <!--android:layout_marginStart="@dimen/_10sdp"-->
+                            <!--android:gravity="center_vertical"-->
+                            <!--android:text="@string/share_poller"-->
+                            <!--android:textColor="@color/white_gray"-->
+                            <!--android:textSize="@dimen/_13ssp" />-->
+
+                    <!--</LinearLayout>-->
+                    <!--<LinearLayout-->
+                        <!--android:id="@+id/test2"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="@dimen/dimen_34"-->
+                        <!--android:foreground="?attr/selectableItemBackground"-->
+                        <!--android:orientation="horizontal"-->
+                        <!--android:paddingStart="@dimen/dimen_5"-->
+                        <!--android:paddingEnd="@dimen/dimen_0">-->
+
+                        <!--<ImageView-->
+                            <!--android:layout_width="@dimen/dimen_34"-->
+                            <!--android:layout_height="match_parent"-->
+                            <!--android:padding="@dimen/dimen_6"-->
+                            <!--android:src="@drawable/share_poller_icon" />-->
+
+                        <!--<com.rahbarbazaar.poller.android.Utilities.CustomTextView-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="match_parent"-->
+                            <!--android:layout_marginStart="@dimen/_10sdp"-->
+                            <!--android:gravity="center_vertical"-->
+                            <!--android:text="@string/share_poller"-->
+                            <!--android:textColor="@color/white_gray"-->
+                            <!--android:textSize="@dimen/_13ssp" />-->
+
+                    <!--</LinearLayout>-->
+                    <!--<LinearLayout-->
+                        <!--android:id="@+id/test3"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="@dimen/dimen_34"-->
+                        <!--android:foreground="?attr/selectableItemBackground"-->
+                        <!--android:orientation="horizontal"-->
+                        <!--android:paddingStart="@dimen/dimen_5"-->
+                        <!--android:paddingEnd="@dimen/dimen_0">-->
+
+                        <!--<ImageView-->
+                            <!--android:layout_width="@dimen/dimen_34"-->
+                            <!--android:layout_height="match_parent"-->
+                            <!--android:padding="@dimen/dimen_6"-->
+                            <!--android:src="@drawable/share_poller_icon" />-->
+
+                        <!--<com.rahbarbazaar.poller.android.Utilities.CustomTextView-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="match_parent"-->
+                            <!--android:layout_marginStart="@dimen/_10sdp"-->
+                            <!--android:gravity="center_vertical"-->
+                            <!--android:text="@string/share_poller"-->
+                            <!--android:textColor="@color/white_gray"-->
+                            <!--android:textSize="@dimen/_13ssp" />-->
+
+                    <!--</LinearLayout>-->
+                    <!--<LinearLayout-->
+                        <!--android:id="@+id/test4"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="@dimen/dimen_34"-->
+                        <!--android:foreground="?attr/selectableItemBackground"-->
+                        <!--android:orientation="horizontal"-->
+                        <!--android:layout_marginBottom="@dimen/_40sdp"-->
+                        <!--android:paddingStart="@dimen/dimen_5"-->
+                        <!--android:paddingEnd="@dimen/dimen_0">-->
+
+                        <!--<ImageView-->
+                            <!--android:layout_width="@dimen/dimen_34"-->
+                            <!--android:layout_height="match_parent"-->
+                            <!--android:padding="@dimen/dimen_6"-->
+                            <!--android:src="@drawable/share_poller_icon" />-->
+
+                        <!--<com.rahbarbazaar.poller.android.Utilities.CustomTextView-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="match_parent"-->
+                            <!--android:layout_marginStart="@dimen/_10sdp"-->
+                            <!--android:gravity="center_vertical"-->
+                            <!--android:text="@string/share_poller"-->
+                            <!--android:textColor="@color/white_gray"-->
+                            <!--android:textSize="@dimen/_13ssp" />-->
+
+                    <!--</LinearLayout>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 </LinearLayout>
 

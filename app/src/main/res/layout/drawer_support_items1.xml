@@ -7,7 +7,7 @@
     <LinearLayout
         android:id="@+id/linear_support"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_34"
+        android:layout_height="@dimen/dimen_37"
         android:layout_marginTop="@dimen/dimen_3"
         android:foreground="?attr/selectableItemBackground"
         android:orientation="horizontal"
@@ -33,8 +33,10 @@
         <ImageView
             android:layout_width="@dimen/dimen_34"
             android:layout_height="match_parent"
-            android:padding="@dimen/dimen_14"
-            android:src="@drawable/arrow_down1" />
+            android:padding="@dimen/dimen_12"
+            android:id="@+id/img_arrow"
+            android:src="@drawable/arrow_left"/>
+        <!--android:src="@drawable/arrow_down2"-->
 
         <!--<ImageView-->
             <!--android:layout_width="@dimen/dimen_34"-->
@@ -54,7 +56,7 @@
         <LinearLayout
             android:id="@+id/linear_faq"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_34"
+            android:layout_height="@dimen/dimen_37"
             android:foreground="?attr/selectableItemBackground"
             android:orientation="horizontal"
             android:paddingStart="@dimen/dimen_5"
@@ -81,7 +83,7 @@
         <LinearLayout
             android:id="@+id/linear_report_issue"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_34"
+            android:layout_height="@dimen/dimen_37"
             android:foreground="?attr/selectableItemBackground"
             android:orientation="horizontal"
             android:paddingStart="@dimen/dimen_5"
@@ -108,7 +110,7 @@
         <LinearLayout
             android:id="@+id/linear_videos"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_34"
+            android:layout_height="@dimen/dimen_37"
             android:foreground="?attr/selectableItemBackground"
             android:orientation="horizontal"
             android:paddingStart="@dimen/dimen_5"

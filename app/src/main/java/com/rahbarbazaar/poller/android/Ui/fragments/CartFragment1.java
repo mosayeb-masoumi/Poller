@@ -101,7 +101,8 @@ public class CartFragment1 extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_cart1, container, false);
+//        View v = inflater.inflate(R.layout.fragment_cart1, container, false);
+        View v = inflater.inflate(R.layout.activity_test, container, false);
 
         defineViews(v);
         configRecyclerView();
@@ -298,7 +299,7 @@ public class CartFragment1 extends Fragment implements View.OnClickListener {
                 tv_transaction_tab.setBackground(getResources().getDrawable(R.drawable.bg_myaccount_tabpink));
                 tv_transaction_tab.setTextColor(getResources().getColor(R.color.white_gray));
                 tv_point_tab.setBackground(getResources().getDrawable(R.drawable.bg_myaccount_tab));
-                tv_point_tab.setTextColor(getResources().getColor(R.color.gray));
+                tv_point_tab.setTextColor(getResources().getColor(R.color.gray2));
                 break;
 
             case R.id.tv_point_tab:
@@ -307,7 +308,7 @@ public class CartFragment1 extends Fragment implements View.OnClickListener {
                 tv_point_tab.setBackground(getResources().getDrawable(R.drawable.bg_myaccount_tabpink));
                 tv_point_tab.setTextColor(getResources().getColor(R.color.white_gray));
                 tv_transaction_tab.setBackground(getResources().getDrawable(R.drawable.bg_myaccount_tab));
-                tv_transaction_tab.setTextColor(getResources().getColor(R.color.gray));
+                tv_transaction_tab.setTextColor(getResources().getColor(R.color.gray2));
                 break;
         }
 

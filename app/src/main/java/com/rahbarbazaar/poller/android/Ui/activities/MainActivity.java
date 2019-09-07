@@ -30,6 +30,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.google.gson.Gson;
@@ -94,11 +95,11 @@ public class MainActivity extends CustomBaseActivity implements
 
 
     AHBottomNavigation bottom_navigation;
-    ImageView image_drawer, image_instagram, image_telegram, img_backbtmbar_left, img_backbtmbar_centerleft, img_backbtmbar_centerright, img_backbtmbar_right;
+    ImageView image_drawer, image_instagram, image_telegram, img_backbtmbar_left, img_backbtmbar_centerleft, img_backbtmbar_centerright, img_backbtmbar_right, img_arrow;
     ;
     DrawerLayout drawer_layout_home;
     NotSwipeableViewPager main_view_pager;
-    TextView text_header_date, text_username, text_point, text_notify_count,text_follow_us;
+    TextView text_header_date, text_username, text_point, text_notify_count, text_follow_us;
     LinearLayout linear_invite_friend, linear_exit, linear_shopping, linear_notify_drawer, linear_change_lang,
             linear_support, linear_report_issue, linear_faq, linear_videos, linear_submenu, linear_lottery, ll_drawer;
     RelativeLayout rl_notification, rl_curvedbottom;
@@ -193,17 +194,16 @@ public class MainActivity extends CustomBaseActivity implements
             }
         };
 
-        if (tools.checkPackageInstalled("org.telegram.messenger", this)){
+        if (tools.checkPackageInstalled("org.telegram.messenger", this)) {
             image_telegram.setVisibility(View.INVISIBLE);
             text_follow_us.setVisibility(View.INVISIBLE);
         }
 
 
-        if (tools.checkPackageInstalled("com.instagram.android", this)){
+        if (tools.checkPackageInstalled("com.instagram.android", this)) {
             image_instagram.setVisibility(View.INVISIBLE);
             text_follow_us.setVisibility(View.INVISIBLE);
         }
-
 
 
     }
@@ -240,8 +240,8 @@ public class MainActivity extends CustomBaseActivity implements
         drawer_rv = findViewById(R.id.drawer_rv);
         text_notify_count = findViewById(R.id.text_notify_count);
         text_username = findViewById(R.id.text_username);
-        text_follow_us=findViewById(R.id.text_follow_us);
-
+        text_follow_us = findViewById(R.id.text_follow_us);
+        img_arrow = findViewById(R.id.img_arrow);
         ll_drawer = findViewById(R.id.ll_drawer);
         rl_curvedbottom = findViewById(R.id.rl_curvedbottom);
         //text_point = findViewById(R.id.text_point);
@@ -288,7 +288,7 @@ public class MainActivity extends CustomBaseActivity implements
 
     }
 
-//    initialize bottom navigation will be implement by this function
+    //    initialize bottom navigation will be implement by this function
     private void initializeBottomNavigation() {
 
         // Create items
@@ -628,10 +628,13 @@ public class MainActivity extends CustomBaseActivity implements
             case R.id.linear_support:
 
                 if (!isSupportLayoutClicked) {
-
                     tools.expand(linear_submenu);
-                } else
+                    img_arrow.setImageResource(R.drawable.arrow_down);
+                } else{
                     tools.collapse(linear_submenu);
+                    img_arrow.setImageResource(R.drawable.arrow_left);
+                }
+
 
                 isSupportLayoutClicked = !isSupportLayoutClicked;
                 break;
@@ -667,7 +670,7 @@ public class MainActivity extends CustomBaseActivity implements
 
                         LocaleManager.setNewLocale(MainActivity.this, "fa");
 //                        App.language = "fa";
-                        Intent i = new Intent(MainActivity.this, SplashScreenActivity.class);
+                        Intent i = new Intent(MainActivity.this, SplashScreenActivity1.class);
                         startActivity(i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
                         System.exit(0);
                     }
@@ -676,7 +679,7 @@ public class MainActivity extends CustomBaseActivity implements
                     public void onDeniedButtonClicked(boolean cancel_dialog) {
                         LocaleManager.setNewLocale(MainActivity.this, "en");
 //                        App.language = "en";
-                        Intent i = new Intent(MainActivity.this, SplashScreenActivity.class);
+                        Intent i = new Intent(MainActivity.this, SplashScreenActivity1.class);
                         startActivity(i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
                         System.exit(0);
                     }
@@ -784,7 +787,6 @@ public class MainActivity extends CustomBaseActivity implements
     public boolean onTabSelected(int position, boolean wasSelected) {
 
 
-
         if (locale_name.equals("fa")) {
             if (position == 3) {
                 img_backbtmbar_right.setVisibility(View.VISIBLE);
@@ -844,15 +846,12 @@ public class MainActivity extends CustomBaseActivity implements
         }
 
 
-
-
-
         //to remove bug active bottombar when we choose from fragment home by touching imageview
-        if(position == 0 || position==1 || position == 3){
-            a=0;
+        if (position == 0 || position == 1 || position == 3) {
+            a = 0;
         }
-        if (position==2) {
-            if(a == 0){
+        if (position == 2) {
+            if (a == 0) {
                 a++;
                 bottom_navigation.setCurrentItem(2);
             }
@@ -861,7 +860,7 @@ public class MainActivity extends CustomBaseActivity implements
         return true;
     }
 
-   long EXIT_TIME_NEED = 0;
+    long EXIT_TIME_NEED = 0;
 
     @Override
     public void onBackPressed() {

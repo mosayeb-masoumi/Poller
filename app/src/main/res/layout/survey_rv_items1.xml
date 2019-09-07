@@ -62,7 +62,7 @@
                 android:layout_centerVertical="true"
                 android:text="1500"
                 android:textColor="#fff"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/_11sdp" />
 
 
         </RelativeLayout>

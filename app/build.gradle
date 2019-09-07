@@ -10,7 +10,7 @@ android {
         applicationId "com.rahbarbazaar.poller.android"
         minSdkVersion 19
         targetSdkVersion 27
-        versionCode 16
+        versionCode 17
         versionName "4.1.0"
 
     }
@@ -62,8 +62,6 @@ dependencies {
     // extra
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
     implementation 'com.intuit.ssp:ssp-android:1.0.6'
-
-
 
 
 }

@@ -15,8 +15,6 @@
 
     <uses-permission android:name="com.rahbarbazaar.poller.android.permission.C2D_MESSAGE" />
 
-
-    <!--android:supportsRtl="true"-->
     <application
         android:name=".Utilities.App"
         android:icon="@mipmap/app_icon"
@@ -26,7 +24,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Ui.activities.TestActivity"></activity>
+        <activity android:name=".Ui.activities.TestActivity" />
         <activity android:name=".test.Test" />
         <activity android:name=".Ui.activities.AgreementActivity1" />
         <activity android:name=".Ui.activities.SetLanguageActivity" />

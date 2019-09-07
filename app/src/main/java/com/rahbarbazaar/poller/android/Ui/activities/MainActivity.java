@@ -11,16 +11,11 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.ShareCompat;
 import android.support.v4.os.ConfigurationCompat;
 import android.support.v4.view.ViewPager;
@@ -35,7 +30,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.google.gson.Gson;
@@ -61,7 +55,6 @@ import com.rahbarbazaar.poller.android.Ui.fragments.ProfileFragment;
 import com.rahbarbazaar.poller.android.Ui.fragments.ProfileFragment1;
 import com.rahbarbazaar.poller.android.Ui.fragments.SurveyFragment;
 import com.rahbarbazaar.poller.android.Ui.fragments.SurveyFragment1;
-import com.rahbarbazaar.poller.android.Utilities.App;
 import com.rahbarbazaar.poller.android.Utilities.ClientConfig;
 import com.rahbarbazaar.poller.android.Utilities.SnackBarFactory;
 import com.rahbarbazaar.poller.android.Utilities.ToastFactory;
@@ -92,7 +85,6 @@ import io.reactivex.schedulers.Schedulers;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 
-import static android.graphics.drawable.GradientDrawable.Orientation.TOP_BOTTOM;
 
 public class MainActivity extends CustomBaseActivity implements
         View.OnClickListener, AHBottomNavigation.OnTabSelectedListener, DialogFactory.DialogFactoryInteraction,
@@ -175,7 +167,7 @@ public class MainActivity extends CustomBaseActivity implements
         if (parcelable != null && parcelable.getItems() != null && parcelable.getStatus().equalsIgnoreCase("ok"))
             initializeViewPager(parcelable, locale_name);
         else
-//            SnackBarFactory.getInstance().showLoginIssueSnackbar(findViewById(R.id.app_bar), this, parcelable);
+            SnackBarFactory.getInstance().showLoginIssueSnackbar(findViewById(R.id.app_bar), this, parcelable);
 
 
         //initial Dialog factory
@@ -296,7 +288,7 @@ public class MainActivity extends CustomBaseActivity implements
 
     }
 
-    //initialize bottom navigation will be implement by this function
+//    initialize bottom navigation will be implement by this function
     private void initializeBottomNavigation() {
 
         // Create items
@@ -322,7 +314,9 @@ public class MainActivity extends CustomBaseActivity implements
 
 
         //requred api level min 21
-        bottom_navigation.setElevation(0f);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            bottom_navigation.setElevation(0f);
+        }
 
 
         // Manage titles
@@ -613,12 +607,6 @@ public class MainActivity extends CustomBaseActivity implements
                     e.printStackTrace();
                 }
 
-
-
-
-
-
-
                 break;
 
             case R.id.linear_shopping:
@@ -873,7 +861,7 @@ public class MainActivity extends CustomBaseActivity implements
         return true;
     }
 
-    long EXIT_TIME_NEED = 0;
+   long EXIT_TIME_NEED = 0;
 
     @Override
     public void onBackPressed() {

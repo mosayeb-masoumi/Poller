@@ -47,7 +47,7 @@ class SplashScreenActivity1 : AppCompatActivity() {
 
         txtVersion.setText(BuildConfig.VERSION_NAME)
 
-        val provider = ServiceProvider(this)
+//        val provider = ServiceProvider(this)
         disposable = CompositeDisposable()
         tools = GeneralTools.getInstance()
         dialogFactory = DialogFactory(this@SplashScreenActivity1)

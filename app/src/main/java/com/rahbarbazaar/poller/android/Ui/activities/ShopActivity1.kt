@@ -82,7 +82,7 @@ class ShopActivity1 : CustomBaseActivity(), GeneralItemIntraction<GetShopListRes
         configeRecyclerView()
 
         val serviceProvider = ServiceProvider(this)
-        disposable.add(serviceProvider.getmService().getShopItems(ClientConfig.API_V1).subscribeOn(Schedulers.io())
+        disposable.add(serviceProvider.getmService().getShopItems(ClientConfig.API_V2).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).subscribeWith(object : DisposableSingleObserver<List<GetShopListResult>>() {
 
                     override fun onSuccess(result: List<GetShopListResult>) {

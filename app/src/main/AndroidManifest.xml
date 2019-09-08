@@ -24,6 +24,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".Ui.activities.GifActivity"></activity>
         <activity android:name=".Ui.activities.TestActivity" />
         <activity android:name=".test.Test" />
         <activity android:name=".Ui.activities.AgreementActivity1" />

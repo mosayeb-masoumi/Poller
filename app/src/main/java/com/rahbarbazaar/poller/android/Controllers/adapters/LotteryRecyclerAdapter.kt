@@ -14,7 +14,8 @@ class LotteryRecyclerAdapter(private val items: List<GetLotteryListResult>,
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LotteryViewHolder {
 
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.lottery_rv_items, parent, false)
+//        val view = LayoutInflater.from(parent.context).inflate(R.layout.lottery_rv_items, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.lottery_rv_items1, parent, false)
         return LotteryViewHolder(view, itemIntraction = itemInteraction)
     }
 

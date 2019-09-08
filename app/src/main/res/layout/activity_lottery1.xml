@@ -103,7 +103,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_15sdp"
                     android:layout_marginEnd="@dimen/_15sdp"
-                    android:background="@drawable/bg_lottery_active_item"
+                    android:layout_marginTop="@dimen/_1sdp"
+                    android:background="@drawable/bg_lottery_yearly_item"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -143,6 +144,7 @@
                                 android:layout_height="@dimen/_30sdp"
                                 android:layout_weight="1.2"
                                 android:gravity="center"
+                                android:textColor="@color/blue"
                                 android:textSize="@dimen/_10ssp"
                                 tools:text="تست عنوان" />
 
@@ -153,6 +155,7 @@
                                 android:layout_marginStart="@dimen/dimen_3"
                                 android:layout_marginEnd="@dimen/dimen_5"
                                 android:gravity="center"
+                                android:textColor="@color/blue"
                                 android:text="@string/text_participation_amount"
                                 android:textSize="@dimen/_10ssp" />
 
@@ -161,6 +164,7 @@
                                 android:layout_width="@dimen/_30sdp"
                                 android:layout_height="wrap_content"
                                 android:text="200"
+                                android:textColor="@color/blue"
                                 android:textSize="@dimen/_10ssp" />
 
                         </LinearLayout>
@@ -197,10 +201,10 @@
                             android:layout_marginStart="@dimen/dimen_7"
                             android:layout_marginEnd="@dimen/dimen_7"
                             android:layout_weight="1"
-                            android:background="@drawable/dialog_btn_shape"
+                            android:background="@drawable/lottery_bg_compete_btn"
                             android:gravity="center"
                             android:text="@string/text_lottery_join"
-                            android:textColor="@color/blue" />
+                            android:textColor="#fc29ba" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -224,9 +228,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_15sdp"
-                android:layout_marginTop="@dimen/_3sdp"
-                android:layout_marginEnd="@dimen/_15sdp"
-                android:padding="@dimen/dimen_3">
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="@dimen/_15sdp">
 
 
                 <android.support.v7.widget.RecyclerView

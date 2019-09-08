@@ -29,9 +29,10 @@
                 android:id="@+id/text_shop_name"
                 android:layout_width="match_parent"
                 android:gravity="center"
+                android:layout_marginBottom="2dp"
                 android:layout_alignParentBottom="true"
                 android:layout_height="wrap_content"
-                android:textColor="@color/blue"
+                android:textColor="@color/white_gray"
                 android:textSize="@dimen/font_14"
                 tools:text="خرید شارژ ایرانسل" />
 

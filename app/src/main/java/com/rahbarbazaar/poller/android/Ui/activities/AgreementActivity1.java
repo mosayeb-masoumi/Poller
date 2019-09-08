@@ -102,7 +102,8 @@ public class AgreementActivity1 extends CustomBaseActivity {
             if (checkbox_agreement.isChecked()){
                 GetCurrencyListResult parcelable = getIntent().getParcelableExtra("parcel_data");
 
-                Intent intent = new Intent(AgreementActivity1.this, MainActivity.class);
+//                Intent intent = new Intent(AgreementActivity1.this, MainActivity.class);
+                Intent intent = new Intent(AgreementActivity1.this, GifActivity.class);
                 intent.putExtra("parcel_data", parcelable);
                 startActivity(intent);
                 AgreementActivity1.this.finish();

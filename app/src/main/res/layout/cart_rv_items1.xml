@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:layout_marginTop="@dimen/_1sdp"
-    android:background="@drawable/bg_myaccount_deeppink"
+    android:layout_marginBottom="3dp"
+    android:background="@drawable/bg_myaccount_bluelight"
     android:orientation="horizontal">
 
 
@@ -30,6 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxLength="10"
+                android:textColor="@color/blue"
                 android:textSize="@dimen/font_13"
                 tools:text="97/08/21" />
 
@@ -40,6 +41,7 @@
     <RelativeLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
         android:layout_weight="3"
         android:gravity="center">
 
@@ -51,7 +53,7 @@
             android:ellipsize="end"
             android:gravity="center"
             android:singleLine="true"
-            android:textColor="@color/light_black"
+            android:textColor="@color/blue"
             android:textSize="@dimen/font_14"
             tools:text="تعریف نشده" />
 
@@ -77,6 +79,7 @@
                 android:id="@+id/tv_cart_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/blue"
                 android:layout_marginEnd="@dimen/dimen_3"
                 android:textSize="@dimen/font_13"
                 tools:text="2000" />

@@ -199,8 +199,11 @@ public class CartFragment1 extends Fragment implements View.OnClickListener {
         ServiceProvider provider = new ServiceProvider(getContext());
         Service service = provider.getmService();
         cart_refresh.post(() -> cart_refresh.setRefreshing(true));
-        Single<List<GetTransactionResult>> observable = tv_transaction_tab.getTag().equals("selected") ? service.getTransactionList(ClientConfig.API_V1)
-                : service.getTransactionScoreList(ClientConfig.API_V1);
+
+//  MAIN      Single<List<GetTransactionResult>> observable = tv_transaction_tab.getTag().equals("selected") ? service.getTransactionList(ClientConfig.API_V1)
+//                : service.getTransactionScoreList(ClientConfig.API_V1);
+        Single<List<GetTransactionResult>> observable = tv_transaction_tab.getTag().equals("selected") ? service.getTransactionScoreList(ClientConfig.API_V1)
+                : service.getTransactionList(ClientConfig.API_V1);
 
         disposable.add(observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).
@@ -244,18 +247,19 @@ public class CartFragment1 extends Fragment implements View.OnClickListener {
          *
          */
 
-        if (!appear) {
-
-            tv_price_view.setText(R.string.text_price);
-            tv_point.setText(String.valueOf(user_details.getSum_points()));
-            tv_total_earned.setText(R.string.total_prices_earned);
-
-        } else {
-
-            tv_price_view.setText(R.string.text_point);
-            tv_point.setText(String.valueOf(user_details.getSum_score()));
-            tv_total_earned.setText(R.string.total_points_earned);
-        }
+        // comment for  new version
+//        if (!appear) {
+//
+//            tv_price_view.setText(R.string.text_price);
+//            tv_point.setText(String.valueOf(user_details.getSum_points()));
+//            tv_total_earned.setText(R.string.total_prices_earned);
+//
+//        } else {
+//
+//            tv_price_view.setText(R.string.text_point);
+//            tv_point.setText(String.valueOf(user_details.getSum_score()));
+//            tv_total_earned.setText(R.string.total_points_earned);
+//        }
 
         getCartList();
         tv_apear.setTextColor(getResources().getColor(R.color.colorPrimary));
@@ -294,7 +298,8 @@ public class CartFragment1 extends Fragment implements View.OnClickListener {
         switch (v.getId()) {
 
             case R.id.tv_transaction_tab:
-                tv_transaction_tab.setTag("selected");
+//                tv_transaction_tab.setTag("selected"); //MAIN
+                tv_transaction_tab.setTag("deselected");
                 changeTab(tv_transaction_tab, tv_point_tab, false);
                 tv_transaction_tab.setBackground(getResources().getDrawable(R.drawable.bg_myaccount_tabpink));
                 tv_transaction_tab.setTextColor(getResources().getColor(R.color.white_gray));
@@ -303,7 +308,8 @@ public class CartFragment1 extends Fragment implements View.OnClickListener {
                 break;
 
             case R.id.tv_point_tab:
-                tv_transaction_tab.setTag("deselected");
+//                tv_transaction_tab.setTag("deselected"); // MAIN
+                tv_transaction_tab.setTag("selected");
                 changeTab(tv_point_tab, tv_transaction_tab, true);
                 tv_point_tab.setBackground(getResources().getDrawable(R.drawable.bg_myaccount_tabpink));
                 tv_point_tab.setTextColor(getResources().getColor(R.color.white_gray));

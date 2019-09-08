@@ -51,6 +51,8 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
     var lang: String? = null
     //end of region
 
+    var type :String = ""
+
 
     var balance: String? = null
     var score: String? = null
@@ -103,6 +105,8 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
         getUserProfile()
         checkUserAllowingExchange()
 
+
+
         return view
     }
 
@@ -145,7 +149,9 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
     private fun getUserProfile() {
 
         val service = provider.getmService()
-        disposable.add(service.getUserProfile(ClientConfig.API_V1).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribeWith(object : DisposableSingleObserver<UserConfirmAuthResult>() {
+        disposable.add(service.getUserProfile(ClientConfig.API_V1).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableSingleObserver<UserConfirmAuthResult>() {
 
             @SuppressLint("SetTextI18n")
             override fun onSuccess(result: UserConfirmAuthResult) {
@@ -154,6 +160,8 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
                 text_gender.text = if (result.gender == "male") "آقا" else "خانم"
                 text_mobile.text = result.mobile
                 text_username.text = result.name
+
+                type = result.type
 
                 getCurrencyListResult?.let {
 
@@ -185,20 +193,39 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
 
                 text_project_count.text = result.participated_project_count.toString()
 //                text_user_state.text = result.membership
+
+                set_nameBg(type);
+
             }
 
             override fun onError(e: Throwable) {
-//                val error = (e as HttpException).code()
-//                if (error == 401) {
-//                    startActivity(Intent(activity, SplashScreenActivity::class.java))
-//                } else if (error == 403) {
-//                    PreferenceStorage.getInstance(context).saveToken("0")
-//                    startActivity(Intent(context, SplashScreenActivity::class.java))
-//                    activity!!.finish()
-//                }
                 Log.e("profile_tag", "msg profile: ${e.message}")
             }
         }))
+    }
+
+    private fun set_nameBg(type: String?) {
+        when (type) {
+
+            "1" -> {
+                rl_name_state.setBackgroundDrawable(resources.getDrawable(R.drawable.dialog_btn_shape1))
+                img_star.setImageDrawable(resources.getDrawable(R.drawable.star_gradient))
+            }
+            "2" , "3" , "5" -> {
+                rl_name_state.setBackgroundDrawable(resources.getDrawable(R.drawable.bg_silver))
+                img_star.setImageDrawable(resources.getDrawable(R.drawable.star_silver))
+            }
+
+            "4" -> {
+                rl_name_state.setBackgroundDrawable(resources.getDrawable(R.drawable.bg_boronze))
+                img_star.setImageDrawable(resources.getDrawable(R.drawable.star_boronze))
+            }
+
+            "6" -> {
+                rl_name_state.setBackgroundDrawable(resources.getDrawable(R.drawable.bg_golden))
+                img_star.setImageDrawable(resources.getDrawable(R.drawable.star_gold))
+            }
+        }
     }
 
     //send edit profile request for change user data:
@@ -216,15 +243,6 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
             }
 
             override fun onError(e: Throwable) {
-//                val error = (e as HttpException).code()
-//                if (error == 401) {
-//                    startActivity(Intent(activity, SplashScreenActivity::class.java))
-//                } else if (error == 403) {
-//                    PreferenceStorage.getInstance(context).saveToken("0")
-//                    startActivity(Intent(context, SplashScreenActivity::class.java))
-//                    activity!!.finish()
-//                }
-
                 Log.e("profile_tag", "msg edit: ${e.message}")
             }
         }))
@@ -236,13 +254,6 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
                 .subscribeOn(Schedulers.io()).subscribeWith(object : DisposableSingleObserver<LotterySettingResult>() {
                     override fun onError(e: Throwable) {
 
-//                        var a: Int = (e as HttpException).code()
-//                        if (a == 401) {
-//                            activity?.let{
-//                                val intent = Intent (it, SplashScreenActivity::class.java)
-//                                it.startActivity(intent)
-//                            }
-//                        }
                         Log.e("profile_tag", "msg allow exchange :${e.message}")
                     }
 

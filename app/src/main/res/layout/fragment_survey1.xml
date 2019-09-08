@@ -39,6 +39,7 @@
         android:layout_height="wrap_content"
          android:layout_below="@+id/rl25"
         android:gravity="center"
+        android:textColor="@color/blue"
         android:paddingBottom="@dimen/dimen_2"
         android:text="@string/no_active_survey"
         android:visibility="visible" />

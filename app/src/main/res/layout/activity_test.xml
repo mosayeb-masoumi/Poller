@@ -75,7 +75,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:background="@drawable/bg_myaccount_deeppink" />
+                    android:background="@drawable/bg_myaccount_bluelight" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"

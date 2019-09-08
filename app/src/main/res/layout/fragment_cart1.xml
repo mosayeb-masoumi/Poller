@@ -63,15 +63,15 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_9sdp"
+            android:layout_marginEnd="@dimen/_9sdp"
             android:layout_weight="2.1">
 
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:background="@drawable/bg_myaccount_deeppink" />
+                android:background="@drawable/bg_myaccount_bluelight" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -81,7 +81,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_5sdp">
+                android:layout_marginTop="@dimen/_3sdp">
 
                 <RelativeLayout
                     android:layout_width="@dimen/_110sdp"
@@ -245,9 +245,9 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.5"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_5sdp">
+            android:layout_marginStart="@dimen/_9sdp"
+            android:layout_marginEnd="@dimen/_9sdp"
+            android:layout_marginTop="@dimen/_2sdp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:id="@+id/rl_6"
@@ -281,7 +281,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_2sdp"
+                android:layout_height="@dimen/_1sdp"
                 android:layout_alignParentBottom="true"
                 android:background="#ca1390"/>
 
@@ -303,9 +303,7 @@
             <android.support.v4.widget.SwipeRefreshLayout
                 android:id="@+id/cart_refresh"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/dimen_3"
-                android:padding="@dimen/dimen_2">
+                android:layout_height="match_parent">
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/cart_rv"

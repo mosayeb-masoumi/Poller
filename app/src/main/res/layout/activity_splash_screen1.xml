@@ -42,7 +42,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:id="@+id/txtPoweredBy"
-            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_75sdp"
             android:layout_height="wrap_content">
             <TextView
                 android:layout_width="wrap_content"

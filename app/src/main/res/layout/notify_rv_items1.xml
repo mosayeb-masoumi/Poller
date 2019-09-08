@@ -6,8 +6,7 @@
     android:layout_marginStart="@dimen/_10sdp"
     android:id="@+id/rl_row_message"
     android:layout_marginEnd="@dimen/_10sdp"
-    android:layout_marginBottom="@dimen/_2sdp"
-
+    android:layout_marginBottom="1dp"
     android:layout_height="@dimen/dimen_60">
 
     <RelativeLayout
@@ -17,11 +16,11 @@
 
         <ImageView
             android:id="@+id/image_msg_status"
-            android:layout_width="@dimen/dimen_65"
+            android:layout_width="@dimen/dimen_55"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimen_3"
             android:padding="@dimen/dimen_17"
-            android:src="@drawable/message_closed_icon" />
+            android:src="@drawable/message_close_icon" />
 
         <com.rahbarbazaar.poller.android.Utilities.CustomTextView
             android:id="@+id/text_msg_text"
@@ -36,7 +35,7 @@
 
         <com.rahbarbazaar.poller.android.Utilities.CustomTextView
             android:id="@+id/text_msg_date"
-            android:layout_width="@dimen/dimen_90"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"

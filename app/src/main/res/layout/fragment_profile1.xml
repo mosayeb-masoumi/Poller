@@ -53,6 +53,7 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
+                    android:id="@+id/rl_name_state"
                     android:layout_height="@dimen/_40sdp"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
@@ -106,13 +107,12 @@
                         android:background="@drawable/circle_shape_gradient">
 
                         <ImageView
-                            android:id="@+id/img_star_gradient"
+                            android:id="@+id/img_star"
                             android:layout_width="@dimen/_40sdp"
                             android:layout_height="@dimen/_40sdp"
                             android:layout_centerHorizontal="true"
                             android:layout_centerVertical="true"
-                            android:padding="@dimen/_7sdp"
-                            android:src="@drawable/star_gradient" />
+                            android:padding="@dimen/_7sdp" />
 
                         <ImageView
                             android:id="@+id/img_star_gold"

@@ -117,7 +117,7 @@ public class MainActivity extends CustomBaseActivity implements
     DrawerRecyclerAdapter adapter;
     Service service;
     DialogFactory dialogFactory;
-    String download_url, update_version = null, locale_name;
+    String download_url, update_version = null, locale_name, bazzar_url;
     final int WRITE_PERMISSION_REQUEST = 14;
     final int NOTIFIY_ACTIVITY_REQUEST = 18;
     final int LOTTERY_ACTIVITY_REGUEST = 20;
@@ -204,6 +204,12 @@ public class MainActivity extends CustomBaseActivity implements
             image_instagram.setVisibility(View.INVISIBLE);
             text_follow_us.setVisibility(View.INVISIBLE);
         }
+
+
+        if (locale_name.equals("fa"))
+            img_arrow.setImageResource(R.drawable.arrow_left);
+        else
+            img_arrow.setImageResource(R.drawable.arrow_right);
 
 
     }
@@ -383,7 +389,8 @@ public class MainActivity extends CustomBaseActivity implements
                                     .from(MainActivity.this)
                                     .setText(new StringBuilder().append(getString(R.string.text_invite_from)).append(" ").append(prefrence.getName()).append(" ").
                                             append(getString(R.string.text_invite_friend)).
-                                            append("\n").append(result.getUrl()))
+//                                            append("\n").append(result.getUrl()))
+        append("\n").append(bazzar_url))
                                     .setType("text/plain")
                                     .setChooserTitle(R.string.share_poller)
                                     .startChooser();
@@ -462,6 +469,7 @@ public class MainActivity extends CustomBaseActivity implements
                         int min_version = Integer.parseInt(result.getForce_update());
                         int server_version = Integer.parseInt(result.getVersion());
 
+                        bazzar_url = result.getBazaar_url();
 
 //                        if (!result.getVersion().equals(current_version)) {
 //
@@ -481,19 +489,20 @@ public class MainActivity extends CustomBaseActivity implements
                             dialog = dialogFactory.createCheckUpdateDialog(drawer_layout_home, MainActivity.this);
                         }
 
-                        if (current_version > min_version && current_version < server_version) {
+                        if (current_version >= min_version && current_version < server_version) {
 //                        if (current_version > min_version && current_version < 17) {
                             download_url = result.getUrl();
                             update_version = result.getVersion();
 //                            Toast.makeText(MainActivity.this, "optional", Toast.LENGTH_SHORT).show();
                             dialog = dialogFactory.createCheckUpdateOptionalDialog(drawer_layout_home, MainActivity.this);
+
                         }
                     }
 
 
                     @Override
                     public void onError(Throwable e) {
-
+                        Toast.makeText(MainActivity.this, "", Toast.LENGTH_SHORT).show();
                     }
                 }));
     }
@@ -630,9 +639,13 @@ public class MainActivity extends CustomBaseActivity implements
                 if (!isSupportLayoutClicked) {
                     tools.expand(linear_submenu);
                     img_arrow.setImageResource(R.drawable.arrow_down);
-                } else{
+                } else {
                     tools.collapse(linear_submenu);
-                    img_arrow.setImageResource(R.drawable.arrow_left);
+                    if (locale_name.equals("fa"))
+                        img_arrow.setImageResource(R.drawable.arrow_left);
+                    else
+                        img_arrow.setImageResource(R.drawable.arrow_right);
+
                 }
 
 
@@ -706,7 +719,7 @@ public class MainActivity extends CustomBaseActivity implements
             public void onAcceptButtonClicked(String... params) {
 
                 PreferenceStorage.getInstance(context).saveToken("0");
-                startActivity(new Intent(context, SplashScreenActivity.class));
+                startActivity(new Intent(context, SplashScreenActivity1.class));
                 MainActivity.this.finish();
             }
 

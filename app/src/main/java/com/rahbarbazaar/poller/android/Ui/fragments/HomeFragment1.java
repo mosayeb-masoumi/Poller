@@ -158,9 +158,7 @@ public class HomeFragment1 extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.cardview_home_video:
-                //todo get url from server and replace
-//                goToHtmlActivity("http://pollerws.rahbarbazaar.com:2296/poller/v2/support/videos/"
-//                        + LocaleManager.getLocale(getResources()).getLanguage(), true);
+
                 if(lang.equals("fa")){
                     goToHtmlActivity(videoWebUrl+"/fa"
                             + LocaleManager.getLocale(getResources()).getLanguage(), true);
@@ -171,13 +169,12 @@ public class HomeFragment1 extends Fragment implements View.OnClickListener {
 
                 break;
             case R.id.cardview_home_image:
-                if(lang.equals("fa")){
-                    goToHtmlActivity(newsWebUrl+"/fa"
-                            + LocaleManager.getLocale(getResources()).getLanguage(), true);
-                }else{
-                    goToHtmlActivity(newsWebUrl+"/en"
-                            + LocaleManager.getLocale(getResources()).getLanguage(), true);
-                }
+                goToHtmlActivity(newsWebUrl+ "/"+LocaleManager.getLocale(getResources()).getLanguage(), true);
+//                if(lang.equals("fa")){
+//                    goToHtmlActivity(newsWebUrl+"/fa"+ LocaleManager.getLocale(getResources()).getLanguage(), true);
+//                }else{
+//                    goToHtmlActivity(newsWebUrl+"/en"+ LocaleManager.getLocale(getResources()).getLanguage(), true);
+//                }
 
                 break;
 

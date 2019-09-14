@@ -27,6 +27,7 @@ import com.rahbarbazaar.poller.android.Controllers.viewHolders.SurveyItemInterac
 import com.rahbarbazaar.poller.android.Models.ChangeSurveyStatusResult;
 import com.rahbarbazaar.poller.android.Models.GetCurrencyListResult;
 import com.rahbarbazaar.poller.android.Models.GetSurveyHistoryListResult;
+import com.rahbarbazaar.poller.android.Models.ModelTranferDataProfileToHome;
 import com.rahbarbazaar.poller.android.Models.RefreshBalanceEvent;
 import com.rahbarbazaar.poller.android.Models.RefreshSurveyEvent;
 import com.rahbarbazaar.poller.android.Models.SurveyMainModel;
@@ -103,6 +104,7 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_survey1, container, false);
 
@@ -130,6 +132,11 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
         return view;
     }
 
+
+
+
+
+
     //define view of fragment and set property
     private void defineViews(View view) {
 
@@ -142,6 +149,12 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
         swipe_refesh.setColorSchemeResources(R.color.colorPrimary);
         swipe_refesh.setOnRefreshListener(this::getUserSurveyHistory);
     }
+
+
+
+
+
+
 
     //config home recycler view
     private void configRecyclerview() {

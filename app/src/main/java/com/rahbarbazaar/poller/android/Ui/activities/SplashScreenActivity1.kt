@@ -58,7 +58,7 @@ class SplashScreenActivity1 : AppCompatActivity() {
         var token: String = preferenceStorage.retriveToken()
 
 
-        if (token == "" || token.isEmpty()) {
+        if (token == "" || token.isEmpty() || token == "0") {
 
             startActivity(Intent(this@SplashScreenActivity1, LoginActivity::class.java))
             this@SplashScreenActivity1.finish()
@@ -122,6 +122,10 @@ class SplashScreenActivity1 : AppCompatActivity() {
 
     private fun saveCurrency() {
 
+        if (tools.checkInternetConnection(this)) {
+
+
+
         val provider = ServiceProvider(this)
         val service = provider.getmService()
         disposable.add(service.getCurrency(ClientConfig.API_V2).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
@@ -129,34 +133,60 @@ class SplashScreenActivity1 : AppCompatActivity() {
                     override fun onSuccess(result: GetCurrencyListResult) {
                         getCurrencyListResult = result
                         ProfileTools.getInstance().saveProfileInformation(this@SplashScreenActivity1)
-
                         nextActivity()
                     }
 
                     override fun onError(e: Throwable) {
-//                        var n = e.message
-//                        if(n.contains("timed out"){
-//
-//                                })
                         rl_root.av_loading.visibility = View.GONE
-                        var a: Int = (e as HttpException).code()
-                        if (a == 401) {
-                            requestRefreshToken()
-                        } else if (a == 403) {
-                            startActivity(Intent(this@SplashScreenActivity1, LoginActivity::class.java))
-                            this@SplashScreenActivity1.finish()
-                            overridePendingTransition(R.anim.slide_in, R.anim.slide_out)
+                        if (e.message?.contains("timed out")!!) {
+                            Toast.makeText(this@SplashScreenActivity1, "timed out", Toast.LENGTH_SHORT).show()
                         } else {
-                            if (b < 2) {
-                                b++
-                                createTryAgainDialog()
+                            rl_root.av_loading.visibility = View.GONE
+                            var a: Int = (e as HttpException).code()
+                            if (a == 401) {
+                                requestRefreshToken()
+                            } else if (a == 403) {
+                                startActivity(Intent(this@SplashScreenActivity1, LoginActivity::class.java))
+                                this@SplashScreenActivity1.finish()
+                                overridePendingTransition(R.anim.slide_in, R.anim.slide_out)
                             } else {
-                                createCloseAppDialog()
+                                if (b < 2) {
+                                    b++
+                                    createTryAgainDialog()
+                                } else {
+                                    createCloseAppDialog()
+                                }
                             }
                         }
                     }
 
                 }))
+
+
+        }else{
+//            if (!isFinishing) {
+
+                dialogFactory.createNoInternetDialog(object : DialogFactory.DialogFactoryInteraction {
+                    override fun onAcceptButtonClicked(vararg params: String) {
+
+                        //go to wifi setting
+                        startActivity(Intent(Settings.ACTION_WIFI_SETTINGS))
+                    }
+
+                    override fun onDeniedButtonClicked(dialog_cancel: Boolean) {
+
+                        if (dialog_cancel) {
+
+                            saveCurrency()
+
+                        } else {
+                            // get call back from grey button and go to mobile data page
+                            startActivity(Intent(Settings.ACTION_DATA_ROAMING_SETTINGS))
+                        }
+                    }
+                }, findViewById<View>(R.id.rl_root))
+//            }
+        }
     }
 
 

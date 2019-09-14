@@ -27,6 +27,7 @@ public class CustomTextView extends AppCompatTextView {
 
         String locale_name = ConfigurationCompat.getLocales(getResources().getConfiguration()).get(0).getLanguage();
         Typeface typeface = locale_name.equals("fa")?Typeface.createFromAsset(getContext().getAssets(),"fonts/BYekan.ttf"): Typeface.DEFAULT;
+//        Typeface typeface = locale_name.equals("fa")?Typeface.createFromAsset(getContext().getAssets(),"fonts/Vazir-Medium.ttf"): Typeface.DEFAULT;
 //        Typeface typeface = locale_name.equals("fa")?Typeface.createFromAsset(getContext().getAssets(),"fonts/Vazir-Medium.ttf"):
 //                                                     Typeface.createFromAsset(getContext().getAssets(),"fonts/arial.ttf");
 

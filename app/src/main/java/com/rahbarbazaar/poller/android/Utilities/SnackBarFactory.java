@@ -42,7 +42,8 @@ public class SnackBarFactory {
         //snack_drawable.setBounds(0, 0, 80, 80);
 
         TextView txt_snack = snack_view.findViewById(android.support.design.R.id.snackbar_text);
-        Typeface typeface = Typeface.createFromAsset(context.getAssets(), "fonts/BYekan.ttf");
+//        Typeface typeface = Typeface.createFromAsset(context.getAssets(), "fonts/BYekan.ttf");
+        Typeface typeface = Typeface.createFromAsset(context.getAssets(), "fonts/Vazir-Medium.ttf");
 
         txt_snack.setText(R.string.text_calculate_point);
         TextView txt_action = snack_view.findViewById(android.support.design.R.id.snackbar_action);
@@ -74,7 +75,8 @@ public class SnackBarFactory {
         snack_drawable.setBounds(0, 0, 80, 80);
 
         TextView txt_snack = snack_view.findViewById(android.support.design.R.id.snackbar_text);
-        Typeface typeface = Typeface.createFromAsset(context.getAssets(), "fonts/BYekan.ttf");
+//        Typeface typeface = Typeface.createFromAsset(context.getAssets(), "fonts/BYekan.ttf");
+        Typeface typeface = Typeface.createFromAsset(context.getAssets(), "fonts/Vazir-Medium.ttf");
 
         txt_snack.setText(R.string.text_error_on_login);
         TextView txt_action = snack_view.findViewById(android.support.design.R.id.snackbar_action);

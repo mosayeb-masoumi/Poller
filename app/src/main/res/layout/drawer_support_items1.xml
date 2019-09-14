@@ -34,8 +34,7 @@
             android:layout_width="@dimen/dimen_34"
             android:layout_height="match_parent"
             android:padding="@dimen/dimen_12"
-            android:id="@+id/img_arrow"
-            android:src="@drawable/arrow_left"/>
+            android:id="@+id/img_arrow" />
         <!--android:src="@drawable/arrow_down2"-->
 
         <!--<ImageView-->

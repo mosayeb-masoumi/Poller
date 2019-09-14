@@ -14,7 +14,8 @@ public class ToastFactory {
 
     public void createToast(String message,Context context){
 
-        Typeface typeface = Typeface.createFromAsset(context.getAssets(),"fonts/BYekan.ttf");
+//        Typeface typeface = Typeface.createFromAsset(context.getAssets(),"fonts/BYekan.ttf");
+        Typeface typeface = Typeface.createFromAsset(context.getAssets(),"fonts/Vazir-Medium.ttf");
         Toast toast = Toast.makeText(context,message,Toast.LENGTH_LONG);
         TextView textView = toast.getView().findViewById(android.R.id.message);
         textView.setTypeface(typeface);
@@ -26,7 +27,8 @@ public class ToastFactory {
         if (message==0)
             return;
 
-        Typeface typeface = Typeface.createFromAsset(context.getAssets(),"fonts/BYekan.ttf");
+//        Typeface typeface = Typeface.createFromAsset(context.getAssets(),"fonts/BYekan.ttf");
+        Typeface typeface = Typeface.createFromAsset(context.getAssets(),"fonts/Vazir-Medium.ttf");
         Toast toast = Toast.makeText(context,message,Toast.LENGTH_LONG);
         TextView textView = toast.getView().findViewById(android.R.id.message);
         textView.setTypeface(typeface);

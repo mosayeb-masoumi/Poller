@@ -175,9 +175,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
-                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginStart="1dp"
                         android:layout_marginTop="@dimen/_3sdp"
-                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_marginEnd="1dp"
                         android:layout_marginBottom="@dimen/_2sdp"
                         android:orientation="horizontal">
 
@@ -186,20 +186,21 @@
                             android:id="@+id/tv_cancel"
                             android:layout_width="0dp"
                             android:layout_height="@dimen/dimen_34"
-                            android:layout_marginStart="@dimen/dimen_7"
+                            android:layout_marginStart="@dimen/dimen_1"
+                            android:layout_marginEnd="@dimen/dimen_1"
                             android:layout_weight="1"
-                            android:background="@drawable/dialog_btn_shape"
+                            android:background="@drawable/lottery_bg_compete_btn"
                             android:gravity="center"
                             android:text="@string/cancel_text"
-                            android:textColor="@color/blue"
+                            android:textColor="#fc29ba"
                             android:visibility="gone" />
 
                         <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                             android:id="@+id/tv_take_part"
                             android:layout_width="0dp"
                             android:layout_height="@dimen/dimen_34"
-                            android:layout_marginStart="@dimen/dimen_7"
-                            android:layout_marginEnd="@dimen/dimen_7"
+                            android:layout_marginStart="@dimen/dimen_1"
+                            android:layout_marginEnd="@dimen/dimen_1"
                             android:layout_weight="1"
                             android:background="@drawable/lottery_bg_compete_btn"
                             android:gravity="center"
@@ -219,6 +220,7 @@
                 android:layout_marginEnd="@dimen/_15sdp"
                 android:background="@drawable/bg_lottery_past"
                 android:gravity="center"
+                android:layout_marginTop="@dimen/_2sdp"
                 android:text="@string/text_pre_lottery"
                 android:textColor="@color/white_gray"
                 android:textSize="@dimen/font_15" />
@@ -230,6 +232,18 @@
                 android:layout_marginStart="@dimen/_15sdp"
                 android:layout_marginTop="1dp"
                 android:layout_marginEnd="@dimen/_15sdp">
+
+
+                <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_25sdp"
+                    android:background="@drawable/lottery_rv_bg1"
+                    android:gravity="center"
+                    android:id="@+id/text_survey_nottakenpart"
+                    android:text="@string/survey_notTakenpart"
+                    android:textColor="@color/light_black"
+                    android:visibility="gone"
+                    android:textSize="@dimen/font_15" />
 
 
                 <android.support.v7.widget.RecyclerView
@@ -265,6 +279,7 @@
                 android:id="@+id/llbtom"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_55"
+                android:layoutDirection="rtl"
                 android:layout_alignParentBottom="true"
                 android:background="@drawable/bg_toolbar1"
                 android:gravity="end">

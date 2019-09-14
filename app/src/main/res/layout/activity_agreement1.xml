@@ -94,7 +94,7 @@
     <RelativeLayout
         android:id="@+id/rl_page_icon_rules"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_30sdp"
+        android:layout_height="@dimen/_35sdp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/_2sdp"
@@ -102,7 +102,7 @@
 
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/_30sdp"
+            android:layout_height="@dimen/_40sdp"
             android:visibility="visible"
             android:layout_centerHorizontal="true">
 
@@ -110,6 +110,8 @@
                 android:id="@+id/img_rules_enter_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
                 android:src="@drawable/rules_enter_icon" />
 
             <com.rahbarbazaar.poller.android.Utilities.CustomTextView
@@ -120,7 +122,7 @@
                 android:layout_centerVertical="true"
                 android:text="@string/enter"
                 android:textColor="#0C0B0B"
-                android:textSize="@dimen/_15ssp" />
+                android:textSize="@dimen/_16ssp" />
         </RelativeLayout>
 
 

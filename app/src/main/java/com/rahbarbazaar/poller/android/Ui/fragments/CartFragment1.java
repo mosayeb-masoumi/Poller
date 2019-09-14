@@ -22,6 +22,7 @@ import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 import com.rahbarbazaar.poller.android.Controllers.adapters.CartRecyclerAdapter;
 import com.rahbarbazaar.poller.android.Models.GetCurrencyListResult;
 import com.rahbarbazaar.poller.android.Models.GetTransactionResult;
+import com.rahbarbazaar.poller.android.Models.ModelTranferDataProfileToHome;
 import com.rahbarbazaar.poller.android.Models.RefreshBalanceEvent;
 import com.rahbarbazaar.poller.android.Models.UserDetailsPrefrence;
 import com.rahbarbazaar.poller.android.Network.Service;
@@ -100,6 +101,12 @@ public class CartFragment1 extends Fragment implements View.OnClickListener {
     @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+
+
+        // register eventbus to get posted array or etc...
+//        EventBus.getDefault().register(this);
+
         // Inflate the layout for this fragment
 //        View v = inflater.inflate(R.layout.fragment_cart1, container, false);
         View v = inflater.inflate(R.layout.activity_test, container, false);
@@ -125,6 +132,21 @@ public class CartFragment1 extends Fragment implements View.OnClickListener {
         return v;
     }
 
+
+    @Subscribe
+    public void onEvent(List<ModelTranferDataProfileToHome> event) {
+//        tv_point.setText(event.get(0).getScore());
+
+        tv_point.setText(new StringBuilder().append(" ").
+                append(event.get(0).getScore()).append(" ").
+                append(lang.equals("fa") ? "پاپاسی"
+                        : "Papasi"));
+
+
+//        text_balance_digit.setText(event.get(0).getBalance());
+    }
+
+
     private void initialInformation() {
 
         //if user details not empty
@@ -141,7 +163,7 @@ public class CartFragment1 extends Fragment implements View.OnClickListener {
                     append(lang.equals("fa") ? parcelable.getItems().get(0).getCurrency_name()
                             : parcelable.getItems().get(0).getEn_name()));
 
-            tv_point.setText(String.valueOf(user_details.getSum_points()));
+//            tv_point.setText(String.valueOf(user_details.getSum_points()));
         }
     }
 

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_btn_shape"
+    android:layout_margin="@dimen/_5sdp"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/dialog_header_shape"
+        android:gravity="center">
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/attention"
+            android:textStyle="bold"
+            android:textColor="@color/white_gray"
+            android:textSize="@dimen/font_16"/>
+    </RelativeLayout>
+
+
+
+    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+        android:id="@+id/text_body"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:textColor="@color/blue"
+        android:layout_marginTop="20dp"
+        android:text="@string/exit_profile_text_dialog"
+        android:textSize="@dimen/font_14" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_40"
+        android:layout_marginBottom="@dimen/dimen_10"
+        android:orientation="horizontal">
+
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+            android:id="@+id/btn_exit_dialog"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dimen_42"
+            android:layout_marginStart="@dimen/dimen_10"
+            android:layout_marginEnd="@dimen/dimen_10"
+            android:layout_weight="1"
+            android:textColor="@color/blue"
+            android:background="@drawable/dialog_btn_shape"
+            android:gravity="center"
+            android:text="@string/sure_text"/>
+
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+            android:id="@+id/btn_cancel_dialog"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/dimen_10"
+            android:layout_marginEnd="@dimen/dimen_10"
+            android:layout_height="@dimen/dimen_42"
+            android:background="@drawable/dialog_btn_shape"
+            android:textColor="@color/blue"
+            android:gravity="center"
+            android:text="@string/cancel_text"/>
+
+
+
+    </LinearLayout>
+
+
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="@dimen/dimen_15"-->
+        <!--android:layout_marginBottom="@dimen/dimen_8"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<com.rahbarbazaar.poller.android.Utilities.CustomTextView-->
+            <!--android:id="@+id/btn_cancel_dialog"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="@dimen/dimen_42"-->
+            <!--android:layout_marginStart="@dimen/dimen_10"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@drawable/btn_bg_grey"-->
+            <!--android:gravity="center"-->
+            <!--android:text="@string/cancel_text"-->
+            <!--android:textColor="@color/main_page_toolbar" />-->
+
+        <!--<com.rahbarbazaar.poller.android.Utilities.CustomTextView-->
+            <!--android:id="@+id/btn_exit_dialog"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="@dimen/dimen_42"-->
+            <!--android:layout_marginStart="@dimen/dimen_10"-->
+            <!--android:layout_marginEnd="@dimen/dimen_10"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@drawable/btn_bg_dark_blue"-->
+            <!--android:gravity="center"-->
+            <!--android:text="@string/sure_text"-->
+            <!--android:textColor="@color/main_page_toolbar" />-->
+
+    <!--</LinearLayout>-->
+
+
+
+</LinearLayout>

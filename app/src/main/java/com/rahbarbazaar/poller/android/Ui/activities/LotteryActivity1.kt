@@ -5,6 +5,7 @@ import android.app.Activity
 import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
+import android.support.v4.os.ConfigurationCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
@@ -42,6 +43,7 @@ class LotteryActivity1 : CustomBaseActivity(),
     private var lotteryId: String? = null
     private var isLotteryStatusChanged = false
     private var userScore: Int = 0
+    private var locale_name:String = ""
     val toastFactory: Lazy<ToastFactory> = lazy { ToastFactory() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -114,6 +116,8 @@ class LotteryActivity1 : CustomBaseActivity(),
                             }
                         }
 
+
+
                         fun hideCurrentLotteryLayout(bool: Boolean) { //mikhastam khafan bashe :D vagarna mishod ye 'else' dar nazar gereft
 
                             if (bool) {
@@ -165,6 +169,8 @@ class LotteryActivity1 : CustomBaseActivity(),
 
                             av_loading.smoothToHide()
                             lotteryRecycler.adapter = LotteryRecyclerAdapter(result, this@LotteryActivity1)
+                        }else{
+                            text_survey_nottakenpart.visibility = View.VISIBLE
                         }
                     }
                 }))
@@ -207,7 +213,7 @@ class LotteryActivity1 : CustomBaseActivity(),
                                 isLotteryStatusChanged = true
                                 tv_cancel.visibility = View.GONE
                                 tv_lottery_amount.text = "0"
-                                tv_point.text = userScore.toString()
+//                                tv_point.text = userScore.toString()
                                 message = R.string.text_success_cancel
                             }
                             "lottery date expired" -> message = R.string.text_date_expired
@@ -247,7 +253,7 @@ class LotteryActivity1 : CustomBaseActivity(),
                                     message = R.string.text_success_done
                                     tv_lottery_amount.text = amount
                                     isLotteryStatusChanged = true
-                                    tv_point.text = (userScore - amount.toInt()).toString()
+//                                    tv_point.text = (userScore - amount.toInt()).toString()
                                     tv_cancel.visibility = View.VISIBLE
                                 }
                             }

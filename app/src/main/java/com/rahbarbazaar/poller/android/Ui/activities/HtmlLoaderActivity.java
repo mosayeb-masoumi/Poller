@@ -56,7 +56,7 @@ public class HtmlLoaderActivity extends CustomBaseActivity
             web_btnbar.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         } else if (locale_name.equals("en")) {
             getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
-            web_btnbar.setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+            web_btnbar.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         }
 
 

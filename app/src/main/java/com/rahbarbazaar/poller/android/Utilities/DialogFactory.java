@@ -123,7 +123,8 @@ public class DialogFactory {
 
     public void createConfirmExitDialog(DialogFactoryInteraction listener, View view, boolean survey_exit_confirm) {
 
-        View customLayout = LayoutInflater.from(context).inflate(R.layout.confirm_exit_dialog, (ViewGroup) view, false);
+//        View customLayout = LayoutInflater.from(context).inflate(R.layout.confirm_exit_dialog, (ViewGroup) view, false);
+        View customLayout = LayoutInflater.from(context).inflate(R.layout.confirm_exit_dialog1, (ViewGroup) view, false);
         //define views inside of dialog
         TextView btn_exit_dialog = customLayout.findViewById(R.id.btn_exit_dialog);
         TextView btn_cancel_dialog = customLayout.findViewById(R.id.btn_cancel_dialog);
@@ -200,7 +201,8 @@ public class DialogFactory {
 //        TextView btn_cancel_dialog = customLayout.findViewById(R.id.btn_cancel_dialog);
 
         //set default typeface of views
-        edt_comment.setTypeface(Typeface.createFromAsset(context.getAssets(), "fonts/BYekan.ttf"));
+//        edt_comment.setTypeface(Typeface.createFromAsset(context.getAssets(), "fonts/BYekan.ttf"));
+        edt_comment.setTypeface(Typeface.createFromAsset(context.getAssets(), "fonts/Vazir-Medium.ttf"));
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setView(customLayout);
@@ -241,8 +243,11 @@ public class DialogFactory {
         TextView btn_cancel_dialog = customLayout.findViewById(R.id.btn_cancel_dialog);
 
         //set default values of views
-        edt_title.setTypeface(Typeface.createFromAsset(context.getAssets(), "fonts/BYekan.ttf"));
-        edt_description.setTypeface(Typeface.createFromAsset(context.getAssets(), "fonts/BYekan.ttf"));
+//        edt_title.setTypeface(Typeface.createFromAsset(context.getAssets(), "fonts/BYekan.ttf"));
+//        edt_description.setTypeface(Typeface.createFromAsset(context.getAssets(), "fonts/BYekan.ttf"));
+        edt_title.setTypeface(Typeface.createFromAsset(context.getAssets(), "fonts/ Vazir-Medium.ttf"));
+        edt_description.setTypeface(Typeface.createFromAsset(context.getAssets(), "fonts/ Vazir-Medium.ttf"));
+
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setView(customLayout);
@@ -537,10 +542,13 @@ public class DialogFactory {
 
     public void createjoinToLotteryDialog(View view, DialogFactoryInteraction interaction) {
 
-        View customView = LayoutInflater.from(context).inflate(R.layout.join_to_lottery_dialog, (ViewGroup) view, false);
+//        View customView = LayoutInflater.from(context).inflate(R.layout.join_to_lottery_dialog, (ViewGroup) view, false);
+        View customView = LayoutInflater.from(context).inflate(R.layout.join_to_lottery_dialog1, (ViewGroup) view, false);
 
-        ImageView img_join_lottery = customView.findViewById(R.id.img_join_lottery);
+//        ImageView img_join_lottery = customView.findViewById(R.id.img_join_lottery);
+        TextView img_join_lottery = customView.findViewById(R.id.txt_join_lottery);
         EditText edt_lottery_amount = customView.findViewById(R.id.edt_lottery_amount);
+        edt_lottery_amount.setTypeface(Typeface.createFromAsset(context.getAssets(), "fonts/Vazir-Medium.ttf"));
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setView(customView);

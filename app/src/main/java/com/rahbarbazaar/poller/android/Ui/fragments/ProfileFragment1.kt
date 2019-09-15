@@ -22,10 +22,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.fragment_profile.*
-import android.graphics.ColorSpace.Model
 import android.support.v4.os.ConfigurationCompat
-import com.jakewharton.retrofit2.adapter.rxjava2.HttpException
+import com.rahbarbazaar.poller.android.Models.eventbus.ModelTranferDataProfileToHome
 import kotlinx.android.synthetic.main.fragment_profile.profile_root
 import kotlinx.android.synthetic.main.fragment_profile.rl_balance_point
 import kotlinx.android.synthetic.main.fragment_profile.rl_edit_profile
@@ -194,7 +192,7 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
                 text_project_count.text = result.participated_project_count.toString()
 //                text_user_state.text = result.membership
 
-                set_nameBg(type);
+                set_nameBg(type)
 
             }
 

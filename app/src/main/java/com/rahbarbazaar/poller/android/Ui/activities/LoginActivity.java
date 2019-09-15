@@ -131,8 +131,6 @@ public class LoginActivity extends CustomBaseActivity implements View.OnClickLis
                                     startActivity(intent);
                                     LoginActivity.this.finish();
                                     overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
-
-
                                 }
                             }
                             button_submit.setText(R.string.login_button_text);
@@ -141,7 +139,6 @@ public class LoginActivity extends CustomBaseActivity implements View.OnClickLis
                             av_login.smoothToHide();
                             button_submit.setVisibility(View.VISIBLE);
                             av_login.setVisibility(View.GONE);
-
                         }
 
                         @Override

@@ -48,7 +48,7 @@ class ShopActivity1 : CustomBaseActivity(), GeneralItemIntraction<GetShopListRes
         } else if (locale_name.equals("en")) {
             window.decorView.layoutDirection = View.LAYOUT_DIRECTION_RTL
             shop_recycler.layoutDirection = View.LAYOUT_DIRECTION_LTR
-            llbtom.layoutDirection = View.LAYOUT_DIRECTION_LTR
+            llbtom.layoutDirection = View.LAYOUT_DIRECTION_RTL
         }
 
 

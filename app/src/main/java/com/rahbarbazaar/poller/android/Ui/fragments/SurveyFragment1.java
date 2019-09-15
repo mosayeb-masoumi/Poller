@@ -15,19 +15,17 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
-import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
-import com.rahbarbazaar.poller.android.Controllers.adapters.SurveyRecyclerAdapter;
 import com.rahbarbazaar.poller.android.Controllers.adapters.SurveyRecyclerAdapter1;
+import com.rahbarbazaar.poller.android.Controllers.viewHolders.SurveyHolder1;
 import com.rahbarbazaar.poller.android.Controllers.viewHolders.SurveyItemInteraction;
 import com.rahbarbazaar.poller.android.Models.ChangeSurveyStatusResult;
 import com.rahbarbazaar.poller.android.Models.GetCurrencyListResult;
 import com.rahbarbazaar.poller.android.Models.GetSurveyHistoryListResult;
-import com.rahbarbazaar.poller.android.Models.ModelTranferDataProfileToHome;
 import com.rahbarbazaar.poller.android.Models.RefreshBalanceEvent;
 import com.rahbarbazaar.poller.android.Models.RefreshSurveyEvent;
 import com.rahbarbazaar.poller.android.Models.SurveyMainModel;
@@ -36,9 +34,9 @@ import com.rahbarbazaar.poller.android.Network.Service;
 import com.rahbarbazaar.poller.android.Network.ServiceProvider;
 import com.rahbarbazaar.poller.android.R;
 import com.rahbarbazaar.poller.android.Ui.activities.HtmlLoaderActivity;
-import com.rahbarbazaar.poller.android.Ui.activities.SplashScreenActivity;
 import com.rahbarbazaar.poller.android.Utilities.ClientConfig;
 import com.rahbarbazaar.poller.android.Utilities.SnackBarFactory;
+import com.rahbarbazaar.poller.android.Utilities.SolarCalendar;
 import com.rahbarbazaar.poller.android.Utilities.ToastFactory;
 import com.rahbarbazaar.poller.android.Utilities.DialogFactory;
 import com.rahbarbazaar.poller.android.Utilities.PreferenceStorage;
@@ -48,13 +46,20 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
+
 
 import static android.app.Activity.RESULT_OK;
 
@@ -63,7 +68,7 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
     //property and params region
 
     RecyclerView home_survey_rv;
-//    LinearLayout linear_header;
+    //    LinearLayout linear_header;
     SurveyRecyclerAdapter1 adapter;
     TextView text_no_active_survey;
     SwipeRefreshLayout swipe_refesh;
@@ -82,10 +87,10 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
 
     public static SurveyFragment1 newInstance(GetCurrencyListResult parcelable, String lang) {
         Bundle bundle = new Bundle();
-        bundle.putParcelable("parcel_data",parcelable);
-        bundle.putString("lang",lang);
+        bundle.putParcelable("parcel_data", parcelable);
+        bundle.putString("lang", lang);
 
-        SurveyFragment1 fragment =new SurveyFragment1();
+        SurveyFragment1 fragment = new SurveyFragment1();
         fragment.setArguments(bundle);
 
         return fragment;
@@ -95,7 +100,7 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (getArguments()!=null){
+        if (getArguments() != null) {
             parcelable = this.getArguments().getParcelable("parcel_data");
             lang = getArguments().getString("lang");
         }
@@ -133,10 +138,6 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
     }
 
 
-
-
-
-
     //define view of fragment and set property
     private void defineViews(View view) {
 
@@ -149,11 +150,6 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
         swipe_refesh.setColorSchemeResources(R.color.colorPrimary);
         swipe_refesh.setOnRefreshListener(this::getUserSurveyHistory);
     }
-
-
-
-
-
 
 
     //config home recycler view
@@ -244,7 +240,7 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
                 if (active_count != 0 && interaction != null)
                     interaction.activeSurveyCount(String.valueOf(active_count));//badge count for survey page
 
-            } else if (data.getActives().size() == 0){
+            } else if (data.getActives().size() == 0) {
                 text_no_active_survey.setVisibility(View.VISIBLE); //if user doesn't have any active survey , no active survey text will be visible
             }
         }
@@ -279,7 +275,17 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
 
                                 if (result != null) {
 
-                                    showDetailsSurveyDialog(result, button_status, url_type);
+                                    SurveyHolder1 surveyHolder1 = new SurveyHolder1(Objects.requireNonNull(getView()));
+                                    int remainindDay = surveyHolder1.getRemainingDate(getCurrentDate(), result.getEnd_date());
+
+                                    // make clause to show button participant dialog
+                                    if (remainindDay<=0) {
+                                        showDetailsSurveyDialogExpired(result, button_status, url_type);
+                                    }else if(remainindDay>0 && result.getStatus()==3){
+                                        showDetailsSurveyDialogExpired(result, button_status, url_type);
+                                    }else{
+                                        showDetailsSurveyDialog(result, button_status, url_type);
+                                    }
                                 }
                                 isSurveyItemClickable = true;
                             }
@@ -342,6 +348,51 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
             }
         }, result, getView(), button_status);
     }
+
+
+    //this function will be create details survey dialog
+    private void showDetailsSurveyDialogExpired(SurveyMainModel result, String button_status, int url_type) {
+
+        new DialogFactory(getActivity()).createSurveyDetailsDialogExpired(new DialogFactory.DialogFactoryInteraction() {
+            @Override
+            public void onAcceptButtonClicked(String... params) {
+
+                if (userDetailsPrefrence.getType().equalsIgnoreCase("1")) {
+
+                    if (result.getPoint() == 0) {
+
+                        sendToHtmlActivity(params[0], url_type, result);
+
+                    } else {
+
+                        new DialogFactory(getContext()).createNoRegisterDialog(getView(), new DialogFactory.DialogFactoryInteraction() {
+                            @Override
+                            public void onAcceptButtonClicked(String... params) {
+
+                                //params
+                            }
+
+                            @Override
+                            public void onDeniedButtonClicked(boolean cancel_dialog) {
+
+                                //params
+                            }
+                        });
+                    }
+                } else {
+
+                    sendToHtmlActivity(params[0], url_type, result);
+                }
+            }
+
+            @Override
+            public void onDeniedButtonClicked(boolean bool) {
+
+                //doesn't use here
+            }
+        }, result, getView(), button_status);
+    }
+
 
     private void sendToHtmlActivity(String url, int url_type, SurveyMainModel result) {
 
@@ -490,6 +541,21 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
     public void onRefreshSurveyEvent(RefreshSurveyEvent event) {
 
         getUserSurveyHistory();
+    }
+
+    public String getCurrentDate(){
+
+        SolarCalendar solarCalendar = new SolarCalendar();
+        String day = solarCalendar.getCurrentShamsiDay();
+        String month = solarCalendar.getStrMonth();
+        String year = solarCalendar.getCurrentShamsiYear();
+
+        Calendar c = Calendar.getInstance();
+        String currentTime = c.get(Calendar.HOUR_OF_DAY) + ":" + c.get(Calendar.MINUTE)+":"+c.get(Calendar.SECOND);
+
+        String currentDate = year + "-" + month + "-" + day+" "+currentTime;
+
+        return  currentDate;
     }
 }
 

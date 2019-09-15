@@ -30,6 +30,7 @@
     <color name="gray">#dcdcdc</color>
     <color name="gray2">#ababab</color>
     <color name="blue_light">#dde7ff</color>
+    <color name="gray_deep">#737373</color>
 
 
 </resources>

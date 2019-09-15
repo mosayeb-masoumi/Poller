@@ -23,7 +23,7 @@
             android:textStyle="bold"
             android:text="@string/survey_tab"
             android:textColor="@color/colorAccent1"
-            android:textSize="@dimen/_18ssp" />
+            android:textSize="@dimen/_15ssp" />
 
         <ImageView
             android:layout_width="@dimen/_100sdp"

@@ -9,18 +9,27 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_53sdp">
 
-        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+
+        <RelativeLayout
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_40sdp"
-            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:background="@drawable/dialog_btn_shape"
-            android:gravity="center"
-            android:text="@string/transaction_tab"
-            android:textColor="@color/colorAccent1"
-            android:textSize="@dimen/_18ssp"
-            android:textStyle="bold" />
+            android:layout_centerVertical="true"
+            android:background="@drawable/dialog_btn_shape">
+
+            <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_vertical"
+                android:padding="@dimen/_2sdp"
+                android:text="@string/transaction_tab"
+                android:textColor="@color/colorAccent1"
+                android:textSize="@dimen/_5ssp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
 
         <ImageView
             android:layout_width="@dimen/_100sdp"
@@ -30,25 +39,23 @@
     </RelativeLayout>
 
 
-
     <!--gone-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:layout_marginTop="@dimen/dimen_10">
+        android:layout_marginTop="@dimen/dimen_10"
+        android:visibility="gone">
 
         <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+            android:id="@+id/tv_total_earned"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="@dimen/dimen_10"
-            android:id="@+id/tv_total_earned"
+            android:text="@string/total_prices_earned"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="@dimen/font_15"
-            android:textStyle="bold"
-            android:text="@string/total_prices_earned"
-            />
+            android:textStyle="bold" />
 
     </RelativeLayout>
 
@@ -109,16 +116,16 @@
                         android:src="@drawable/bg_myaccount_toman_icon" />
 
                     <!--<com.rahbarbazaar.poller.android.Utilities.CustomTextView-->
-                        <!--android:id="@+id/tv_point"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_below="@+id/img_16"-->
-                        <!--android:text="45265"-->
-                        <!--android:layout_marginTop="@dimen/_3sdp"-->
-                        <!--android:layout_centerHorizontal="true"-->
-                        <!--android:textColor="#fc29ba"-->
-                        <!--android:textSize="@dimen/font_14"-->
-                        <!--android:textStyle="bold" />-->
+                    <!--android:id="@+id/tv_point"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_below="@+id/img_16"-->
+                    <!--android:text="45265"-->
+                    <!--android:layout_marginTop="@dimen/_3sdp"-->
+                    <!--android:layout_centerHorizontal="true"-->
+                    <!--android:textColor="#fc29ba"-->
+                    <!--android:textSize="@dimen/font_14"-->
+                    <!--android:textStyle="bold" />-->
                     <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                         android:id="@+id/txt_balance"
                         android:layout_width="wrap_content"
@@ -140,13 +147,13 @@
                     android:layout_marginEnd="@dimen/_20sdp">
 
                     <com.rahbarbazaar.poller.android.Utilities.CustomTextView
-                    android:id="@+id/txt_18"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:text="@string/text_your_point"
-                    android:textColor="#1f1a6b"
-                    android:textSize="14sp" />
+                        android:id="@+id/txt_18"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:text="@string/text_your_point"
+                        android:textColor="#1f1a6b"
+                        android:textSize="14sp" />
 
                     <ImageView
                         android:id="@+id/img_17"
@@ -158,16 +165,16 @@
                         android:src="@drawable/bg_myaccount_papasi_icon" />
 
                     <com.rahbarbazaar.poller.android.Utilities.CustomTextView
-                    android:id="@+id/tv_point"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/img_17"
-                    android:text="45265"
-                    android:layout_marginTop="@dimen/_3sdp"
-                    android:layout_centerHorizontal="true"
-                    android:textColor="#ca1390"
-                    android:textSize="@dimen/font_14"
-                    android:textStyle="bold" />
+                        android:id="@+id/tv_point"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/img_17"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:text="45265"
+                        android:textColor="#ca1390"
+                        android:textSize="@dimen/font_14"
+                        android:textStyle="bold" />
 
                 </RelativeLayout>
             </RelativeLayout>
@@ -176,20 +183,20 @@
 
         <!--gone-->
         <RelativeLayout
-            android:padding="@dimen/dimen_3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimen_5"
             android:layout_marginTop="@dimen/dimen_10"
             android:layout_marginEnd="@dimen/dimen_5"
-            android:visibility="gone"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="@dimen/dimen_3"
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_toStartOf="@+id/tv_cart_price_view"
                 android:layout_height="@dimen/dimen_1"
                 android:layout_centerVertical="true"
+                android:layout_toStartOf="@+id/tv_cart_price_view"
                 android:background="@color/colorPrimaryDark" />
 
             <com.rahbarbazaar.poller.android.Utilities.CustomTextView
@@ -210,11 +217,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:paddingStart="@dimen/dimen_5"
-                android:paddingEnd="@dimen/dimen_5"
                 android:layout_marginEnd="@dimen/dimen_3"
                 android:background="@color/main_page_toolbar"
                 android:padding="@dimen/dimen_5"
+                android:paddingStart="@dimen/dimen_5"
+                android:paddingEnd="@dimen/dimen_5"
                 android:text="@string/text_price"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="@dimen/font_13"
@@ -224,11 +231,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:paddingStart="@dimen/dimen_5"
-                android:paddingEnd="@dimen/dimen_5"
                 android:layout_marginEnd="@dimen/dimen_3"
                 android:background="@color/main_page_toolbar"
                 android:padding="@dimen/dimen_5"
+                android:paddingStart="@dimen/dimen_5"
+                android:paddingEnd="@dimen/dimen_5"
                 android:text="@string/text_date"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="@dimen/font_13"
@@ -237,20 +244,17 @@
         </RelativeLayout>
 
 
-
-
-
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.5"
             android:layout_marginStart="@dimen/_9sdp"
+            android:layout_marginTop="@dimen/_2sdp"
             android:layout_marginEnd="@dimen/_9sdp"
-            android:layout_marginTop="@dimen/_2sdp">
+            android:layout_weight="0.5">
+
             <LinearLayout
-                android:layout_width="match_parent"
                 android:id="@+id/rl_6"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
 
@@ -258,21 +262,22 @@
                     android:id="@+id/tv_transaction_tab"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_marginEnd="@dimen/_2sdp"
                     android:layout_weight="1"
                     android:background="@drawable/bg_myaccount_tab"
-                    android:layout_marginEnd="@dimen/_2sdp"
                     android:gravity="center"
-                    android:textColor="@color/gray"
                     android:tag="selected"
-                    android:text="@string/text_transaction_tab_one" />
+                    android:text="@string/text_transaction_tab_one"
+                    android:textColor="@color/gray" />
+
                 <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                     android:id="@+id/tv_point_tab"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
                     android:layout_marginStart="@dimen/_2sdp"
+                    android:layout_weight="1"
                     android:background="@drawable/bg_myaccount_tabpink"
+                    android:gravity="center"
                     android:text="@string/text_transaction_tab_two"
                     android:textColor="@color/gray" />
 
@@ -283,15 +288,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_1sdp"
                 android:layout_alignParentBottom="true"
-                android:background="#ca1390"/>
+                android:background="#ca1390" />
 
         </RelativeLayout>
         <!--<ImageView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="@dimen/_2sdp"-->
-            <!--android:layout_marginStart="@dimen/_25sdp"-->
-            <!--android:layout_marginEnd="@dimen/_25sdp"-->
-            <!--android:background="#fc29ba"/>-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/_2sdp"-->
+        <!--android:layout_marginStart="@dimen/_25sdp"-->
+        <!--android:layout_marginEnd="@dimen/_25sdp"-->
+        <!--android:background="#fc29ba"/>-->
 
         <RelativeLayout
             android:layout_width="match_parent"

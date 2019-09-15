@@ -171,40 +171,52 @@ public class SolarCalendar {
 
         switch (month) {
             case 1:
-                strMonth = "فروردين";
+//                strMonth = "فروردين";
+                strMonth = "01";
                 break;
             case 2:
-                strMonth = "ارديبهشت";
+//                strMonth = "ارديبهشت";
+                strMonth = "02";
                 break;
             case 3:
-                strMonth = "خرداد";
+//                strMonth = "خرداد";
+                strMonth = "03";
                 break;
             case 4:
-                strMonth = "تير";
+//                strMonth = "تير";
+                strMonth = "04";
                 break;
             case 5:
-                strMonth = "مرداد";
+//                strMonth = "مرداد";
+                strMonth = "05";
                 break;
             case 6:
-                strMonth = "شهريور";
+//                strMonth = "شهريور";
+                strMonth = "06";
                 break;
             case 7:
-                strMonth = "مهر";
+//                strMonth = "مهر";
+                strMonth = "07";
                 break;
             case 8:
-                strMonth = "آبان";
+//                strMonth = "آبان";
+                strMonth = "08";
                 break;
             case 9:
-                strMonth = "آذر";
+//                strMonth = "آذر";
+                strMonth = "09";
                 break;
             case 10:
-                strMonth = "دي";
+//                strMonth = "دي";
+                strMonth = "10";
                 break;
             case 11:
-                strMonth = "بهمن";
+//                strMonth = "بهمن";
+                strMonth = "11";
                 break;
             case 12:
-                strMonth = "اسفند";
+//                strMonth = "اسفند";
+                strMonth = "12";
                 break;
         }
 
@@ -240,5 +252,12 @@ public class SolarCalendar {
         Locale loc = new Locale("en_US");
         SolarCalendar sc = new SolarCalendar();
         return String.format(loc, "%02d", sc.date);
+    }
+
+    public  String getCurrentShamsiYear() {
+
+        Locale loc = new Locale("en_US");
+        SolarCalendar sc = new SolarCalendar();
+        return String.format(loc, "%02d", sc.year);
     }
 }

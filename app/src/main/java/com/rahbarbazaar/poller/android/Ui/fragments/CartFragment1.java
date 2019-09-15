@@ -3,8 +3,6 @@ package com.rahbarbazaar.poller.android.Ui.fragments;
 
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,21 +16,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 import com.rahbarbazaar.poller.android.Controllers.adapters.CartRecyclerAdapter;
 import com.rahbarbazaar.poller.android.Models.GetCurrencyListResult;
 import com.rahbarbazaar.poller.android.Models.GetTransactionResult;
-import com.rahbarbazaar.poller.android.Models.ModelTranferDataProfileToHome;
+import com.rahbarbazaar.poller.android.Models.eventbus.ModelTranferDataProfileToHome;
 import com.rahbarbazaar.poller.android.Models.RefreshBalanceEvent;
 import com.rahbarbazaar.poller.android.Models.UserDetailsPrefrence;
 import com.rahbarbazaar.poller.android.Network.Service;
 import com.rahbarbazaar.poller.android.Network.ServiceProvider;
 import com.rahbarbazaar.poller.android.R;
-import com.rahbarbazaar.poller.android.Ui.activities.MainActivity;
-import com.rahbarbazaar.poller.android.Ui.activities.SplashScreenActivity;
 import com.rahbarbazaar.poller.android.Utilities.ClientConfig;
-import com.rahbarbazaar.poller.android.Utilities.GeneralTools;
-import com.rahbarbazaar.poller.android.Utilities.PreferenceStorage;
 import com.rahbarbazaar.poller.android.Utilities.ProfileTools;
 
 import org.greenrobot.eventbus.EventBus;
@@ -41,7 +34,6 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -109,7 +101,7 @@ public class CartFragment1 extends Fragment implements View.OnClickListener {
 
         // Inflate the layout for this fragment
 //        View v = inflater.inflate(R.layout.fragment_cart1, container, false);
-        View v = inflater.inflate(R.layout.activity_test, container, false);
+        View v = inflater.inflate(R.layout.fragment_cart2, container, false);
 
         defineViews(v);
         configRecyclerView();

@@ -100,8 +100,8 @@ public class SurveyHolder1 extends RecyclerView.ViewHolder {
             row_survey_imgmobile.setImageResource(R.drawable.survey_item_ok_icon2);
             row_survey_imgLeftday.setImageResource(R.drawable.survey_item_leftday_icon);
 
-            text_survey_title.setTextColor(ContextCompat.getColor(context, R.color.white_gray));
-            txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.white_gray));
+            text_survey_title.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
+            txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
             row_survey_LLbackground.setBackground(ContextCompat.getDrawable(context, R.drawable.row_survey_gray_bg));
 //            text_survey_title.setTextColor(ContextCompat.getColor(context, R.color.blue));
 //            txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.blue));
@@ -109,14 +109,14 @@ public class SurveyHolder1 extends RecyclerView.ViewHolder {
         } else if (remaining_day <= 0 && (data.getStatus() == 1 || data.getStatus() == 2)) {
             row_survey_imgmobile.setImageResource(R.drawable.survey_item_delete_icon2);
             row_survey_imgLeftday.setImageResource(R.drawable.survey_item_expired_icon);
-            text_survey_title.setTextColor(ContextCompat.getColor(context, R.color.white_gray));
-            txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.white_gray));
+            text_survey_title.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
+            txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
             row_survey_LLbackground.setBackground(ContextCompat.getDrawable(context, R.drawable.row_survey_gray_bg));
         } else if (remaining_day <= 0 && data.getStatus() == 3) {
             row_survey_imgmobile.setImageResource(R.drawable.survey_item_ok_icon2);
             row_survey_imgLeftday.setImageResource(R.drawable.survey_item_expired_icon);
-            text_survey_title.setTextColor(ContextCompat.getColor(context, R.color.white_gray));
-            txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.white_gray));
+            text_survey_title.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
+            txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
             row_survey_LLbackground.setBackground(ContextCompat.getDrawable(context, R.drawable.row_survey_gray_bg));
         }
 
@@ -131,7 +131,7 @@ public class SurveyHolder1 extends RecyclerView.ViewHolder {
             row_survey_underImg_right.setImageResource(R.drawable.row_survey_under_lightblue);
         } else if (remaining_day <= 0) {
             row_survey_imgCoin.setImageResource(R.drawable.survey_item_graycoin);
-            txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.white_gray));
+            txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
             row_survey_underImg_left.setImageResource(R.drawable.row_survey_under_deepgray);
             row_survey_underImg_right.setImageResource(R.drawable.row_survey_under_lightgray);
         }
@@ -147,7 +147,7 @@ public class SurveyHolder1 extends RecyclerView.ViewHolder {
             txt_survey_date.setText(remaining_day + " " + context.getString(R.string.text_remaining_day));
         else {
             txt_survey_date.setText(context.getString(R.string.text_expired));
-            txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.white_gray));
+            txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
         }
 
         if (remaining_day <= 1)
@@ -157,7 +157,7 @@ public class SurveyHolder1 extends RecyclerView.ViewHolder {
 //            text_number.setText("");
 //            image_expired.setVisibility(View.VISIBLE);
             row_survey_imgLeftday.setVisibility(View.VISIBLE);
-            txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.white_gray));
+            txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
         }
 
         switch (data.getStatus()) {
@@ -178,7 +178,7 @@ public class SurveyHolder1 extends RecyclerView.ViewHolder {
 
     }
 
-    private int getRemainingDate(String start, String end) {
+    public int getRemainingDate(String start, String end) {
 
         // get start day and month
         String[] start_array = start.substring(0, 10).split("-");

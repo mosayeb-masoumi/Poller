@@ -120,6 +120,77 @@ public class DialogFactory {
             dialog.show();
         }
     }
+    public void createSurveyDetailsDialogExpired(DialogFactoryInteraction listener, SurveyMainModel data, View root, String button_title) {
+
+        if (context != null) {
+//            View customLayout = LayoutInflater.from(context).inflate(R.layout.survey_details_dialog, (ViewGroup) root, false);
+            View customLayout = LayoutInflater.from(context).inflate(R.layout.survey_details_dialog1_expired, (ViewGroup) root, false);
+            //define views inside of dialog
+            TextView text_title = customLayout.findViewById(R.id.text_title);
+            TextView text_time = customLayout.findViewById(R.id.text_time);
+            TextView text_point = customLayout.findViewById(R.id.text_point);
+            TextView text_status = customLayout.findViewById(R.id.text_status);
+            TextView text_description = customLayout.findViewById(R.id.text_description);
+            TextView btn_go_dialog = customLayout.findViewById(R.id.btn_go_dialog);
+            TextView btn_cancel_dialog = customLayout.findViewById(R.id.btn_cancel_dialog);
+
+            //initialize views
+            text_title.setText(data.getTitle());
+            btn_go_dialog.setText(button_title);
+
+            if (button_title.contains("منقضی"))
+                btn_go_dialog.setEnabled(false);
+
+            text_time.setText(new StringBuilder().append(context.getString(R.string.text_survey_time)).append(context.getString(R.string.text_from)).append(data.getStart_date(), 0, 10).append(context.getString(R.string.text_until)).append(data.getEnd_date(), 0, 10));
+            text_point.setText(new StringBuilder().append(context.getString(R.string.text_point)).append(data.getPoint()).append(" ").append(data.getCurrency().getName()));
+
+            String status = null;
+            switch (data.getStatus()) {
+
+                case 1:
+                    status = context.getString(R.string.text_no_answer);
+                    break;
+
+                case 2:
+                    status = context.getString(R.string.text_pending);
+                    break;
+
+                case 3:
+                    status = context.getString(R.string.text_survey_complete);
+                    btn_go_dialog.setEnabled(false);
+                    text_time.setText(new StringBuilder().append(context.getString(R.string.text_survey_time)).append(context.getString(R.string.text_in)).append(data.getComplete_date(), 0, 10).append(context.getString(R.string.text_answer)));
+                    break;
+
+                case 0:
+                    status = context.getString(R.string.text_survey_incomplete);
+                    break;
+            }
+
+            text_status.setText(new StringBuilder().append(context.getString(R.string.text_survey_status)).append(status));
+            String description = data.getDescription() == null || data.getDescription().equals("") ? context.getString(R.string.text_does_not_have) : data.getDescription();
+            text_description.setText(new StringBuilder().append(context.getString(R.string.text_survey_description)).append(description));
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.setView(customLayout);
+
+            //create dialog and set background transparent
+            AlertDialog dialog = builder.create();
+            if (dialog.getWindow() != null) {
+
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            }
+
+            //set click listener for views inside of dialog
+            btn_go_dialog.setOnClickListener(view -> {
+
+                dialog.dismiss();
+                listener.onAcceptButtonClicked(data.getUrl());
+
+            });
+            btn_cancel_dialog.setOnClickListener(view -> dialog.dismiss());
+            dialog.show();
+        }
+    }
 
     public void createConfirmExitDialog(DialogFactoryInteraction listener, View view, boolean survey_exit_confirm) {
 
@@ -243,10 +314,10 @@ public class DialogFactory {
         TextView btn_cancel_dialog = customLayout.findViewById(R.id.btn_cancel_dialog);
 
         //set default values of views
-//        edt_title.setTypeface(Typeface.createFromAsset(context.getAssets(), "fonts/BYekan.ttf"));
-//        edt_description.setTypeface(Typeface.createFromAsset(context.getAssets(), "fonts/BYekan.ttf"));
-        edt_title.setTypeface(Typeface.createFromAsset(context.getAssets(), "fonts/ Vazir-Medium.ttf"));
-        edt_description.setTypeface(Typeface.createFromAsset(context.getAssets(), "fonts/ Vazir-Medium.ttf"));
+        edt_title.setTypeface(Typeface.createFromAsset(context.getAssets(), "fonts/BYekan.ttf"));
+        edt_description.setTypeface(Typeface.createFromAsset(context.getAssets(), "fonts/BYekan.ttf"));
+//        edt_title.setTypeface(Typeface.createFromAsset(context.getAssets(), "fonts/ Vazir-Medium.ttf"));
+//        edt_description.setTypeface(Typeface.createFromAsset(context.getAssets(), "fonts/ Vazir-Medium.ttf"));
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);

@@ -99,7 +99,7 @@
     <string name="join_lottery_error">Please enter your desired amount</string>
     <string name="text_convert_point_balance">Convert point to incentive</string>
     <string name="text_convert_balance_point">Convert incentive to point</string>
-    <string name="text_participation_amount">Participation amount : </string>
+    <string name="text_participation_amount">: Participation amount</string>
     <string name="text_select_lang">Please select your language :</string>
     <string name="text_try_again">Try again</string>
     <string name="text_error_on_login">Error in login please try again</string>

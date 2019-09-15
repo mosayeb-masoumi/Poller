@@ -136,6 +136,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="@dimen/_17sdp"
                                 android:layout_weight="0.3"
+                                android:visibility="gone"
                                 android:src="@drawable/bg_lottery_prize_icon" />
 
                             <com.rahbarbazaar.poller.android.Utilities.CustomTextView
@@ -152,8 +153,6 @@
                             <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="@dimen/_30sdp"
-                                android:layout_marginStart="@dimen/dimen_3"
-                                android:layout_marginEnd="@dimen/dimen_5"
                                 android:gravity="center"
                                 android:textColor="@color/blue"
                                 android:text="@string/text_participation_amount"
@@ -161,9 +160,12 @@
 
                             <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                                 android:id="@+id/tv_lottery_amount"
-                                android:layout_width="@dimen/_30sdp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="200"
+                                android:layout_marginEnd="@dimen/_2sdp"
+                                android:layout_marginStart="@dimen/_1sdp"
+                                android:gravity="center"
                                 android:textColor="@color/blue"
                                 android:textSize="@dimen/_10ssp" />
 

@@ -1,47 +1,35 @@
 package com.rahbarbazaar.poller.android.Ui.fragments;
 
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.os.ConfigurationCompat;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
-import com.rahbarbazaar.poller.android.Models.GetBannersListResult;
 import com.rahbarbazaar.poller.android.Models.GetCurrencyListResult;
-import com.rahbarbazaar.poller.android.Models.ModelTranferDataProfileToHome;
+import com.rahbarbazaar.poller.android.Models.eventbus.ModelTranferDataProfileToHome;
 import com.rahbarbazaar.poller.android.Models.getimages.GetImages;
 import com.rahbarbazaar.poller.android.Network.Service;
 import com.rahbarbazaar.poller.android.Network.ServiceProvider;
 import com.rahbarbazaar.poller.android.R;
 import com.rahbarbazaar.poller.android.Ui.activities.HtmlLoaderActivity;
 import com.rahbarbazaar.poller.android.Ui.activities.MainActivity;
-import com.rahbarbazaar.poller.android.Ui.activities.SplashScreenActivity;
-import com.rahbarbazaar.poller.android.Utilities.App;
 import com.rahbarbazaar.poller.android.Utilities.ClientConfig;
 import com.rahbarbazaar.poller.android.Utilities.LocaleManager;
-import com.rahbarbazaar.poller.android.Utilities.NotSwipeableViewPager;
-import com.rahbarbazaar.poller.android.Utilities.PreferenceStorage;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import java.util.List;
-import java.util.Objects;
 
-import io.fabric.sdk.android.services.common.SafeToast;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableSingleObserver;
@@ -217,6 +205,13 @@ public class HomeFragment1 extends Fragment implements View.OnClickListener {
                             newsWebUrl = result.getImagesDetail.getNews_url();
                             videoWebUrl= result.getImagesDetail.getVideo_url();
 
+
+
+                            if (activeSurveys != 0 && interaction != null)
+                                interaction.activeSurveysCount(String.valueOf(activeSurveys));//badge count for survey page
+
+
+
                             text_yourpoint_digit.setText(String.valueOf(score));
                             text_balance_digit.setText(String.valueOf(balance));
                             text_activepoll_digit.setText(String.valueOf(activeSurveys));
@@ -252,5 +247,30 @@ public class HomeFragment1 extends Fragment implements View.OnClickListener {
         img_home_polls.setImageURI(uriSurveyUrl);
     }
 
+
+
+
+
+
+
+    HomeFragment1.ActiveSurveysInteraction interaction; //survey interaction interface
+
+    public interface ActiveSurveysInteraction {
+
+        void activeSurveysCount(String count);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        interaction = (HomeFragment1.ActiveSurveysInteraction) context;
+        super.onAttach(context);
+    }
+
+    @Override
+    public void onDetach() {
+        if (interaction != null)
+            interaction = null;
+        super.onDetach();
+    }
 
 }

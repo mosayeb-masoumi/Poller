@@ -5,6 +5,39 @@
     android:orientation="vertical">
 
 
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/_53sdp">-->
+
+
+        <!--<RelativeLayout-->
+            <!--android:layout_width="@dimen/_100sdp"-->
+            <!--android:layout_height="@dimen/_40sdp"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_marginTop="@dimen/_2sdp"-->
+            <!--android:background="@drawable/dialog_btn_shape">-->
+
+            <!--<com.rahbarbazaar.poller.android.Utilities.CustomTextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_alignParentBottom="true"-->
+                <!--android:layout_centerHorizontal="true"-->
+                <!--android:gravity="center_vertical"-->
+                <!--android:padding="@dimen/_2sdp"-->
+                <!--android:text="@string/transaction_tab"-->
+                <!--android:textColor="@color/colorAccent1"-->
+                <!--android:textSize="@dimen/_15ssp"-->
+                <!--android:textStyle="bold" />-->
+        <!--</RelativeLayout>-->
+
+
+        <!--<ImageView-->
+            <!--android:layout_width="@dimen/_100sdp"-->
+            <!--android:layout_height="@dimen/_22sdp"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:src="@drawable/bg_myaccount_coin_icon" />-->
+    <!--</RelativeLayout>-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/_53sdp">
@@ -19,7 +52,7 @@
             android:gravity="center"
             android:text="@string/transaction_tab"
             android:textColor="@color/colorAccent1"
-            android:textSize="@dimen/_18ssp"
+            android:textSize="@dimen/_15ssp"
             android:textStyle="bold" />
 
         <ImageView
@@ -241,8 +274,7 @@
                     android:id="@+id/cart_refresh"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/dimen_3"
-                    android:padding="@dimen/dimen_2">
+                    android:layout_marginTop="1dp">
 
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/cart_rv"

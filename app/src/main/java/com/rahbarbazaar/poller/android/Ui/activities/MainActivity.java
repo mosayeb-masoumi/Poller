@@ -56,6 +56,7 @@ import com.rahbarbazaar.poller.android.Ui.fragments.ProfileFragment;
 import com.rahbarbazaar.poller.android.Ui.fragments.ProfileFragment1;
 import com.rahbarbazaar.poller.android.Ui.fragments.SurveyFragment;
 import com.rahbarbazaar.poller.android.Ui.fragments.SurveyFragment1;
+import com.rahbarbazaar.poller.android.Utilities.App;
 import com.rahbarbazaar.poller.android.Utilities.ClientConfig;
 import com.rahbarbazaar.poller.android.Utilities.SnackBarFactory;
 import com.rahbarbazaar.poller.android.Utilities.ToastFactory;
@@ -89,7 +90,8 @@ import okhttp3.RequestBody;
 
 public class MainActivity extends CustomBaseActivity implements
         View.OnClickListener, AHBottomNavigation.OnTabSelectedListener, DialogFactory.DialogFactoryInteraction,
-        SurveyFragment.ActiveSurveyInteraction, DrawerRecyclerAdapter.OnDrawerItemClickListener {
+        SurveyFragment.ActiveSurveyInteraction, DrawerRecyclerAdapter.OnDrawerItemClickListener ,
+        HomeFragment1.ActiveSurveysInteraction{
 
     //region of views
 
@@ -324,7 +326,6 @@ public class MainActivity extends CustomBaseActivity implements
             bottom_navigation.setElevation(0f);
         }
 
-
         // Manage titles
         bottom_navigation.setTitleState(AHBottomNavigation.TitleState.ALWAYS_SHOW);
 
@@ -333,7 +334,6 @@ public class MainActivity extends CustomBaseActivity implements
 
         // Set typeFace to bottomNavigation item
         bottom_navigation.setTitleTypeface(TypeFaceGenerator.getInstance().getByekanFont(this));
-
     }
 
     private void setCurrentDate(String locale_name) {
@@ -855,7 +855,7 @@ public class MainActivity extends CustomBaseActivity implements
             main_view_pager.setCurrentItem(3 - position, true);
 
         if (position == 2) {
-            bottom_navigation.setNotification("", 2);
+//            bottom_navigation.setNotification("", 2);
         }
 
 
@@ -916,9 +916,19 @@ public class MainActivity extends CustomBaseActivity implements
     @Override
     public void activeSurveyCount(String count) {
 
-        //set active survey badge:
+////        set active survey badge:
+//        bottom_navigation.setNotification(count, 2);
+    }
+
+
+    @Override
+    public void activeSurveysCount(String count) {
+        //        set active survey badge:
         bottom_navigation.setNotification(count, 2);
     }
+
+
+
 
     @Override
     public void onDrawerItemClicked(String content) {
@@ -981,6 +991,8 @@ public class MainActivity extends CustomBaseActivity implements
         super.onResume();
         registerReceiver(connectivityReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
     }
+
+
 
 
 //    public void replaceFragment(Fragment fragment){

@@ -101,6 +101,7 @@ class LotteryActivity1 : CustomBaseActivity(),
                                 tv_lottery_title.text = title
 //                                tv_lottery_date.text = end
                                 tv_lottery_amount.text = amount.toString()
+
                                 lotteryId = id.toString()
 
                                 when (status) {

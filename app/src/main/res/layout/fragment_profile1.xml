@@ -502,6 +502,7 @@
                 android:layout_marginEnd="@dimen/_50sdp"
                 android:background="@drawable/bg_pink1"
                 android:gravity="center"
+                android:visibility="visible"
                 android:orientation="vertical">
 
                 <com.rahbarbazaar.poller.android.Utilities.CustomTextView

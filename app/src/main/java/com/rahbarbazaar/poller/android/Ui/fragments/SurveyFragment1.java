@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.os.ConfigurationCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,6 +16,7 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -81,6 +83,9 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
     String lang;
     //end of region
 
+
+    RelativeLayout rl_survey_fragment;
+
     public SurveyFragment1() {
         // Required empty public constructor
     }
@@ -112,6 +117,17 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_survey1, container, false);
+
+        rl_survey_fragment = view.findViewById(R.id.survey_fragment);
+
+//        String locale_name = ConfigurationCompat.getLocales(getResources().getConfiguration()).get(0).getLanguage();
+//        if (locale_name.equals("fa")) {
+//            rl_survey_fragment.setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+//        } else if (locale_name.equals("en")) {
+//            rl_survey_fragment.setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+//        }
+
+
 
         defineViews(view);
         configRecyclerview();
@@ -321,7 +337,8 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
 
                     } else {
 
-                        new DialogFactory(getContext()).createNoRegisterDialog(getView(), new DialogFactory.DialogFactoryInteraction() {
+//                        new DialogFactory(getContext()).createNoRegisterDialog(getView(), new DialogFactory.DialogFactoryInteraction() {
+                        new DialogFactory(getContext()).createNoRegisterDialog1(getView(), new DialogFactory.DialogFactoryInteraction() {
                             @Override
                             public void onAcceptButtonClicked(String... params) {
 
@@ -365,7 +382,8 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
 
                     } else {
 
-                        new DialogFactory(getContext()).createNoRegisterDialog(getView(), new DialogFactory.DialogFactoryInteraction() {
+//                        new DialogFactory(getContext()).createNoRegisterDialog(getView(), new DialogFactory.DialogFactoryInteraction() {
+                        new DialogFactory(getContext()).createNoRegisterDialog1(getView(), new DialogFactory.DialogFactoryInteraction() {
                             @Override
                             public void onAcceptButtonClicked(String... params) {
 

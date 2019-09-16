@@ -22,7 +22,9 @@ import com.rahbarbazaar.poller.android.Models.user_phonedata.UserPhoneInfo;
 import com.rahbarbazaar.poller.android.Network.Service;
 import com.rahbarbazaar.poller.android.Network.ServiceProvider;
 import com.rahbarbazaar.poller.android.R;
+import com.rahbarbazaar.poller.android.Utilities.App;
 import com.rahbarbazaar.poller.android.Utilities.ClientConfig;
+import com.rahbarbazaar.poller.android.Utilities.PreferenceStorage;
 import com.rahbarbazaar.poller.android.Utilities.ToastFactory;
 import com.rahbarbazaar.poller.android.Utilities.GeneralTools;
 import com.rahbarbazaar.poller.android.Utilities.LocaleManager;
@@ -122,6 +124,8 @@ public class LoginActivity extends CustomBaseActivity implements View.OnClickLis
 
                             if (result != null) {
 
+                                // save to use for upgrade userAccess
+                                PreferenceStorage.getInstance(LoginActivity.this).savePhone(phone);
 
                                 //if response ok:
                                 if (result.getStatus().equals("otp sent") || result.getStatus().equals("unknown number")) {

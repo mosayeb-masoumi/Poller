@@ -23,7 +23,10 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import android.support.v4.os.ConfigurationCompat
+import android.widget.LinearLayout
 import com.rahbarbazaar.poller.android.Models.eventbus.ModelTranferDataProfileToHome
+import com.rahbarbazaar.poller.android.Ui.activities.HtmlLoaderActivity
+import com.rahbarbazaar.poller.android.Ui.activities.MainActivity
 import kotlinx.android.synthetic.main.fragment_profile.profile_root
 import kotlinx.android.synthetic.main.fragment_profile.rl_balance_point
 import kotlinx.android.synthetic.main.fragment_profile.rl_edit_profile
@@ -55,6 +58,7 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
     var balance: String? = null
     var score: String? = null
 
+    var preferenceStorage : PreferenceStorage? = PreferenceStorage.getInstance(context)
 
     companion object {
 
@@ -84,6 +88,7 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
         val view = inflater.inflate(R.layout.fragment_profile1, container, false)
 
 
+
         var locale_name = ConfigurationCompat.getLocales(resources.configuration).get(0).language
 
         if (locale_name.equals("en")) {
@@ -105,6 +110,7 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
 
 
 
+
         return view
     }
 
@@ -115,6 +121,7 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
         rl_edit_profile.setOnClickListener(this)
         rl_balance_point.setOnClickListener(this)
         rl_point_balance.setOnClickListener(this)
+        rl_user_access_upgrade.setOnClickListener(this)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -158,8 +165,13 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
                 text_gender.text = if (result.gender == "male") "آقا" else "خانم"
                 text_mobile.text = result.mobile
                 text_username.text = result.name
-
                 type = result.type
+
+                if(type.equals("1") || type.equals("4")){
+                    rl_user_access_upgrade.visibility = View.VISIBLE
+                }else{
+                    rl_user_access_upgrade.visibility = View.GONE
+                }
 
                 getCurrencyListResult?.let {
 
@@ -343,6 +355,18 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
             }
             R.id.rl_balance_point -> createExchangeDialog(true)
             R.id.rl_point_balance -> createExchangeDialog(false)
+
+            R.id.rl_user_access_upgrade -> {
+
+                if(type.equals("1")){
+                    var a = preferenceStorage?.retrivePhone()
+                    goToHtmlActivity("https://test.rahbarbazar.com/poller/v2/user/register?mobile="
+                    +preferenceStorage?.retrivePhone() , true)
+                }else if(type.equals("4")){
+                    goToHtmlActivity("https://test.rahbarbazar.com/poller/v2/user/upgrade/"
+                    +preferenceStorage?.retrivePhone() , true)
+                }
+            }
         }
     }
 
@@ -365,4 +389,19 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
     }
 
 
+    private fun goToHtmlActivity(url: String, shouldBeLoadUrl: Boolean) {
+        val intent = Intent(context, HtmlLoaderActivity::class.java)
+        intent.putExtra("url", url)
+        intent.putExtra("surveyDetails", false)
+        intent.putExtra("isShopping", shouldBeLoadUrl)
+        startActivity(intent)
+//        this@ProfileFragment1.overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+        getUserProfile()
+    }
 }
+

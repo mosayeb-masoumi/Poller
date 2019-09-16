@@ -70,8 +70,11 @@ public class DialogFactory {
             if (button_title.contains("منقضی"))
                 btn_go_dialog.setEnabled(false);
 
-            text_time.setText(new StringBuilder().append(context.getString(R.string.text_survey_time)).append(context.getString(R.string.text_from)).append(data.getStart_date(), 0, 10).append(context.getString(R.string.text_until)).append(data.getEnd_date(), 0, 10));
-            text_point.setText(new StringBuilder().append(context.getString(R.string.text_point)).append(data.getPoint()).append(" ").append(data.getCurrency().getName()));
+            text_time.setText(new StringBuilder().append(context.getString(R.string.text_survey_time)).append(" ")
+                    .append(context.getString(R.string.text_from)).append(data.getStart_date(), 0, 10).append(" ").append(context.getString(R.string.text_until)).append(" ")
+                    .append(data.getEnd_date(), 0, 10));
+            text_point.setText(new StringBuilder().append(context.getString(R.string.text_point)).append(" ")
+                    .append(data.getPoint()).append(" ").append(data.getCurrency().getName()));
 
             String status = null;
             switch (data.getStatus()) {
@@ -87,7 +90,7 @@ public class DialogFactory {
                 case 3:
                     status = context.getString(R.string.text_survey_complete);
                     btn_go_dialog.setEnabled(false);
-                    text_time.setText(new StringBuilder().append(context.getString(R.string.text_survey_time)).append(context.getString(R.string.text_in)).append(data.getComplete_date(), 0, 10).append(context.getString(R.string.text_answer)));
+                    text_time.setText(new StringBuilder().append(context.getString(R.string.text_survey_time)).append(" ").append(context.getString(R.string.text_in)).append(data.getComplete_date(), 0, 10).append(context.getString(R.string.text_answer)));
                     break;
 
                 case 0:
@@ -95,9 +98,9 @@ public class DialogFactory {
                     break;
             }
 
-            text_status.setText(new StringBuilder().append(context.getString(R.string.text_survey_status)).append(status));
+            text_status.setText(new StringBuilder().append(context.getString(R.string.text_survey_status)).append(" ").append(status));
             String description = data.getDescription() == null || data.getDescription().equals("") ? context.getString(R.string.text_does_not_have) : data.getDescription();
-            text_description.setText(new StringBuilder().append(context.getString(R.string.text_survey_description)).append(description));
+            text_description.setText(new StringBuilder().append(context.getString(R.string.text_survey_description)).append(" ").append(description));
 
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
             builder.setView(customLayout);
@@ -141,8 +144,12 @@ public class DialogFactory {
             if (button_title.contains("منقضی"))
                 btn_go_dialog.setEnabled(false);
 
-            text_time.setText(new StringBuilder().append(context.getString(R.string.text_survey_time)).append(context.getString(R.string.text_from)).append(data.getStart_date(), 0, 10).append(context.getString(R.string.text_until)).append(data.getEnd_date(), 0, 10));
-            text_point.setText(new StringBuilder().append(context.getString(R.string.text_point)).append(data.getPoint()).append(" ").append(data.getCurrency().getName()));
+            text_time.setText(new StringBuilder().append(context.getString(R.string.text_survey_time)).append(context.getString(R.string.text_from))
+                    .append(data.getStart_date(), 0, 10).append(" ")
+                    .append(context.getString(R.string.text_until)).append(" ").append(data.getEnd_date(), 0, 10));
+            text_point.setText(new StringBuilder().append(context.getString(R.string.text_point))
+                    .append(" ").append(data.getPoint()).append(" ")
+                    .append(data.getCurrency().getName()));
 
             String status = null;
             switch (data.getStatus()) {
@@ -166,9 +173,9 @@ public class DialogFactory {
                     break;
             }
 
-            text_status.setText(new StringBuilder().append(context.getString(R.string.text_survey_status)).append(status));
+            text_status.setText(new StringBuilder().append(context.getString(R.string.text_survey_status)).append(" ").append(status));
             String description = data.getDescription() == null || data.getDescription().equals("") ? context.getString(R.string.text_does_not_have) : data.getDescription();
-            text_description.setText(new StringBuilder().append(context.getString(R.string.text_survey_description)).append(description));
+            text_description.setText(new StringBuilder().append(context.getString(R.string.text_survey_description)).append(" ").append(description));
 
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
             builder.setView(customLayout);
@@ -458,6 +465,67 @@ public class DialogFactory {
         text_body.setText(ss);
         text_body.setMovementMethod(LinkMovementMethod.getInstance());
         text_body.setHighlightColor(Color.TRANSPARENT);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setView(customLayout);
+
+        //create dialog and set background transparent
+        AlertDialog dialog = builder.create();
+        if (dialog.getWindow() != null) {
+
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
+        dialog.setOnDismissListener(dialogInterface -> {
+
+            listener.onDeniedButtonClicked(true);
+        });
+        dialog.show();
+    }
+    //we can use create token dialog with little modify too:
+    public void createNoRegisterDialog1(View root, DialogFactoryInteraction listener) {
+
+        View customLayout = LayoutInflater.from(context).inflate(R.layout.no_register_dialog1, (ViewGroup) root, false);
+
+        //define views inside of dialog
+        TextView text_body = customLayout.findViewById(R.id.text_body);
+        TextView btn_membership = customLayout.findViewById(R.id.btn_membership);
+
+        btn_membership.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("http://landing.poller.ir/register"));
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
+        });
+
+//        SpannableString ss = new SpannableString(context.getResources().getString(R.string.text_access_level));
+//        ClickableSpan clickableSpan = new ClickableSpan() {
+//            @Override
+//            public void onClick(@NonNull View textView) {
+//                Intent intent = new Intent(Intent.ACTION_VIEW);
+//                intent.setData(Uri.parse("http://landing.poller.ir/register"));
+//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//
+//                context.startActivity(intent);
+//            }
+//
+//            @Override
+//            public void updateDrawState(@NonNull TextPaint ds) {
+//                super.updateDrawState(ds);
+//                ds.setUnderlineText(false);
+//                ds.setColor(context.getResources().getColor(R.color.colorPrimary));
+//            }
+//        };
+
+//        String locale_name = ConfigurationCompat.getLocales(context.getResources().getConfiguration()).get(0).getLanguage();
+//        ss.setSpan(clickableSpan, locale_name.equals("fa") ? 53 : 51, locale_name.equals("fa") ? 58 : 59, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+//
+//        text_body.setText(ss);
+//        text_body.setMovementMethod(LinkMovementMethod.getInstance());
+//        text_body.setHighlightColor(Color.TRANSPARENT);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setView(customLayout);

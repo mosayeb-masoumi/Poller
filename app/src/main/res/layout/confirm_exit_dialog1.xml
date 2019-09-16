@@ -47,14 +47,15 @@
         <com.rahbarbazaar.poller.android.Utilities.CustomTextView
             android:id="@+id/btn_exit_dialog"
             android:layout_width="0dp"
-            android:layout_height="@dimen/dimen_42"
+            android:layout_height="@dimen/dimen_50"
             android:layout_marginStart="@dimen/dimen_10"
             android:layout_marginEnd="@dimen/dimen_10"
             android:layout_weight="1"
+            android:textSize="@dimen/_10sdp"
             android:textColor="@color/blue"
             android:background="@drawable/dialog_btn_shape"
             android:gravity="center"
-            android:text="@string/sure_text"/>
+            android:text="@string/exit_survey"/>
 
         <com.rahbarbazaar.poller.android.Utilities.CustomTextView
             android:id="@+id/btn_cancel_dialog"
@@ -62,11 +63,12 @@
             android:layout_weight="1"
             android:layout_marginStart="@dimen/dimen_10"
             android:layout_marginEnd="@dimen/dimen_10"
-            android:layout_height="@dimen/dimen_42"
+            android:layout_height="@dimen/dimen_50"
+            android:textSize="@dimen/_10sdp"
             android:background="@drawable/dialog_btn_shape"
             android:textColor="@color/blue"
             android:gravity="center"
-            android:text="@string/cancel_text"/>
+            android:text="@string/stay_survey"/>
 
 
 

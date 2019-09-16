@@ -284,7 +284,8 @@ public class SurveyFragment extends Fragment implements SurveyItemInteraction {
 
                     } else {
 
-                        new DialogFactory(getContext()).createNoRegisterDialog(getView(), new DialogFactory.DialogFactoryInteraction() {
+//                        new DialogFactory(getContext()).createNoRegisterDialog(getView(), new DialogFactory.DialogFactoryInteraction() {
+                        new DialogFactory(getContext()).createNoRegisterDialog1(getView(), new DialogFactory.DialogFactoryInteraction() {
                             @Override
                             public void onAcceptButtonClicked(String... params) {
 

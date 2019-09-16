@@ -77,4 +77,24 @@ public class PreferenceStorage {
         return preferences.getInt(Key, DefaultValue);
     }
 
+
+
+
+    public void savePhone(String phone) {
+        preferences.edit().putString("phone", phone).apply();
+    }
+
+    public String retrivePhone() {
+        return preferences.getString("phone", "0");
+    }
+
+    public void saveUserAccessType(String userAccessType) {
+        preferences.edit().putString("userAccessType", userAccessType).apply();
+    }
+
+    public String retriveUserAccessType() {
+        return preferences.getString("userAccessType", "0");
+    }
+
+
 }

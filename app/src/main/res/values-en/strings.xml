@@ -14,10 +14,10 @@
     <string name="exit_profile_text_dialog">Are you sure you want to logout?</string>
     <string name="survey_exit_confirm">Are you sure you want to exit from your survey?</string>
     <string name="download_body_text">The new version of app with bugs fixes and new features available now, click to download</string>
-    <string name="share_poller">Share the poller</string>
+    <string name="share_poller">Share The Poller</string>
     <string name="exit_user_account">Logout</string>
     <string name="shop_drawer_text">Store</string>
-    <string name="notify_drawer_text">Inbox messages</string>
+    <string name="notify_drawer_text">Inbox Messages</string>
     <string name="edit_profile_dialog_title">Please request for change your profile</string>
     <string name="back_to_app">Back to app</string>
     <string name="drawer_username">Username</string>
@@ -33,13 +33,13 @@
     <string name="text_price">Incentive </string>
     <string name="text_price_hint">Point</string>
     <string name="transaction_price">%1$s %2$s</string>
-    <string name="support_center">Support center</string>
+    <string name="support_center">Support Center</string>
     <string name="faq">FAQ</string>
     <string name="report_issue">Report issue</string>
     <string name="videos">Videos</string>
-    <string name="text_point">Point </string>
+    <string name="text_point">Point:</string>
     <string name="text_user_type">User type  </string>
-    <string name="text_take_part_project">Surveys #</string>
+    <string name="text_take_part_project">Count of Surveys</string>
     <string name="text_change_profile_req">Change profile information</string>
     <string name="update_app">Application update</string>
     <string name="google_play_text">Get on google play</string>
@@ -71,11 +71,11 @@
     <string name="text_login_progress">Login in progress, please wait …</string>
     <string name="text_invite_friend"> invited to poller application, Please click on below link</string>
     <string name="text_invite_from"> You from </string>
-    <string name="text_survey_time"> Survey time : </string>
+    <string name="text_survey_time">Survey time:</string>
     <string name="text_from">from</string>
     <string name="text_until"> until </string>
     <string name="text_in"> in </string>
-    <string name="text_survey_view">Preview survey</string>
+    <string name="text_survey_view">Participation</string>
     <string name="text_survey_complete">Completed</string>
     <string name="text_survey_incomplete">InComplete</string>
     <string name="text_remaining_day">Left days</string>
@@ -84,8 +84,8 @@
     <string name="text_pending">Pending</string>
     <string name="text_no_answer">Not answered</string>
     <string name="text_answer">You answered</string>
-    <string name="text_survey_status">Survey status : </string>
-    <string name="text_survey_description">Survey description : </string>
+    <string name="text_survey_status">Survey status:</string>
+    <string name="text_survey_description">Survey description:</string>
     <string name="text_does_not_have">Does not have</string>
     <string name="text_no_internet_connection">Make sure you have an internet connection to use the app and try again</string>
     <string name="text_internet_setting">Internet setting</string>
@@ -163,5 +163,8 @@
     <string name="try_afewmin_later">Exit And Try Later</string>
     <string name="close_app">Exit Application</string>
     <string name="survey_notTakenpart">You Have not Taken Part In Any Survey</string>
+    <string name="stay_survey">No, I Saty In The Survey</string>
+    <string name="exit_survey">Yes, I Exit From The Survey</string>
+    <string name="membership">Membership</string>
 
 </resources>

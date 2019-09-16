@@ -249,4 +249,31 @@ public class HtmlLoaderActivity extends CustomBaseActivity
         unregisterReceiver(connectivityReceiver);
         super.onDestroy();
     }
+
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+        if (isSurveyDetails) {
+
+            if (webView.canGoBack())
+                isUserStartSurvey = true;
+
+            Intent intent = new Intent();
+            intent.putExtra("id", id);
+            intent.putExtra("isUserStartSurvey", isUserStartSurvey);
+
+            //get q status from current web view url if is not empty so:
+            Uri uri = Uri.parse(webView.getUrl());
+            String qStatus = uri.getQueryParameter("qstatus");
+
+            if (qStatus == null || qStatus.equals(""))
+                qStatus = "1";
+
+            intent.putExtra("qstatus", qStatus);
+            setResult(RESULT_OK, intent);
+
+            createConfirmExitDialog();
+        } else
+            finish();
+    }
 }

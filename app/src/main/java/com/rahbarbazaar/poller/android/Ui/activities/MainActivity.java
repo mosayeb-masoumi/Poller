@@ -849,10 +849,16 @@ public class MainActivity extends CustomBaseActivity implements
 
 //        if (!wasSelected) { //remove this clause bacause of onclick in home fragment
 
-        if (position == 0 && prefrence != null && prefrence.getType().equals("1"))
-            dialogFactory.createNoRegisterDialog(drawer_layout_home, MainActivity.this);
-        else
+//        if (position == 0 && prefrence != null && prefrence.getType().equals("1")){
+//                        dialogFactory.createNoRegisterDialog(drawer_layout_home, MainActivity.this);
+//        }
+//        else
             main_view_pager.setCurrentItem(3 - position, true);
+
+
+
+
+
 
         if (position == 2) {
 //            bottom_navigation.setNotification("", 2);

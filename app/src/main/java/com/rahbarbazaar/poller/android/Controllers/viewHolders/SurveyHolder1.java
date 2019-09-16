@@ -121,11 +121,13 @@ public class SurveyHolder1 extends RecyclerView.ViewHolder {
         }
 
 
-        if (data.getCurrency().getName().equals("پاپاسی") && remaining_day > 0) {
+
+
+        if ((data.getCurrency().getName().equals("پاپاسی")||data.getCurrency().getName().equals("Papasi")) && remaining_day > 0) {
             row_survey_imgCoin.setImageResource(R.drawable.survey_item_purplecoin);
             row_survey_underImg_left.setImageResource(R.drawable.row_survey_under_deepblue);
             row_survey_underImg_right.setImageResource(R.drawable.row_survey_under_pink);
-        } else if (data.getCurrency().getName().equals("تومان") && remaining_day > 0) {
+        } else if ((data.getCurrency().getName().equals("تومان")||data.getCurrency().getName().equals("Toman")) && remaining_day > 0) {
             row_survey_imgCoin.setImageResource(R.drawable.survey_item_bluecoin);
             row_survey_underImg_left.setImageResource(R.drawable.row_survey_under_deepblue);
             row_survey_underImg_right.setImageResource(R.drawable.row_survey_under_lightblue);

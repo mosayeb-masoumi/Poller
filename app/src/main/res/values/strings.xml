@@ -8,7 +8,13 @@
     <string name="login_button_text">ارسال</string>
     <string name="user_login_hint">شماره موبایل خود را وارد کنید</string>
     <string name="token_verify_message">شما برای شرکت در این نظرسنجی به توکن (نشانه) معتبر نیاز دارید:</string>
-    <string name="no_register_message">شماره موبایل شما قبلا تایید و ثبت نشده، برای ادامه فرآیند عضویت لطفا اینجا را کلیک نمایید</string>
+    <!--<string name="no_register_message">شماره موبایل شما قبلا تایید و ثبت نشده، برای ادامه فرآیند عضویت لطفا اینجا را کلیک نمایید</string>-->
+    <string name="no_register_message">شماره موبایل شما قبلا تایید و ثبت نشده، برای ادامه فرآیند عضو شوید.</string>
+
+
+
+
+
 
     <string name="exit_profile_text_dialog">آیا اطمینان دارید که میخواهید از حساب کاربری خود خارج شوید؟</string>
     <string name="survey_exit_confirm">آیا اطمینان دارید که میخواهید از نظرسنجی خود خارج شوید؟</string>
@@ -37,7 +43,7 @@
     <string name="faq">سوالات متداول</string>
     <string name="report_issue">گزارش مشکل</string>
     <string name="videos">ویدیوها</string>
-    <string name="text_point">امتیاز : </string>
+    <string name="text_point">امتیاز:</string>
     <string name="text_user_type">وضعیت کاربر : </string>
     <string name="text_take_part_project">نظرسنجی های شرکت کرده</string>
     <string name="text_change_profile_req">درخواست تغییر اطلاعات</string>
@@ -70,7 +76,7 @@
     <string name="text_login_progress">فرآیند ورود شما درحال پردازش است لطفا صبور باشید …</string>
     <string name="text_invite_friend"> برای عضویت در اپلیکیشن نظرسنجی پولر دعوت شدید،درصورت تمایل از طریق لینک زیر اقدام نمایید</string>
     <string name="text_invite_from"> شما از طرف </string>
-    <string name="text_survey_time">زمان نظرسنجی : </string>
+    <string name="text_survey_time">زمان نظرسنجی:</string>
     <string name="text_from">از</string>
     <string name="text_until"> تا </string>
     <string name="text_in"> در </string>
@@ -83,8 +89,8 @@
     <string name="text_pending">در حال بررسی</string>
     <string name="text_no_answer">پاسخ داده نشده</string>
     <string name="text_answer">پاسخ داده اید</string>
-    <string name="text_survey_status">وضعیت نظرسنجی : </string>
-    <string name="text_survey_description">توضیحات نظرسنجی : </string>
+    <string name="text_survey_status">وضعیت نظرسنجی: </string>
+    <string name="text_survey_description">توضیحات نظرسنجی: </string>
     <string name="text_does_not_have">ندارد</string>
     <string name="text_no_internet_connection">برای استفاده از برنامه از اتصال به اینترنت مطمئن شوید و دوباره امتحان کنید</string>
     <string name="text_internet_setting">تنظیمات اینترنت</string>
@@ -160,6 +166,10 @@
     <string name="try_afewmin_later">لطفا برنامه را ببندید و چند دقیقه دیگر امتحان کنید.</string>
     <string name="close_app">بستن برنامه</string>
     <string name="survey_notTakenpart">شما تا کنون در هیچ قرعه کشی شرکت نکرده اید.</string>
+    <string name="stay_survey">خیر، در نظرسنجی می‌مانم.</string>
+    <string name="exit_survey">بله، از نظرسنجی خارج می‌شوم.</string>
+    <string name="membership">عضویت</string>
+
 
 
 

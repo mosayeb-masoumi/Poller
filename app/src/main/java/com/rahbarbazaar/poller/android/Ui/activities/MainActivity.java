@@ -683,20 +683,31 @@ public class MainActivity extends CustomBaseActivity implements
                     @Override
                     public void onAcceptButtonClicked(String... strings) {
 
-                        LocaleManager.setNewLocale(MainActivity.this, "fa");
+                        if(locale_name.equals("fa")){
+                            drawer_layout_home.closeDrawer(Gravity.END);
+                        }else{
+                            LocaleManager.setNewLocale(MainActivity.this, "fa");
 //                        App.language = "fa";
-                        Intent i = new Intent(MainActivity.this, SplashScreenActivity1.class);
-                        startActivity(i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
-                        System.exit(0);
+                            Intent i = new Intent(MainActivity.this, SplashScreenActivity1.class);
+                            startActivity(i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
+                            System.exit(0);
+                        }
+
                     }
 
                     @Override
                     public void onDeniedButtonClicked(boolean cancel_dialog) {
-                        LocaleManager.setNewLocale(MainActivity.this, "en");
+
+                        if(locale_name.equals("en")){
+                            drawer_layout_home.closeDrawer(Gravity.END);
+                        }else{
+                            LocaleManager.setNewLocale(MainActivity.this, "en");
 //                        App.language = "en";
-                        Intent i = new Intent(MainActivity.this, SplashScreenActivity1.class);
-                        startActivity(i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
-                        System.exit(0);
+                            Intent i = new Intent(MainActivity.this, SplashScreenActivity1.class);
+                            startActivity(i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
+                            System.exit(0);
+                        }
+
                     }
                 });
                 break;

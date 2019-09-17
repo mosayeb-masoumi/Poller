@@ -70,19 +70,30 @@
 
         <LinearLayout
             android:id="@+id/linear_exit"
-            android:layout_width="@dimen/dimen_70"
+            android:layout_width="@dimen/dimen_100"
             android:paddingTop="@dimen/_10sdp"
             android:paddingBottom="@dimen/_10sdp"
+            android:orientation="horizontal"
             android:layout_marginStart="@dimen/_5sdp"
             android:layout_height="match_parent">
 
+
+            <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white_gray"
+                android:textSize="@dimen/_13sdp"
+                android:layout_marginTop="2dp"
+                android:textStyle="bold"
+                android:text="@string/retuen"/>
+
             <ImageView
                 android:src="@drawable/arrow_left"
-                android:layout_centerVertical="true"
-                android:layout_width="match_parent"
+                android:layout_width="40dp"
                 android:tint="@color/main_page_toolbar"
-                android:layout_gravity="center_vertical"
                 android:layout_height="match_parent" />
+
+
         </LinearLayout>
 
 

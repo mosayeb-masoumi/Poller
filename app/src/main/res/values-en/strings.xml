@@ -166,5 +166,6 @@
     <string name="stay_survey">No, I Saty In The Survey</string>
     <string name="exit_survey">Yes, I Exit From The Survey</string>
     <string name="membership">Membership</string>
+    <string name="retuen">return</string>
 
 </resources>

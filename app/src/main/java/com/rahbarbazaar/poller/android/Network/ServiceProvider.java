@@ -31,8 +31,8 @@ public class ServiceProvider {
         if (!storage.retriveToken().equals("0")) {//user token was not null so we add access token in all of request
 
             clientBuilder.addInterceptor(chain -> {
-                Request request = chain.request().newBuilder().
-                        addHeader("lang", storage.retriveLanguage())
+                Request request = chain.request().newBuilder()
+                        .addHeader("lang", storage.retriveLanguage())
                         .addHeader("token", PreferenceStorage.getInstance(context).retriveToken())
                         .build();
                 return chain.proceed(request);

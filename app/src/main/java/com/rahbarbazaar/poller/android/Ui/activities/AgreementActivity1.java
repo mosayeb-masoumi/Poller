@@ -64,9 +64,9 @@ public class AgreementActivity1 extends CustomBaseActivity {
 
 
         if(App.language.equals("fa")){
-            webview_agreement.loadUrl("http://pollerws.rahbarbazaar.com:2296/poller/v2/support/agreement/fa");
+            webview_agreement.loadUrl("https://test.rahbarbazar.com/poller/v2/support/agreement/fa");
         }else if(App.language.equals("en")){
-            webview_agreement.loadUrl("http://pollerws.rahbarbazaar.com:2296/poller/v2/support/agreement/en");
+            webview_agreement.loadUrl("https://test.rahbarbazar.com/poller/v2/support/agreement/en");
         }
 //        webview_agreement.loadUrl("http://pollerws.rahbarbazaar.com:2296/poller/v2/support/agreement/" +
 //                LocaleManager.getLocale(getApplicationContext().getResources()).getLanguage());

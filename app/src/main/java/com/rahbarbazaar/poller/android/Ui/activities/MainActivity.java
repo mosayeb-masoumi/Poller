@@ -654,7 +654,8 @@ public class MainActivity extends CustomBaseActivity implements
 
             case R.id.linear_faq:
 
-                goToHtmlActivity("http://pollerws.rahbarbazaar.com:2296/poller/v2/support/faq/" + LocaleManager.getLocale(getResources()).getLanguage(), true);
+//                goToHtmlActivity("http://pollerws.rahbarbazaar.com:2296/poller/v2/support/faq/" + LocaleManager.getLocale(getResources()).getLanguage(), true);
+                goToHtmlActivity("https://test.rahbarbazar.com/poller/v2/support/faq/" + LocaleManager.getLocale(getResources()).getLanguage(), true);
                 break;
 
             case R.id.linear_report_issue:
@@ -673,7 +674,8 @@ public class MainActivity extends CustomBaseActivity implements
                 break;
 
             case R.id.linear_videos:
-                goToHtmlActivity("http://pollerws.rahbarbazaar.com:2296/poller/v2/support/videos/" + LocaleManager.getLocale(getResources()).getLanguage(), true);
+//                goToHtmlActivity("http://test.rahbarbazar.com:2296/poller/v2/support/videos/" + LocaleManager.getLocale(getResources()).getLanguage(), true);
+                goToHtmlActivity(App.videoWebUrl+"/" + LocaleManager.getLocale(getResources()).getLanguage(), true);
                 break;
 
             case R.id.linear_change_lang:

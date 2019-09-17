@@ -22,6 +22,7 @@ import com.rahbarbazaar.poller.android.Network.ServiceProvider;
 import com.rahbarbazaar.poller.android.R;
 import com.rahbarbazaar.poller.android.Ui.activities.HtmlLoaderActivity;
 import com.rahbarbazaar.poller.android.Ui.activities.MainActivity;
+import com.rahbarbazaar.poller.android.Utilities.App;
 import com.rahbarbazaar.poller.android.Utilities.ClientConfig;
 import com.rahbarbazaar.poller.android.Utilities.LocaleManager;
 
@@ -147,23 +148,11 @@ public class HomeFragment1 extends Fragment implements View.OnClickListener {
         switch (view.getId()) {
             case R.id.cardview_home_video:
 
-                if(lang.equals("fa")){
-                    goToHtmlActivity(videoWebUrl+"/fa"
-                            + LocaleManager.getLocale(getResources()).getLanguage(), true);
-                }else{
-                    goToHtmlActivity(videoWebUrl+"/en"
-                            + LocaleManager.getLocale(getResources()).getLanguage(), true);
-                }
+                goToHtmlActivity(videoWebUrl+"/"+ LocaleManager.getLocale(getResources()).getLanguage(), true);
 
                 break;
             case R.id.cardview_home_image:
                 goToHtmlActivity(newsWebUrl+ "/"+LocaleManager.getLocale(getResources()).getLanguage(), true);
-//                if(lang.equals("fa")){
-//                    goToHtmlActivity(newsWebUrl+"/fa"+ LocaleManager.getLocale(getResources()).getLanguage(), true);
-//                }else{
-//                    goToHtmlActivity(newsWebUrl+"/en"+ LocaleManager.getLocale(getResources()).getLanguage(), true);
-//                }
-
                 break;
 
             case R.id.cardview_home_polls:
@@ -205,7 +194,7 @@ public class HomeFragment1 extends Fragment implements View.OnClickListener {
                             newsWebUrl = result.getImagesDetail.getNews_url();
                             videoWebUrl= result.getImagesDetail.getVideo_url();
 
-
+                            App.videoWebUrl = videoWebUrl;
 
                             if (activeSurveys != 0 && interaction != null)
                                 interaction.activeSurveysCount(String.valueOf(activeSurveys));//badge count for survey page

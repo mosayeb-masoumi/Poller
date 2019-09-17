@@ -28,6 +28,8 @@ public class App extends MultiDexApplication {
     }
 
     public static String language = "";
+    public static String videoWebUrl = "";
+
 
 
 }

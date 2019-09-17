@@ -308,14 +308,6 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
 
                             @Override
                             public void onError(Throwable e) {
-//                                int error = ((HttpException) e).code();
-//                                if(error ==401){
-//                                    startActivity(new Intent(getActivity(), SplashScreenActivity.class));
-//                                }else if(error ==403){
-//                                    PreferenceStorage.getInstance(getContext()).saveToken("0");
-//                                    startActivity(new Intent(getContext(), SplashScreenActivity.class));
-//                                    getActivity().finish();
-//                                }
 
                                 isSurveyItemClickable = true;
                             }
@@ -514,6 +506,8 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
             getSurveyDetails(String.valueOf(survey_id), status, url_type);
             isSurveyItemClickable = !isSurveyItemClickable;
         }
+
+//        Toast.makeText(getContext(), "aaa", Toast.LENGTH_SHORT).show();
     }
 
     @Override

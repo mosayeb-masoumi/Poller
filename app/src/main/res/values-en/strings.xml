@@ -73,7 +73,7 @@
     <string name="text_invite_from"> You from </string>
     <string name="text_survey_time">Survey time:</string>
     <string name="text_from">from</string>
-    <string name="text_until"> until </string>
+    <string name="text_until"> to </string>
     <string name="text_in"> in </string>
     <string name="text_survey_view">Participation</string>
     <string name="text_survey_complete">Completed</string>

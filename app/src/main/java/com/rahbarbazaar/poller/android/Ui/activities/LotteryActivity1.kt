@@ -53,7 +53,7 @@ class LotteryActivity1 : CustomBaseActivity(),
 
         fun initViews() {
 
-            image_exit.setOnClickListener(this)
+            linear_exit.setOnClickListener(this)
             img_lottery_info.setOnClickListener(this)
             tv_cancel.setOnClickListener(this)
             tv_take_part.setOnClickListener(this)
@@ -182,7 +182,7 @@ class LotteryActivity1 : CustomBaseActivity(),
 
         when (v?.id) {
 
-            R.id.image_exit -> {
+            R.id.linear_exit -> {
                 if (isLotteryStatusChanged)
                     setResult(Activity.RESULT_OK)
 

@@ -70,11 +70,10 @@
 
         <LinearLayout
             android:id="@+id/linear_exit"
-            android:layout_width="@dimen/dimen_100"
+            android:layout_width="@dimen/dimen_85"
             android:paddingTop="@dimen/_10sdp"
             android:paddingBottom="@dimen/_10sdp"
             android:orientation="horizontal"
-            android:layout_marginStart="@dimen/_5sdp"
             android:layout_height="match_parent">
 
 
@@ -89,7 +88,7 @@
 
             <ImageView
                 android:src="@drawable/arrow_left"
-                android:layout_width="40dp"
+                android:layout_width="30dp"
                 android:tint="@color/main_page_toolbar"
                 android:layout_height="match_parent" />
 

@@ -43,7 +43,8 @@ class NotificationActivity1 : CustomBaseActivity(), GeneralItemIntraction<GetNot
 
         serviceProvider = ServiceProvider(this)
         getNotificationList()
-        image_exit.setOnClickListener { finish() }
+//        image_exit.setOnClickListener { finish() }
+        linear_exit_notification.setOnClickListener { finish() }
 
 
         var locale_name = ConfigurationCompat.getLocales(resources.configuration).get(0).language

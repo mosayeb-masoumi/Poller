@@ -288,20 +288,26 @@
 
                 <LinearLayout
                     android:id="@+id/linear_exit"
-                    android:layout_width="@dimen/dimen_70"
+                    android:layout_width="@dimen/dimen_85"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/_5sdp"
                     android:paddingTop="@dimen/_10sdp"
                     android:paddingBottom="@dimen/_10sdp">
 
+                    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white_gray"
+                        android:textSize="@dimen/_13sdp"
+                        android:layout_marginTop="2dp"
+                        android:textStyle="bold"
+                        android:text="@string/retuen"/>
+
                     <ImageView
                         android:id="@+id/image_exit"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_centerVertical="true"
-                        android:layout_gravity="center_vertical"
-                        android:src="@drawable/arrow_left"
-                        android:tint="@color/main_page_toolbar" />
+                        android:src="@drawable/arrow_left" />
                 </LinearLayout>
             </LinearLayout>
         </RelativeLayout>

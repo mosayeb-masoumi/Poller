@@ -36,7 +36,7 @@ class ShopActivity1 : CustomBaseActivity(), GeneralItemIntraction<GetShopListRes
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop1)
         getShopItems()
-        image_exit.setOnClickListener { finish() }
+        linear_exit.setOnClickListener { finish() }
 
 
         var locale_name = ConfigurationCompat.getLocales(resources.configuration).get(0).language

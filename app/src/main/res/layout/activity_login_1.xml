@@ -81,7 +81,7 @@
             android:layout_marginEnd="@dimen/_50sdp"
             android:background="@drawable/edtphone_shape"
             android:gravity="center"
-            android:hint="@string/enter_your_mobile_number"
+            android:hint="@string/text_input_mobile"
             android:inputType="phone"
             android:maxLength="11"
             android:padding="@dimen/_10sdp"

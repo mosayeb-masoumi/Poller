@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -218,22 +219,30 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
         when (type) {
 
             "1" -> {
-                rl_name_state.setBackgroundDrawable(resources.getDrawable(R.drawable.dialog_btn_shape1))
-                img_star.setImageDrawable(resources.getDrawable(R.drawable.star_gradient))
+//                rl_name_state.setBackgroundDrawable(resources.getDrawable(R.drawable.dialog_btn_shape1))
+                rl_name_state.setBackground(context?.let { ContextCompat.getDrawable(it,R.drawable.dialog_btn_shape1) })
+//                img_star.setImageDrawable(resources.getDrawable(R.drawable.star_gradient))
+                img_star.setImageDrawable(context?.let { ContextCompat.getDrawable(it,R.drawable.star_gradient) })
             }
             "2" , "3" , "5" -> {
-                rl_name_state.setBackgroundDrawable(resources.getDrawable(R.drawable.bg_silver))
-                img_star.setImageDrawable(resources.getDrawable(R.drawable.star_silver))
+//                rl_name_state.setBackgroundDrawable(resources.getDrawable(R.drawable.bg_silver))
+                rl_name_state.setBackground(context?.let { ContextCompat.getDrawable(it,R.drawable.bg_silver) })
+//                img_star.setImageDrawable(resources.getDrawable(R.drawable.star_silver))
+                img_star.setImageDrawable(context?.let { ContextCompat.getDrawable(it,R.drawable.star_silver) })
             }
 
             "4" -> {
-                rl_name_state.setBackgroundDrawable(resources.getDrawable(R.drawable.bg_boronze))
-                img_star.setImageDrawable(resources.getDrawable(R.drawable.star_boronze))
+//                rl_name_state.setBackgroundDrawable(resources.getDrawable(R.drawable.bg_boronze))
+                rl_name_state.setBackground(context?.let { ContextCompat.getDrawable(it,R.drawable.bg_boronze) })
+//                img_star.setImageDrawable(resources.getDrawable(R.drawable.star_boronze))
+                img_star.setImageDrawable(context?.let { ContextCompat.getDrawable(it,R.drawable.star_boronze) })
             }
 
             "6" -> {
-                rl_name_state.setBackgroundDrawable(resources.getDrawable(R.drawable.bg_golden))
-                img_star.setImageDrawable(resources.getDrawable(R.drawable.star_gold))
+//                rl_name_state.setBackgroundDrawable(resources.getDrawable(R.drawable.bg_golden))
+                rl_name_state.setBackground(context?.let { ContextCompat.getDrawable(it,R.drawable.bg_golden) })
+//                img_star.setImageDrawable(resources.getDrawable(R.drawable.star_gold))
+                img_star.setImageDrawable(context?.let { ContextCompat.getDrawable(it,R.drawable.star_gold) })
             }
         }
     }
@@ -359,7 +368,7 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
             R.id.rl_user_access_upgrade -> {
 
                 if(type.equals("1")){
-                    var a = preferenceStorage?.retrivePhone()
+//                    var a = preferenceStorage?.retrivePhone()
                     goToHtmlActivity("https://test.rahbarbazar.com/poller/v2/user/register?mobile="
                     +preferenceStorage?.retrivePhone() , true)
                 }else if(type.equals("4")){

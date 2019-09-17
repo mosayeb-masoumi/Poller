@@ -53,13 +53,13 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
     var lang: String? = null
     //end of region
 
-    var type :String = ""
+    var type: String = ""
 
 
     var balance: String? = null
     var score: String? = null
 
-    var preferenceStorage : PreferenceStorage? = PreferenceStorage.getInstance(context)
+    var preferenceStorage: PreferenceStorage? = PreferenceStorage.getInstance(context)
 
     companion object {
 
@@ -87,7 +87,6 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_profile1, container, false)
-
 
 
         var locale_name = ConfigurationCompat.getLocales(resources.configuration).get(0).language
@@ -159,60 +158,60 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<UserConfirmAuthResult>() {
 
-            @SuppressLint("SetTextI18n")
-            override fun onSuccess(result: UserConfirmAuthResult) {
+                    @SuppressLint("SetTextI18n")
+                    override fun onSuccess(result: UserConfirmAuthResult) {
 
-                text_age.text = result.birthday.toString()
-                text_gender.text = if (result.gender == "male") "آقا" else "خانم"
-                text_mobile.text = result.mobile
-                text_username.text = result.name
-                type = result.type
+                        text_age.text = result.birthday.toString()
+                        text_gender.text = if (result.gender == "male") "آقا" else "خانم"
+                        text_mobile.text = result.mobile
+                        text_username.text = result.name
+                        type = result.type
 
-                if(type.equals("1") || type.equals("4")){
-                    rl_user_access_upgrade.visibility = View.VISIBLE
-                }else{
-                    rl_user_access_upgrade.visibility = View.GONE
-                }
+                        if (type.equals("1") || type.equals("4")) {
+                            rl_user_access_upgrade.visibility = View.VISIBLE
+                        } else {
+                            rl_user_access_upgrade.visibility = View.GONE
+                        }
 
-                getCurrencyListResult?.let {
+                        getCurrencyListResult?.let {
 
-                    with(it.items[0]) {
+                            with(it.items[0]) {
 
-                        //                        text_point.text = result.balance.toString() + " " + if (lang == "fa")
+                                //                        text_point.text = result.balance.toString() + " " + if (lang == "fa")
 //                            currency_name
 //                        else
 //                            en_name
 
-                        balance = result.balance.toString()
-                        score = result.score.toString()
+                                balance = result.balance.toString()
+                                score = result.score.toString()
 
-                        // to send balance and score in profile fragment
-                        val modelDataProfileTohome = ArrayList<ModelTranferDataProfileToHome>()
-                        modelDataProfileTohome.add(ModelTranferDataProfileToHome(balance, score))
-                        EventBus.getDefault().post(modelDataProfileTohome)
+                                // to send balance and score in profile fragment
+                                val modelDataProfileTohome = ArrayList<ModelTranferDataProfileToHome>()
+                                modelDataProfileTohome.add(ModelTranferDataProfileToHome(balance, score))
+                                EventBus.getDefault().post(modelDataProfileTohome)
 
-                    }
+                            }
 
-                    with(it.items[1]) {
+                            with(it.items[1]) {
 
-                        //                        text_score.text = result.score.toString() + " " + if (lang == "fa")
+                                //                        text_score.text = result.score.toString() + " " + if (lang == "fa")
 //                            currency_name
 //                        else
 //                            en_name
-                    }
-                }
+                            }
+                        }
 
-                text_project_count.text = result.participated_project_count.toString()
+                        text_project_count.text = result.participated_project_count.toString()
 //                text_user_state.text = result.membership
 
-                set_nameBg(type)
+                        set_nameBg(type)
 
-            }
+                    }
 
-            override fun onError(e: Throwable) {
-                Log.e("profile_tag", "msg profile: ${e.message}")
-            }
-        }))
+                    override fun onError(e: Throwable) {
+                        Log.e("profile_tag", "msg profile: ${e.message}")
+                    }
+                }))
     }
 
     private fun set_nameBg(type: String?) {
@@ -220,29 +219,23 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
 
             "1" -> {
 //                rl_name_state.setBackgroundDrawable(resources.getDrawable(R.drawable.dialog_btn_shape1))
-                rl_name_state.setBackground(context?.let { ContextCompat.getDrawable(it,R.drawable.dialog_btn_shape1) })
+                rl_name_state.background = context?.let { ContextCompat.getDrawable(it, R.drawable.dialog_btn_shape1) }
 //                img_star.setImageDrawable(resources.getDrawable(R.drawable.star_gradient))
-                img_star.setImageDrawable(context?.let { ContextCompat.getDrawable(it,R.drawable.star_gradient) })
+                img_star.setImageDrawable(context?.let { ContextCompat.getDrawable(it, R.drawable.star_gradient) })
             }
-            "2" , "3" , "5" -> {
-//                rl_name_state.setBackgroundDrawable(resources.getDrawable(R.drawable.bg_silver))
-                rl_name_state.setBackground(context?.let { ContextCompat.getDrawable(it,R.drawable.bg_silver) })
-//                img_star.setImageDrawable(resources.getDrawable(R.drawable.star_silver))
-                img_star.setImageDrawable(context?.let { ContextCompat.getDrawable(it,R.drawable.star_silver) })
+            "2", "3", "5" -> {
+                rl_name_state.background = context?.let { ContextCompat.getDrawable(it, R.drawable.bg_silver) }
+                img_star.setImageDrawable(context?.let { ContextCompat.getDrawable(it, R.drawable.star_silver) })
             }
 
             "4" -> {
-//                rl_name_state.setBackgroundDrawable(resources.getDrawable(R.drawable.bg_boronze))
-                rl_name_state.setBackground(context?.let { ContextCompat.getDrawable(it,R.drawable.bg_boronze) })
-//                img_star.setImageDrawable(resources.getDrawable(R.drawable.star_boronze))
-                img_star.setImageDrawable(context?.let { ContextCompat.getDrawable(it,R.drawable.star_boronze) })
+                rl_name_state.background = context?.let { ContextCompat.getDrawable(it, R.drawable.bg_boronze) }
+                img_star.setImageDrawable(context?.let { ContextCompat.getDrawable(it, R.drawable.star_boronze) })
             }
 
             "6" -> {
-//                rl_name_state.setBackgroundDrawable(resources.getDrawable(R.drawable.bg_golden))
-                rl_name_state.setBackground(context?.let { ContextCompat.getDrawable(it,R.drawable.bg_golden) })
-//                img_star.setImageDrawable(resources.getDrawable(R.drawable.star_gold))
-                img_star.setImageDrawable(context?.let { ContextCompat.getDrawable(it,R.drawable.star_gold) })
+                rl_name_state.background = context?.let { ContextCompat.getDrawable(it, R.drawable.bg_golden) }
+                img_star.setImageDrawable(context?.let { ContextCompat.getDrawable(it, R.drawable.star_gold) })
             }
         }
     }
@@ -367,13 +360,13 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
 
             R.id.rl_user_access_upgrade -> {
 
-                if(type.equals("1")){
+                if (type.equals("1")) {
 //                    var a = preferenceStorage?.retrivePhone()
                     goToHtmlActivity("https://test.rahbarbazar.com/poller/v2/user/register?mobile="
-                    +preferenceStorage?.retrivePhone() , true)
-                }else if(type.equals("4")){
+                            + preferenceStorage?.retrivePhone(), true)
+                } else if (type.equals("4")) {
                     goToHtmlActivity("https://test.rahbarbazar.com/poller/v2/user/upgrade/"
-                    +preferenceStorage?.retrivePhone() , true)
+                            + preferenceStorage?.retrivePhone(), true)
                 }
             }
         }

@@ -196,6 +196,7 @@
                         android:layout_height="@dimen/dimen_37"
                         android:foreground="?attr/selectableItemBackground"
                         android:orientation="horizontal"
+                        android:layout_marginBottom="@dimen/_3sdp"
                         android:paddingStart="@dimen/dimen_5"
                         android:paddingEnd="@dimen/dimen_0">
 
@@ -212,7 +213,7 @@
                             android:gravity="center_vertical"
                             android:text="@string/shop_drawer_text"
                             android:textColor="@color/white_gray"
-                            android:textSize="@dimen/_13ssp" />
+                            android:textSize="@dimen/_10ssp" />
 
                     </LinearLayout>
 
@@ -220,6 +221,7 @@
                         android:id="@+id/linear_change_lang"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/dimen_37"
+                        android:layout_marginBottom="@dimen/_3sdp"
                         android:foreground="?attr/selectableItemBackground"
                         android:orientation="horizontal"
                         android:paddingStart="@dimen/dimen_5"
@@ -238,7 +240,7 @@
                             android:gravity="center_vertical"
                             android:text="@string/text_change_lang"
                             android:textColor="@color/white_gray"
-                            android:textSize="@dimen/_13ssp" />
+                            android:textSize="@dimen/_10ssp" />
 
                     </LinearLayout>
 
@@ -246,6 +248,7 @@
                         android:id="@+id/linear_lottery"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/dimen_37"
+                        android:layout_marginBottom="@dimen/_3sdp"
                         android:foreground="?attr/selectableItemBackground"
                         android:orientation="horizontal"
                         android:paddingStart="@dimen/dimen_5"
@@ -264,7 +267,7 @@
                             android:gravity="center_vertical"
                             android:text="@string/text_lottery"
                             android:textColor="@color/white_gray"
-                            android:textSize="@dimen/_13ssp" />
+                            android:textSize="@dimen/_10ssp" />
 
                     </LinearLayout>
 
@@ -276,6 +279,7 @@
                         android:layout_height="@dimen/dimen_37"
                         android:foreground="?attr/selectableItemBackground"
                         android:orientation="horizontal"
+                        android:layout_marginBottom="@dimen/_3sdp"
                         android:paddingStart="@dimen/dimen_5"
                         android:paddingEnd="@dimen/dimen_0">
 
@@ -292,7 +296,7 @@
                             android:gravity="center_vertical"
                             android:text="@string/notify_drawer_text"
                             android:textColor="@color/white_gray"
-                            android:textSize="@dimen/_13ssp" />
+                            android:textSize="@dimen/_10ssp" />
 
                     </LinearLayout>
 
@@ -318,7 +322,7 @@
                             android:gravity="center_vertical"
                             android:text="@string/share_poller"
                             android:textColor="@color/white_gray"
-                            android:textSize="@dimen/_13ssp" />
+                            android:textSize="@dimen/_10ssp" />
 
                     </LinearLayout>
 
@@ -508,15 +512,15 @@
                 android:layout_marginBottom="@dimen/_5sdp">
 
                 <com.rahbarbazaar.poller.android.Utilities.CustomTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_50sdp"
+                    android:layout_width="@dimen/_90sdp"
+                    android:layout_height="@dimen/_45sdp"
                     android:layout_marginStart="@dimen/_50sdp"
                     android:layout_marginEnd="@dimen/_50sdp"
                     android:background="@drawable/shape_text"
                     android:gravity="center"
                     android:text="@string/exit_user_account"
                     android:textColor="#ffffff"
-                    android:textSize="@dimen/_15ssp" />
+                    android:textSize="@dimen/_12ssp" />
             </LinearLayout>
 
             <LinearLayout

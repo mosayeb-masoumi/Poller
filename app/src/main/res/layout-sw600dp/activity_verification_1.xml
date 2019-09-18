@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rl_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/splash_screen_bg">
 
 
@@ -17,266 +16,155 @@
         android:src="@drawable/splash1_bg" />
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/_10sdp"
+        android:id="@+id/rl7"
         android:layout_marginStart="@dimen/_40sdp"
         android:layout_marginEnd="@dimen/_40sdp"
-        android:id="@+id/rl7"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/logo"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_250sdp"
-            android:src="@drawable/splash_logo" />
-
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_marginTop="@dimen/_200sdp"
-            android:gravity="center"
-            android:layout_height="@dimen/_37sdp">
-
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_37sdp"
-                android:layout_marginStart="@dimen/_35sdp"
-                android:layout_marginEnd="@dimen/_35sdp"
-                android:src="@drawable/btn_phoneregister_red_shape" />
-            <EditText
-                android:id="@+id/et_user_verify"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_37sdp"
-                android:layout_marginStart="@dimen/_40sdp"
-                android:layout_marginEnd="@dimen/_40sdp"
-                android:background="@drawable/edtphone_shape"
-                android:gravity="center"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:hint="@string/verification_hint"
-                android:inputType="phone"
-                android:maxLength="11"
-                android:padding="@dimen/_10sdp"
-                android:paddingBottom="@dimen/_3sdp"
-                android:textColorHint="@color/blue"
-                android:textDirection="rtl"
-                android:textSize="@dimen/_12ssp" />
-        </RelativeLayout>
-
+            android:layout_height="@dimen/_220sdp"
+            android:src="@drawable/splash_logo2" />
 
     </RelativeLayout>
 
-
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_30sdp"
-        android:layout_below="@+id/rl7"
+        android:layout_height="@dimen/_33sdp"
+        android:layout_marginStart="@dimen/_45sdp"
+        android:layout_marginEnd="@dimen/_45sdp"
+        android:id="@+id/rl20"
+        android:layout_below="@+id/rl7">
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_45sdp"
+            android:layout_marginEnd="@dimen/_45sdp"
+            android:src="@drawable/btn_phoneregister_red_shape" />
+
+        <EditText
+            android:id="@+id/et_user_verify"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_50sdp"
+            android:layout_marginEnd="@dimen/_50sdp"
+            android:background="@drawable/edtphone_shape"
+            android:gravity="center"
+            android:hint="@string/verification_hint"
+            android:inputType="phone"
+            android:maxLength="11"
+            android:textColorHint="@color/blue"
+            android:textDirection="rtl"
+            android:textSize="@dimen/_12ssp" />
+    </RelativeLayout>
+
+    <RelativeLayout
         android:id="@+id/rl18"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_25sdp"
+        android:layout_below="@+id/rl20"
         android:layout_marginTop="@dimen/_7sdp"
         android:gravity="center">
 
         <RelativeLayout
-            android:layout_width="@dimen/_90sdp"
-            android:layout_height="@dimen/_35sdp"
+            android:layout_width="@dimen/_75sdp"
+            android:layout_height="@dimen/_25sdp"
             android:layout_centerHorizontal="true"
             android:background="@drawable/btn_phoneregister_shape">
 
             <com.wang.avi.AVLoadingIndicatorView
                 android:id="@+id/av_verify"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/_35sdp"
+                android:layout_height="@dimen/_25sdp"
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
-                android:layout_marginTop="@dimen/_3sdp"
                 app:indicatorName="BallPulseIndicator" />
         </RelativeLayout>
 
         <com.rahbarbazaar.poller.android.Utilities.CustomTextView
             android:id="@+id/button_verify"
-            android:layout_width="@dimen/_90sdp"
-            android:layout_height="@dimen/_35sdp"
+            android:layout_width="@dimen/_75sdp"
+            android:layout_height="@dimen/_25sdp"
             android:layout_centerHorizontal="true"
             android:gravity="center"
-            android:textSize="@dimen/_15ssp"
             android:text="@string/login_button_text"
-            android:textColor="@color/main_page_toolbar" />
+            android:textColor="@color/main_page_toolbar"
+            android:textSize="@dimen/_12ssp" />
 
     </RelativeLayout>
 
 
-    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
-        android:id="@+id/text_user_mobile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <LinearLayout
+        android:id="@+id/ll_txt_user_mobile"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_20sdp"
         android:layout_below="@+id/rl18"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:drawableRight="@drawable/ic_edit_new"
-        android:textSize="@dimen/_11ssp"
-        android:textColor="@color/white_gray" />
+        android:layout_marginTop="@dimen/_3sdp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+            android:id="@+id/text_user_mobile"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="09372112652"
+            android:textColor="@color/white_gray"
+            android:textSize="@dimen/_13ssp" />
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/edit_phone_icon"/>
+    </LinearLayout>
+
 
     <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+        android:id="@+id/txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/text_user_mobile"
-        android:id="@+id/txt"
+        android:layout_below="@+id/ll_txt_user_mobile"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/_5sdp"
         android:text="@string/verification_header"
         android:textColor="@color/white_gray"
-        android:textSize="@dimen/_11ssp" />
+        android:textSize="@dimen/_12ssp" />
 
-
-    <!--<RelativeLayout-->
-    <!--android:id="@+id/rl"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="@dimen/_25sdp"-->
-    <!--android:layout_below="@+id/original_logo"-->
-    <!--android:layout_marginTop="@dimen/_7sdp">-->
-
-    <!--<ImageView-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="@dimen/_35sdp"-->
-    <!--android:layout_marginStart="@dimen/_60sdp"-->
-    <!--android:layout_marginEnd="@dimen/_60sdp"-->
-    <!--android:src="@drawable/btn_phoneregister_pink_shape" />-->
-
-    <!--<ImageView-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="@dimen/_35sdp"-->
-    <!--android:layout_marginStart="@dimen/_70sdp"-->
-    <!--android:layout_marginEnd="@dimen/_70sdp"-->
-    <!--android:src="@drawable/btn_phoneregister_red_shape" />-->
-
-    <!--<TextView-->
-    <!--android:id="@+id/text_user_mobile"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_below="@+id/img_verify_top"-->
-    <!--android:layout_centerHorizontal="true"-->
-    <!--android:layout_centerVertical="true"-->
-    <!--android:textColor="@color/white_gray"-->
-    <!--android:textSize="@dimen/_14ssp"-->
-    <!--tools:text="+989211833813" />-->
-    <!--</RelativeLayout>-->
-
-
-
-    <!--<EditText-->
-    <!--android:id="@+id/et_user_verify"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="@dimen/_30sdp"-->
-    <!--android:layout_marginStart="@dimen/_60sdp"-->
-    <!--android:layout_marginEnd="@dimen/_60sdp"-->
-    <!--android:background="@drawable/edt_shape"-->
-    <!--android:gravity="center"-->
-    <!--android:layout_marginTop="@dimen/_3sdp"-->
-    <!--android:layout_below="@+id/txt"-->
-    <!--android:hint="@string/verification_hint"-->
-    <!--android:imeOptions="actionDone"-->
-    <!--android:inputType="numberDecimal"-->
-    <!--android:textSize="@dimen/_15ssp" />-->
-
-
-    <!--<RelativeLayout-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="@dimen/_35sdp"-->
-    <!--android:layout_below="@+id/et_user_verify"-->
-    <!--android:layout_marginTop="@dimen/_10sdp"-->
-    <!--android:id="@+id/rl6"-->
-    <!--android:gravity="center">-->
-
-    <!--<RelativeLayout-->
-    <!--android:layout_width="@dimen/_90sdp"-->
-    <!--android:layout_height="@dimen/_35sdp"-->
-    <!--android:layout_centerHorizontal="true"-->
-    <!--android:background="@drawable/btn_phoneregister_shape">-->
-
-    <!--<com.wang.avi.AVLoadingIndicatorView-->
-    <!--android:id="@+id/av_verify"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="@dimen/_35sdp"-->
-    <!--android:layout_centerHorizontal="true"-->
-    <!--android:gravity="center"-->
-    <!--app:indicatorName="BallPulseIndicator" />-->
-    <!--</RelativeLayout>-->
-
-    <!--<com.rahbarbazaar.poller.android.Utilities.CustomTextView-->
-    <!--android:id="@+id/button_verify"-->
-    <!--android:layout_width="@dimen/_90sdp"-->
-    <!--android:layout_height="@dimen/_35sdp"-->
-    <!--android:layout_centerHorizontal="true"-->
-    <!--android:gravity="center"-->
-    <!--android:text="@string/login_button_text"-->
-    <!--android:textColor="@color/main_page_toolbar"-->
-    <!--android:textSize="@dimen/_15ssp" />-->
-
-    <!--</RelativeLayout>-->
-
-
-
-    <!--<LinearLayout-->
-    <!--android:id="@+id/ll3"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_below="@+id/rl6"-->
-    <!--android:layout_centerHorizontal="true"-->
-    <!--android:layout_gravity="center_vertical"-->
-    <!--android:layout_marginTop="@dimen/_5sdp"-->
-    <!--android:layoutDirection="ltr"-->
-    <!--android:orientation="horizontal">-->
-
-    <!--<com.rahbarbazaar.poller.android.Utilities.CustomTextView-->
-    <!--android:id="@+id/text_min"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:textColor="@color/colorAccent1"-->
-    <!--tools:text="10" />-->
-
-    <!--<com.rahbarbazaar.poller.android.Utilities.CustomTextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text=":"-->
-    <!--android:textColor="@color/colorAccent1" />-->
-
-    <!--<com.rahbarbazaar.poller.android.Utilities.CustomTextView-->
-    <!--android:id="@+id/text_sec"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:textColor="@color/colorAccent1"-->
-    <!--tools:text="20" />-->
-
-    <!--</LinearLayout>-->
 
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_2sdp"
-        android:layout_below="@+id/txt">
+        android:layout_below="@+id/txt"
+        android:layout_marginTop="@dimen/_2sdp">
 
         <RelativeLayout
-            android:layout_width="@dimen/_90sdp"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:background="@drawable/bg_tryagain"
-            android:layout_height="wrap_content">
+            android:background="@drawable/bg_tryagain">
+
             <LinearLayout
                 android:id="@+id/linear_recode"
-                android:layout_width="@dimen/_90sdp"
-                android:layout_height="@dimen/_35sdp"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_30sdp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/_2sdp"
                 android:gravity="center"
-                android:visibility="gone"
                 android:layoutDirection="ltr"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
+
                 <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="@dimen/_11ssp"
                     android:layout_gravity="center_vertical"
                     android:gravity="center"
-                    android:textSize="@dimen/_10ssp"
                     android:text="@string/veriification_resend_code"
                     android:textColor="@color/white_gray" />
 
@@ -288,45 +176,45 @@
             </LinearLayout>
 
 
-
             <RelativeLayout
-                android:layout_width="match_parent"
                 android:id="@+id/rl_recode_number"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <LinearLayout
-                    android:layout_width="@dimen/_90sdp"
-                    android:layout_height="@dimen/_35sdp"
-                    android:layout_marginEnd="@dimen/dimen_5"
-                    android:layoutDirection="ltr"
-                    android:gravity="center"
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="@dimen/_30sdp"
                     android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/dimen_5"
+                    android:gravity="center"
+                    android:layoutDirection="ltr"
                     android:orientation="horizontal">
 
                     <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                         android:id="@+id/text_min"
-                        tools:text="10"
-                        android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/white_gray"
                         android:textSize="@dimen/_14ssp"
-                        android:textColor="@color/white_gray" />
+                        android:textStyle="bold"
+                        tools:text="10" />
 
                     <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text=":"
-                        android:textStyle="bold"
+                        android:textColor="@color/white_gray"
                         android:textSize="@dimen/_14ssp"
-                        android:textColor="@color/white_gray" />
+                        android:textStyle="bold" />
 
                     <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                         android:id="@+id/text_sec"
-                        tools:text="20"
-                        android:textStyle="bold"
-                        android:textSize="@dimen/_14ssp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/white_gray" />
+                        android:textColor="@color/white_gray"
+                        android:textSize="@dimen/_14ssp"
+                        android:textStyle="bold"
+                        tools:text="20" />
 
                 </LinearLayout>
             </RelativeLayout>
@@ -337,14 +225,12 @@
     </RelativeLayout>
 
 
-
-
     <ImageView
-        android:layout_width="@dimen/_80sdp"
-        android:layout_height="@dimen/_30sdp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/_20sdp"
+        android:layout_width="@dimen/_90sdp"
+        android:layout_height="@dimen/_40sdp"
         android:layout_alignParentBottom="true"
-        android:src="@drawable/enterphone_iconpage"  />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:src="@drawable/enterphone_iconpage" />
 
 </RelativeLayout>

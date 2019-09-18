@@ -51,6 +51,7 @@
         <WebView
             android:id="@+id/webview_agreement"
             android:layout_width="match_parent"
+            android:layout_marginBottom="@dimen/_1sdp"
             android:scrollbarThumbVertical="@drawable/webview_scroll"
             android:layout_height="match_parent" />
 
@@ -101,9 +102,10 @@
         android:layout_marginBottom="@dimen/_5sdp">
 
         <RelativeLayout
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/_120sdp"
             android:layout_height="@dimen/_40sdp"
             android:visibility="visible"
+            android:gravity="center"
             android:layout_centerHorizontal="true">
 
             <ImageView

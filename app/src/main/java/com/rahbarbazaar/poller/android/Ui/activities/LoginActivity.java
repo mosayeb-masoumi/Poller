@@ -134,6 +134,7 @@ public class LoginActivity extends CustomBaseActivity implements View.OnClickLis
                                     intent.putExtra("user_mobile", et_user_login.getText().toString());
                                     startActivity(intent);
                                     LoginActivity.this.finish();
+                                    finish();
                                     overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
                                 }
                             }

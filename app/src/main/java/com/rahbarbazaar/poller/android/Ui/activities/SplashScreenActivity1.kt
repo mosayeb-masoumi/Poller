@@ -58,11 +58,18 @@ class SplashScreenActivity1 : AppCompatActivity() {
         var token: String = preferenceStorage.retriveToken()
 
 
-        if (token == "" || token.isEmpty() || token == "0") {
+
+//
+        if (preferenceStorage.isUserLangEmpty) {
+            startActivity(Intent(this@SplashScreenActivity1, SetLanguageActivity::class.java))
+            this@SplashScreenActivity1.finish()
+            overridePendingTransition(R.anim.slide_in, R.anim.slide_out)
+        }else if (token == "" || token.isEmpty() || token == "0") {
 
             startActivity(Intent(this@SplashScreenActivity1, LoginActivity::class.java))
             this@SplashScreenActivity1.finish()
             overridePendingTransition(R.anim.slide_in, R.anim.slide_out)
+
 
         } else {
 
@@ -93,11 +100,16 @@ class SplashScreenActivity1 : AppCompatActivity() {
         }
 
 
-        if (preferenceStorage.isUserLangEmpty) {
-            startActivity(Intent(this@SplashScreenActivity1, SetLanguageActivity::class.java))
-            this@SplashScreenActivity1.finish()
-            overridePendingTransition(R.anim.slide_in, R.anim.slide_out)
-        }
+
+
+
+
+
+
+
+
+//
+
 
 //
 //        if(preferenceStorage.isUserLangEmpty){
@@ -138,26 +150,26 @@ class SplashScreenActivity1 : AppCompatActivity() {
 
                     override fun onError(e: Throwable) {
                         rl_root.av_loading.visibility = View.GONE
-                        if (e.message?.contains("timed out")!!) {
-                            Toast.makeText(this@SplashScreenActivity1, "timed out", Toast.LENGTH_SHORT).show()
-                        } else {
-                            rl_root.av_loading.visibility = View.GONE
-                            var a: Int = (e as HttpException).code()
-                            if (a == 401) {
-                                requestRefreshToken()
-                            } else if (a == 403) {
-                                startActivity(Intent(this@SplashScreenActivity1, LoginActivity::class.java))
-                                this@SplashScreenActivity1.finish()
-                                overridePendingTransition(R.anim.slide_in, R.anim.slide_out)
-                            } else {
-                                if (b < 2) {
-                                    b++
-                                    createTryAgainDialog()
-                                } else {
-                                    createCloseAppDialog()
-                                }
-                            }
-                        }
+//                        if (e.message?.contains("timed out")!!) {
+//                            Toast.makeText(this@SplashScreenActivity1, "timed out", Toast.LENGTH_SHORT).show()
+//                        } else {
+//                            var a: Int = (e as HttpException).code()
+//                            if (a == 401) {
+////                                requestRefreshToken()
+//                            } else if (a == 403) {
+//                                PreferenceStorage.getInstance(this@SplashScreenActivity1).saveToken("0")
+//                                startActivity(Intent(this@SplashScreenActivity1, LoginActivity::class.java))
+//                                this@SplashScreenActivity1.finish()
+//                                overridePendingTransition(R.anim.slide_in, R.anim.slide_out)
+//                            } else {
+//                                if (b < 2) {
+//                                    b++
+//                                    createTryAgainDialog()
+//                                } else {
+//                                    createCloseAppDialog()
+//                                }
+//                            }
+//                        }
                     }
 
                 }))
@@ -212,32 +224,32 @@ class SplashScreenActivity1 : AppCompatActivity() {
     }
 
 
-    private fun requestRefreshToken() {
-        val provider = ServiceProvider(this)
-        disposable = CompositeDisposable()
-
-        val service = provider.getmService()
-
-        disposable.add(service.requsetRefreshToken(ClientConfig.API_V1)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableSingleObserver<RefreshToken>() {
-                    override fun onSuccess(result: RefreshToken) {
-
-                        val preferenseStrorage = PreferenceStorage.getInstance(this@SplashScreenActivity1)
-                        preferenseStrorage.saveToken(result.getToken())
-
-                        val intent = Intent(this@SplashScreenActivity1, SplashScreenActivity1::class.java)
-                        startActivity(intent)
-                        this@SplashScreenActivity1.finish()
-                    }
-
-                    override fun onError(e: Throwable) {
-
-                    }
-                }))
-
-    }
+//    private fun requestRefreshToken() {
+//        val provider = ServiceProvider(this)
+//        disposable = CompositeDisposable()
+//
+//        val service = provider.getmService()
+//
+//        disposable.add(service.requsetRefreshToken(ClientConfig.API_V1)
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribeWith(object : DisposableSingleObserver<RefreshToken>() {
+//                    override fun onSuccess(result: RefreshToken) {
+//
+//                        val preferenseStrorage = PreferenceStorage.getInstance(this@SplashScreenActivity1)
+//                        preferenseStrorage.saveToken(result.getToken())
+//
+//                        val intent = Intent(this@SplashScreenActivity1, SplashScreenActivity1::class.java)
+//                        startActivity(intent)
+//                        this@SplashScreenActivity1.finish()
+//                    }
+//
+//                    override fun onError(e: Throwable) {
+//
+//                    }
+//                }))
+//
+//    }
 
 
     private fun createCloseAppDialog() {

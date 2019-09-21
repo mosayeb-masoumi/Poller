@@ -315,7 +315,7 @@
                         android:textColor="@color/white_gray"
                         android:textSize="@dimen/_14ssp"
                         android:textStyle="bold"
-                        tools:text="10" />
+                        tools:text="" />
 
                     <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                         android:layout_width="wrap_content"
@@ -332,7 +332,7 @@
                         android:textColor="@color/white_gray"
                         android:textSize="@dimen/_14ssp"
                         android:textStyle="bold"
-                        tools:text="20" />
+                        tools:text="" />
 
                 </LinearLayout>
             </RelativeLayout>

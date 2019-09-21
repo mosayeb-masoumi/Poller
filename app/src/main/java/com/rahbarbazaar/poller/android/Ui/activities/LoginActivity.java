@@ -8,6 +8,7 @@ import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v4.os.ConfigurationCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -109,7 +110,7 @@ public class LoginActivity extends CustomBaseActivity implements View.OnClickLis
 
         if (!phone.equals("")) {
 
-            Snackbar.make(findViewById(R.id.login_root), R.string.text_login_progress, Snackbar.LENGTH_INDEFINITE).show();
+//            Snackbar.make(findViewById(R.id.login_root), R.string.text_login_progress, Snackbar.LENGTH_INDEFINITE).show();
             av_login.smoothToShow();
             rl_av_login.setVisibility(View.VISIBLE);
             button_submit.setText("");
@@ -154,10 +155,11 @@ public class LoginActivity extends CustomBaseActivity implements View.OnClickLis
                             rl_av_login.setVisibility(View.GONE);
                             button_submit.setVisibility(View.VISIBLE);
                             av_login.setVisibility(View.GONE);
-                            new ToastFactory().createToast(R.string.text_no_service, LoginActivity.this);
+//                            new ToastFactory().createToast(R.string.text_no_service, LoginActivity.this);
+//                            Snackbar.make(findViewById(R.id.login_root), R.string.text_login_progress, Snackbar.LENGTH_INDEFINITE).dismiss();
+
                         }
                     }));
-
         } else {
 
             toastFactory.createToast(R.string.text_input_mobile, this);

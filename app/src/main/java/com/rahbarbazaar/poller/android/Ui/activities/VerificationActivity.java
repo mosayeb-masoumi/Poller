@@ -181,7 +181,7 @@ public class VerificationActivity extends CustomBaseActivity
 
                         @Override
                         public void onError(Throwable e) {
-
+                            e.printStackTrace();
                         }
                     }));
         }
@@ -215,57 +215,58 @@ public class VerificationActivity extends CustomBaseActivity
                                 // save to use for upgrade userAccess
                                 PreferenceStorage.getInstance(VerificationActivity.this).saveUserAccessType(result.getType());
 
-                                    if (result.getStatus() != null) {
+                                if (result.getStatus() != null) {
 
-                                        switch (result.getStatus()) {
-                                            case "otp expired":
+                                    switch (result.getStatus()) {
+                                        case "otp expired":
 
-                                                toastFactory.createToast(R.string.text_otp_expired, VerificationActivity.this);
+                                            toastFactory.createToast(R.string.text_otp_expired, VerificationActivity.this);
+                                            button_verify.setVisibility(View.VISIBLE);
+                                            av_verify.setVisibility(View.GONE);
+
+                                            break;
+                                        case "otp wrong":
+
+                                            toastFactory.createToast(R.string.text_otp_wrong, VerificationActivity.this);
+                                            button_verify.setVisibility(View.VISIBLE);
+                                            av_verify.setVisibility(View.GONE);
+                                            break;
+
+                                        case "already used":
+
+                                            toastFactory.createToast(R.string.text_otp_used, VerificationActivity.this);
+                                            button_verify.setVisibility(View.VISIBLE);
+                                            av_verify.setVisibility(View.GONE);
+                                            break;
+
+                                        case "user confirmed":
+
+                                            if (result.getToken() != null && !result.getToken().equals("")) {
+
+                                                //call verification code and mobile if response ok:
+                                                PreferenceStorage.getInstance(VerificationActivity.this).saveToken(result.getToken());
+
+                                                //check user agreement:
+                                                checkUserAgreement();
+
+                                                sendUserInfo();
+
                                                 button_verify.setVisibility(View.VISIBLE);
                                                 av_verify.setVisibility(View.GONE);
+                                            }
 
-                                                break;
-                                            case "otp wrong":
-
-                                                toastFactory.createToast(R.string.text_otp_wrong, VerificationActivity.this);
-                                                button_verify.setVisibility(View.VISIBLE);
-                                                av_verify.setVisibility(View.GONE);
-                                                break;
-
-                                            case "already used":
-
-                                                toastFactory.createToast(R.string.text_otp_used, VerificationActivity.this);
-                                                button_verify.setVisibility(View.VISIBLE);
-                                                av_verify.setVisibility(View.GONE);
-                                                break;
-
-                                            case "user confirmed":
-
-                                                if (result.getToken() != null && !result.getToken().equals("")) {
-
-                                                    //call verification code and mobile if response ok:
-                                                    PreferenceStorage.getInstance(VerificationActivity.this).saveToken(result.getToken());
-
-                                                    //check user agreement:
-                                                    checkUserAgreement();
-
-                                                    button_verify.setVisibility(View.VISIBLE);
-                                                    av_verify.setVisibility(View.GONE);
-                                                }
-
-                                                break;
-                                        }
+                                            break;
                                     }
+                                }
 
-                                sendUserInfo();
+
                             }
                             av_verify.smoothToHide();
                             button_verify.setText(R.string.verification_button_text);
                             button_verify.setEnabled(true);
                             linear_recode.setVisibility(View.VISIBLE);
+                            linear_recode.setEnabled(true);
                             rl_recode_number.setVisibility(View.GONE);
-
-
                         }
 
                         @Override
@@ -274,9 +275,11 @@ public class VerificationActivity extends CustomBaseActivity
                             av_verify.smoothToHide();
                             button_verify.setText(R.string.verification_button_text);
                             button_verify.setEnabled(true);
+                            button_verify.setVisibility(View.VISIBLE);
                             linear_recode.setVisibility(View.VISIBLE);
+                            linear_recode.setEnabled(true);
                             rl_recode_number.setVisibility(View.GONE);
-                            new ToastFactory().createToast(R.string.text_no_service, VerificationActivity.this);
+//                            new ToastFactory().createToast(R.string.text_no_service, VerificationActivity.this);
                         }
                     }));
 
@@ -297,7 +300,7 @@ public class VerificationActivity extends CustomBaseActivity
 
                     @Override
                     public void onError(Throwable e) {
-
+                        System.out.print("error");
                     }
                 }));
 
@@ -330,9 +333,7 @@ public class VerificationActivity extends CustomBaseActivity
         ////////////////////////////////////////////////////////////////
         // TODO: 8/3/2019 added instead of upper lines
 
-        ProfileTools.getInstance().saveProfileInformation(this).setListener(() ->
-
-                acceptUserAgreement());
+        ProfileTools.getInstance().saveProfileInformation(this).setListener(this::acceptUserAgreement);
 //                startActivity(new Intent(VerificationActivity.this, AgreementActivity1.class)));
     }
 
@@ -419,7 +420,6 @@ public class VerificationActivity extends CustomBaseActivity
             }
 
             public void onFinish() {
-
                 linear_recode.setEnabled(true);
                 linear_recode.setVisibility(View.VISIBLE);
                 rl_recode_number.setVisibility(View.GONE);
@@ -428,6 +428,13 @@ public class VerificationActivity extends CustomBaseActivity
         };
         countDownTimer.start();
     }
+
+
+
+
+
+
+
 
     //in android 6 or higher we have to get runtime permission from user
     private void checkReadSmsPremission() {
@@ -548,7 +555,6 @@ public class VerificationActivity extends CustomBaseActivity
                         e.printStackTrace();
                     }
                 }));
-
     }
 
 

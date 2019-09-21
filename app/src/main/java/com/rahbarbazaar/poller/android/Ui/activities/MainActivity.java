@@ -169,8 +169,11 @@ public class MainActivity extends CustomBaseActivity implements
 
         if (parcelable != null && parcelable.getItems() != null && parcelable.getStatus().equalsIgnoreCase("ok"))
             initializeViewPager(parcelable, locale_name);
-        else
-            SnackBarFactory.getInstance().showLoginIssueSnackbar(findViewById(R.id.app_bar), this, parcelable);
+        else{
+//            SnackBarFactory.getInstance().showLoginIssueSnackbar(findViewById(R.id.app_bar), this, parcelable);
+        }
+//
+
 
 
         //initial Dialog factory
@@ -261,7 +264,7 @@ public class MainActivity extends CustomBaseActivity implements
         rl_notification.setOnClickListener(this);
         linear_exit.setOnClickListener(this);
         linear_faq.setOnClickListener(this);
-        linear_videos.setOnClickListener(this);
+//        linear_videos.setOnClickListener(this);
         linear_lottery.setOnClickListener(this);
         linear_support.setOnClickListener(this);
         linear_change_lang.setOnClickListener(this);
@@ -589,6 +592,7 @@ public class MainActivity extends CustomBaseActivity implements
 
             case R.id.image_instagram:
 
+                drawer_layout_home.closeDrawers();
                 Uri uriInstagram = Uri.parse("http://instagram.com/_u/poller.ir");
                 Intent intentInstagram = new Intent(Intent.ACTION_VIEW, uriInstagram);
                 intentInstagram.setPackage("com.instagram.android");
@@ -603,7 +607,7 @@ public class MainActivity extends CustomBaseActivity implements
                 break;
 
             case R.id.image_telegram:
-
+                drawer_layout_home.closeDrawers();
                 Uri uriTelegram = Uri.parse("https://t.me/Polleriran");
                 Intent intentTelegram = new Intent(Intent.ACTION_VIEW, uriTelegram);
                 intentTelegram.setPackage("org.telegram.messenger");
@@ -619,7 +623,7 @@ public class MainActivity extends CustomBaseActivity implements
                 break;
 
             case R.id.linear_shopping:
-
+                drawer_layout_home.closeDrawers();
 //                startActivityForResult(new Intent(this, ShopActivity.class), SHOP_ACTIVITY_REQUEST);
                 startActivityForResult(new Intent(this, ShopActivity1.class), SHOP_ACTIVITY_REQUEST);
                 MainActivity.this.overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
@@ -627,7 +631,7 @@ public class MainActivity extends CustomBaseActivity implements
 
             case R.id.rl_notification:
             case R.id.linear_notify_drawer: {
-
+                drawer_layout_home.closeDrawers();
 //                startActivityForResult(new Intent(this, NotificationActivity.class), NOTIFIY_ACTIVITY_REQUEST);
                 startActivityForResult(new Intent(this, NotificationActivity1.class), NOTIFIY_ACTIVITY_REQUEST);
                 MainActivity.this.overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
@@ -653,30 +657,31 @@ public class MainActivity extends CustomBaseActivity implements
                 break;
 
             case R.id.linear_faq:
-
+                drawer_layout_home.closeDrawers();
 //                goToHtmlActivity("http://pollerws.rahbarbazaar.com:2296/poller/v2/support/faq/" + LocaleManager.getLocale(getResources()).getLanguage(), true);
                 goToHtmlActivity("https://test.rahbarbazar.com/poller/v2/support/faq/" + LocaleManager.getLocale(getResources()).getLanguage(), true);
                 break;
 
             case R.id.linear_report_issue:
+//                drawer_layout_home.closeDrawers();
                 dialogFactory.createReportIssueDialog(new DialogFactory.DialogFactoryInteraction() {
                     @Override
                     public void onAcceptButtonClicked(String... params) {
 
                         sendReportIssueRequest(params[0], params[1]);
+                        drawer_layout_home.closeDrawer(Gravity.END);
                     }
 
                     @Override
                     public void onDeniedButtonClicked(boolean cancel_dialog) {
-
+                        drawer_layout_home.closeDrawer(Gravity.END);
                     }
                 }, drawer_layout_home);
                 break;
 
-            case R.id.linear_videos:
-//                goToHtmlActivity("http://test.rahbarbazar.com:2296/poller/v2/support/videos/" + LocaleManager.getLocale(getResources()).getLanguage(), true);
-                goToHtmlActivity(App.videoWebUrl+"/" + LocaleManager.getLocale(getResources()).getLanguage(), true);
-                break;
+//            case R.id.linear_videos:
+//                goToHtmlActivity(App.videoWebUrl+"/" + LocaleManager.getLocale(getResources()).getLanguage(), true);
+//                break;
 
             case R.id.linear_change_lang:
                 dialogFactory.createSelectLangDialog(drawer_layout_home, new DialogFactory.DialogFactoryInteraction() {
@@ -713,6 +718,7 @@ public class MainActivity extends CustomBaseActivity implements
                 break;
 
             case R.id.linear_lottery:
+                drawer_layout_home.closeDrawers();
 //                startActivityForResult(new Intent(this, LotteryActivity.class), LOTTERY_ACTIVITY_REGUEST);
                 startActivityForResult(new Intent(MainActivity.this, LotteryActivity1.class), LOTTERY_ACTIVITY_REGUEST);
                 MainActivity.this.overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
@@ -1009,6 +1015,7 @@ public class MainActivity extends CustomBaseActivity implements
     protected void onResume() {
         super.onResume();
         registerReceiver(connectivityReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        drawer_layout_home.closeDrawer(Gravity.END);
     }
 
 

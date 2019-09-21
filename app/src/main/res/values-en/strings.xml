@@ -167,5 +167,6 @@
     <string name="exit_survey">Yes, I Exit From The Survey</string>
     <string name="membership">Membership</string>
     <string name="retuen">return</string>
+    <string name="incorrect_mobilephone">Incorrect Mobile phone</string>
 
 </resources>

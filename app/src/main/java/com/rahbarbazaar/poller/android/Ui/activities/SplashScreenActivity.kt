@@ -87,7 +87,14 @@ class SplashScreenActivity : AppCompatActivity() {
                             var a: Int = (e as HttpException).code()
                             if (a == 401) {
 
-                                requestRefreshToken()
+//                                requestRefreshToken()
+
+
+
+
+
+
+
 //                                if(m<1){
 //                                    requestRefreshToken()
 //                                    m++
@@ -216,31 +223,31 @@ class SplashScreenActivity : AppCompatActivity() {
         }
     }
 
-    private fun requestRefreshToken() {
-        val provider = ServiceProvider(this)
-        disposable = CompositeDisposable()
-
-        val service = provider.getmService()
-
-        disposable.add(service.requsetRefreshToken(ClientConfig.API_V1)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableSingleObserver<RefreshToken>() {
-                    override fun onSuccess(result: RefreshToken) {
-
-                        val preferenseStrorage = PreferenceStorage.getInstance(this@SplashScreenActivity)
-                        preferenseStrorage.saveToken(result.getToken())
-
-                        val intent = Intent(this@SplashScreenActivity, SplashScreenActivity::class.java)
-                        startActivity(intent)
-                    }
-
-                    override fun onError(e: Throwable) {
-
-                    }
-                }))
-
-    }
+//    private fun requestRefreshToken() {
+//        val provider = ServiceProvider(this)
+//        disposable = CompositeDisposable()
+//
+//        val service = provider.getmService()
+//
+//        disposable.add(service.requsetRefreshToken(ClientConfig.API_V1)
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribeWith(object : DisposableSingleObserver<RefreshToken>() {
+//                    override fun onSuccess(result: RefreshToken) {
+//
+//                        val preferenseStrorage = PreferenceStorage.getInstance(this@SplashScreenActivity)
+//                        preferenseStrorage.saveToken(result.getToken())
+//
+//                        val intent = Intent(this@SplashScreenActivity, SplashScreenActivity::class.java)
+//                        startActivity(intent)
+//                    }
+//
+//                    override fun onError(e: Throwable) {
+//
+//                    }
+//                }))
+//
+//    }
 
 
     override fun onDestroy() {

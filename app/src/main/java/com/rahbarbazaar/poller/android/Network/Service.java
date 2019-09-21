@@ -25,6 +25,7 @@ import io.reactivex.Completable;
 import io.reactivex.Single;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
+import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
@@ -176,7 +177,11 @@ public interface Service {
                                       @Query("os_version") String os_version
     );
 
+//    @POST("{api}/token/refresh")
+//    Single<RefreshToken> requsetRefreshToken(@Path("api") String version
+//    );
+
     @POST("{api}/token/refresh")
-    Single<RefreshToken> requsetRefreshToken(@Path("api") String version
+    Call<RefreshToken> requsetRefreshToken(@Path("api") String version
     );
 }

@@ -345,7 +345,9 @@ public class DialogFactory {
             dialog.dismiss();
         });
 
-        btn_cancel_dialog.setOnClickListener(view -> dialog.dismiss());
+        btn_cancel_dialog.setOnClickListener(view ->{
+            listener.onDeniedButtonClicked(false);
+            dialog.dismiss();});
 
         dialog.show();
     }
@@ -643,10 +645,6 @@ public class DialogFactory {
         dialog.show();
         return dialog;
     }
-
-
-
-
 
 
 

@@ -59,6 +59,9 @@ public class HtmlLoaderActivity extends CustomBaseActivity
             web_btnbar.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         }
 
+        //config web view for show url content
+        String pish = "<html><head><style type=\"text/css\">@font-face {font-family: MyFont;src: url(\"file:///android_asset/fonts/BYekan.ttf\")}body {font-family: MyFont;font-size: medium;text-align: justify;}</style></head><body>";
+        String pas = "</body></html>";
 
         //check intent and get url
         String url = null;
@@ -85,9 +88,7 @@ public class HtmlLoaderActivity extends CustomBaseActivity
         webView.setClickable(true);
         webView.clearCache(true);
 
-        //config web view for show url content
-        String pish = "<html><head><style type=\"text/css\">@font-face {font-family: MyFont;src: url(\"file:///android_asset/fonts/BYekan.ttf\")}body {font-family: MyFont;font-size: medium;text-align: justify;}</style></head><body>";
-        String pas = "</body></html>";
+
 
         if (isSurveyDetails) {
 

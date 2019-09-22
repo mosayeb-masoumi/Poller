@@ -90,7 +90,7 @@ public class SurveyHolder1 extends RecyclerView.ViewHolder {
             text_survey_title.setTextColor(ContextCompat.getColor(context, R.color.brown));
             txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.brown));
             row_survey_LLbackground.setBackground(ContextCompat.getDrawable(context, R.drawable.row_survey_gold_bg));
-        } else if (remaining_day > 0 && data.getStatus() == 1) {
+        } else if (remaining_day > 0 && (data.getStatus() == 1 || data.getStatus() == 2)) {
             row_survey_imgmobile.setImageResource(R.drawable.survey_item_gradient_mobile);
             row_survey_imgLeftday.setImageResource(R.drawable.survey_item_leftday_icon);
             text_survey_title.setTextColor(ContextCompat.getColor(context, R.color.blue));

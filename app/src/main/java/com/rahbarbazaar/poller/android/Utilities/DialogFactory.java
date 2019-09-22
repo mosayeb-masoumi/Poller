@@ -229,6 +229,44 @@ public class DialogFactory {
         dialog.show();
     }
 
+
+    public void createConfirmExitDialog2(DialogFactoryInteraction listener, View view, boolean survey_exit_confirm) {
+
+//        View customLayout = LayoutInflater.from(context).inflate(R.layout.confirm_exit_dialog, (ViewGroup) view, false);
+        View customLayout = LayoutInflater.from(context).inflate(R.layout.confirm_exit_dialog2, (ViewGroup) view, false);
+        //define views inside of dialog
+        TextView btn_exit_dialog = customLayout.findViewById(R.id.btn_exit_dialog);
+        TextView btn_cancel_dialog = customLayout.findViewById(R.id.btn_cancel_dialog);
+        TextView text_body = customLayout.findViewById(R.id.text_body);
+
+        if (survey_exit_confirm)
+            text_body.setText(R.string.survey_exit_confirm);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setView(customLayout);
+
+        //create dialog and set background transparent
+        AlertDialog dialog = builder.create();
+        if (dialog.getWindow() != null) {
+
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
+
+        //set click listener for views inside of dialog
+//        btn_cancel_dialog.setOnClickListener(v -> dialog.dismiss());
+        btn_cancel_dialog.setOnClickListener(v ->{
+                    dialog.dismiss();
+                    listener.onDeniedButtonClicked(false);
+                });
+
+        btn_exit_dialog.setOnClickListener(v -> listener.onAcceptButtonClicked("")
+        );
+
+        dialog.show();
+    }
+
+
+
     public void createNoInternetDialog(DialogFactoryInteraction listener, View root) {
 
 //        View customLayout = LayoutInflater.from(context).inflate(R.layout.confirm_exit_dialog, (ViewGroup) root, false);

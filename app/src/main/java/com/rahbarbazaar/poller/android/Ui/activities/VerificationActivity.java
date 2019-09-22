@@ -108,7 +108,8 @@ public class VerificationActivity extends CustomBaseActivity
 
         //start count down timer and disable resend code linear
         linear_recode.setEnabled(false);
-        startCountDownTimer();
+//        startCountDownTimer();
+        reverseTimer(90,text_min);
 
         //create instance from service provider for provide request
         provider = new ServiceProvider(this);
@@ -196,7 +197,7 @@ public class VerificationActivity extends CustomBaseActivity
         Service service = provider.getmService();
         String verify_code = et_user_verify.getText().toString().trim();
 
-        if (!verify_code.isEmpty()) {
+        if (!verify_code.isEmpty() && verify_code.length()==5) {
 
             verify_code = new BigDecimal(Long.parseLong(verify_code)).toString();
 
@@ -264,9 +265,10 @@ public class VerificationActivity extends CustomBaseActivity
                             av_verify.smoothToHide();
                             button_verify.setText(R.string.verification_button_text);
                             button_verify.setEnabled(true);
-                            linear_recode.setVisibility(View.VISIBLE);
-                            linear_recode.setEnabled(true);
-                            rl_recode_number.setVisibility(View.GONE);
+                            button_verify.setVisibility(View.VISIBLE);
+//                            linear_recode.setVisibility(View.VISIBLE);
+//                            linear_recode.setEnabled(true);
+//                            rl_recode_number.setVisibility(View.GONE);
                         }
 
                         @Override
@@ -276,13 +278,19 @@ public class VerificationActivity extends CustomBaseActivity
                             button_verify.setText(R.string.verification_button_text);
                             button_verify.setEnabled(true);
                             button_verify.setVisibility(View.VISIBLE);
-                            linear_recode.setVisibility(View.VISIBLE);
-                            linear_recode.setEnabled(true);
-                            rl_recode_number.setVisibility(View.GONE);
+//                            linear_recode.setVisibility(View.VISIBLE);
+//                            linear_recode.setEnabled(true);
+//                            rl_recode_number.setVisibility(View.GONE);
 //                            new ToastFactory().createToast(R.string.text_no_service, VerificationActivity.this);
                         }
                     }));
 
+        }else{
+            toastFactory.createToast(R.string.text_otp_wrong, VerificationActivity.this);
+            av_verify.smoothToHide();
+            button_verify.setText(R.string.verification_button_text);
+            button_verify.setEnabled(true);
+            button_verify.setVisibility(View.VISIBLE);
         }
 
     }
@@ -429,6 +437,32 @@ public class VerificationActivity extends CustomBaseActivity
         countDownTimer.start();
     }
 
+    public void reverseTimer(int Seconds, final TextView tv) {
+
+        new CountDownTimer(Seconds * 1000 + 1000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                int seconds = (int) (millisUntilFinished / 1000);
+
+                int hours = seconds / (60 * 60);
+                int tempMint = (seconds - (hours * 60 * 60));
+                int minutes = tempMint / 60;
+                seconds = tempMint - (minutes * 60);
+
+                tv.setText(String.format("%02d", minutes) + ":" + String.format("%02d", seconds));
+            }
+
+            public void onFinish() {
+                linear_recode.setEnabled(true);
+                linear_recode.setVisibility(View.VISIBLE);
+                rl_recode_number.setVisibility(View.GONE);
+            }
+        }.start();
+    }
+
+
+
+
 
 
 
@@ -478,7 +512,8 @@ public class VerificationActivity extends CustomBaseActivity
                 rl_recode_number.setVisibility(View.VISIBLE);
 
                 sendLoginRequest();
-                startCountDownTimer();
+//                startCountDownTimer();
+                reverseTimer(90,text_min);
                 break;
 
             case R.id.button_verify:

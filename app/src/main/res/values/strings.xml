@@ -30,7 +30,7 @@
     <string name="app_version">نسخه</string>
     <string name="messages_toolbar">پیام های دریافتی</string>
     <string name="store">بازارچه</string>
-    <string name="terms_conditions">قوانین و مقرارت</string>
+    <string name="terms_conditions">قوانین و مقررات</string>
     <string name="accept_terms_conditions">قوانین و مقررات را مطالعه کرده و قبول دارم</string>
     <string name="cancel_text">انصراف</string>
     <string name="close_text">بستن</string>
@@ -105,7 +105,7 @@
     <string name="text_convert_point_balance">تبدیل امتیاز به موجودی</string>
     <string name="text_convert_balance_point">تبدیل موجودی به امتیاز</string>
     <string name="text_participation_amount">میزان مشارکت : </string>
-    <string name="text_select_lang">لطفا زبان مورد نظر خود را انتخاب کنید : </string>
+    <string name="text_select_lang">لطفا زبان مورد نظر خود را انتخاب کنید</string>
     <string name="text_try_again">تلاش مجدد</string>
     <string name="text_error_on_login">خطا در ورود لطفا مجددا تلاش کنید</string>
 

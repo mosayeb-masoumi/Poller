@@ -50,7 +50,7 @@
                 android:gravity="center"
                 android:hint="@string/verification_hint"
                 android:inputType="phone"
-                android:maxLength="11"
+                android:maxLength="5"
                 android:padding="@dimen/_10sdp"
                 android:paddingBottom="@dimen/_3sdp"
                 android:textColorHint="@color/blue"
@@ -321,6 +321,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text=":"
+                        android:visibility="gone"
                         android:textColor="@color/white_gray"
                         android:textSize="@dimen/_14ssp"
                         android:textStyle="bold" />
@@ -331,6 +332,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/white_gray"
                         android:textSize="@dimen/_14ssp"
+                        android:visibility="gone"
                         android:textStyle="bold"
                         tools:text="" />
 

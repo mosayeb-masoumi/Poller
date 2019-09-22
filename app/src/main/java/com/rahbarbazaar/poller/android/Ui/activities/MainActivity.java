@@ -217,6 +217,13 @@ public class MainActivity extends CustomBaseActivity implements
             img_arrow.setImageResource(R.drawable.arrow_right);
 
 
+        if(prefrence != null && prefrence.getType().equals("1")){
+            linear_invite_friend.setVisibility(View.GONE);
+        }else{
+            linear_invite_friend.setVisibility(View.VISIBLE);
+        }
+
+
     }
 
     //define view and click listener of activity here
@@ -581,10 +588,13 @@ public class MainActivity extends CustomBaseActivity implements
                 drawer_layout_home.closeDrawers();
 
                 if (prefrence != null && prefrence.getType().equals("1")) //user guest state
-                    dialogFactory.createNoRegisterDialog(drawer_layout_home, MainActivity.this);
+                    dialogFactory.createNoRegisterDialog1(drawer_layout_home, MainActivity.this);
                 else
                     generateInviteLink();
                 break;
+
+
+
 
             case R.id.linear_exit:
                 createConfirmExitDialog();
@@ -733,10 +743,11 @@ public class MainActivity extends CustomBaseActivity implements
     private void createConfirmExitDialog() {
 
         Context context = MainActivity.this;
-        dialogFactory.createConfirmExitDialog(new DialogFactory.DialogFactoryInteraction() {
+        dialogFactory.createConfirmExitDialog2(new DialogFactory.DialogFactoryInteraction() {
             @Override
             public void onAcceptButtonClicked(String... params) {
 
+                drawer_layout_home.closeDrawers();
                 PreferenceStorage.getInstance(context).saveToken("0");
                 startActivity(new Intent(context, SplashScreenActivity1.class));
                 MainActivity.this.finish();
@@ -744,6 +755,7 @@ public class MainActivity extends CustomBaseActivity implements
 
             @Override
             public void onDeniedButtonClicked(boolean bool) {
+                drawer_layout_home.closeDrawers();
 
                 //did on dialog factory
             }

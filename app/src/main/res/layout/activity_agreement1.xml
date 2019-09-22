@@ -75,6 +75,7 @@
         android:layout_above="@+id/rl_page_icon_rules"
         android:layout_marginTop="@dimen/_5sdp"
         android:gravity="center"
+        android:visibility="gone"
         android:orientation="horizontal">
 
 

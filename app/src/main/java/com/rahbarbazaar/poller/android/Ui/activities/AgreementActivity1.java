@@ -1,18 +1,22 @@
 package com.rahbarbazaar.poller.android.Ui.activities;
 
+import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.support.v4.os.ConfigurationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,9 +32,9 @@ import com.rahbarbazaar.poller.android.Utilities.ToastFactory;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.observers.DisposableSingleObserver;
-import io.reactivex.schedulers.Schedulers;
+//import io.reactivex.disposables.CompositeDisposable;
+//import io.reactivex.observers.DisposableSingleObserver;
+//import io.reactivex.schedulers.Schedulers;
 
 
 public class AgreementActivity1 extends CustomBaseActivity {
@@ -41,9 +45,12 @@ public class AgreementActivity1 extends CustomBaseActivity {
     AVLoadingIndicatorView av_loading;
     TextView btn_send;
     BroadcastReceiver connectivityReceiver;
-    CompositeDisposable disposable;
+//    CompositeDisposable disposable;
     GetCurrencyListResult getCurrencyListResult;
 
+    LinearLayout llcheckbox;
+
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,21 +69,45 @@ public class AgreementActivity1 extends CustomBaseActivity {
 
         initview();
 
+        //config web view for show url content
+        String pish = "<html><head><style type=\"text/css\">@font-face {font-family: MyFont;src: url(\"file:///android_asset/fonts/BYekan.ttf\")}body {font-family: MyFont;font-size: medium;text-align: justify;}</style></head><body>";
+        String pas = "</body></html>";
 
-        if(App.language.equals("fa")){
-            webview_agreement.loadUrl("https://test.rahbarbazar.com/poller/v2/support/agreement/fa");
-        }else if(App.language.equals("en")){
-            webview_agreement.loadUrl("https://test.rahbarbazar.com/poller/v2/support/agreement/en");
-        }
+
 //        webview_agreement.loadUrl("http://pollerws.rahbarbazaar.com:2296/poller/v2/support/agreement/" +
 //                LocaleManager.getLocale(getApplicationContext().getResources()).getLanguage());
 
+        //config web view setting for support multi action and java scripts
+        webview_agreement.getSettings().setJavaScriptEnabled(true);
+        webview_agreement.getSettings().setDomStorageEnabled(true);
+        webview_agreement.getSettings().setDatabaseEnabled(true);
+        webview_agreement.getSettings().setAllowFileAccess(true);
+        webview_agreement.getSettings().setAllowContentAccess(true);
+        webview_agreement.setWebChromeClient(new WebChromeClient());
+        webview_agreement.getSettings().setAllowFileAccessFromFileURLs(true);
+        webview_agreement.getSettings().setAllowUniversalAccessFromFileURLs(true);
+        webview_agreement.getSettings().setMinimumFontSize(1);
+        webview_agreement.getSettings().setMinimumLogicalFontSize(1);
+        webview_agreement.setClickable(true);
+        webview_agreement.clearCache(true);
 
 
+        String language = ConfigurationCompat.getLocales(getResources().getConfiguration()).get(0).getLanguage();
+        if(language.equals("fa")){
+            webview_agreement.loadUrl("https://test.rahbarbazar.com/poller/v2/support/agreement/fa");
+//            webview_agreement.loadDataWithBaseURL("", pish + "https://test.rahbarbazar.com/poller/v2/support/agreement/fa" +
+//                    pas, "text/html", "UTF-8", "");
+        }else if(language.equals("en")){
+            webview_agreement.loadUrl("https://test.rahbarbazar.com/poller/v2/support/agreement/en");
+//            webview_agreement.loadDataWithBaseURL("", pish + "https://test.rahbarbazar.com/poller/v2/support/agreement/en" +
+//                    pas, "text/html", "UTF-8", "");
+        }
 
         webview_agreement.setBackgroundColor(Color.TRANSPARENT);
 
 //        webview_agreement.loadUrl("javascript:document.body.style.color=\"white\";");// to change webview text
+
+
 
 
         webview_agreement.setWebViewClient(new WebViewClient() {
@@ -91,6 +122,8 @@ public class AgreementActivity1 extends CustomBaseActivity {
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
                 av_loading.smoothToHide();
+                llcheckbox.setVisibility(View.VISIBLE);
+
             }
         });
 
@@ -147,6 +180,8 @@ public class AgreementActivity1 extends CustomBaseActivity {
         checkbox_agreement = findViewById(R.id.checkbox_agreement);
         av_loading = findViewById(R.id.av_loading);
         btn_send = findViewById(R.id.btn_login_dialog);
+
+        llcheckbox=findViewById(R.id.llcheckbox);
 //        TextView btn_cancel_dialog = findViewById(R.id.btn_cancel_dialog);
     }
 

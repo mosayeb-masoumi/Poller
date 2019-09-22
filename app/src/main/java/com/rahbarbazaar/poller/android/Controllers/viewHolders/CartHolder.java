@@ -50,6 +50,10 @@ public class CartHolder extends RecyclerView.ViewHolder {
 //        text_price.setText(itemView.getContext().getString(R.string.transaction_price, data.getTransaction_amount(), currency));
         text_price.setText(String.valueOf(data.getTransaction_amount()));
 
+
+        String a = data.getTransaction_type();
+
+
         if (data.getTransaction_type() != null) {
             switch (data.getTransaction_type()) {
 

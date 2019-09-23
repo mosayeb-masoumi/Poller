@@ -98,7 +98,7 @@
                 android:gravity="center_vertical"
                 android:text="@string/text_video"
                 android:textColor="@color/white_gray"
-                android:textSize="@dimen/_14ssp" />
+                android:textSize="@dimen/_13ssp" />
                 </RelativeLayout>
 
             </RelativeLayout>
@@ -173,7 +173,7 @@
                 android:gravity="center_vertical"
                 android:text="@string/text_news"
                 android:textColor="@color/white_gray"
-                android:textSize="@dimen/_14ssp" />
+                android:textSize="@dimen/_13ssp" />
 
                 </RelativeLayout>
 
@@ -249,14 +249,14 @@
                     android:background="#ca1390"
                 android:gravity="center">
 
-                <com.rahbarbazaar.poller.android.Utilities.CustomTextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:gravity="center_vertical"
-                android:text="@string/text_polls"
-                android:textColor="@color/white_gray"
-                android:textSize="@dimen/_14ssp" />
+                    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:gravity="center_vertical"
+                        android:text="@string/text_polls"
+                        android:textColor="@color/white_gray"
+                        android:textSize="@dimen/_13ssp" />
 
                 </RelativeLayout>
 
@@ -312,7 +312,7 @@
                             android:gravity="center_vertical"
                             android:text="@string/text_leftday"
                             android:textColor="@color/blue"
-                            android:textSize="@dimen/_10ssp" />
+                            android:textSize="@dimen/_9ssp" />
 
 
                     </RelativeLayout>
@@ -348,7 +348,7 @@
                             android:gravity="center_vertical"
                             android:text="@string/text_activePolls"
                             android:textColor="@color/blue"
-                            android:textSize="@dimen/_10ssp" />
+                            android:textSize="@dimen/_9ssp" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -381,7 +381,7 @@
                             android:gravity="center_vertical"
                             android:text="@string/text_balance"
                             android:textColor="@color/blue"
-                            android:textSize="@dimen/_10ssp" />
+                            android:textSize="@dimen/_9ssp" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -415,7 +415,7 @@
                             android:gravity="center_vertical"
                             android:text="@string/text_your_point"
                             android:textColor="@color/blue"
-                            android:textSize="@dimen/_10ssp" />
+                            android:textSize="@dimen/_9ssp" />
                     </RelativeLayout>
 
                 </LinearLayout>
@@ -441,7 +441,7 @@
                             android:layout_centerVertical="true"
                             android:text="-"
                             android:textColor="@color/white_gray"
-                            android:textSize="@dimen/_13ssp" />
+                            android:textSize="@dimen/_12ssp" />
 
 
                     </RelativeLayout>
@@ -459,7 +459,7 @@
                             android:layout_centerVertical="true"
                             android:text="-"
                             android:textColor="@color/white_gray"
-                            android:textSize="@dimen/_13ssp" />
+                            android:textSize="@dimen/_12ssp" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -475,7 +475,7 @@
                             android:layout_centerVertical="true"
                             android:text="-"
                             android:textColor="@color/white_gray"
-                            android:textSize="@dimen/_13ssp" />
+                            android:textSize="@dimen/_12ssp" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -491,7 +491,7 @@
                             android:layout_centerVertical="true"
                             android:text="-"
                             android:textColor="@color/white_gray"
-                            android:textSize="@dimen/_13ssp" />
+                            android:textSize="@dimen/_12ssp" />
                     </RelativeLayout>
 
                 </LinearLayout>

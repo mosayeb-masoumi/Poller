@@ -1,12 +1,15 @@
 package com.rahbarbazaar.poller.android.Ui.fragments;
 
 
+import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.os.ConfigurationCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -128,7 +131,6 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
 //        }
 
 
-
         defineViews(view);
         configRecyclerview();
         getUserSurveyHistory();
@@ -222,15 +224,6 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
                             @Override
                             public void onError(Throwable e) {
 
-//                                int error = ((HttpException) e).code();
-//                                if(error ==401){
-//                                    startActivity(new Intent(getActivity(), SplashScreenActivity.class));
-//                                }else if(error ==403){
-//                                    PreferenceStorage.getInstance(getContext()).saveToken("0");
-//                                    startActivity(new Intent(getContext(), SplashScreenActivity.class));
-//                                    getActivity().finish();
-//                                }
-
                                 swipe_refesh.post(() -> swipe_refesh.setRefreshing(false));
                             }
                         }));
@@ -278,28 +271,39 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
         adapter.notifyDataSetChanged();
     }
 
+    Snackbar snackbar;
+
     //get survey details by survey id
     private void getSurveyDetails(String survey_id, String button_status, int url_type) {
 
-        Service service = new ServiceProvider(getContext()).getmService();
 
+        snackbar = Snackbar.make(Objects.requireNonNull(getView()),R.string.please_wait, Snackbar.LENGTH_INDEFINITE);
+        String language = ConfigurationCompat.getLocales(getResources().getConfiguration()).get(0).getLanguage();
+        if(language.equals("fa"))
+        snackbar.getView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+        else
+            snackbar.getView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+        snackbar.show();
+
+        Service service = new ServiceProvider(getContext()).getmService();
         disposable.add(service.getSurveyDetails(ClientConfig.API_V1, survey_id).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).
                         subscribeWith(new DisposableSingleObserver<SurveyMainModel>() {
                             @Override
                             public void onSuccess(SurveyMainModel result) {
 
+                                snackbar.dismiss();
                                 if (result != null) {
 
                                     SurveyHolder1 surveyHolder1 = new SurveyHolder1(Objects.requireNonNull(getView()));
                                     int remainindDay = surveyHolder1.getRemainingDate(getCurrentDate(), result.getEnd_date());
 
                                     // make clause to show button participant dialog
-                                    if (remainindDay<=0) {
+                                    if (remainindDay <= 0) {
                                         showDetailsSurveyDialogExpired(result, button_status, url_type);
-                                    }else if(remainindDay>0 && result.getStatus()==3){
+                                    } else if (remainindDay > 0 && result.getStatus() == 3) {
                                         showDetailsSurveyDialogExpired(result, button_status, url_type);
-                                    }else{
+                                    } else {
                                         showDetailsSurveyDialog(result, button_status, url_type);
                                     }
                                 }
@@ -308,12 +312,57 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
 
                             @Override
                             public void onError(Throwable e) {
-
+                                snackbar.dismiss();
                                 isSurveyItemClickable = true;
                             }
                         }));
     }
 
+//    //this function will be create details survey dialog
+//    private void showDetailsSurveyDialog(SurveyMainModel result, String button_status, int url_type) {
+//
+//        new DialogFactory(getActivity()).createSurveyDetailsDialog(new DialogFactory.DialogFactoryInteraction() {
+//            @Override
+//            public void onAcceptButtonClicked(String... params) {
+//
+//                if (userDetailsPrefrence.getType().equalsIgnoreCase("1")) {
+//
+//                    if (result.getPoint() == 0) {
+//
+//                        sendToHtmlActivity(params[0], url_type, result);
+//
+//                    } else {
+//
+////                        new DialogFactory(getContext()).createNoRegisterDialog(getView(), new DialogFactory.DialogFactoryInteraction() {
+//                        new DialogFactory(getContext()).createNoRegisterDialog1(getView(), new DialogFactory.DialogFactoryInteraction() {
+//                            @Override
+//                            public void onAcceptButtonClicked(String... params) {
+//
+//                                //params
+//                            }
+//
+//                            @Override
+//                            public void onDeniedButtonClicked(boolean cancel_dialog) {
+//
+//                                //params
+//                            }
+//                        });
+//                    }
+//                } else {
+//
+//                    sendToHtmlActivity(params[0], url_type, result);
+//                }
+//            }
+//
+//            @Override
+//            public void onDeniedButtonClicked(boolean bool) {
+//
+//                //doesn't use here
+//            }
+//        }, result, getView(), button_status);
+//    }
+
+    //COPY TOP
     //this function will be create details survey dialog
     private void showDetailsSurveyDialog(SurveyMainModel result, String button_status, int url_type) {
 
@@ -323,27 +372,28 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
 
                 if (userDetailsPrefrence.getType().equalsIgnoreCase("1")) {
 
-                    if (result.getPoint() == 0) {
+//                    if (result.getPoint() == 0) {
 
-                        sendToHtmlActivity(params[0], url_type, result);
+                    sendToHtmlActivity(params[0], url_type, result);
 
-                    } else {
+//                    } else {
+//
+////                        new DialogFactory(getContext()).createNoRegisterDialog(getView(), new DialogFactory.DialogFactoryInteraction() {
+//                        new DialogFactory(getContext()).createNoRegisterDialog1(getView(), new DialogFactory.DialogFactoryInteraction() {
+//                            @Override
+//                            public void onAcceptButtonClicked(String... params) {
+//
+//                                //params
+//                            }
+//
+//                            @Override
+//                            public void onDeniedButtonClicked(boolean cancel_dialog) {
+//
+//                                //params
+//                            }
+//                        });
+//                    }
 
-//                        new DialogFactory(getContext()).createNoRegisterDialog(getView(), new DialogFactory.DialogFactoryInteraction() {
-                        new DialogFactory(getContext()).createNoRegisterDialog1(getView(), new DialogFactory.DialogFactoryInteraction() {
-                            @Override
-                            public void onAcceptButtonClicked(String... params) {
-
-                                //params
-                            }
-
-                            @Override
-                            public void onDeniedButtonClicked(boolean cancel_dialog) {
-
-                                //params
-                            }
-                        });
-                    }
                 } else {
 
                     sendToHtmlActivity(params[0], url_type, result);
@@ -463,14 +513,6 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
 
                             @Override
                             public void onError(Throwable e) {
-//                                int error = ((HttpException) e).code();
-//                                if(error ==401){
-//                                    startActivity(new Intent(getActivity(), SplashScreenActivity.class));
-//                                }else if(error ==403){
-//                                    PreferenceStorage.getInstance(getContext()).saveToken("0");
-//                                    startActivity(new Intent(getContext(), SplashScreenActivity.class));
-//                                    getActivity().finish();
-//                                }
 
                             }
                         }));
@@ -555,7 +597,7 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
         getUserSurveyHistory();
     }
 
-    public String getCurrentDate(){
+    public String getCurrentDate() {
 
         SolarCalendar solarCalendar = new SolarCalendar();
         String day = solarCalendar.getCurrentShamsiDay();
@@ -563,11 +605,11 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
         String year = solarCalendar.getCurrentShamsiYear();
 
         Calendar c = Calendar.getInstance();
-        String currentTime = c.get(Calendar.HOUR_OF_DAY) + ":" + c.get(Calendar.MINUTE)+":"+c.get(Calendar.SECOND);
+        String currentTime = c.get(Calendar.HOUR_OF_DAY) + ":" + c.get(Calendar.MINUTE) + ":" + c.get(Calendar.SECOND);
 
-        String currentDate = year + "-" + month + "-" + day+" "+currentTime;
+        String currentDate = year + "-" + month + "-" + day + " " + currentTime;
 
-        return  currentDate;
+        return currentDate;
     }
 }
 

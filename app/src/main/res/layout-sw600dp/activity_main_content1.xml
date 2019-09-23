@@ -20,8 +20,8 @@
 
                 <ImageView
                     android:id="@+id/image_drawer"
-                    android:layout_width="@dimen/dimen_34"
-                    android:layout_height="@dimen/dimen_34"
+                    android:layout_width="@dimen/_27sdp"
+                    android:layout_height="@dimen/_27sdp"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="@dimen/_10sdp"

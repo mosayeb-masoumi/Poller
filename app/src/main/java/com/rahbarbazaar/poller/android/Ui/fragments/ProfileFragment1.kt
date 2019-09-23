@@ -161,11 +161,22 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
                     @SuppressLint("SetTextI18n")
                     override fun onSuccess(result: UserConfirmAuthResult) {
 
-                        text_age.text = result.birthday.toString()
-                        text_gender.text = if (result.gender == "male") "آقا" else "خانم"
+                        type = result.type
+                        if(type.equals("1")){
+                            text_age.text = "---"
+                            text_gender.text = "---"
+                        }else{
+                            text_age.text = result.birthday.toString()
+
+
+//                            text_gender.text = if (result.gender == "male") "آقا" else "خانم"
+                            text_gender.text = result.gender.toString()
+                        }
+
+
                         text_mobile.text = result.mobile
                         text_username.text = result.name
-                        type = result.type
+
 
                         if (type.equals("1") || type.equals("4")) {
                             rl_user_access_upgrade.visibility = View.VISIBLE

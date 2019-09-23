@@ -46,15 +46,15 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_30sdp"
+                android:layout_marginStart="@dimen/_40sdp"
                 android:layout_marginTop="@dimen/_8sdp"
-                android:layout_marginEnd="@dimen/_30sdp"
+                android:layout_marginEnd="@dimen/_40sdp"
                 android:gravity="center">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:id="@+id/rl_name_state"
-                    android:layout_height="@dimen/_40sdp"
+                    android:layout_height="@dimen/_30sdp"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:background="@drawable/dialog_btn_shape1">
@@ -62,7 +62,8 @@
                     <ImageView
                         android:id="@+id/arrow_username"
                         android:layout_width="@dimen/_25sdp"
-                        android:layout_height="match_parent"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_centerVertical="true"
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="@dimen/_43sdp"
                         android:padding="@dimen/_7sdp"
@@ -81,7 +82,7 @@
                             android:text="dfgdfghfghfhjhj"
                             android:layout_alignParentStart="true"
                             android:textColor="@color/blue"
-                            android:textSize="@dimen/_14sdp"
+                            android:textSize="@dimen/_11sdp"
                             android:textStyle="bold" />
                     </RelativeLayout>
 
@@ -89,35 +90,35 @@
                 </RelativeLayout>
 
                 <ImageView
-                    android:layout_width="@dimen/_43sdp"
-                    android:layout_height="@dimen/_43sdp"
+                    android:layout_width="@dimen/_33sdp"
+                    android:layout_height="@dimen/_33sdp"
                     android:layout_alignParentEnd="true"
                     android:background="@drawable/circle_shape_white" />
 
 
                 <RelativeLayout
-                    android:layout_width="@dimen/_40sdp"
-                    android:layout_height="@dimen/_40sdp"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true">
 
                     <RelativeLayout
-                        android:layout_width="@dimen/_40sdp"
-                        android:layout_height="@dimen/_40sdp"
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
                         android:background="@drawable/circle_shape_gradient">
 
                         <ImageView
                             android:id="@+id/img_star"
-                            android:layout_width="@dimen/_40sdp"
-                            android:layout_height="@dimen/_40sdp"
+                            android:layout_width="@dimen/_30sdp"
+                            android:layout_height="@dimen/_30sdp"
                             android:layout_centerHorizontal="true"
                             android:layout_centerVertical="true"
                             android:padding="@dimen/_7sdp" />
 
                         <ImageView
                             android:id="@+id/img_star_gold"
-                            android:layout_width="@dimen/_40sdp"
-                            android:layout_height="@dimen/_40sdp"
+                            android:layout_width="@dimen/_30sdp"
+                            android:layout_height="@dimen/_30sdp"
                             android:layout_centerHorizontal="true"
                             android:layout_centerVertical="true"
                             android:padding="@dimen/_7sdp"
@@ -126,8 +127,8 @@
 
                         <ImageView
                             android:id="@+id/img_star_silver"
-                            android:layout_width="@dimen/_40sdp"
-                            android:layout_height="@dimen/_40sdp"
+                            android:layout_width="@dimen/_30sdp"
+                            android:layout_height="@dimen/_30sdp"
                             android:layout_centerHorizontal="true"
                             android:layout_centerVertical="true"
                             android:padding="@dimen/_7sdp"
@@ -142,14 +143,14 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_30sdp"
+                android:layout_marginStart="@dimen/_40sdp"
                 android:layout_marginTop="@dimen/_3sdp"
-                android:layout_marginEnd="@dimen/_30sdp"
+                android:layout_marginEnd="@dimen/_40sdp"
                 android:gravity="center">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_40sdp"
+                    android:layout_height="@dimen/_30sdp"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:background="@drawable/dialog_btn_shape1">
@@ -157,7 +158,8 @@
                     <ImageView
                         android:id="@+id/arrow_mobile"
                         android:layout_width="@dimen/_25sdp"
-                        android:layout_height="match_parent"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_centerVertical="true"
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="@dimen/_43sdp"
                         android:padding="@dimen/_7sdp"
@@ -173,32 +175,32 @@
                         android:layout_toStartOf="@+id/arrow_mobile"
                         android:text="125453255kj"
                         android:textColor="@color/blue"
-                        android:textSize="@dimen/_14sdp"
+                        android:textSize="@dimen/_11sdp"
                         android:textStyle="bold" />
 
                 </RelativeLayout>
 
                 <ImageView
-                    android:layout_width="@dimen/_43sdp"
-                    android:layout_height="@dimen/_43sdp"
+                    android:layout_width="@dimen/_33sdp"
+                    android:layout_height="@dimen/_33sdp"
                     android:layout_alignParentEnd="true"
                     android:background="@drawable/circle_shape_white" />
 
 
                 <RelativeLayout
-                    android:layout_width="@dimen/_40sdp"
-                    android:layout_height="@dimen/_40sdp"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true">
 
                     <RelativeLayout
-                        android:layout_width="@dimen/_40sdp"
-                        android:layout_height="@dimen/_40sdp"
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
                         android:background="@drawable/circle_shape_gradient">
 
                         <ImageView
-                            android:layout_width="@dimen/_40sdp"
-                            android:layout_height="@dimen/_40sdp"
+                            android:layout_width="@dimen/_30sdp"
+                            android:layout_height="@dimen/_30sdp"
                             android:layout_centerHorizontal="true"
                             android:layout_centerVertical="true"
                             android:padding="@dimen/_7sdp"
@@ -220,14 +222,14 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_30sdp"
+                        android:layout_marginStart="@dimen/_40sdp"
                         android:layout_marginTop="@dimen/_3sdp"
                         android:layout_marginEnd="@dimen/_2sdp"
                         android:gravity="center">
 
                         <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/_40sdp"
+                            android:layout_height="@dimen/_30sdp"
                             android:layout_centerHorizontal="true"
                             android:layout_centerVertical="true"
                             android:background="@drawable/dialog_btn_shape1">
@@ -235,9 +237,10 @@
                             <ImageView
                                 android:id="@+id/arrow_sex"
                                 android:layout_width="@dimen/_25sdp"
-                                android:layout_height="match_parent"
+                                android:layout_height="@dimen/_25sdp"
+                                android:layout_centerVertical="true"
                                 android:layout_alignParentEnd="true"
-                                android:layout_marginEnd="@dimen/_43sdp"
+                                android:layout_marginEnd="@dimen/_38sdp"
                                 android:padding="@dimen/_7sdp"
                                 android:src="@drawable/arrow_blue_left" />
 
@@ -247,35 +250,35 @@
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentStart="true"
                                 android:layout_centerVertical="true"
-                                android:layout_marginStart="@dimen/_7sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
                                 android:text="مرد"
                                 android:textColor="@color/blue"
-                                android:textSize="@dimen/_14sdp"
+                                android:textSize="@dimen/_11sdp"
                                 android:textStyle="bold" />
                         </RelativeLayout>
 
                         <ImageView
-                            android:layout_width="@dimen/_43sdp"
-                            android:layout_height="@dimen/_43sdp"
+                            android:layout_width="@dimen/_33sdp"
+                            android:layout_height="@dimen/_33sdp"
                             android:layout_alignParentEnd="true"
                             android:background="@drawable/circle_shape_white" />
 
 
                         <RelativeLayout
-                            android:layout_width="@dimen/_40sdp"
-                            android:layout_height="@dimen/_40sdp"
+                            android:layout_width="@dimen/_30sdp"
+                            android:layout_height="@dimen/_30sdp"
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true">
 
                             <RelativeLayout
-                                android:layout_width="@dimen/_40sdp"
-                                android:layout_height="@dimen/_40sdp"
+                                android:layout_width="@dimen/_30sdp"
+                                android:layout_height="@dimen/_30sdp"
                                 android:background="@drawable/circle_shape_gradient">
 
                                 <ImageView
                                     android:id="@+id/img_sex_gradient"
-                                    android:layout_width="@dimen/_40sdp"
-                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_width="@dimen/_30sdp"
+                                    android:layout_height="@dimen/_30sdp"
                                     android:layout_centerHorizontal="true"
                                     android:layout_centerVertical="true"
                                     android:padding="@dimen/_7sdp"
@@ -297,12 +300,12 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_2sdp"
                         android:layout_marginTop="@dimen/_3sdp"
-                        android:layout_marginEnd="@dimen/_30sdp"
+                        android:layout_marginEnd="@dimen/_40sdp"
                         android:gravity="center">
 
                         <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/_40sdp"
+                            android:layout_height="@dimen/_30sdp"
                             android:layout_centerHorizontal="true"
                             android:layout_centerVertical="true"
                             android:background="@drawable/dialog_btn_shape1">
@@ -310,7 +313,8 @@
                             <ImageView
                                 android:id="@+id/arrow_age"
                                 android:layout_width="@dimen/_25sdp"
-                                android:layout_height="match_parent"
+                                android:layout_height="@dimen/_25sdp"
+                                android:layout_centerVertical="true"
                                 android:layout_alignParentEnd="true"
                                 android:layout_marginEnd="@dimen/_43sdp"
                                 android:padding="@dimen/_7sdp"
@@ -326,31 +330,31 @@
                                 android:layout_toStartOf="@+id/arrow_age"
                                 android:text="1365"
                                 android:textColor="@color/blue"
-                                android:textSize="@dimen/_14sdp"
+                                android:textSize="@dimen/_11sdp"
                                 android:textStyle="bold" />
                         </RelativeLayout>
 
                         <ImageView
-                            android:layout_width="@dimen/_43sdp"
-                            android:layout_height="@dimen/_43sdp"
+                            android:layout_width="@dimen/_33sdp"
+                            android:layout_height="@dimen/_33sdp"
                             android:layout_alignParentEnd="true"
                             android:background="@drawable/circle_shape_white" />
 
 
                         <RelativeLayout
-                            android:layout_width="@dimen/_40sdp"
-                            android:layout_height="@dimen/_40sdp"
+                            android:layout_width="@dimen/_30sdp"
+                            android:layout_height="@dimen/_30sdp"
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true">
 
                             <RelativeLayout
-                                android:layout_width="@dimen/_40sdp"
-                                android:layout_height="@dimen/_40sdp"
+                                android:layout_width="@dimen/_30sdp"
+                                android:layout_height="@dimen/_30sdp"
                                 android:background="@drawable/circle_shape_gradient">
 
                                 <ImageView
-                                    android:layout_width="@dimen/_40sdp"
-                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_width="@dimen/_30sdp"
+                                    android:layout_height="@dimen/_30sdp"
                                     android:layout_centerHorizontal="true"
                                     android:layout_centerVertical="true"
                                     android:padding="@dimen/_7sdp"
@@ -366,10 +370,10 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_40sdp"
-                android:layout_marginStart="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginStart="@dimen/_40sdp"
                 android:layout_marginTop="@dimen/_3sdp"
-                android:layout_marginEnd="@dimen/_30sdp"
+                android:layout_marginEnd="@dimen/_40sdp"
                 android:background="@drawable/dialog_btn_shape1">
 
                 <com.rahbarbazaar.poller.android.Utilities.CustomTextView
@@ -381,12 +385,13 @@
                     android:layout_marginEnd="@dimen/_7sdp"
                     android:text="@string/text_take_part_project"
                     android:textColor="@color/blue"
-                    android:textSize="@dimen/_14sdp" />
+                    android:textSize="@dimen/_11sdp" />
 
                 <ImageView
                     android:id="@+id/arrow_project_count"
                     android:layout_width="@dimen/_25sdp"
-                    android:layout_height="match_parent"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_centerVertical="true"
                     android:layout_toStartOf="@+id/txt_takeinproject"
                     android:padding="@dimen/_7sdp"
                     android:src="@drawable/arrow_blue_left" />
@@ -400,14 +405,14 @@
                     android:layout_marginStart="@dimen/_20sdp"
                     android:text="12"
                     android:textColor="@color/blue"
-                    android:textSize="@dimen/_14sdp" />
+                    android:textSize="@dimen/_11sdp" />
 
             </RelativeLayout>
 
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_37sdp"
+                android:layout_height="@dimen/_30sdp"
                 android:id="@+id/rl_balance_point"
                 android:layout_marginStart="@dimen/_50sdp"
                 android:layout_marginTop="@dimen/_3sdp"
@@ -433,7 +438,7 @@
                         android:layout_toStartOf="@+id/img1"
                         android:text="@string/convert_toman"
                         android:textColor="@color/white_gray"
-                        android:textSize="@dimen/_12ssp"
+                        android:textSize="@dimen/_11ssp"
                         android:textStyle="bold" />
                 </RelativeLayout>
             </LinearLayout>
@@ -442,7 +447,7 @@
                 android:layout_width="match_parent"
                 android:id="@+id/rl_point_balance"
                 android:visibility="gone"
-                android:layout_height="@dimen/_37sdp"
+                android:layout_height="@dimen/_30sdp"
                 android:layout_marginStart="@dimen/_50sdp"
                 android:layout_marginTop="@dimen/_3sdp"
                 android:layout_marginEnd="@dimen/_50sdp"
@@ -462,7 +467,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:textSize="@dimen/_12ssp"
+                        android:textSize="@dimen/_11ssp"
                         android:textStyle="bold"
                         android:layout_toStartOf="@id/img2"
                         android:layout_marginStart="@dimen/_5sdp"
@@ -475,7 +480,7 @@
             <LinearLayout
                 android:id="@+id/rl_edit_profile"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_37sdp"
+                android:layout_height="@dimen/_30sdp"
                 android:layout_marginStart="@dimen/_50sdp"
                 android:layout_marginTop="@dimen/_3sdp"
                 android:layout_marginEnd="@dimen/_50sdp"
@@ -488,7 +493,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/text_change_profile_req"
                     android:textColor="@color/blue"
-                    android:textSize="@dimen/_13sdp"
+                    android:textSize="@dimen/_11sdp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -496,7 +501,7 @@
             <LinearLayout
                 android:id="@+id/rl_user_access_upgrade"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_37sdp"
+                android:layout_height="@dimen/_30sdp"
                 android:layout_marginStart="@dimen/_50sdp"
                 android:layout_marginTop="@dimen/_3sdp"
                 android:layout_marginEnd="@dimen/_50sdp"
@@ -510,7 +515,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/text_access_upgrade"
                     android:textColor="@color/colorAccent1"
-                    android:textSize="@dimen/_13sdp"
+                    android:textSize="@dimen/_11sdp"
                     android:textStyle="bold" />
 
             </LinearLayout>

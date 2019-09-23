@@ -33,6 +33,7 @@ public class SnackBarFactory {
         else return snackBar;
     }
 
+
     public Snackbar showResultSnackbar(View view, Context context) {
 
         final Snackbar mySnackbar = Snackbar.make(view, "", Snackbar.LENGTH_INDEFINITE);
@@ -59,6 +60,25 @@ public class SnackBarFactory {
 
         return mySnackbar;
     }
+
+//    //mine
+//    public Snackbar showWaitSnackbar(View view,Context context){
+//        final Snackbar mySnackbar = Snackbar.make(view, "", Snackbar.LENGTH_SHORT);
+//
+//        View snack_view = mySnackbar.getView();
+//        TextView txt_snack = snack_view.findViewById(android.support.design.R.id.snackbar_text);
+//        Typeface typeface = Typeface.createFromAsset(context.getAssets(), "fonts/BYekan.ttf");
+////        Typeface typeface = Typeface.createFromAsset(context.getAssets(), "fonts/Vazir-Medium.ttf");
+//
+//        txt_snack.setText(R.string.text_calculate_point);
+//        txt_snack.setTypeface(typeface);
+//        return mySnackbar;
+//    }
+
+
+
+
+
 
     public void showLoginIssueSnackbar(@NotNull View view, @NotNull Context context, GetCurrencyListResult parcelable) {
 

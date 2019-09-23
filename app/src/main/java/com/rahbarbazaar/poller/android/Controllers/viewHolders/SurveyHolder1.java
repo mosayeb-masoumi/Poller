@@ -83,6 +83,17 @@ public class SurveyHolder1 extends RecyclerView.ViewHolder {
 //            row_survey_LLbackground.setBackground(ContextCompat.getDrawable(context, R.drawable.row_survey_gold_bg));
 //        }
 
+        if(remaining_day > 0 && data.getStatus() == 3) {
+            row_survey_imgmobile.setImageResource(R.drawable.survey_item_ok_icon2);
+            row_survey_imgLeftday.setImageResource(R.drawable.survey_item_leftday_icon);
+
+            text_survey_title.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
+            txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
+            row_survey_LLbackground.setBackground(ContextCompat.getDrawable(context, R.drawable.row_survey_gray_bg));
+//            text_survey_title.setTextColor(ContextCompat.getColor(context, R.color.blue));
+//            txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.blue));
+//            row_survey_LLbackground.setBackground(ContextCompat.getDrawable(context, R.drawable.row_survey_gradient_border));
+        }else
 
         if (remaining_day > 0 && start_year == current_year && start_month == current_month && ((current_day - start_day) == +1 || (current_day - start_day) == 0)) { //gold
             row_survey_imgmobile.setImageResource(R.drawable.survey_item_brown_mobile);
@@ -96,23 +107,25 @@ public class SurveyHolder1 extends RecyclerView.ViewHolder {
             text_survey_title.setTextColor(ContextCompat.getColor(context, R.color.blue));
             txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.blue));
             row_survey_LLbackground.setBackground(ContextCompat.getDrawable(context, R.drawable.row_survey_gradient_border));
-        } else if (remaining_day > 0 && data.getStatus() == 3) {
-            row_survey_imgmobile.setImageResource(R.drawable.survey_item_ok_icon2);
-            row_survey_imgLeftday.setImageResource(R.drawable.survey_item_leftday_icon);
-
-            text_survey_title.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
-            txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
-            row_survey_LLbackground.setBackground(ContextCompat.getDrawable(context, R.drawable.row_survey_gray_bg));
-//            text_survey_title.setTextColor(ContextCompat.getColor(context, R.color.blue));
-//            txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.blue));
-//            row_survey_LLbackground.setBackground(ContextCompat.getDrawable(context, R.drawable.row_survey_gradient_border));
-        } else if (remaining_day <= 0 && (data.getStatus() == 1 || data.getStatus() == 2)) {
+        }
+//        else if (remaining_day > 0 && data.getStatus() == 3) {
+//            row_survey_imgmobile.setImageResource(R.drawable.survey_item_ok_icon2);
+//            row_survey_imgLeftday.setImageResource(R.drawable.survey_item_leftday_icon);
+//
+//            text_survey_title.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
+//            txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
+//            row_survey_LLbackground.setBackground(ContextCompat.getDrawable(context, R.drawable.row_survey_gray_bg));
+////            text_survey_title.setTextColor(ContextCompat.getColor(context, R.color.blue));
+////            txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.blue));
+////            row_survey_LLbackground.setBackground(ContextCompat.getDrawable(context, R.drawable.row_survey_gradient_border));
+//        }
+        else if (remaining_day <= 0 && (data.getStatus() == 1 || data.getStatus() == 2)) {
             row_survey_imgmobile.setImageResource(R.drawable.survey_item_delete_icon2);
             row_survey_imgLeftday.setImageResource(R.drawable.survey_item_expired_icon);
             text_survey_title.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
             txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
             row_survey_LLbackground.setBackground(ContextCompat.getDrawable(context, R.drawable.row_survey_gray_bg));
-        } else if (remaining_day <= 0 && data.getStatus() == 3) {
+        } else if ((remaining_day <= 0)&& data.getStatus() == 3) {
             row_survey_imgmobile.setImageResource(R.drawable.survey_item_ok_icon2);
             row_survey_imgLeftday.setImageResource(R.drawable.survey_item_expired_icon);
             text_survey_title.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));

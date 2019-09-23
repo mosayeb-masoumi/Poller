@@ -52,8 +52,8 @@ public class GifActivity extends AppCompatActivity {
 
         Glide.with(GifActivity.this)
                 .asGif()
-                .load(R.drawable.gif_animated)
-                .placeholder(R.drawable.gif_animated)
+                .load(R.drawable.gif_hq)
+                .placeholder(R.drawable.gif_hq)
                 .into(img_gif);
     }
 

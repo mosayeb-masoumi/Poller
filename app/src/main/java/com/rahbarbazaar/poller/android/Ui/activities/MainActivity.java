@@ -244,6 +244,9 @@ public class MainActivity extends CustomBaseActivity implements
         }
 
 
+
+
+
     }
 
     //define view and click listener of activity here
@@ -600,8 +603,11 @@ public class MainActivity extends CustomBaseActivity implements
         switch (view.getId()) {
 
             case R.id.image_drawer:
-
                 drawer_layout_home.openDrawer(Gravity.END);
+                if(App.balance>=1000){
+                    linear_shopping.setVisibility(View.VISIBLE);
+                }
+
                 break;
 
             case R.id.linear_invite_friend:

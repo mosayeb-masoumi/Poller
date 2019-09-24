@@ -169,8 +169,11 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
                             text_age.text = result.birthday.toString()
 
 
-//                            text_gender.text = if (result.gender == "male") "آقا" else "خانم"
-                            text_gender.text = result.gender.toString()
+                            var languag = ConfigurationCompat.getLocales(resources.configuration).get(0).language
+                            if(languag.equals("fa"))
+                            text_gender.text = if (result.gender == "male") "آقا" else "خانم"
+                            else
+                                text_gender.text = result.gender
                         }
 
 
@@ -195,6 +198,8 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
 
                                 balance = result.balance.toString()
                                 score = result.score.toString()
+
+                                App.balance = result.balance
 
                                 // to send balance and score in profile fragment
                                 val modelDataProfileTohome = ArrayList<ModelTranferDataProfileToHome>()

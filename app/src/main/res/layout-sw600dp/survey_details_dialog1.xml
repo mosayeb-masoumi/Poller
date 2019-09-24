@@ -148,7 +148,7 @@
             android:id="@+id/btn_go_dialog"
             android:layout_width="0dp"
             android:layout_height="@dimen/dimen_45"
-            android:layout_marginStart="@dimen/dimen_10"
+            android:layout_marginStart="@dimen/dimen_5"
             android:layout_marginEnd="@dimen/dimen_10"
             android:layout_weight="1"
             android:background="@drawable/dialog_btn_shape_tablet"

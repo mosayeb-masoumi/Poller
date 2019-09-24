@@ -196,6 +196,7 @@
                         android:layout_height="@dimen/dimen_37"
                         android:foreground="?attr/selectableItemBackground"
                         android:orientation="horizontal"
+                        android:visibility="gone"
                         android:paddingStart="@dimen/dimen_5"
                         android:paddingEnd="@dimen/dimen_0">
 

@@ -7,8 +7,12 @@ import android.support.multidex.MultiDexApplication;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 
+import org.jetbrains.annotations.NotNull;
+
 
 public class App extends MultiDexApplication {
+
+
 
     @Override
     public void onCreate() {
@@ -29,7 +33,8 @@ public class App extends MultiDexApplication {
 
     public static String language = "";
     public static String videoWebUrl = "";
-
+    @NotNull
+    public static int balance;
 
 
 }

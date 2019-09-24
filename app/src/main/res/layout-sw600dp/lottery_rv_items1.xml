@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:background="@drawable/lottery_rv_bg1"
+    android:layout_height="@dimen/dimen_55">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="gone"
+        android:layout_weight="1.2">
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+            android:id="@+id/tv_lottery_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLength="10"
+            android:gravity="center"
+            android:textColor="@color/white_gray"
+            android:textSize="@dimen/font_13"
+            tools:text="97/08/21" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_weight="0.5">
+        <ImageView
+            android:id="@+id/img_info"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:maxLength="10"
+            android:gravity="center"
+           android:src="@drawable/bg_lottery_info_icon" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="start"
+        android:layout_weight="3">
+
+
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+            android:id="@+id/tv_lottery_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ellipsize="end"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:gravity="center"
+            android:singleLine="true"
+            android:textColor="#3b3b3b"
+            android:textSize="@dimen/font_17"
+            tools:text="تعریف نشده" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_weight="1.2">
+
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+            android:id="@+id/tv_lottery_price_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dimen_7"
+            android:text="@string/text_point"
+            android:textColor="#3b3b3b"
+            android:textSize="@dimen/font_16" />
+
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+            android:id="@+id/tv_lottery_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dimen_3"
+            android:textColor="#3b3b3b"
+            android:textSize="@dimen/font_16"
+            tools:text="2000" />
+
+    </LinearLayout>
+
+</LinearLayout>

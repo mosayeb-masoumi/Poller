@@ -51,10 +51,13 @@ public class DialogFactory {
         this.context = ctx;
     }
 
+
+
     public void createSurveyDetailsDialog(DialogFactoryInteraction listener, SurveyMainModel data, View root, String button_title) {
 
         if (context != null) {
 //            View customLayout = LayoutInflater.from(context).inflate(R.layout.survey_details_dialog, (ViewGroup) root, false);
+
             View customLayout = LayoutInflater.from(context).inflate(R.layout.survey_details_dialog1, (ViewGroup) root, false);
             //define views inside of dialog
             TextView text_title = customLayout.findViewById(R.id.text_title);
@@ -65,7 +68,7 @@ public class DialogFactory {
             TextView btn_go_dialog = customLayout.findViewById(R.id.btn_go_dialog);
             TextView btn_cancel_dialog = customLayout.findViewById(R.id.btn_cancel_dialog);
 
-            //initialize views
+//            //initialize views
             text_title.setText(data.getTitle());
             btn_go_dialog.setText(button_title);
 
@@ -106,8 +109,8 @@ public class DialogFactory {
 
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
             builder.setView(customLayout);
-
-            //create dialog and set background transparent
+//
+//            //create dialog and set background transparent
             AlertDialog dialog = builder.create();
             if (dialog.getWindow() != null) {
 
@@ -123,9 +126,9 @@ public class DialogFactory {
             });
             btn_cancel_dialog.setOnClickListener(view -> dialog.dismiss());
             dialog.show();
+
         }
     }
-
 
 
 

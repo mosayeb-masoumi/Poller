@@ -103,7 +103,7 @@ public class VerificationActivity extends CustomBaseActivity
         if (getIntent() != null) {
 
             user_mobile = getIntent().getStringExtra("user_mobile");
-            text_user_mobile.setText("+98" + user_mobile.substring(1));
+            text_user_mobile.setText("98" + user_mobile.substring(1));
         }
 
         //start count down timer and disable resend code linear

@@ -112,6 +112,7 @@
             android:id="@+id/linear_videos"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_37"
+            android:visibility="gone"
             android:layout_marginBottom="@dimen/_3sdp"
             android:foreground="?attr/selectableItemBackground"
             android:orientation="horizontal"

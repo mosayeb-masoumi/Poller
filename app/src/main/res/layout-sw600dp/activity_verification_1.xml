@@ -197,12 +197,13 @@
                         android:textColor="@color/white_gray"
                         android:textSize="@dimen/_14ssp"
                         android:textStyle="bold"
-                        tools:text="10" />
+                        tools:text="01:30" />
 
                     <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text=":"
+                        android:visibility="gone"
                         android:textColor="@color/white_gray"
                         android:textSize="@dimen/_14ssp"
                         android:textStyle="bold" />
@@ -213,6 +214,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/white_gray"
                         android:textSize="@dimen/_14ssp"
+                        android:visibility="gone"
                         android:textStyle="bold"
                         tools:text="20" />
 

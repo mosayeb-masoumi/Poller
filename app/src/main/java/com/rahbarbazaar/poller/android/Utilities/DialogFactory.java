@@ -1,6 +1,7 @@
 package com.rahbarbazaar.poller.android.Utilities;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -18,6 +19,7 @@ import android.text.style.ClickableSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.CheckBox;
@@ -123,6 +125,11 @@ public class DialogFactory {
             dialog.show();
         }
     }
+
+
+
+
+
     public void createSurveyDetailsDialogExpired(DialogFactoryInteraction listener, SurveyMainModel data, View root, String button_title) {
 
         if (context != null) {
@@ -270,7 +277,8 @@ public class DialogFactory {
     public void createNoInternetDialog(DialogFactoryInteraction listener, View root) {
 
 //        View customLayout = LayoutInflater.from(context).inflate(R.layout.confirm_exit_dialog, (ViewGroup) root, false);
-        View customLayout = LayoutInflater.from(context).inflate(R.layout.no_internet_dialog1, (ViewGroup) root, false);
+        View customLayout = LayoutInflater.from(context).inflate(R.layout.confirm_exit_dialog1, (ViewGroup) root, false);
+//        View customLayout = LayoutInflater.from(context).inflate(R.layout.no_internet_dialog1, (ViewGroup) root, false);
 
         //define views inside of dialog
 //        ImageView image_dialog = customLayout.findViewById(R.id.image_dialog);
@@ -306,6 +314,17 @@ public class DialogFactory {
         dialog.setOnDismissListener(dialogInterface -> listener.onDeniedButtonClicked(true));
 
         dialog.show();
+
+
+
+
+// make change the size of dialog
+//        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+//        lp.copyFrom(dialog.getWindow().getAttributes());
+//        lp.height=300;
+//        lp.width = 900;
+//        dialog.getWindow().setAttributes(lp);
+
     }
 
     public void createCommentDialog(DialogFactoryInteraction listener, View root) {
@@ -448,7 +467,7 @@ public class DialogFactory {
 
     public void createTokenDialog(View root) {
 
-        View customLayout = LayoutInflater.from(context).inflate(R.layout.token_verify_dialog, (ViewGroup) root, false);
+        View customLayout = LayoutInflater.from(context).inflate(R.layout.token_verify_dialog1, (ViewGroup) root, false);
 
         //define views inside of dialog
         TextView text_body = customLayout.findViewById(R.id.text_body);

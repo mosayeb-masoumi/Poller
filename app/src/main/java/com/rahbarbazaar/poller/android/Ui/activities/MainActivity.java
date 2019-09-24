@@ -133,6 +133,7 @@ public class MainActivity extends CustomBaseActivity implements
 
     int a = 0;
 
+
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -201,14 +202,33 @@ public class MainActivity extends CustomBaseActivity implements
 
         if (tools.checkPackageInstalled("org.telegram.messenger", this)) {
             image_telegram.setVisibility(View.INVISIBLE);
-            text_follow_us.setVisibility(View.INVISIBLE);
         }
 
 
         if (tools.checkPackageInstalled("com.instagram.android", this)) {
             image_instagram.setVisibility(View.INVISIBLE);
-            text_follow_us.setVisibility(View.INVISIBLE);
         }
+
+
+        if(tools.checkPackageInstalled("org.telegram.messenger", this)){ //no telegram
+            if(tools.checkPackageInstalled("com.instagram.android", this)){ // no instagram
+                text_follow_us.setVisibility(View.INVISIBLE);
+            }
+        }
+        if(tools.checkPackageInstalled("com.instagram.android", this)){ //no instagram
+            if(tools.checkPackageInstalled("org.telegram.messenger", this)){ // no telegram
+                text_follow_us.setVisibility(View.INVISIBLE);
+            }
+        }
+
+
+
+
+//        if(check_package){
+//            text_follow_us.setVisibility(View.VISIBLE);
+//        }else{
+//            text_follow_us.setVisibility(View.VISIBLE);
+//        }
 
 
         if (locale_name.equals("fa"))
@@ -329,6 +349,7 @@ public class MainActivity extends CustomBaseActivity implements
         bottom_navigation.setInactiveColor(Color.parseColor("#FFFFFF"));
 
         bottom_navigation.setDefaultBackgroundResource(R.drawable.bg_toolbar1);
+
 
 
         //requred api level min 21

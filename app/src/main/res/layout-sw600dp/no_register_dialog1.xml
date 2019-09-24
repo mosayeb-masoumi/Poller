@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_btn_shape_tablet"
+    android:layout_margin="@dimen/_5sdp"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/dialog_header_shape"
+        android:gravity="center">
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/attention"
+            android:textStyle="bold"
+            android:textColor="@color/white_gray"
+            android:textSize="@dimen/font_17"/>
+    </RelativeLayout>
+
+
+
+    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+        android:id="@+id/text_body"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:textColor="@color/blue"
+        android:layout_marginTop="20dp"
+        android:text="@string/no_register_message"
+        android:textSize="@dimen/font_17" />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_40"
+        android:layout_marginBottom="@dimen/dimen_10"
+        android:orientation="horizontal">
+
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+            android:id="@+id/btn_membership"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dimen_50"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:layout_marginEnd="@dimen/_30sdp"
+            android:layout_weight="1"
+            android:background="@drawable/dialog_btn_shape_tablet"
+            android:gravity="center"
+            android:text="@string/membership"
+            android:textColor="@color/blue"
+            android:textSize="17sp" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

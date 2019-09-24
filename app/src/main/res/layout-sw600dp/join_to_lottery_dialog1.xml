@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_btn_shape_tablet"
+    android:layout_margin="@dimen/_5sdp"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/dialog_header_shape"
+        android:gravity="center">
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/attention"
+            android:textStyle="bold"
+            android:textColor="@color/white_gray"
+            android:textSize="@dimen/font_17"/>
+    </RelativeLayout>
+
+
+    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+        android:id="@+id/text_title"
+        android:layout_width="match_parent"
+        android:ellipsize="none"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:textColor="@color/blue"
+        android:paddingEnd="@dimen/dimen4"
+        android:paddingStart="@dimen/dimen4"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_20"
+        android:gravity="center"
+        android:text="@string/lottery_dialog_title"
+        android:textSize="@dimen/font_17" />
+
+    <EditText
+        android:id="@+id/edt_lottery_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_17"
+        android:layout_marginTop="@dimen/dimen_20"
+        android:layout_marginEnd="@dimen/dimen_17"
+        android:gravity="center"
+        android:inputType="numberDecimal"
+        android:hint="@string/text_price_hint"
+        android:textSize="@dimen/font_17" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_40"
+        android:layout_marginBottom="@dimen/dimen_10"
+        android:orientation="horizontal">
+
+
+
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+            android:id="@+id/txt_join_lottery"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dimen_45"
+            android:layout_marginStart="@dimen/dimen_10"
+            android:layout_marginEnd="@dimen/dimen_10"
+            android:layout_weight="1"
+            android:textSize="17sp"
+            android:textColor="@color/blue"
+            android:background="@drawable/dialog_btn_shape"
+            android:gravity="center"
+            android:text="@string/register" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_btn_shape_tablet"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/dialog_header_shape"
+            android:gravity="center">
+
+            <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                android:id="@+id/text_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white_gray"
+                android:text="@string/error"
+                android:textSize="17sp" />
+
+        </RelativeLayout>
+
+
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+
+            android:layout_width="match_parent"
+            android:gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/_40sdp"
+            android:paddingStart="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:textColor="@color/blue"
+            android:text="@string/failed_connection_to_server"
+            android:textSize="@dimen/font_17" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_40"
+            android:layout_marginBottom="@dimen/dimen_10"
+            android:orientation="horizontal">
+
+
+
+            <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                android:id="@+id/text_tryAgain"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_45"
+                android:layout_marginStart="@dimen/_30sdp"
+                android:layout_marginEnd="@dimen/_30sdp"
+                android:background="@drawable/dialog_btn_shape"
+                android:gravity="center"
+                android:textSize="17sp"
+                android:text="@string/text_try_again"
+                android:textColor="@color/blue" />
+
+        </LinearLayout>
+    </LinearLayout>
+

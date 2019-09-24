@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_5sdp"
+    android:background="@drawable/dialog_btn_shape_tablet"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/dialog_header_shape"
+        android:gravity="center">
+
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+            android:id="@+id/text_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white_gray"
+            android:text="@string/exchange_dialog_title_price"
+            android:textSize="@dimen/font_17" />
+
+    </RelativeLayout>
+
+
+    <EditText
+        android:id="@+id/edt_exchange_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_17"
+        android:layout_marginTop="@dimen/dimen_30"
+        android:layout_marginEnd="@dimen/dimen_17"
+        android:background="@null"
+        android:gravity="center"
+        android:hint="@string/exchange_dialog_price_hint"
+        android:inputType="numberDecimal"
+        android:textSize="@dimen/font_17" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/dimen_17"
+        android:layout_marginTop="@dimen/dimen_6"
+        android:layout_marginEnd="@dimen/dimen_17"
+        android:background="@color/minor_gray" />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_40"
+        android:layout_marginBottom="@dimen/dimen_10"
+        android:orientation="horizontal">
+
+
+
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+            android:id="@+id/img_exchange_submit"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dimen_45"
+            android:layout_marginStart="@dimen/dimen_100"
+            android:layout_marginEnd="@dimen/dimen_100"
+            android:layout_weight="1"
+            android:background="@drawable/dialog_btn_shape_tablet"
+            android:gravity="center"
+            android:textSize="17sp"
+            android:text="@string/register"
+            android:textColor="@color/blue" />
+
+    </LinearLayout>
+
+</LinearLayout>

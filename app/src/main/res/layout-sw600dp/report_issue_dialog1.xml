@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_5sdp"
+    android:background="@drawable/dialog_btn_shape_tablet"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/dialog_header_shape"
+        android:gravity="center">
+
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+            android:id="@+id/text_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/report_issue_title"
+            android:textColor="@color/white_gray"
+            android:textSize="@dimen/font_17" />
+    </RelativeLayout>
+
+
+    <EditText
+        android:id="@+id/edt_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_17"
+        android:layout_marginTop="@dimen/dimen_30"
+        android:layout_marginEnd="@dimen/dimen_17"
+        android:background="@null"
+        android:gravity="center"
+        android:hint="@string/text_title"
+        android:textSize="@dimen/font_16" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/dimen_17"
+        android:layout_marginTop="@dimen/dimen_6"
+        android:layout_marginEnd="@dimen/dimen_17"
+        android:background="@color/minor_gray" />
+
+    <EditText
+        android:id="@+id/edt_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_17"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:layout_marginEnd="@dimen/dimen_17"
+        android:background="@null"
+        android:gravity="center"
+        android:hint="@string/description_text"
+        android:textSize="@dimen/font_16" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/dimen_17"
+        android:layout_marginTop="@dimen/dimen_6"
+        android:layout_marginEnd="@dimen/dimen_17"
+        android:background="@color/minor_gray" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_40"
+        android:layout_marginBottom="@dimen/dimen_10"
+        android:orientation="horizontal">
+
+
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+            android:id="@+id/btn_cancel_dialog"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dimen_45"
+            android:layout_marginStart="@dimen/dimen_10"
+            android:layout_weight="1"
+            android:textSize="17sp"
+            android:background="@drawable/dialog_btn_shape_tablet"
+            android:gravity="center"
+            android:text="@string/cancel_text"
+            android:textColor="@color/blue" />
+
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+            android:id="@+id/btn_send_dialog"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dimen_45"
+            android:layout_marginStart="@dimen/dimen_10"
+            android:layout_marginEnd="@dimen/dimen_10"
+            android:layout_weight="1"
+            android:textSize="17sp"
+            android:background="@drawable/dialog_btn_shape_tablet"
+            android:gravity="center"
+            android:text="@string/report_issue"
+            android:textColor="@color/blue" />
+
+    </LinearLayout>
+
+</LinearLayout>

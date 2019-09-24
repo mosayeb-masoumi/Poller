@@ -95,7 +95,7 @@ public class SurveyHolder1 extends RecyclerView.ViewHolder {
 //            row_survey_LLbackground.setBackground(ContextCompat.getDrawable(context, R.drawable.row_survey_gradient_border));
         }else
 
-        if (remaining_day > 0 && start_year == current_year && start_month == current_month && ((current_day - start_day) == +1 || (current_day - start_day) == 0)) { //gold
+        if (remaining_day > 0 && start_year == current_year && start_month == current_month && ((current_day - start_day) == +2 || (current_day - start_day) == +1 || (current_day - start_day) == 0)) { //gold
             row_survey_imgmobile.setImageResource(R.drawable.survey_item_brown_mobile);
             row_survey_imgLeftday.setImageResource(R.drawable.survey_item_leftday_gold_icon);
             text_survey_title.setTextColor(ContextCompat.getColor(context, R.color.brown));

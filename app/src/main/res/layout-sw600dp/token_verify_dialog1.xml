@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_btn_shape_tablet"
+    android:layout_margin="@dimen/_5sdp"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/dialog_header_shape"
+        android:gravity="center">
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/attention"
+            android:textStyle="bold"
+            android:textColor="@color/white_gray"
+            android:textSize="@dimen/font_17"/>
+    </RelativeLayout>
+
+
+    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:lineSpacingMultiplier="1.5"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_15"
+        android:text="@string/token_verify_message"
+        android:textSize="@dimen/font_17" />
+
+    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+        android:layout_marginTop="@dimen/dimen_5"
+        android:layout_width="match_parent"
+        android:id="@+id/text_body"
+        android:gravity="center"
+        android:textSize="@dimen/font_14"
+        android:layout_marginBottom="@dimen/dimen_10"
+        android:layout_height="wrap_content" />
+
+   
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_40"
+        android:layout_marginBottom="@dimen/dimen_10"
+        android:orientation="horizontal">
+
+
+
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+            android:id="@+id/btn_exit_dialog"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dimen_45"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:layout_marginEnd="@dimen/_30sdp"
+            android:layout_weight="1"
+            android:textSize="17sp"
+            android:textColor="@color/blue"
+            android:background="@drawable/dialog_btn_shape_tablet"
+            android:gravity="center"
+            android:text="@string/register" />
+
+    </LinearLayout>
+
+</LinearLayout>

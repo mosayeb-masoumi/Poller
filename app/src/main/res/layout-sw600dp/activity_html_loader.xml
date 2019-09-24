@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:id="@+id/rl_root"
+    android:layout_height="match_parent"
+    >
+
+    <!--<android.support.design.widget.AppBarLayout-->
+        <!--android:id="@+id/app_bar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+
+        <!--<android.support.v7.widget.Toolbar-->
+
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
+
+            <!--<LinearLayout-->
+                <!--android:id="@+id/linear_exit"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content">-->
+
+                <!--<ImageView-->
+                    <!--android:src="@drawable/close"-->
+                    <!--android:padding="@dimen/dimen_6"-->
+                    <!--android:layout_width="@dimen/dimen_30"-->
+                    <!--android:tint="@color/main_page_toolbar"-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--android:layout_height="@dimen/dimen_30" />-->
+
+                <!--<com.rahbarbazaar.poller.android.Utilities.CustomTextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:textSize="@dimen/font_15"-->
+                    <!--android:text="@string/back_to_app"-->
+                    <!--android:textColor="@color/main_page_toolbar"-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--android:layout_height="wrap_content" />-->
+
+            <!--</LinearLayout>-->
+
+        <!--</android.support.v7.widget.Toolbar>-->
+
+    <!--</android.support.design.widget.AppBarLayout>-->
+
+    <WebView
+        android:id="@+id/web_view"
+        android:layout_width="match_parent"
+        android:layout_above="@+id/web_btnbar"
+        android:layout_height="match_parent" />
+
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/av_loading"
+        app:indicatorColor="@color/colorPrimary"
+        android:layout_width="@dimen/dimen_40"
+        android:layout_height="@dimen/dimen_40"
+        android:layout_centerHorizontal="true"
+        android:padding="@dimen/dimen_2"
+        android:layout_centerVertical="true"
+        app:indicatorName="BallPulseSyncIndicator" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/web_btnbar"
+        android:gravity="end"
+        android:background="@drawable/bg_toolbar1"
+        android:layout_height="@dimen/dimen_55">
+
+        <LinearLayout
+            android:id="@+id/linear_exit"
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_height="match_parent">
+
+
+            <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white_gray"
+                android:textSize="@dimen/_11sdp"
+                android:textStyle="bold"
+                android:text="@string/retuen"/>
+
+            <ImageView
+                android:src="@drawable/arrow_left"
+                android:layout_width="35dp"
+                android:tint="@color/main_page_toolbar"
+                android:layout_height="match_parent" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

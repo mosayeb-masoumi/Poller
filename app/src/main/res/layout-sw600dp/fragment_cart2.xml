@@ -4,40 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
-    <!--<RelativeLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="@dimen/_53sdp">-->
-
-
-        <!--<RelativeLayout-->
-            <!--android:layout_width="@dimen/_100sdp"-->
-            <!--android:layout_height="@dimen/_40sdp"-->
-            <!--android:layout_centerHorizontal="true"-->
-            <!--android:layout_centerVertical="true"-->
-            <!--android:layout_marginTop="@dimen/_2sdp"-->
-            <!--android:background="@drawable/dialog_btn_shape">-->
-
-            <!--<com.rahbarbazaar.poller.android.Utilities.CustomTextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:layout_alignParentBottom="true"-->
-                <!--android:layout_centerHorizontal="true"-->
-                <!--android:gravity="center_vertical"-->
-                <!--android:padding="@dimen/_2sdp"-->
-                <!--android:text="@string/transaction_tab"-->
-                <!--android:textColor="@color/colorAccent1"-->
-                <!--android:textSize="@dimen/_15ssp"-->
-                <!--android:textStyle="bold" />-->
-        <!--</RelativeLayout>-->
-
-
-        <!--<ImageView-->
-            <!--android:layout_width="@dimen/_100sdp"-->
-            <!--android:layout_height="@dimen/_22sdp"-->
-            <!--android:layout_centerHorizontal="true"-->
-            <!--android:src="@drawable/bg_myaccount_coin_icon" />-->
-    <!--</RelativeLayout>-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/_53sdp">
@@ -107,12 +73,12 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="130dp"
                     android:background="@drawable/bg_myaccount_bluelight" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="90dp"
+                    android:layout_height="120dp"
                     android:background="@drawable/bg_myaccount_lightpink" />
 
                 <RelativeLayout
@@ -135,14 +101,15 @@
                             android:gravity="center"
                             android:text="@string/wallet_balance"
                             android:textColor="#1f1a6b"
-                            android:textSize="@dimen/font_14"
+                            android:textSize="@dimen/font_17"
                             android:textStyle="bold" />
 
                         <ImageView
                             android:id="@+id/img_16"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="4"
+                            android:padding="5dp"
+                            android:layout_weight="3.5"
                             android:src="@drawable/bg_myaccount_toman_icon" />
 
 
@@ -155,7 +122,7 @@
                             android:layout_marginTop="@dimen/_3sdp"
                             android:text="15245"
                             android:textColor="#ca1390"
-                            android:textSize="14sp" />
+                            android:textSize="17sp" />
 
 
                     </LinearLayout>
@@ -177,7 +144,7 @@
                             android:gravity="center"
                             android:text="@string/text_your_point"
                             android:textColor="#1f1a6b"
-                            android:textSize="14sp" />
+                            android:textSize="17sp" />
 
 
 
@@ -185,7 +152,8 @@
                             android:id="@+id/img_17"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="4"
+                            android:layout_weight="3.5"
+                            android:padding="5dp"
                             android:src="@drawable/bg_myaccount_papasi_icon" />
 
                         <com.rahbarbazaar.poller.android.Utilities.CustomTextView
@@ -199,7 +167,7 @@
                             android:layout_marginTop="@dimen/_3sdp"
 
                             android:textColor="#ca1390"
-                            android:textSize="@dimen/font_14"
+                            android:textSize="@dimen/font_17"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -233,20 +201,24 @@
                     <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                         android:id="@+id/tv_transaction_tab"
                         android:layout_width="0dp"
-                        android:layout_height="41dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignStart="@+id/rl_6"
+                        android:layout_alignTop="@+id/rl_6"
                         android:layout_marginEnd="@dimen/_2sdp"
                         android:layout_weight="1"
                         android:background="@drawable/bg_myaccount_tab"
                         android:gravity="center"
                         android:tag="selected"
                         android:text="@string/text_transaction_tab_one"
-                        android:textColor="#ababab" />
+                        android:textColor="#ababab"
+                        android:textSize="17sp" />
                     <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                         android:id="@+id/tv_point_tab"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:textSize="17sp"
                         android:layout_marginStart="@dimen/_2sdp"
                         android:background="@drawable/bg_myaccount_tabpink"
                         android:text="@string/text_transaction_tab_two"
@@ -266,6 +238,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:layout_marginTop="@dimen/_1sdp"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_weight="3">

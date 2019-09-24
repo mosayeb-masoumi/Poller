@@ -103,6 +103,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:id="@+id/rl_curvedbottom"
+        android:visibility="gone"
         android:layout_above="@+id/bottom_navigation"
         android:layout_height="@dimen/_9sdp">
         <ImageView

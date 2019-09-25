@@ -90,8 +90,8 @@ import okhttp3.RequestBody;
 
 public class MainActivity extends CustomBaseActivity implements
         View.OnClickListener, AHBottomNavigation.OnTabSelectedListener, DialogFactory.DialogFactoryInteraction,
-        SurveyFragment.ActiveSurveyInteraction, DrawerRecyclerAdapter.OnDrawerItemClickListener ,
-        HomeFragment1.ActiveSurveysInteraction{
+        SurveyFragment.ActiveSurveyInteraction, DrawerRecyclerAdapter.OnDrawerItemClickListener,
+        HomeFragment1.ActiveSurveysInteraction {
 
     //region of views
 
@@ -105,6 +105,7 @@ public class MainActivity extends CustomBaseActivity implements
     LinearLayout linear_invite_friend, linear_exit, linear_shopping, linear_notify_drawer, linear_change_lang,
             linear_support, linear_report_issue, linear_faq, linear_videos, linear_submenu, linear_lottery, ll_drawer;
     RelativeLayout rl_notification, rl_curvedbottom;
+    LinearLayout ll_notify_count;
     RecyclerView drawer_rv;
 
     //end of region
@@ -170,11 +171,10 @@ public class MainActivity extends CustomBaseActivity implements
 
         if (parcelable != null && parcelable.getItems() != null && parcelable.getStatus().equalsIgnoreCase("ok"))
             initializeViewPager(parcelable, locale_name);
-        else{
+        else {
 //            SnackBarFactory.getInstance().showLoginIssueSnackbar(findViewById(R.id.app_bar), this, parcelable);
         }
 //
-
 
 
         //initial Dialog factory
@@ -210,18 +210,16 @@ public class MainActivity extends CustomBaseActivity implements
         }
 
 
-        if(tools.checkPackageInstalled("org.telegram.messenger", this)){ //no telegram
-            if(tools.checkPackageInstalled("com.instagram.android", this)){ // no instagram
+        if (tools.checkPackageInstalled("org.telegram.messenger", this)) { //no telegram
+            if (tools.checkPackageInstalled("com.instagram.android", this)) { // no instagram
                 text_follow_us.setVisibility(View.INVISIBLE);
             }
         }
-        if(tools.checkPackageInstalled("com.instagram.android", this)){ //no instagram
-            if(tools.checkPackageInstalled("org.telegram.messenger", this)){ // no telegram
+        if (tools.checkPackageInstalled("com.instagram.android", this)) { //no instagram
+            if (tools.checkPackageInstalled("org.telegram.messenger", this)) { // no telegram
                 text_follow_us.setVisibility(View.INVISIBLE);
             }
         }
-
-
 
 
 //        if(check_package){
@@ -237,14 +235,11 @@ public class MainActivity extends CustomBaseActivity implements
             img_arrow.setImageResource(R.drawable.arrow_right);
 
 
-        if(prefrence != null && prefrence.getType().equals("1")){
+        if (prefrence != null && prefrence.getType().equals("1")) {
             linear_invite_friend.setVisibility(View.GONE);
-        }else{
+        } else {
             linear_invite_friend.setVisibility(View.VISIBLE);
         }
-
-
-
 
 
     }
@@ -285,6 +280,7 @@ public class MainActivity extends CustomBaseActivity implements
         img_arrow = findViewById(R.id.img_arrow);
         ll_drawer = findViewById(R.id.ll_drawer);
         rl_curvedbottom = findViewById(R.id.rl_curvedbottom);
+        ll_notify_count=findViewById(R.id.ll_notify_count);
         //text_point = findViewById(R.id.text_point);
 
         image_drawer.setOnClickListener(this);
@@ -352,7 +348,6 @@ public class MainActivity extends CustomBaseActivity implements
         bottom_navigation.setInactiveColor(Color.parseColor("#FFFFFF"));
 
         bottom_navigation.setDefaultBackgroundResource(R.drawable.bg_toolbar1);
-
 
 
         //requred api level min 21
@@ -604,7 +599,7 @@ public class MainActivity extends CustomBaseActivity implements
 
             case R.id.image_drawer:
                 drawer_layout_home.openDrawer(Gravity.END);
-                if(App.balance>=1000){
+                if (App.balance >= 1000) {
                     linear_shopping.setVisibility(View.VISIBLE);
                 }
 
@@ -619,8 +614,6 @@ public class MainActivity extends CustomBaseActivity implements
                 else
                     generateInviteLink();
                 break;
-
-
 
 
             case R.id.linear_exit:
@@ -725,9 +718,9 @@ public class MainActivity extends CustomBaseActivity implements
                     @Override
                     public void onAcceptButtonClicked(String... strings) {
 
-                        if(locale_name.equals("fa")){
+                        if (locale_name.equals("fa")) {
                             drawer_layout_home.closeDrawer(Gravity.END);
-                        }else{
+                        } else {
                             LocaleManager.setNewLocale(MainActivity.this, "fa");
 //                        App.language = "fa";
                             Intent i = new Intent(MainActivity.this, SplashScreenActivity1.class);
@@ -740,9 +733,9 @@ public class MainActivity extends CustomBaseActivity implements
                     @Override
                     public void onDeniedButtonClicked(boolean cancel_dialog) {
 
-                        if(locale_name.equals("en")){
+                        if (locale_name.equals("en")) {
                             drawer_layout_home.closeDrawer(Gravity.END);
-                        }else{
+                        } else {
                             LocaleManager.setNewLocale(MainActivity.this, "en");
 //                        App.language = "en";
                             Intent i = new Intent(MainActivity.this, SplashScreenActivity1.class);
@@ -804,6 +797,7 @@ public class MainActivity extends CustomBaseActivity implements
                         if (unReadCount != 0) {
 
                             text_notify_count.setVisibility(View.VISIBLE);
+                            ll_notify_count.setVisibility(View.VISIBLE);
                             if (unReadCount > 99)
                                 text_notify_count.setText("...");
                             else
@@ -812,6 +806,7 @@ public class MainActivity extends CustomBaseActivity implements
                         } else {
 
                             text_notify_count.setVisibility(View.GONE);
+                            ll_notify_count.setVisibility(View.GONE);
                         }
                     }
 
@@ -911,11 +906,7 @@ public class MainActivity extends CustomBaseActivity implements
 //                        dialogFactory.createNoRegisterDialog(drawer_layout_home, MainActivity.this);
 //        }
 //        else
-            main_view_pager.setCurrentItem(3 - position, true);
-
-
-
-
+        main_view_pager.setCurrentItem(3 - position, true);
 
 
         if (position == 2) {
@@ -988,10 +979,25 @@ public class MainActivity extends CustomBaseActivity implements
     @Override
     public void activeSurveysCount(String count) {
         //        set active survey badge:
-        bottom_navigation.setNotification(count, 2);
+// for set badge in persian
+        if (locale_name.equals("fa")) {
+            count = count.replace("1", "١")
+                    .replace("2", "٢")
+                    .replace("3", "٣")
+                    .replace("4", "۴")
+                    .replace("5", "۵")
+                    .replace("6", "۶")
+                    .replace("7", "۷")
+                    .replace("8", "۸")
+                    .replace("9", "۹");
+            bottom_navigation.setNotification(count, 2);
+        } else {
+            bottom_navigation.setNotification(count, 2);
+        }
+
+
+
     }
-
-
 
 
     @Override
@@ -1056,8 +1062,6 @@ public class MainActivity extends CustomBaseActivity implements
         registerReceiver(connectivityReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
         drawer_layout_home.closeDrawer(Gravity.END);
     }
-
-
 
 
 //    public void replaceFragment(Fragment fragment){

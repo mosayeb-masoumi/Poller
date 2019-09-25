@@ -58,22 +58,45 @@
                         android:layout_width="@dimen/_33sdp"
                         android:layout_height="@dimen/_33sdp"
                         android:paddingStart="@dimen/dimen_6"
-                        android:paddingEnd="@dimen/dimen_11"
+                        android:paddingEnd="@dimen/dimen_5"
                         android:src="@drawable/notify_badge1" />
 
-                    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
-                        android:id="@+id/text_notify_count"
-                        android:layout_width="@dimen/dimen_20"
-                        android:layout_height="@dimen/dimen_20"
+
+
+                    <LinearLayout
+                        android:id="@+id/ll_notify_count"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
                         android:layout_alignParentEnd="true"
+                        android:gravity="center"
                         android:layout_marginTop="@dimen/dimen_2"
                         android:layout_marginEnd="@dimen/dimen_2"
                         android:background="@drawable/red_circle_shape"
-                        android:gravity="center"
-                        android:textColor="@color/main_page_toolbar"
-                        android:textSize="@dimen/font_13"
-                        android:visibility="invisible"
-                        tools:textt="13" />
+                        android:visibility="invisible">
+
+                        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                            android:id="@+id/text_notify_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textColor="@color/main_page_toolbar"
+                            android:textSize="11dp"
+                            android:visibility="invisible" />
+
+                    </LinearLayout>
+                    <!--<com.rahbarbazaar.poller.android.Utilities.CustomTextView-->
+                        <!--android:id="@+id/text_notify_count"-->
+                        <!--android:layout_width="@dimen/dimen_20"-->
+                        <!--android:layout_height="@dimen/dimen_20"-->
+                        <!--android:layout_alignParentEnd="true"-->
+                        <!--android:layout_marginTop="@dimen/dimen_2"-->
+                        <!--android:layout_marginEnd="@dimen/dimen_2"-->
+                        <!--android:background="@drawable/red_circle_shape"-->
+                        <!--android:gravity="center"-->
+                        <!--android:textColor="@color/main_page_toolbar"-->
+                        <!--android:textSize="@dimen/font_13"-->
+                        <!--android:visibility="invisible"-->
+                        <!--tools:textt="13" />-->
 
                 </RelativeLayout>
             </RelativeLayout>

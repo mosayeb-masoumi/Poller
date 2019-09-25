@@ -10,7 +10,9 @@ import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.os.ConfigurationCompat;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
@@ -83,6 +85,16 @@ public class LoginActivity extends CustomBaseActivity implements View.OnClickLis
 
 
         av_login.setVisibility(View.GONE);
+
+// event on done keyboard
+        et_user_login.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                sendLoginRequest();
+                return true;
+            }
+            return false;
+        });
+
     }
 
     //define views of activity

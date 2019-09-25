@@ -423,7 +423,7 @@
                 <LinearLayout
                     android:id="@+id/dashboard_btm"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_18sdp"
+                    android:layout_height="23dp"
                     android:layout_alignParentBottom="true"
                     android:background="#264796"
                     android:orientation="horizontal">
@@ -437,11 +437,11 @@
                             android:id="@+id/text_leftdays_digit"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
+                            android:layout_centerInParent="true"
                             android:layout_centerVertical="true"
                             android:text="-"
                             android:textColor="@color/white_gray"
-                            android:textSize="@dimen/_13ssp" />
+                            android:textSize="@dimen/_12ssp" />
 
 
                     </RelativeLayout>
@@ -455,11 +455,10 @@
                             android:id="@+id/text_activepoll_digit"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
-                            android:layout_centerVertical="true"
+                          android:layout_centerInParent="true"
                             android:text="-"
                             android:textColor="@color/white_gray"
-                            android:textSize="@dimen/_13ssp" />
+                            android:textSize="@dimen/_12ssp" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -471,11 +470,10 @@
                             android:id="@+id/text_balance_digit"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
-                            android:layout_centerVertical="true"
+                            android:layout_centerInParent="true"
                             android:text="-"
                             android:textColor="@color/white_gray"
-                            android:textSize="@dimen/_13ssp" />
+                            android:textSize="@dimen/_12ssp" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -487,11 +485,10 @@
                             android:id="@+id/text_yourpoint_digit"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
-                            android:layout_centerVertical="true"
+                            android:layout_centerInParent="true"
                             android:text="-"
                             android:textColor="@color/white_gray"
-                            android:textSize="@dimen/_13ssp" />
+                            android:textSize="@dimen/_12ssp" />
                     </RelativeLayout>
 
                 </LinearLayout>

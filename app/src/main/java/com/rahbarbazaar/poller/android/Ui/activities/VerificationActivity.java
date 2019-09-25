@@ -13,7 +13,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -131,6 +133,17 @@ public class VerificationActivity extends CustomBaseActivity
                 tools.doCheckNetwork(VerificationActivity.this, findViewById(R.id.rl_root));
             }
         };
+
+
+// event on done keyboard
+        et_user_verify.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                //Call your method here
+                sendVerifyRequest();
+                return true;
+            }
+            return false;
+        });
     }
 
     //define views of activity

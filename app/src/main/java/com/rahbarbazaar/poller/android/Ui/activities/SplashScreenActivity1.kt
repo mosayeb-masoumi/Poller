@@ -41,7 +41,7 @@ class SplashScreenActivity1 : AppCompatActivity() {
     private lateinit var dialogFactory: DialogFactory
     private var getCurrencyListResult: GetCurrencyListResult? = null
 
-    private var connectivityReceiver: BroadcastReceiver? = null
+//    private var connectivityReceiver: BroadcastReceiver? = null
 
 //    var av_loading :AVLoadingIndicatorView? = null
 
@@ -52,14 +52,14 @@ class SplashScreenActivity1 : AppCompatActivity() {
         setContentView(R.layout.activity_splash_screen1)
 
 
-        //check network broadcast reciever
-        val tools2 = GeneralTools.getInstance()
-        connectivityReceiver = object : BroadcastReceiver() {
-            override fun onReceive(context: Context, intent: Intent) {
-                tools2.doCheckNetwork(this@SplashScreenActivity1, findViewById(R.id.rl_root))
-            }
-
-        }
+//        //check network broadcast reciever
+//        val tools2 = GeneralTools.getInstance()
+//        connectivityReceiver = object : BroadcastReceiver() {
+//            override fun onReceive(context: Context, intent: Intent) {
+//                tools2.doCheckNetwork(this@SplashScreenActivity1, findViewById(R.id.rl_root))
+//            }
+//
+//        }
 
 
 
@@ -307,17 +307,17 @@ class SplashScreenActivity1 : AppCompatActivity() {
     }
 
 
-    override fun onDestroy() {
-        disposable.dispose()
-        unregisterReceiver(connectivityReceiver)
-        super.onDestroy()
-    }
-
-
-    override fun onResume() {
-        super.onResume()
-        registerReceiver(connectivityReceiver, IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
-    }
+//    override fun onDestroy() {
+//        disposable.dispose()
+//        unregisterReceiver(connectivityReceiver)
+//        super.onDestroy()
+//    }
+//
+//
+//    override fun onResume() {
+//        super.onResume()
+//        registerReceiver(connectivityReceiver, IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
+//    }
 //    protected fun onResume() {
 //        super.onResume()
 //        registerReceiver(connectivityReceiver, IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))

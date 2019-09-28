@@ -172,8 +172,7 @@
     <string name="retuen">بازگشت</string>
     <string name="incorrect_mobilephone">شماره موبایل صحیح نمی باشد</string>
     <string name="please_wait">لطفا شکیبا باشید…</string>
-
-
+    <string name="powered_by">Powered by...</string>
 
 
 </resources>

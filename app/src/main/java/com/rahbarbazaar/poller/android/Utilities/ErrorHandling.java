@@ -26,7 +26,7 @@ public class ErrorHandling {
             ((Activity) context).runOnUiThread(new Runnable() {
                 public void run() {
                     if (language.equals("en")) {
-                        Toast.makeText(context, "failed_connection_to_server", Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, "failed connection to server", Toast.LENGTH_LONG).show();
                     } else {
                         Toast.makeText(context, "عدم ارتباط با سرور", Toast.LENGTH_LONG).show();
                     }

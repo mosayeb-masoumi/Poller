@@ -2,7 +2,11 @@ package com.rahbarbazaar.poller.android.Ui.activities
 
 import android.annotation.SuppressLint
 import android.app.Dialog
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.provider.Settings
 import android.support.v7.app.AppCompatActivity
@@ -37,6 +41,8 @@ class SplashScreenActivity1 : AppCompatActivity() {
     private lateinit var dialogFactory: DialogFactory
     private var getCurrencyListResult: GetCurrencyListResult? = null
 
+    private var connectivityReceiver: BroadcastReceiver? = null
+
 //    var av_loading :AVLoadingIndicatorView? = null
 
     var b: Int = 0
@@ -44,6 +50,18 @@ class SplashScreenActivity1 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen1)
+
+
+        //check network broadcast reciever
+        val tools2 = GeneralTools.getInstance()
+        connectivityReceiver = object : BroadcastReceiver() {
+            override fun onReceive(context: Context, intent: Intent) {
+                tools2.doCheckNetwork(this@SplashScreenActivity1, findViewById(R.id.rl_root))
+            }
+
+        }
+
+
 
         txtVersion.setText(BuildConfig.VERSION_NAME)
 
@@ -291,6 +309,18 @@ class SplashScreenActivity1 : AppCompatActivity() {
 
     override fun onDestroy() {
         disposable.dispose()
+        unregisterReceiver(connectivityReceiver)
         super.onDestroy()
     }
+
+
+    override fun onResume() {
+        super.onResume()
+        registerReceiver(connectivityReceiver, IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
+    }
+//    protected fun onResume() {
+//        super.onResume()
+//        registerReceiver(connectivityReceiver, IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
+//    }
+//
 }

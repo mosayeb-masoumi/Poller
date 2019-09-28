@@ -173,7 +173,7 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
                             if(languag.equals("fa"))
                             text_gender.text = if (result.gender == "male") "آقا" else "خانم"
                             else
-                                text_gender.text = result.gender
+                                text_gender.text = if (result.gender =="male") "Male" else "Female"
                         }
 
 

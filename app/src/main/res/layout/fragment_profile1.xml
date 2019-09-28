@@ -431,7 +431,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="@dimen/_5sdp"
                         android:layout_toStartOf="@+id/img1"
-                        android:text="@string/convert_toman"
+                        android:text="@string/convert_papasi"
                         android:textColor="@color/white_gray"
                         android:textSize="@dimen/_12ssp"
                         android:textStyle="bold" />
@@ -458,16 +458,17 @@
                         android:id="@+id/img2"
                         android:layout_marginEnd="@dimen/_10sdp"
                         android:src="@drawable/p_to_t"/>
+
                     <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:textSize="@dimen/_12ssp"
-                        android:textStyle="bold"
-                        android:layout_toStartOf="@id/img2"
                         android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_toStartOf="@id/img2"
+                        android:text="@string/convert_toman"
                         android:textColor="@color/white_gray"
-                        android:text="@string/convert_papasi"/>
+                        android:textSize="@dimen/_12ssp"
+                        android:textStyle="bold" />
                 </RelativeLayout>
             </LinearLayout>
 

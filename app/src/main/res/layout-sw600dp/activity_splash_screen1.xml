@@ -50,7 +50,7 @@
             android:id="@+id/txt"
             android:gravity="center_horizontal"
             android:textColor="@color/white_gray"
-            android:text="powered by"/>
+            android:text="@string/powered_by"/>
         <ImageView
             android:layout_width="@dimen/_65sdp"
             android:layout_height="@dimen/_10sdp"

@@ -53,7 +53,7 @@
             android:layout_height="@dimen/dimen_42"
             android:background="@drawable/dialog_btn_shape"
             android:textColor="@color/blue"
-            android:textSize="@dimen/_12sdp"
+            android:textSize="@dimen/_13sdp"
             android:gravity="center"
             android:text="@string/cancel_text" />
 
@@ -64,7 +64,7 @@
             android:layout_marginStart="@dimen/dimen_10"
             android:layout_marginEnd="@dimen/dimen_10"
             android:layout_weight="1"
-            android:textSize="@dimen/_12sdp"
+            android:textSize="@dimen/_13sdp"
             android:textColor="@color/blue"
             android:background="@drawable/dialog_btn_shape"
             android:gravity="center"

@@ -5,8 +5,10 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.support.multidex.MultiDexApplication;
 
+import com.crashlytics.android.Crashlytics;
 import com.facebook.drawee.backends.pipeline.Fresco;
 
+import io.fabric.sdk.android.Fabric;
 import org.jetbrains.annotations.NotNull;
 
 
@@ -17,6 +19,7 @@ public class App extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+        Fabric.with(this, new Crashlytics());
         Fresco.initialize(this);// initial fresco library for bind image data
     }
 

@@ -88,8 +88,8 @@
     <string name="text_survey_description">Description:</string>
     <string name="text_does_not_have">Does not have</string>
     <string name="text_no_internet_connection">Make sure you have an internet connection to use the app and try again</string>
-    <string name="text_internet_setting">Internet setting</string>
-    <string name="text_data_setting">Data setting</string>
+    <string name="text_internet_setting">Wifi Setting</string>
+    <string name="text_data_setting">Data Setting</string>
     <string name="text_double_click_exit">Click again to exit app</string>
     <string name="text_lottery">Lottery</string>
     <string name="text_lottery_join">Join</string>
@@ -129,7 +129,7 @@
 
     <!--Bottom navigation tabs-->
     <string name="text_transaction_tab_one">Transaction</string>
-    <string name="text_transaction_tab_two">Point</string>
+    <string name="text_transaction_tab_two">Score</string>
 
     <!--Bottom navigation tabs-->
     <string name="home_tab">Home</string>
@@ -152,7 +152,7 @@
     <string name="text_newPolls">New Poll</string>
     <string name="text_activePolls">Active Survey</string>
     <string name="text_balance">Balance</string>
-    <string name="text_your_point">Your Point</string>
+    <string name="text_your_point">Your Score</string>
     <string name="text_leftday">Days Left</string>
     <string name="wallet_balance">Your Wallet Balance</string>
     <string name="text_yearly_lottery">Yearly Lottery</string>
@@ -168,7 +168,7 @@
     <string name="membership">Membership</string>
     <string name="retuen">Back</string>
     <string name="incorrect_mobilephone">Incorrect mobile number</string>
-    <string name="please_wait">Please wait …</string>
-    <string name="powered_by">Powered by…</string>
+    <string name="please_wait">Please wait…</string>
+    <string name="powered_by">Powered by</string>
 
 </resources>

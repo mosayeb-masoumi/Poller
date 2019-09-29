@@ -147,8 +147,8 @@
     <string name="confirmation">تايید</string>
     <string name="enter">ورود</string>
     <string name="text_access_upgrade">ارتقاء سطح کاربری</string>
-    <string name="convert_toman">تبدیل تومان</string>
-    <string name="convert_papasi">تبدیل پاپاسی</string>
+    <string name="convert_toman">تبدیل به تومان</string>
+    <string name="convert_papasi">تبدیل به پاپاسی</string>
     <string name="text_polls">نظرسنجی ها</string>
     <string name="text_news">چه خبر!</string>
     <string name="text_video">ویدیوها</string>
@@ -166,8 +166,8 @@
     <string name="try_afewmin_later">لطفا برنامه را ببندید و چند دقیقه دیگر امتحان کنید.</string>
     <string name="close_app">بستن برنامه</string>
     <string name="survey_notTakenpart">شما تا کنون در هیچ قرعه کشی شرکت نکرده اید.</string>
-    <string name="stay_survey">خیر، در نظرسنجی می‌مانم.</string>
-    <string name="exit_survey">بله، از نظرسنجی خارج می‌شوم.</string>
+    <string name="stay_survey">خیر، می‌مانم.</string>
+    <string name="exit_survey">بله، خارج می‌شوم.</string>
     <string name="membership">عضویت</string>
     <string name="retuen">بازگشت</string>
     <string name="incorrect_mobilephone">شماره موبایل صحیح نمی باشد</string>

@@ -36,7 +36,7 @@
         android:textColor="@color/blue"
         android:layout_marginTop="20dp"
         android:text="@string/exit_profile_text_dialog"
-        android:textSize="@dimen/font_14" />
+        android:textSize="@dimen/_13sdp" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
             android:layout_marginStart="@dimen/dimen_10"
             android:layout_marginEnd="@dimen/dimen_10"
             android:layout_weight="1"
-            android:textSize="@dimen/_10sdp"
+            android:textSize="@dimen/_12sdp"
             android:textColor="@color/blue"
             android:background="@drawable/dialog_btn_shape"
             android:gravity="center"
@@ -64,7 +64,7 @@
             android:layout_marginStart="@dimen/dimen_10"
             android:layout_marginEnd="@dimen/dimen_10"
             android:layout_height="@dimen/dimen_50"
-            android:textSize="@dimen/_10sdp"
+            android:textSize="@dimen/_12sdp"
             android:background="@drawable/dialog_btn_shape"
             android:textColor="@color/blue"
             android:gravity="center"

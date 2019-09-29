@@ -233,7 +233,7 @@
                     <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                         android:id="@+id/tv_transaction_tab"
                         android:layout_width="0dp"
-                        android:layout_height="41dp"
+                        android:layout_height="match_parent"
                         android:layout_marginEnd="@dimen/_2sdp"
                         android:layout_weight="1"
                         android:background="@drawable/bg_myaccount_tab"

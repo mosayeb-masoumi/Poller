@@ -26,8 +26,10 @@ import io.reactivex.schedulers.Schedulers
 import android.support.v4.os.ConfigurationCompat
 import android.widget.LinearLayout
 import com.rahbarbazaar.poller.android.Models.eventbus.ModelTranferDataProfileToHome
+import com.rahbarbazaar.poller.android.Models.eventbus.ModelUserType
 import com.rahbarbazaar.poller.android.Ui.activities.HtmlLoaderActivity
 import com.rahbarbazaar.poller.android.Ui.activities.MainActivity
+import com.rahbarbazaar.poller.android.Ui.activities.SplashScreenActivity1
 import kotlinx.android.synthetic.main.fragment_profile.profile_root
 import kotlinx.android.synthetic.main.fragment_profile.rl_balance_point
 import kotlinx.android.synthetic.main.fragment_profile.rl_edit_profile
@@ -55,6 +57,7 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
 
     var type: String = ""
 
+    internal var goto_splash = false
 
     var balance: String? = null
     var score: String? = null
@@ -205,6 +208,12 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
                                 val modelDataProfileTohome = ArrayList<ModelTranferDataProfileToHome>()
                                 modelDataProfileTohome.add(ModelTranferDataProfileToHome(balance, score))
                                 EventBus.getDefault().post(modelDataProfileTohome)
+
+
+
+                                val modelUserType = ModelUserType()
+                                modelUserType.user_type = result.type
+                                EventBus.getDefault().post(modelUserType)
 
                             }
 
@@ -376,6 +385,8 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
 
             R.id.rl_user_access_upgrade -> {
 
+                goto_splash = true
+
                 if (type.equals("1")) {
 //                    var a = preferenceStorage?.retrivePhone()
                     goToHtmlActivity("https://test.rahbarbazar.com/poller/v2/user/register?mobile="
@@ -420,6 +431,10 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
     override fun onResume() {
         super.onResume()
         getUserProfile()
+
+        if (goto_splash) {
+            startActivity(Intent(context, SplashScreenActivity1::class.java))
+        }
     }
 }
 

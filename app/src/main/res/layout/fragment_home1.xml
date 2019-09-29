@@ -296,10 +296,11 @@
 
                         <ImageView
                             android:id="@+id/img3"
-                            android:layout_width="@dimen/_25sdp"
-                            android:layout_height="@dimen/_25sdp"
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_marginBottom="2dp"
                             android:layout_centerHorizontal="true"
-                            android:layout_marginTop="@dimen/_2sdp"
+                            android:layout_centerVertical="true"
                             android:src="@drawable/prize" />
 
                         <com.rahbarbazaar.poller.android.Utilities.CustomTextView
@@ -308,11 +309,10 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
                             android:layout_centerHorizontal="true"
-                            android:layout_marginStart="@dimen/_10sdp"
                             android:gravity="center_vertical"
                             android:text="@string/text_leftday"
                             android:textColor="@color/blue"
-                            android:textSize="@dimen/_10ssp" />
+                            android:textSize="12sp" />
 
 
                     </RelativeLayout>
@@ -332,10 +332,11 @@
                         android:layout_weight="2">
 
                         <ImageView
-                            android:layout_width="@dimen/_25sdp"
-                            android:layout_height="@dimen/_25sdp"
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_marginBottom="2dp"
                             android:layout_centerHorizontal="true"
-                            android:layout_marginTop="@dimen/_2sdp"
+                            android:layout_centerVertical="true"
                             android:src="@drawable/active_poll" />
 
                         <com.rahbarbazaar.poller.android.Utilities.CustomTextView
@@ -344,11 +345,10 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
                             android:layout_centerHorizontal="true"
-                            android:layout_marginStart="@dimen/_10sdp"
                             android:gravity="center_vertical"
                             android:text="@string/text_activePolls"
                             android:textColor="@color/blue"
-                            android:textSize="@dimen/_10ssp" />
+                            android:textSize="12sp" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -365,10 +365,11 @@
                         android:layout_weight="2">
 
                         <ImageView
-                            android:layout_width="@dimen/_25sdp"
-                            android:layout_height="@dimen/_25sdp"
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
                             android:layout_centerHorizontal="true"
-                            android:layout_marginTop="@dimen/_2sdp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginBottom="2dp"
                             android:src="@drawable/balance" />
 
                         <com.rahbarbazaar.poller.android.Utilities.CustomTextView
@@ -377,11 +378,10 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
                             android:layout_centerHorizontal="true"
-                            android:layout_marginStart="@dimen/_10sdp"
                             android:gravity="center_vertical"
                             android:text="@string/text_balance"
                             android:textColor="@color/blue"
-                            android:textSize="@dimen/_10ssp" />
+                            android:textSize="12sp" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -398,10 +398,11 @@
                         android:layout_weight="2">
 
                         <ImageView
-                            android:layout_width="@dimen/_25sdp"
-                            android:layout_height="@dimen/_25sdp"
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
                             android:layout_centerHorizontal="true"
-                            android:layout_marginTop="@dimen/_2sdp"
+                            android:layout_centerVertical="true"
+
                             android:src="@drawable/your_point_icon" />
 
                         <com.rahbarbazaar.poller.android.Utilities.CustomTextView
@@ -410,12 +411,11 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
                             android:layout_centerHorizontal="true"
-                            android:layout_marginStart="@dimen/_10sdp"
                             android:layout_marginBottom="0dp"
                             android:gravity="center_vertical"
                             android:text="@string/text_your_point"
                             android:textColor="@color/blue"
-                            android:textSize="@dimen/_10ssp" />
+                            android:textSize="12sp" />
                     </RelativeLayout>
 
                 </LinearLayout>
@@ -455,7 +455,9 @@
                             android:id="@+id/text_activepoll_digit"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                          android:layout_centerInParent="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="1dp"
                             android:text="-"
                             android:textColor="@color/white_gray"
                             android:textSize="@dimen/_12ssp" />

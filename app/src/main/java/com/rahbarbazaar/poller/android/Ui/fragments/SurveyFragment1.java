@@ -19,6 +19,7 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,10 +36,12 @@ import com.rahbarbazaar.poller.android.Models.RefreshBalanceEvent;
 import com.rahbarbazaar.poller.android.Models.RefreshSurveyEvent;
 import com.rahbarbazaar.poller.android.Models.SurveyMainModel;
 import com.rahbarbazaar.poller.android.Models.UserDetailsPrefrence;
+import com.rahbarbazaar.poller.android.Models.eventbus.ModelUserType;
 import com.rahbarbazaar.poller.android.Network.Service;
 import com.rahbarbazaar.poller.android.Network.ServiceProvider;
 import com.rahbarbazaar.poller.android.R;
 import com.rahbarbazaar.poller.android.Ui.activities.HtmlLoaderActivity;
+import com.rahbarbazaar.poller.android.Ui.activities.SplashScreenActivity1;
 import com.rahbarbazaar.poller.android.Utilities.ClientConfig;
 import com.rahbarbazaar.poller.android.Utilities.SnackBarFactory;
 import com.rahbarbazaar.poller.android.Utilities.SolarCalendar;
@@ -84,10 +87,13 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
     UserDetailsPrefrence userDetailsPrefrence;
     GetCurrencyListResult parcelable;
     String lang;
+    String user_type;
     //end of region
 
+    boolean goto_splash = false;
 
     RelativeLayout rl_survey_fragment;
+    LinearLayout rl_user_access_upgrade_survey;
 
     public SurveyFragment1() {
         // Required empty public constructor
@@ -117,6 +123,11 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+
+        // register eventbus to get posted array or etc...
+//        EventBus.getDefault().register(this);
+
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_survey1, container, false);
@@ -152,7 +163,39 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
             userDetailsPrefrence = new Gson().fromJson(user_details, UserDetailsPrefrence.class);
         }
 
+
+        rl_user_access_upgrade_survey.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                goto_splash = true;
+
+                if (user_type.equals("1")) {
+//                    var a = preferenceStorage?.retrivePhone()
+
+                    goToHtmlActivity("https://test.rahbarbazar.com/poller/v2/user/register?mobile="
+                            + PreferenceStorage.getInstance(getContext()).retrivePhone(), true);
+
+                } else if (user_type.equals("4")) {
+                    goToHtmlActivity("https://test.rahbarbazar.com/poller/v2/user/upgrade/"
+                            + PreferenceStorage.getInstance(getContext()).retrivePhone(), true);
+                }
+
+
+            }
+        });
+
+
         return view;
+    }
+
+    private void goToHtmlActivity(String url, boolean shouldBeLoadUrl) {
+        Intent intent = new Intent(getContext(), HtmlLoaderActivity.class);
+        intent.putExtra("url", url);
+        intent.putExtra("surveyDetails", false);
+        intent.putExtra("isShopping", shouldBeLoadUrl);
+        startActivity(intent);
     }
 
 
@@ -163,6 +206,7 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
 //        linear_header = view.findViewById(R.id.linear_header);
         swipe_refesh = view.findViewById(R.id.swipe_refresh);
         text_no_active_survey = view.findViewById(R.id.text_no_active_survey);
+        rl_user_access_upgrade_survey = view.findViewById(R.id.rl_user_access_upgrade_survey);
 
         //set scheme color for swipe refreshing and refresh listener
         swipe_refesh.setColorSchemeResources(R.color.colorPrimary);
@@ -277,10 +321,10 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
     private void getSurveyDetails(String survey_id, String button_status, int url_type) {
 
 
-        snackbar = Snackbar.make(Objects.requireNonNull(getView()),R.string.please_wait, Snackbar.LENGTH_INDEFINITE);
+        snackbar = Snackbar.make(Objects.requireNonNull(getView()), R.string.please_wait, Snackbar.LENGTH_INDEFINITE);
         String language = ConfigurationCompat.getLocales(getResources().getConfiguration()).get(0).getLanguage();
-        if(language.equals("fa"))
-        snackbar.getView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+        if (language.equals("fa"))
+            snackbar.getView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         else
             snackbar.getView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
         snackbar.show();
@@ -610,6 +654,29 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
         String currentDate = year + "-" + month + "-" + day + " " + currentTime;
 
         return currentDate;
+    }
+
+
+    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
+    public void onEventMainThread(ModelUserType modelUserType) {
+        user_type = modelUserType.getUser_type();
+
+        if (user_type.equals("1") || user_type.equals("4"))
+            rl_user_access_upgrade_survey.setVisibility(View.VISIBLE);
+        else
+            rl_user_access_upgrade_survey.setVisibility(View.GONE);
+
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if (goto_splash) {
+            startActivity(new Intent(getContext(), SplashScreenActivity1.class));
+        }
+
     }
 }
 

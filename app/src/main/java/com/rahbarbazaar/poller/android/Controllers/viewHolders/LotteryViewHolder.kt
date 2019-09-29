@@ -24,7 +24,8 @@ class LotteryViewHolder(view: View, val itemIntraction: GeneralItemIntraction<St
             when(win){
 
                 //case win
-                1->itemView.setBackgroundColor(Color.parseColor("#00b100"))
+//                1->itemView.setBackgroundColor(Color.parseColor("#00b100"))
+                1->itemView.setBackgroundResource(R.drawable.lottery_rv_bg1_win)
 
                 //case defeat
                 2->itemView.setBackgroundColor(Color.parseColor("#ff1a1a"))
@@ -39,3 +40,5 @@ class LotteryViewHolder(view: View, val itemIntraction: GeneralItemIntraction<St
 
     }
 }
+
+

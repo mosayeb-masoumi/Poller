@@ -80,7 +80,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="dfgdfghfghfhjhj"
-                            android:layout_alignParentStart="true"
+
+                           android:layout_centerHorizontal="true"
                             android:textColor="@color/blue"
                             android:textSize="@dimen/_11sdp"
                             android:textStyle="bold" />
@@ -165,18 +166,25 @@
                         android:padding="@dimen/_7sdp"
                         android:src="@drawable/arrow_blue_left" />
 
-                    <com.rahbarbazaar.poller.android.Utilities.CustomTextView
-                        android:id="@+id/text_mobile"
-                        android:layout_width="wrap_content"
+                    <RelativeLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="@dimen/_20sdp"
-                        android:layout_toStartOf="@+id/arrow_mobile"
-                        android:text="125453255kj"
-                        android:textColor="@color/blue"
-                        android:textSize="@dimen/_11sdp"
-                        android:textStyle="bold" />
+                        android:layout_toStartOf="@+id/arrow_mobile">
+                        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                            android:id="@+id/text_mobile"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:gravity="center"
+                            android:layout_marginStart="@dimen/_20sdp"
+                            android:text="125453255kj"
+                            android:textColor="@color/blue"
+                            android:textSize="@dimen/_11sdp"
+                            android:textStyle="bold" />
+                    </RelativeLayout>
+
 
                 </RelativeLayout>
 
@@ -246,10 +254,12 @@
 
                             <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                                 android:id="@+id/text_gender"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentStart="true"
+                                android:gravity="center"
                                 android:layout_centerVertical="true"
+                                android:layout_toStartOf="@+id/arrow_sex"
                                 android:layout_marginStart="@dimen/_10sdp"
                                 android:text="مرد"
                                 android:textColor="@color/blue"
@@ -322,9 +332,10 @@
 
                             <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                                 android:id="@+id/text_age"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentStart="true"
+                                android:gravity="center"
                                 android:layout_centerVertical="true"
                                 android:layout_marginStart="@dimen/_7sdp"
                                 android:layout_toStartOf="@+id/arrow_age"
@@ -396,10 +407,13 @@
                     android:padding="@dimen/_7sdp"
                     android:src="@drawable/arrow_blue_left" />
 
+
                 <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                     android:id="@+id/text_project_count"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_toStartOf="@+id/arrow_project_count"
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="@dimen/_20sdp"

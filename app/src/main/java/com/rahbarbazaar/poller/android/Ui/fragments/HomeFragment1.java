@@ -133,6 +133,7 @@ public class HomeFragment1 extends Fragment implements View.OnClickListener {
         cardview_home_image = view.findViewById(R.id.cardview_home_image);
         cardview_home_polls = view.findViewById(R.id.cardview_home_polls);
         text_leftdays_digit = view.findViewById(R.id.text_leftdays_digit);
+
         text_activepoll_digit = view.findViewById(R.id.text_activepoll_digit);
         text_balance_digit = view.findViewById(R.id.text_balance_digit);
         text_yourpoint_digit = view.findViewById(R.id.text_yourpoint_digit);

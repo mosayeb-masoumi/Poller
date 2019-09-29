@@ -230,7 +230,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_100sdp"
                 android:layout_marginStart="@dimen/_15sdp"
                 android:layout_marginTop="1dp"
                 android:layout_marginEnd="@dimen/_15sdp">

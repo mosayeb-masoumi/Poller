@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.rahbarbazaar.poller.android.Models.GetCurrencyListResult;
+import com.rahbarbazaar.poller.android.Models.eventbus.ModelActiveSurveyCount;
 import com.rahbarbazaar.poller.android.Models.eventbus.ModelTranferDataProfileToHome;
 import com.rahbarbazaar.poller.android.Models.getimages.GetImages;
 import com.rahbarbazaar.poller.android.Network.Service;
@@ -28,6 +29,7 @@ import com.rahbarbazaar.poller.android.Utilities.LocaleManager;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
 
@@ -263,4 +265,10 @@ public class HomeFragment1 extends Fragment implements View.OnClickListener {
         super.onDetach();
     }
 
+
+
+    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
+    public void onEventMainThread(ModelActiveSurveyCount modelActiveSurveyCount){
+        text_activepoll_digit.setText(modelActiveSurveyCount.getActiveSurveyCount());
+    }
 }

@@ -45,6 +45,7 @@ import com.rahbarbazaar.poller.android.Models.GetPagesResult;
 import com.rahbarbazaar.poller.android.Models.GetReferralResult;
 import com.rahbarbazaar.poller.android.Models.RefreshBalanceEvent;
 import com.rahbarbazaar.poller.android.Models.UserDetailsPrefrence;
+import com.rahbarbazaar.poller.android.Models.eventbus.ModelActiveSurveyCount;
 import com.rahbarbazaar.poller.android.Network.Service;
 import com.rahbarbazaar.poller.android.Network.ServiceProvider;
 import com.rahbarbazaar.poller.android.R;
@@ -70,6 +71,8 @@ import com.rahbarbazaar.poller.android.Utilities.SolarCalendar;
 import com.rahbarbazaar.poller.android.Utilities.TypeFaceGenerator;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -144,6 +147,8 @@ public class MainActivity extends CustomBaseActivity implements
         //pushe services
         Pushe.initialize(this, true);
         String pusheId = Pushe.getPusheId(MainActivity.this);
+
+        EventBus.getDefault().register(this);
 
         disposable = new CompositeDisposable();
         service = new ServiceProvider(this).getmService();
@@ -829,7 +834,7 @@ public class MainActivity extends CustomBaseActivity implements
 
                     @Override
                     public void onComplete() {
-
+                        new ToastFactory().createToast(R.string.text_request_submitted, MainActivity.this);
                     }
 
                     @Override
@@ -1069,4 +1074,25 @@ public class MainActivity extends CustomBaseActivity implements
 //        t.replace(R.id.main_view_pager, fragment).addToBackStack(null);
 //        t.commit();
 //    }
+
+    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
+    public void onEventMainThread(ModelActiveSurveyCount modelActiveSurveyCount){
+
+        String activeCount = modelActiveSurveyCount.getActiveSurveyCount();
+        if (locale_name.equals("fa")) {
+            activeCount = activeCount.replace("1", "١")
+                    .replace("2", "٢")
+                    .replace("3", "٣")
+                    .replace("4", "۴")
+                    .replace("5", "۵")
+                    .replace("6", "۶")
+                    .replace("7", "۷")
+                    .replace("8", "۸")
+                    .replace("9", "۹");
+            bottom_navigation.setNotification(activeCount, 2);
+        } else {
+            bottom_navigation.setNotification(activeCount, 2);
+        }
+
+    }
 }

@@ -33,6 +33,8 @@ class ShopViewHolder(view: View, val listener: GeneralItemIntraction<GetShopList
 //            shopName.text = title
 //            AsyncImageLoader(shopImage, 100, 100).executeOnExecutor(AsyncTask.SERIAL_EXECUTOR, icon_url)
 //        }
+
+        if(data.status== 1)
         itemView.setOnClickListener { listener.invokeItem(data) }
     }
 

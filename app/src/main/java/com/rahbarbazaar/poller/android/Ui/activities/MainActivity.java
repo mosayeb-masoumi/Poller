@@ -15,6 +15,8 @@ import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Process;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ShareCompat;
 import android.support.v4.os.ConfigurationCompat;
@@ -137,6 +139,8 @@ public class MainActivity extends CustomBaseActivity implements
 
     int a = 0;
 
+
+    boolean doubleBackToExitPressedOnce = false;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -285,7 +289,7 @@ public class MainActivity extends CustomBaseActivity implements
         img_arrow = findViewById(R.id.img_arrow);
         ll_drawer = findViewById(R.id.ll_drawer);
         rl_curvedbottom = findViewById(R.id.rl_curvedbottom);
-        ll_notify_count=findViewById(R.id.ll_notify_count);
+        ll_notify_count = findViewById(R.id.ll_notify_count);
         //text_point = findViewById(R.id.text_point);
 
         image_drawer.setOnClickListener(this);
@@ -938,26 +942,44 @@ public class MainActivity extends CustomBaseActivity implements
     @Override
     public void onBackPressed() {
 
+
         if (drawer_layout_home.isDrawerOpen(Gravity.END)) {
-
             drawer_layout_home.closeDrawers();
+        }else {
+            if (doubleBackToExitPressedOnce) {
+                super.onBackPressed();
 
-        } else {
-
-            long current_time = System.currentTimeMillis();
-
-            if (EXIT_TIME_NEED > current_time) {
-
-                finish();
-                if (adapter != null)
-                    adapter.setListener(null);
-
-            } else {
-
-                new ToastFactory().createToast(R.string.text_double_click_exit, this);
+                exitApp();
+                return;
             }
-            EXIT_TIME_NEED = current_time + 2000;
+
+            this.doubleBackToExitPressedOnce = true;
+            Toast.makeText(this, R.string.text_double_click_exit, Toast.LENGTH_SHORT).show();
+            new Handler().postDelayed(() -> doubleBackToExitPressedOnce = false, 2000);
         }
+
+
+
+//        if (drawer_layout_home.isDrawerOpen(Gravity.END)) {
+//
+//            drawer_layout_home.closeDrawers();
+//
+//        } else {
+//
+//            long current_time = System.currentTimeMillis();
+//
+//            if (EXIT_TIME_NEED > current_time) {
+//
+//                finish();
+//                if (adapter != null)
+//                    adapter.setListener(null);
+//
+//            } else {
+//
+//                new ToastFactory().createToast(R.string.text_double_click_exit, this);
+//            }
+//            EXIT_TIME_NEED = current_time + 2000;
+//        }
     }
 
     @Override
@@ -999,7 +1021,6 @@ public class MainActivity extends CustomBaseActivity implements
         } else {
             bottom_navigation.setNotification(count, 2);
         }
-
 
 
     }
@@ -1076,7 +1097,7 @@ public class MainActivity extends CustomBaseActivity implements
 //    }
 
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
-    public void onEventMainThread(ModelActiveSurveyCount modelActiveSurveyCount){
+    public void onEventMainThread(ModelActiveSurveyCount modelActiveSurveyCount) {
 
         String activeCount = modelActiveSurveyCount.getActiveSurveyCount();
         if (locale_name.equals("fa")) {
@@ -1094,5 +1115,18 @@ public class MainActivity extends CustomBaseActivity implements
             bottom_navigation.setNotification(activeCount, 2);
         }
 
+    }
+
+
+    private void exitApp() {
+        finish();
+        startActivity(new Intent(Intent.ACTION_MAIN).
+                addCategory(Intent.CATEGORY_HOME).
+                setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            finishAndRemoveTask();
+        }
+        Process.killProcess(Process.myPid());
+        super.finish();
     }
 }

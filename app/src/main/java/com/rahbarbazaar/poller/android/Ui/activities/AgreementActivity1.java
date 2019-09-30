@@ -147,8 +147,8 @@ public class AgreementActivity1 extends CustomBaseActivity {
 
             }
 
-            else
-            Toast.makeText(this, ""+R.string.text_accept_terms, Toast.LENGTH_SHORT).show();
+//            else
+//            Toast.makeText(this, ""+R.string.text_accept_terms, Toast.LENGTH_SHORT).show();
 
         });
 

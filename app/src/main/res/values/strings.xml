@@ -74,7 +74,7 @@
     <string name="text_otp_used">کد تایید تکراری است</string>
     <string name="text_input_mobile">لطفا شماره موبایل خود را وارد کنید</string>
     <string name="text_login_progress">فرآیند ورود شما درحال پردازش است لطفا صبور باشید …</string>
-    <string name="text_invite_friend"> برای عضویت در اپلیکیشن نظرسنجی پولر دعوت شدید،درصورت تمایل از طریق لینک زیر اقدام نمایید</string>
+    <string name="text_invite_friend"> برای عضویت در اپلیکیشن نظرسنجی پولر دعوت شده اید،درصورت تمایل از طریق لینک زیر اقدام نمایید.</string>
     <string name="text_invite_from"> شما از طرف </string>
     <string name="text_survey_time">زمان نظرسنجی:</string>
     <string name="text_from">از</string>

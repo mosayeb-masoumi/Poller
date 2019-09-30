@@ -408,7 +408,7 @@
                 android:layout_height="@dimen/_37sdp"
                 android:id="@+id/rl_balance_point"
                 android:layout_marginStart="@dimen/_50sdp"
-                android:layout_marginTop="@dimen/_3sdp"
+                android:layout_marginTop="5dp"
                 android:layout_marginEnd="@dimen/_50sdp"
                 android:background="@drawable/bg_blue">
 
@@ -442,7 +442,7 @@
                 android:visibility="visible"
                 android:layout_height="@dimen/_37sdp"
                 android:layout_marginStart="@dimen/_50sdp"
-                android:layout_marginTop="@dimen/_3sdp"
+                android:layout_marginTop="5dp"
                 android:layout_marginEnd="@dimen/_50sdp"
                 android:background="@drawable/bg_pink">
 
@@ -476,7 +476,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_37sdp"
                 android:layout_marginStart="@dimen/_50sdp"
-                android:layout_marginTop="@dimen/_3sdp"
+                android:layout_marginTop="5dp"
                 android:layout_marginEnd="@dimen/_50sdp"
                 android:background="@drawable/bg_blue1"
                 android:gravity="center"
@@ -497,7 +497,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_37sdp"
                 android:layout_marginStart="@dimen/_50sdp"
-                android:layout_marginTop="@dimen/_3sdp"
+                android:layout_marginTop="5dp"
                 android:layout_marginEnd="@dimen/_50sdp"
                 android:background="@drawable/bg_pink1"
                 android:gravity="center"

@@ -17,6 +17,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,6 +50,7 @@ public class AgreementActivity1 extends CustomBaseActivity {
     GetCurrencyListResult getCurrencyListResult;
 
     LinearLayout llcheckbox;
+    RelativeLayout rl_login_dialog;
 
     @SuppressLint("SetJavaScriptEnabled")
     @Override
@@ -129,7 +131,8 @@ public class AgreementActivity1 extends CustomBaseActivity {
 
 
 
-        btn_send.setOnClickListener(view -> {
+//        btn_send.setOnClickListener(view -> {
+        rl_login_dialog.setOnClickListener(view -> {
 
 
             if (checkbox_agreement.isChecked()){
@@ -180,6 +183,7 @@ public class AgreementActivity1 extends CustomBaseActivity {
         checkbox_agreement = findViewById(R.id.checkbox_agreement);
         av_loading = findViewById(R.id.av_loading);
         btn_send = findViewById(R.id.btn_login_dialog);
+        rl_login_dialog=findViewById(R.id.rl_login_dialog);
 
         llcheckbox=findViewById(R.id.llcheckbox);
 //        TextView btn_cancel_dialog = findViewById(R.id.btn_cancel_dialog);

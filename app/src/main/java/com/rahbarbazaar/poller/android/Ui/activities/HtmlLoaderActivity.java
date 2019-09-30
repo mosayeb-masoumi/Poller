@@ -72,6 +72,7 @@ public class HtmlLoaderActivity extends CustomBaseActivity
             isSurveyDetails = getIntent().getBooleanExtra("surveyDetails", false);
             url_type = getIntent().getIntExtra("type", 1);
             isShopping = getIntent().getBooleanExtra("isShopping", false);
+
         }
 
         //config web view setting for support multi action and java scripts

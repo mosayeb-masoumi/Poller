@@ -310,8 +310,9 @@ public class VerificationActivity extends CustomBaseActivity
 
     private void sendApkVersion() {
 
+        String versioCode= String.valueOf(BuildConfig.VERSION_CODE);
         ServiceProvider provider = new ServiceProvider(this);
-        disposable.add(provider.getmService().sendApkVersion(ClientConfig.API_V1, BuildConfig.VERSION_NAME)
+        disposable.add(provider.getmService().sendApkVersion(ClientConfig.API_V1, versioCode)
                 .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableSingleObserver<GeneralStatusResult>() {
                     @Override
@@ -548,7 +549,7 @@ public class VerificationActivity extends CustomBaseActivity
     private void sendUserInfo() {
 
 
-        String apk_version = BuildConfig.VERSION_NAME;
+        String apk_version = String.valueOf(BuildConfig.VERSION_CODE);
         String model = Build.MODEL;
         String brand = Build.BRAND;
 

@@ -275,9 +275,8 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="@dimen/_25sdp"
-
                 android:scaleType="centerCrop"
+                android:layout_above="@+id/llbtom"
                 android:src="@drawable/lorrety_device_icon" />
 
             <LinearLayout

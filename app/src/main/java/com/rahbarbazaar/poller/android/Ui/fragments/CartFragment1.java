@@ -281,7 +281,7 @@ public class CartFragment1 extends Fragment implements View.OnClickListener {
         int half_windowsWidth = windowsWidth / 2;
         ObjectAnimator animator = ObjectAnimator.ofFloat(tv_indicator, "translationX", appear ? half_windowsWidth : 0);
         animator.setDuration(400);
-        animator.start();
+//        animator.start();
     }
 
 

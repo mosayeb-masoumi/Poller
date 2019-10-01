@@ -175,6 +175,7 @@ public interface Service {
                                       @Query("model") String model,
                                       @Query("os_type") String os_type,
                                       @Query("os_version") String os_version
+
     );
 
 //    @POST("{api}/token/refresh")

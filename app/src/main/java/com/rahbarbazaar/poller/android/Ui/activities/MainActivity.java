@@ -1101,18 +1101,24 @@ public class MainActivity extends CustomBaseActivity implements
 
         String activeCount = modelActiveSurveyCount.getActiveSurveyCount();
         if (locale_name.equals("fa")) {
-            activeCount = activeCount.replace("1", "١")
-                    .replace("2", "٢")
-                    .replace("3", "٣")
-                    .replace("4", "۴")
-                    .replace("5", "۵")
-                    .replace("6", "۶")
-                    .replace("7", "۷")
-                    .replace("8", "۸")
-                    .replace("9", "۹");
-            bottom_navigation.setNotification(activeCount, 2);
+            if(!activeCount.equals("0")){
+                activeCount = activeCount.replace("1", "١")
+                        .replace("2", "٢")
+                        .replace("3", "٣")
+                        .replace("4", "۴")
+                        .replace("5", "۵")
+                        .replace("6", "۶")
+                        .replace("7", "۷")
+                        .replace("8", "۸")
+                        .replace("9", "۹");
+                bottom_navigation.setNotification(activeCount, 2);
+            }
+
         } else {
-            bottom_navigation.setNotification(activeCount, 2);
+            if(!activeCount.equals("0")){
+                bottom_navigation.setNotification(activeCount, 2);
+            }
+
         }
 
     }

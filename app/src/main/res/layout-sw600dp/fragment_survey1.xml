@@ -64,15 +64,15 @@
     <LinearLayout
         android:id="@+id/rl_user_access_upgrade_survey"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_37sdp"
-        android:layout_marginStart="@dimen/_50sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginStart="@dimen/_60sdp"
         android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginEnd="@dimen/_50sdp"
+        android:layout_marginEnd="@dimen/_60sdp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="@dimen/_10sdp"
         android:background="@drawable/bg_pink1"
         android:gravity="center"
-        android:visibility="gone"
+        android:visibility="visible"
         android:orientation="vertical">
 
         <com.rahbarbazaar.poller.android.Utilities.CustomTextView

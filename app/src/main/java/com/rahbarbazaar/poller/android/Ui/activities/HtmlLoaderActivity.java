@@ -76,6 +76,7 @@ public class HtmlLoaderActivity extends CustomBaseActivity
         }
 
         //config web view setting for support multi action and java scripts
+
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setDomStorageEnabled(true);
         webView.getSettings().setDatabaseEnabled(true);
@@ -88,8 +89,7 @@ public class HtmlLoaderActivity extends CustomBaseActivity
         webView.getSettings().setMinimumLogicalFontSize(1);
         webView.setClickable(true);
         webView.clearCache(true);
-
-
+      
 
         if (isSurveyDetails) {
 
@@ -278,4 +278,8 @@ public class HtmlLoaderActivity extends CustomBaseActivity
         } else
             finish();
     }
+
+
+
+
 }

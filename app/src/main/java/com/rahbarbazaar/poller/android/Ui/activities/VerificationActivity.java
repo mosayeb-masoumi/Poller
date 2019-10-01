@@ -554,39 +554,42 @@ public class VerificationActivity extends CustomBaseActivity
         String brand = Build.BRAND;
 
         int sdk = Build.VERSION.SDK_INT;
-        if (sdk == 14) {
-            os_version = "android 4.0";
-        } else if (sdk == 15) {
-            os_version = "android 4.0.3";
-        } else if (sdk == 16) {
-            os_version = "android 4.1";
-        } else if (sdk == 17) {
-            os_version = "android 4.2";
-        } else if (sdk == 18) {
-            os_version = "android 4.3";
-        } else if (sdk == 19) {
-            os_version = "android 4.4";
-        } else if (sdk == 20) {
-            os_version = "android 4.4W";
-        } else if (sdk == 21) {
-            os_version = "android 5.0";
-        } else if (sdk == 22) {
-            os_version = "android 5.1";
-        } else if (sdk == 23) {
-            os_version = "android 6.0";
-        } else if (sdk == 24) {
-            os_version = "android 7.0";
-        } else if (sdk == 25) {
-            os_version = "android 7.1";
-        } else if (sdk == 26) {
-            os_version = "android 8.0";
-        } else if (sdk == 27) {
-            os_version = "android 8.1";
-        } else if (sdk == 28) {
-            os_version = "android 9.0";
-        } else if (sdk == 29) {
-            os_version = "android 10";
-        }
+
+        os_version = String.valueOf(sdk);
+
+//        if (sdk == 14) {
+//            os_version = "android 4.0";
+//        } else if (sdk == 15) {
+//            os_version = "android 4.0.3";
+//        } else if (sdk == 16) {
+//            os_version = "android 4.1";
+//        } else if (sdk == 17) {
+//            os_version = "android 4.2";
+//        } else if (sdk == 18) {
+//            os_version = "android 4.3";
+//        } else if (sdk == 19) {
+//            os_version = "android 4.4";
+//        } else if (sdk == 20) {
+//            os_version = "android 4.4W";
+//        } else if (sdk == 21) {
+//            os_version = "android 5.0";
+//        } else if (sdk == 22) {
+//            os_version = "android 5.1";
+//        } else if (sdk == 23) {
+//            os_version = "android 6.0";
+//        } else if (sdk == 24) {
+//            os_version = "android 7.0";
+//        } else if (sdk == 25) {
+//            os_version = "android 7.1";
+//        } else if (sdk == 26) {
+//            os_version = "android 8.0";
+//        } else if (sdk == 27) {
+//            os_version = "android 8.1";
+//        } else if (sdk == 28) {
+//            os_version = "android 9.0";
+//        } else if (sdk == 29) {
+//            os_version = "android 10";
+//        }
 
         ServiceProvider provider = new ServiceProvider(this);
         Service service = provider.getmService();

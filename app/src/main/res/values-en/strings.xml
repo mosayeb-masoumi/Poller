@@ -150,7 +150,7 @@
     <string name="text_news">News</string>
     <string name="text_video">Videos</string>
     <string name="text_newPolls">New Poll</string>
-    <string name="text_activePolls">Active Surveys</string>
+    <string name="text_activePolls">Active Survey</string>
     <string name="text_balance">Balance</string>
     <string name="text_your_point">Your Score</string>
     <string name="text_leftday">Days Left</string>

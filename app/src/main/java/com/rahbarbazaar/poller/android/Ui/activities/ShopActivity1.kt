@@ -67,7 +67,7 @@ class ShopActivity1 : CustomBaseActivity(), GeneralItemIntraction<GetShopListRes
                 setItemViewCacheSize(10)
                 drawingCacheQuality = View.DRAWING_CACHE_QUALITY_LOW
 //                layoutManager = LinearLayoutManager(this@ShopActivity1, LinearLayoutManager.VERTICAL, false)
-                layoutManager = GridLayoutManager(this@ShopActivity1, 2)
+                layoutManager = GridLayoutManager(this@ShopActivity1, 2) as RecyclerView.LayoutManager?
 
 //                addItemDecoration(object : RecyclerView.ItemDecoration() {
 //

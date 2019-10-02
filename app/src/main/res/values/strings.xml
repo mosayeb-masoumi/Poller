@@ -173,6 +173,8 @@
     <string name="incorrect_mobilephone">شماره موبایل صحیح نمی باشد</string>
     <string name="please_wait">لطفا شکیبا باشید…</string>
     <string name="powered_by">Powered by...</string>
+    <string name="survey_notAvailable">قرعه کشی پانزده ام این ماه فعال می گردد.</string>
+    <string name="empetyReportIssue">فیلد های اطلاعاتی را تکمیل نمایید!</string>
 
 
 </resources>

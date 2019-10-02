@@ -402,7 +402,13 @@ public class DialogFactory {
         btn_send.setOnClickListener(view -> {
 
             listener.onAcceptButtonClicked(edt_title.getText().toString(), edt_description.getText().toString());
-            dialog.dismiss();
+
+            if(edt_title.getText().toString().equals("")|| edt_description.getText().toString().equals("")){
+
+            }else{
+                dialog.dismiss();
+            }
+
         });
 
         btn_cancel_dialog.setOnClickListener(view ->{

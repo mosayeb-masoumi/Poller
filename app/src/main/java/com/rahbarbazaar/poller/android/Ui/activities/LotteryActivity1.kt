@@ -122,7 +122,10 @@ class LotteryActivity1 : CustomBaseActivity(),
                         fun hideCurrentLotteryLayout(bool: Boolean) { //mikhastam khafan bashe :D vagarna mishod ye 'else' dar nazar gereft
 
                             if (bool) {
-                                rl_current_lottery.visibility = View.GONE
+//                                rl_current_lottery.visibility = View.GONE
+                                linear_actions.visibility = View.GONE
+                                linear_current_survey.visibility = View.GONE
+                                text_no_curentlottery.visibility=View.VISIBLE
                                 img_lottery_info.isEnabled = false
                             }
                         }

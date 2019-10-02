@@ -162,7 +162,7 @@
     <string name="failed_connection_to_server">Connection failed!</string>
     <string name="try_afewmin_later">Exit and try later.</string>
     <string name="close_app">Exit Application</string>
-    <string name="survey_notTakenpart">You have not taken any surveys.</string>
+    <string name="survey_notTakenpart">You have not taken any lottery.</string>
     <string name="stay_survey">No</string>
     <string name="exit_survey">Yes</string>
     <string name="membership">Membership</string>
@@ -170,5 +170,7 @@
     <string name="incorrect_mobilephone">Incorrect mobile number!</string>
     <string name="please_wait">Please wait…</string>
     <string name="powered_by">Powered by</string>
+    <string name="survey_notAvailable">There is no any active lottery</string>
+    <string name="empetyReportIssue">Please complete the fields!</string>
 
 </resources>

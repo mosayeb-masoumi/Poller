@@ -708,8 +708,13 @@ public class MainActivity extends CustomBaseActivity implements
                     @Override
                     public void onAcceptButtonClicked(String... params) {
 
-                        sendReportIssueRequest(params[0], params[1]);
-                        drawer_layout_home.closeDrawer(Gravity.END);
+                        if(params[0].equals("") || params[1].equals("")){
+                            Toast.makeText(MainActivity.this, R.string.empetyReportIssue, Toast.LENGTH_SHORT).show();
+                        }else{
+                            sendReportIssueRequest(params[0], params[1]);
+                            drawer_layout_home.closeDrawer(Gravity.END);
+                        }
+
                     }
 
                     @Override

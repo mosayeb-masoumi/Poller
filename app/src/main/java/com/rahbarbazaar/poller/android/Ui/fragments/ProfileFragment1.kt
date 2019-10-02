@@ -389,10 +389,10 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
 
                 if (type.equals("1")) {
 //                    var a = preferenceStorage?.retrivePhone()
-                    goToHtmlActivity("https://test.rahbarbazar.com/poller/v2/user/register?mobile="
-                            + preferenceStorage?.retrivePhone(), true)
+                    goToHtmlActivity(ClientConfig.HTML_ADDRESS+"v2/user/register?mobile="+
+                            preferenceStorage?.retrivePhone(), true)
                 } else if (type.equals("4")) {
-                    goToHtmlActivity("https://test.rahbarbazar.com/poller/v2/user/upgrade/"
+                    goToHtmlActivity(ClientConfig.HTML_ADDRESS+"v2/user/upgrade/"
                             + preferenceStorage?.retrivePhone(), true)
                 }
             }

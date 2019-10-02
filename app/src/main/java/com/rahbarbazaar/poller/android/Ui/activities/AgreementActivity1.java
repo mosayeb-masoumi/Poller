@@ -96,11 +96,11 @@ public class AgreementActivity1 extends CustomBaseActivity {
 
         String language = ConfigurationCompat.getLocales(getResources().getConfiguration()).get(0).getLanguage();
         if(language.equals("fa")){
-            webview_agreement.loadUrl("https://test.rahbarbazar.com/poller/v2/support/agreement/fa");
+            webview_agreement.loadUrl(ClientConfig.HTML_ADDRESS+"v2/support/agreement/fa");
 //            webview_agreement.loadDataWithBaseURL("", pish + "https://test.rahbarbazar.com/poller/v2/support/agreement/fa" +
 //                    pas, "text/html", "UTF-8", "");
         }else if(language.equals("en")){
-            webview_agreement.loadUrl("https://test.rahbarbazar.com/poller/v2/support/agreement/en");
+            webview_agreement.loadUrl(ClientConfig.HTML_ADDRESS+"v2/support/agreement/en");
 //            webview_agreement.loadDataWithBaseURL("", pish + "https://test.rahbarbazar.com/poller/v2/support/agreement/en" +
 //                    pas, "text/html", "UTF-8", "");
         }

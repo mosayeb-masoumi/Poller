@@ -698,7 +698,8 @@ public class MainActivity extends CustomBaseActivity implements
             case R.id.linear_faq:
                 drawer_layout_home.closeDrawers();
 //                goToHtmlActivity("http://pollerws.rahbarbazaar.com:2296/poller/v2/support/faq/" + LocaleManager.getLocale(getResources()).getLanguage(), true);
-                goToHtmlActivity("https://test.rahbarbazar.com/poller/v2/support/faq/" + LocaleManager.getLocale(getResources()).getLanguage(), true);
+                goToHtmlActivity(ClientConfig.HTML_ADDRESS+"v2/support/faq/" + LocaleManager.getLocale(getResources()).getLanguage(),true);
+//                goToHtmlActivity("https://test.rahbarbazar.com/poller/v2/support/faq/" + LocaleManager.getLocale(getResources()).getLanguage(), true);
                 break;
 
             case R.id.linear_report_issue:

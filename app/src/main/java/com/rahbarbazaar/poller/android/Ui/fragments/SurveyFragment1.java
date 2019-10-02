@@ -175,11 +175,11 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
                 if (user_type.equals("1")) {
 //                    var a = preferenceStorage?.retrivePhone()
 
-                    goToHtmlActivity("https://test.rahbarbazar.com/poller/v2/user/register?mobile="
+                    goToHtmlActivity(ClientConfig.HTML_ADDRESS+"v2/user/register?mobile="
                             + PreferenceStorage.getInstance(getContext()).retrivePhone(), true);
 
                 } else if (user_type.equals("4")) {
-                    goToHtmlActivity("https://test.rahbarbazar.com/poller/v2/user/upgrade/"
+                    goToHtmlActivity(ClientConfig.HTML_ADDRESS+"v2/user/upgrade/"
                             + PreferenceStorage.getInstance(getContext()).retrivePhone(), true);
                 }
 

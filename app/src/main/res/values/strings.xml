@@ -67,7 +67,7 @@
     <string name="text_no_address">آدرس موجود نیست</string>
     <string name="text_expired">منقضی شده</string>
     <string name="text_request_submitted">درخواست شما ثبت شد.</string>
-    <string name="text_otp_send">کد ارسال</string>
+    <string name="text_otp_send">کد ارسال شد</string>
     <string name="text_no_service">عدم ارتباط با سرور</string>
     <string name="text_otp_expired">کد تایید منقضی شده لطفا بر روی ارسال مجدد کلیک کنید</string>
     <string name="text_otp_wrong">کد تاییداشتباه است</string>

@@ -35,7 +35,7 @@ class LotteryViewHolder(view: View, val itemIntraction: GeneralItemIntraction<St
         if(data.conditions==null){
 
         }else{
-            itemView.setOnClickListener { itemIntraction.invokeItem(data.conditions!!) }
+            itemView.setOnClickListener { itemIntraction.invokeItem(data.conditions) }
         }
 
     }

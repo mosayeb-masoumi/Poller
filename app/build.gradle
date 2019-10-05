@@ -21,7 +21,6 @@ android {
         targetSdkVersion 27
         versionCode 17
         versionName "5.0.0"
-
     }
     buildTypes {
 

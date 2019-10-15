@@ -136,14 +136,14 @@ class LotteryActivity : CustomBaseActivity(),
                 itemAnimator = null
                 setItemViewCacheSize(5)
                 drawingCacheQuality = View.DRAWING_CACHE_QUALITY_LOW
-                addItemDecoration(object : RecyclerView.ItemDecoration() {
-
-                    override fun getItemOffsets(outRect: Rect?, view: View?, parent: RecyclerView?, state: RecyclerView.State?) {
-
-                        if (parent?.getChildLayoutPosition(view) != 0)
-                            outRect?.top = 10
-                    }
-                })
+//                addItemDecoration(object : RecyclerView.ItemDecoration() {
+//
+//                    override fun getItemOffsets(outRect: Rect?, view: View?, parent: RecyclerView?, state: RecyclerView.State?) {
+//
+//                        if (parent?.getChildLayoutPosition(view) != 0)
+//                            outRect?.top = 10
+//                    }
+//                })
             }
         }
         configLotteryRecycler()

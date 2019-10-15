@@ -47,14 +47,14 @@ class ShopActivity : CustomBaseActivity(), GeneralItemIntraction<GetShopListResu
                 drawingCacheQuality = View.DRAWING_CACHE_QUALITY_LOW
                 layoutManager = LinearLayoutManager(this@ShopActivity, LinearLayoutManager.VERTICAL, false)
 
-                addItemDecoration(object : RecyclerView.ItemDecoration() {
-
-                    override fun getItemOffsets(outRect: Rect?, view: View?, parent: RecyclerView?, state: RecyclerView.State?) {
-
-                        if (parent!!.getChildLayoutPosition(view) != 0)
-                            outRect!!.top = 10
-                    }
-                })
+//                addItemDecoration(object : RecyclerView.ItemDecoration() {
+//
+//                    override fun getItemOffsets(outRect: Rect?, view: View?, parent: RecyclerView?, state: RecyclerView.State?) {
+//
+//                        if (parent!!.getChildLayoutPosition(view) != 0)
+//                            outRect!!.top = 10
+//                    }
+//                })
             }
         }
         configeRecyclerView()

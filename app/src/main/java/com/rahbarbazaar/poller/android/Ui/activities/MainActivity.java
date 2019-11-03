@@ -89,6 +89,7 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableCompletableObserver;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
+import me.leolin.shortcutbadger.ShortcutBadger;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 
@@ -813,13 +814,23 @@ public class MainActivity extends CustomBaseActivity implements
 
                             text_notify_count.setVisibility(View.VISIBLE);
                             ll_notify_count.setVisibility(View.VISIBLE);
-                            if (unReadCount > 99)
+                            if (unReadCount > 99) {
                                 text_notify_count.setText("...");
-                            else
+
+                                //app icon badge
+                                ShortcutBadger.applyCount(MainActivity.this, unReadCount); //for 1.1.4+
+//                            ShortcutBadger.with(getApplicationContext()).count(badgeCount); //for 1.1.3
+                            }
+                            else{
                                 text_notify_count.setText(String.valueOf(unReadCount));
+                                //app icon badge
+                                ShortcutBadger.applyCount(MainActivity.this, unReadCount); //for 1.1.4+
+                            }
+
 
                         } else {
 
+                            ShortcutBadger.removeCount(MainActivity.this);
                             text_notify_count.setVisibility(View.GONE);
                             ll_notify_count.setVisibility(View.GONE);
                         }

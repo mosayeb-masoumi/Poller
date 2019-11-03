@@ -20,7 +20,7 @@ public class SurveyHolder1 extends RecyclerView.ViewHolder {
     //    private TextView text_description, text_price, text_title, text_number, text_date;
 //    private ImageView image_expired;
     private ImageView row_survey_imgmobile, row_survey_imgCoin, row_survey_imgLeftday, row_survey_underImg_left, row_survey_underImg_right;
-    private TextView text_survey_title, text_survey_price, txt_survey_date;
+    private TextView text_survey_title, text_survey_price, txt_survey_date, text_survey_unit;
     private LinearLayout row_survey_LLbackground;
 
     public SurveyHolder1(@NonNull View itemView) {
@@ -32,6 +32,7 @@ public class SurveyHolder1 extends RecyclerView.ViewHolder {
         row_survey_imgLeftday = itemView.findViewById(R.id.row_survey_imgLeftday);
         text_survey_title = itemView.findViewById(R.id.text_survey_title);
         text_survey_price = itemView.findViewById(R.id.text_survey_price);
+        text_survey_unit = itemView.findViewById(R.id.text_survey_unit);
         txt_survey_date = itemView.findViewById(R.id.txt_survey_date);
         row_survey_LLbackground = itemView.findViewById(R.id.row_survey_LLbackground);
         row_survey_underImg_left = itemView.findViewById(R.id.row_survey_underImg_left);
@@ -54,11 +55,39 @@ public class SurveyHolder1 extends RecyclerView.ViewHolder {
     @SuppressLint("SetTextI18n")
     public void bindSurveyData(SurveyMainModel data, int pos) {
 
+        String currentDate = data.getCurrent_date();
+        int currentYear = Integer.parseInt(currentDate.substring(0, 4));
+        int currentMonth = Integer.parseInt(currentDate.substring(5, 7));
+        int currentDay = Integer.parseInt(currentDate.substring(8, 10));
+        int currentHour = Integer.parseInt(currentDate.substring(11, 13));
+        int currentMin = Integer.parseInt(currentDate.substring(14, 16));
+        int totalCurrentMinute = (currentHour * 60) + currentMin;
+
+
+        String endDate = data.getEnd_date();
+        int endYear = Integer.parseInt(endDate.substring(0, 4));
+        int endMonth = Integer.parseInt(endDate.substring(5, 7));
+        int endDay = Integer.parseInt(endDate.substring(8, 10));
+        int endHour = Integer.parseInt(endDate.substring(11, 13));
+        int endMin = Integer.parseInt(endDate.substring(14, 16));
+        int totalEndMinute = (endHour * 60) + endMin;
+
+
+        String startDate = data.getStart_date();
+        int startYear = Integer.parseInt(startDate.substring(0, 4));
+        int startMonth = Integer.parseInt(startDate.substring(5, 7));
+        int startDay = Integer.parseInt(startDate.substring(8, 10));
+        int startHour = Integer.parseInt(startDate.substring(11, 13));
+        int startMin = Integer.parseInt(startDate.substring(14, 16));
+        int totalStartMinute = (startHour * 60) + startMin;
+
+
         Context context = itemView.getContext();
         text_survey_title.setText(data.getTitle());
 //        text_description.setText(data.getDescription());
 //        text_survey_price.setText(new StringBuilder().append(data.getPoint()).append(" ").append(data.getCurrency().getName()));
         text_survey_price.setText(new StringBuilder().append(data.getPoint()));
+        text_survey_price.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
 //        text_number.setText(String.valueOf(pos + 1));
         int remaining_day = getRemainingDate(data.getCurrent_date(), data.getEnd_date());
 
@@ -83,87 +112,115 @@ public class SurveyHolder1 extends RecyclerView.ViewHolder {
 //            row_survey_LLbackground.setBackground(ContextCompat.getDrawable(context, R.drawable.row_survey_gold_bg));
 //        }
 
-        if(remaining_day > 0 && data.getStatus() == 3) {
+        if (data.getStatus() == 3) {
             row_survey_imgmobile.setImageResource(R.drawable.survey_item_ok_icon2);
-            row_survey_imgLeftday.setImageResource(R.drawable.survey_item_leftday_icon);
-
+//            row_survey_imgLeftday.setImageResource(R.drawable.survey_item_expired_icon);
             text_survey_title.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
             txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
             row_survey_LLbackground.setBackground(ContextCompat.getDrawable(context, R.drawable.row_survey_gray_bg));
-//            text_survey_title.setTextColor(ContextCompat.getColor(context, R.color.blue));
-//            txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.blue));
-//            row_survey_LLbackground.setBackground(ContextCompat.getDrawable(context, R.drawable.row_survey_gradient_border));
-        }else
+            row_survey_imgCoin.setImageResource(R.drawable.survey_item_graycoin);
+//            row_survey_underImg_left.setImageResource(R.drawable.row_survey_under_deepgray);
+//            row_survey_underImg_right.setImageResource(R.drawable.row_survey_under_lightgray);
 
-        if (remaining_day > 0 && start_year == current_year && start_month == current_month && ((current_day - start_day) == +2 || (current_day - start_day) == +1 || (current_day - start_day) == 0)) { //gold
+        } else if (start_year == current_year && start_month == current_month &&
+                ((current_day - start_day) == +1) || (current_day - start_day == 0)) { //gold
             row_survey_imgmobile.setImageResource(R.drawable.survey_item_brown_mobile);
             row_survey_imgLeftday.setImageResource(R.drawable.survey_item_leftday_gold_icon);
             text_survey_title.setTextColor(ContextCompat.getColor(context, R.color.brown));
             txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.brown));
             row_survey_LLbackground.setBackground(ContextCompat.getDrawable(context, R.drawable.row_survey_gold_bg));
-        } else if (remaining_day > 0 && (data.getStatus() == 1 || data.getStatus() == 2)) {
+
+        } else if (start_year == current_year && start_month == current_month &&
+                (current_day - start_day) == +2 && totalCurrentMinute < totalStartMinute) {
+
+            row_survey_imgmobile.setImageResource(R.drawable.survey_item_brown_mobile);
+            row_survey_imgLeftday.setImageResource(R.drawable.survey_item_leftday_gold_icon);
+            text_survey_title.setTextColor(ContextCompat.getColor(context, R.color.brown));
+            txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.brown));
+            row_survey_LLbackground.setBackground(ContextCompat.getDrawable(context, R.drawable.row_survey_gold_bg));
+        } else if ((remaining_day > 0 || (remaining_day == 0 && currentYear == endYear && currentMonth == endMonth &&
+                currentDay == endDay && totalCurrentMinute < totalEndMinute))
+                && (data.getStatus() == 1 || data.getStatus() == 2)) {
             row_survey_imgmobile.setImageResource(R.drawable.survey_item_gradient_mobile);
             row_survey_imgLeftday.setImageResource(R.drawable.survey_item_leftday_icon);
             text_survey_title.setTextColor(ContextCompat.getColor(context, R.color.blue));
             txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.blue));
             row_survey_LLbackground.setBackground(ContextCompat.getDrawable(context, R.drawable.row_survey_gradient_border));
+            row_survey_underImg_left.setImageResource(R.drawable.row_survey_under_deepblue);
+            row_survey_underImg_right.setImageResource(R.drawable.row_survey_under_pink);
+        } else if ((remaining_day > 0 || (remaining_day == 0 && currentYear == endYear && currentMonth == endMonth &&
+                currentDay == endDay && totalCurrentMinute > totalEndMinute))
+                && (data.getStatus() == 1 || data.getStatus() == 2)) {
+            row_survey_imgmobile.setImageResource(R.drawable.survey_item_delete_icon2);
+//            row_survey_imgLeftday.setImageResource(R.drawable.survey_item_expired_icon);
+            text_survey_title.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
+            txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
+            row_survey_LLbackground.setBackground(ContextCompat.getDrawable(context, R.drawable.row_survey_gray_bg));
+            text_survey_title.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
+            txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
+//            row_survey_underImg_left.setImageResource(R.drawable.row_survey_under_deepgray);
+//            row_survey_underImg_right.setImageResource(R.drawable.row_survey_under_lightgray);
+        } else if ((remaining_day == 0 && (currentYear != endYear || currentMonth != endMonth || currentDay != endDay))
+                && (data.getStatus() == 1 || data.getStatus() == 2)) {
+            row_survey_imgmobile.setImageResource(R.drawable.survey_item_delete_icon2);
+//            row_survey_imgLeftday.setImageResource(R.drawable.survey_item_expired_icon);
+            text_survey_title.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
+            txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
+            row_survey_LLbackground.setBackground(ContextCompat.getDrawable(context, R.drawable.row_survey_gray_bg));
+            text_survey_title.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
+            txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
+//            row_survey_underImg_left.setImageResource(R.drawable.row_survey_under_deepgray);
+//            row_survey_underImg_right.setImageResource(R.drawable.row_survey_under_lightgray);
         }
-//        else if (remaining_day > 0 && data.getStatus() == 3) {
-//            row_survey_imgmobile.setImageResource(R.drawable.survey_item_ok_icon2);
-//            row_survey_imgLeftday.setImageResource(R.drawable.survey_item_leftday_icon);
-//
+
+
+//        else if ((remaining_day < 0 ) && (data.getStatus() == 1 || data.getStatus() == 2)) {
+//            row_survey_imgmobile.setImageResource(R.drawable.survey_item_delete_icon2);
+//            row_survey_imgLeftday.setImageResource(R.drawable.survey_item_expired_icon);
 //            text_survey_title.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
 //            txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
 //            row_survey_LLbackground.setBackground(ContextCompat.getDrawable(context, R.drawable.row_survey_gray_bg));
-////            text_survey_title.setTextColor(ContextCompat.getColor(context, R.color.blue));
-////            txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.blue));
-////            row_survey_LLbackground.setBackground(ContextCompat.getDrawable(context, R.drawable.row_survey_gradient_border));
 //        }
-        else if (remaining_day <= 0 && (data.getStatus() == 1 || data.getStatus() == 2)) {
-            row_survey_imgmobile.setImageResource(R.drawable.survey_item_delete_icon2);
-            row_survey_imgLeftday.setImageResource(R.drawable.survey_item_expired_icon);
-            text_survey_title.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
-            txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
-            row_survey_LLbackground.setBackground(ContextCompat.getDrawable(context, R.drawable.row_survey_gray_bg));
-        } else if ((remaining_day <= 0)&& data.getStatus() == 3) {
-            row_survey_imgmobile.setImageResource(R.drawable.survey_item_ok_icon2);
-            row_survey_imgLeftday.setImageResource(R.drawable.survey_item_expired_icon);
-            text_survey_title.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
-            txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
-            row_survey_LLbackground.setBackground(ContextCompat.getDrawable(context, R.drawable.row_survey_gray_bg));
-        }
 
 
+//        else if ((remaining_day < 0 ||(remaining_day==0 && totalCurrentMinute>totalEndMinute))&& data.getStatus() == 3) {
+//            row_survey_imgmobile.setImageResource(R.drawable.survey_item_ok_icon2);
+//            row_survey_imgLeftday.setImageResource(R.drawable.survey_item_expired_icon);
+//            text_survey_title.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
+//            txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
+//            row_survey_LLbackground.setBackground(ContextCompat.getDrawable(context, R.drawable.row_survey_gray_bg));
+//        }
 
 
-        if ((data.getCurrency().getName().equals("پاپاسی")||data.getCurrency().getName().equals("Papasi")) && remaining_day > 0) {
+        if ((data.getCurrency().getName().equals("پاپاسی") || data.getCurrency().getName().equals("Papasi"))
+                && remaining_day > 0 && data.getStatus() != 3) {
+
             row_survey_imgCoin.setImageResource(R.drawable.survey_item_purplecoin);
             row_survey_underImg_left.setImageResource(R.drawable.row_survey_under_deepblue);
             row_survey_underImg_right.setImageResource(R.drawable.row_survey_under_pink);
-        } else if ((data.getCurrency().getName().equals("تومان")||data.getCurrency().getName().equals("Toman")) && remaining_day > 0) {
+
+        } else if ((data.getCurrency().getName().equals("تومان") || data.getCurrency().getName().equals("Toman"))
+                && remaining_day > 0 && data.getStatus() != 3) {
+
             row_survey_imgCoin.setImageResource(R.drawable.survey_item_bluecoin);
             row_survey_underImg_left.setImageResource(R.drawable.row_survey_under_deepblue);
             row_survey_underImg_right.setImageResource(R.drawable.row_survey_under_lightblue);
-        } else if (remaining_day <= 0) {
-            row_survey_imgCoin.setImageResource(R.drawable.survey_item_graycoin);
-            txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
-            row_survey_underImg_left.setImageResource(R.drawable.row_survey_under_deepgray);
-            row_survey_underImg_right.setImageResource(R.drawable.row_survey_under_lightgray);
-        }
-
-        if (data.getStatus() == 3) {
-            row_survey_imgCoin.setImageResource(R.drawable.survey_item_graycoin);
-            row_survey_underImg_left.setImageResource(R.drawable.row_survey_under_deepgray);
-            row_survey_underImg_right.setImageResource(R.drawable.row_survey_under_lightgray);
         }
 
 
-        if (remaining_day != 0)
+        if (remaining_day != 0 && data.getStatus() != 3){
             txt_survey_date.setText(remaining_day + " " + context.getString(R.string.text_remaining_day));
-        else {
-            txt_survey_date.setText(context.getString(R.string.text_expired));
-            txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
         }
+
+
+            text_survey_unit.setText(data.getCurrency().getName());
+            text_survey_unit.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
+
+
+//        else {
+//            txt_survey_date.setText(context.getString(R.string.text_expired));
+//            txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
+//        }
 
         if (remaining_day <= 1)
             txt_survey_date.setTextColor(Color.parseColor("#ff1a1a"));
@@ -175,21 +232,19 @@ public class SurveyHolder1 extends RecyclerView.ViewHolder {
             txt_survey_date.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
         }
 
-        switch (data.getStatus()) {
-
-            case 2:
-//                text_number.setText("");
-                row_survey_imgLeftday.setVisibility(View.VISIBLE);
-                row_survey_imgLeftday.setImageResource(R.drawable.survey_item_expired_icon);
-                break;
-
-            case 3:
-//                text_number.setText("");
-                row_survey_imgLeftday.setVisibility(View.VISIBLE);
-                row_survey_imgLeftday.setImageResource(R.drawable.survey_item_expired_icon);
-
-                break;
-        }
+//        switch (data.getStatus()) {
+//
+//            case 2:
+////                text_number.setText("");
+//                row_survey_imgLeftday.setVisibility(View.VISIBLE);
+//                row_survey_imgLeftday.setImageResource(R.drawable.survey_item_expired_icon);
+//                break;
+//            case 3:
+////                text_number.setText("");
+//                row_survey_imgLeftday.setVisibility(View.VISIBLE);
+//                row_survey_imgLeftday.setImageResource(R.drawable.survey_item_expired_icon);
+//                break;
+//        }
 
     }
 

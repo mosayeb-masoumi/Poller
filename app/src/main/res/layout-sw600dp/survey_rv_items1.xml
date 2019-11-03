@@ -35,7 +35,6 @@
                 android:layout_marginTop="1dp"
                 android:paddingStart="@dimen/_1sdp"
                 android:textColor="@color/blue"
-                android:text="باقیمانده"
                 android:textSize="15sp" />
 
         </RelativeLayout>
@@ -51,6 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="2dp"
+                android:visibility="gone"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true" />
 
@@ -58,12 +58,16 @@
                 android:id="@+id/text_survey_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:text="1500"
-                android:textColor="#fff"
+                android:layout_centerInParent="true"
                 android:textSize="@dimen/_10sdp" />
 
+            <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                android:id="@+id/text_survey_unit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:gravity="center"
+                android:textSize="@dimen/_9sdp" />
 
         </RelativeLayout>
 

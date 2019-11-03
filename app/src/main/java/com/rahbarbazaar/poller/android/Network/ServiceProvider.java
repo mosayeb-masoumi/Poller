@@ -53,13 +53,13 @@ public class ServiceProvider {
 
         // handle error 401
         clientBuilder.authenticator(new Authenticator() {
+
             @Override
             public Request authenticate(Route route, Response response) throws IOException {
                 //check if there is mobilephone
 
-                String phone = PreferenceStorage.getInstance(context).retrivePhone();
-
-                if (!phone.equals("0")) {
+//                String phone = PreferenceStorage.getInstance(context).retrivePhone();
+//                if (!phone.equals("0")) {
 
                     Service service = new ServiceProvider(context).mService;
                     Call<RefreshToken> call = service.requsetRefreshToken(ClientConfig.API_V1);
@@ -74,15 +74,13 @@ public class ServiceProvider {
                                 .addHeader("lang", storage.retriveLanguage())
                                 .addHeader("token", PreferenceStorage.getInstance(context).retriveToken())
                                 .build();
-
                     } else {
                         return null;
-
                     }
 
-                } else {
-                    return null;
-                }
+//                } else {
+//                    return null;
+//                }
             }
         });
 

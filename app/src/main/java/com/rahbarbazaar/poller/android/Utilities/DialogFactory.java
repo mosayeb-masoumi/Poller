@@ -52,7 +52,6 @@ public class DialogFactory {
     }
 
 
-
     public void createSurveyDetailsDialog(DialogFactoryInteraction listener, SurveyMainModel data, View root, String button_title) {
 
         if (context != null) {
@@ -75,9 +74,15 @@ public class DialogFactory {
             if (button_title.contains("منقضی"))
                 btn_go_dialog.setEnabled(false);
 
-            text_time.setText(new StringBuilder().append(context.getString(R.string.text_survey_time)).append(" ")
-                    .append(context.getString(R.string.text_from)).append(data.getStart_date(), 0, 10).append(" ").append(context.getString(R.string.text_until)).append(" ")
-                    .append(data.getEnd_date(), 0, 10));
+            text_time.setText(new StringBuilder().append(context.getString(R.string.text_survey_time)).append("\u200E").append(" ")
+                    .append("\u200E").append(context.getString(R.string.text_from)).append("\u200E").append(data.getStart_date(), 0, 10)
+                    .append("\u200E").append(" ").append("\u200E").append(context.getString(R.string.text_until)).append("\u200E").append(" ")
+                    .append("\u200E").append(data.getEnd_date(), 0, 10));
+
+
+
+
+
             text_point.setText(new StringBuilder().append(context.getString(R.string.text_point)).append(" ")
                     .append(data.getPoint()).append(" ").append(data.getCurrency().getName()));
 
@@ -95,7 +100,9 @@ public class DialogFactory {
                 case 3:
                     status = context.getString(R.string.text_survey_complete);
                     btn_go_dialog.setEnabled(false);
-                    text_time.setText(new StringBuilder().append(context.getString(R.string.text_survey_time)).append(" ").append(context.getString(R.string.text_in)).append(data.getComplete_date(), 0, 10).append(context.getString(R.string.text_answer)));
+                    text_time.setText(new StringBuilder().append(context.getString(R.string.text_survey_time)).append("\u200E").append(" ").append("\u200E").append(context.getString(R.string.text_in))
+                            .append("\u200E").append(data.getComplete_date(), 0, 10)
+                            .append("\u200E").append(context.getString(R.string.text_answer)));
                     break;
 
                 case 0:
@@ -131,8 +138,6 @@ public class DialogFactory {
     }
 
 
-
-
     public void createSurveyDetailsDialogExpired(DialogFactoryInteraction listener, SurveyMainModel data, View root, String button_title) {
 
         if (context != null) {
@@ -154,12 +159,21 @@ public class DialogFactory {
             if (button_title.contains("منقضی"))
                 btn_go_dialog.setEnabled(false);
 
-            text_time.setText(new StringBuilder().append(context.getString(R.string.text_survey_time)).append(context.getString(R.string.text_from))
-                    .append(data.getStart_date(), 0, 10).append(" ")
-                    .append(context.getString(R.string.text_until)).append(" ").append(data.getEnd_date(), 0, 10));
+
+
+            text_time.setText(new StringBuilder().append(context.getString(R.string.text_survey_time)).append("\u200E").append(context.getString(R.string.text_from))
+                    .append("\u200E") .append(data.getStart_date(), 0, 10).append("\u200E").append(" ")
+                    .append("\u200E").append(context.getString(R.string.text_until)).append("\u200E").append(" ")
+                    .append("\u200E").append(data.getEnd_date(), 0, 10));
+
+
+
+
+
             text_point.setText(new StringBuilder().append(context.getString(R.string.text_point))
                     .append(" ").append(data.getPoint()).append(" ")
                     .append(data.getCurrency().getName()));
+
 
             String status = null;
             switch (data.getStatus()) {
@@ -175,7 +189,9 @@ public class DialogFactory {
                 case 3:
                     status = context.getString(R.string.text_survey_complete);
                     btn_go_dialog.setEnabled(false);
-                    text_time.setText(new StringBuilder().append(context.getString(R.string.text_survey_time)).append(context.getString(R.string.text_in)).append(data.getComplete_date(), 0, 10).append(context.getString(R.string.text_answer)));
+                    text_time.setText(new StringBuilder().append(context.getString(R.string.text_survey_time)).append("\u200E")
+                            .append(context.getString(R.string.text_in)).append("\u200E").append(data.getComplete_date(), 0, 10)
+                            .append("\u200E").append(context.getString(R.string.text_answer)));
                     break;
 
                 case 0:
@@ -264,17 +280,16 @@ public class DialogFactory {
 
         //set click listener for views inside of dialog
 //        btn_cancel_dialog.setOnClickListener(v -> dialog.dismiss());
-        btn_cancel_dialog.setOnClickListener(v ->{
-                    dialog.dismiss();
-                    listener.onDeniedButtonClicked(false);
-                });
+        btn_cancel_dialog.setOnClickListener(v -> {
+            dialog.dismiss();
+            listener.onDeniedButtonClicked(false);
+        });
 
         btn_exit_dialog.setOnClickListener(v -> listener.onAcceptButtonClicked("")
         );
 
         dialog.show();
     }
-
 
 
     public void createNoInternetDialog(DialogFactoryInteraction listener, View root) {
@@ -317,8 +332,6 @@ public class DialogFactory {
         dialog.setOnDismissListener(dialogInterface -> listener.onDeniedButtonClicked(true));
 
         dialog.show();
-
-
 
 
 // make change the size of dialog
@@ -403,17 +416,18 @@ public class DialogFactory {
 
             listener.onAcceptButtonClicked(edt_title.getText().toString(), edt_description.getText().toString());
 
-            if(edt_title.getText().toString().equals("")|| edt_description.getText().toString().equals("")){
+            if (edt_title.getText().toString().equals("") || edt_description.getText().toString().equals("")) {
 
-            }else{
+            } else {
                 dialog.dismiss();
             }
 
         });
 
-        btn_cancel_dialog.setOnClickListener(view ->{
+        btn_cancel_dialog.setOnClickListener(view -> {
             listener.onDeniedButtonClicked(false);
-            dialog.dismiss();});
+            dialog.dismiss();
+        });
 
         dialog.show();
     }
@@ -549,6 +563,7 @@ public class DialogFactory {
         });
         dialog.show();
     }
+
     //we can use create token dialog with little modify too:
     public void createNoRegisterDialog1(View root, DialogFactoryInteraction listener) {
 
@@ -713,9 +728,6 @@ public class DialogFactory {
     }
 
 
-
-
-
     public void createSelectLangDialog(View view, DialogFactoryInteraction interaction) {
 
         View customView = LayoutInflater.from(context).inflate(R.layout.select_lang_dialog1, (ViewGroup) view, false);
@@ -790,8 +802,7 @@ public class DialogFactory {
         if (isBalance) {
             text_title.setText(R.string.exchange_dialog_title_price);
             edt_lottery_amount.setHint(R.string.exchange_dialog_price_hint);
-        }
-        else {
+        } else {
             text_title.setText(R.string.exchange_dialog_title_point);
             edt_lottery_amount.setHint(R.string.exchange_dialog_point_hint);
         }
@@ -822,9 +833,6 @@ public class DialogFactory {
     }
 
 
-
-
-
     public void createTryAgainDialog(View view, DialogFactoryInteraction interaction) {
 
         View customView = LayoutInflater.from(context).inflate(R.layout.try_again_dialog1, (ViewGroup) view, false);
@@ -841,9 +849,9 @@ public class DialogFactory {
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
 
-         text_tryAgain.setOnClickListener(v -> {
-             dialog.dismiss();
-         });
+        text_tryAgain.setOnClickListener(v -> {
+            dialog.dismiss();
+        });
 
         dialog.show();
     }

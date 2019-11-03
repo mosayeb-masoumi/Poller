@@ -138,7 +138,7 @@
 
     <!--Bottom navigation tabs-->
     <string name="home_tab">صفحه اصلی</string>
-    <string name="survey_tab">نظرسنجی</string>
+    <string name="survey_tab">نظرسنجی ها</string>
     <string name="transaction_tab">حساب من</string>
     <string name="profile_tab">پروفایل</string>
     <string name="update_app_optional" translatable="false">بستن</string>
@@ -155,7 +155,7 @@
     <string name="text_newPolls">نظرسنجی جدید</string>
     <string name="text_activePolls">نظرسنجی فعال</string>
     <string name="text_balance">موجودی</string>
-    <string name="text_your_point">امتیاز شما</string>
+    <string name="text_your_point">امتیاز</string>
     <string name="text_leftday">روز مانده</string>
     <string name="wallet_balance">موجودی کیف پول</string>
     <string name="text_yearly_lottery">قرعه کشی سالیانه</string>
@@ -172,7 +172,7 @@
     <string name="retuen">بازگشت</string>
     <string name="incorrect_mobilephone">شماره موبایل صحیح نمی باشد</string>
     <string name="please_wait">لطفا شکیبا باشید…</string>
-    <string name="powered_by">Powered by...</string>
+    <string name="powered_by">Powered by</string>
     <string name="survey_notAvailable">قرعه کشی پانزده ام این ماه فعال می گردد.</string>
     <string name="empetyReportIssue">فیلد های اطلاعاتی را تکمیل نمایید!</string>
 

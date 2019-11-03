@@ -287,12 +287,11 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
                 items.addAll(data.getActives());
                 int active_count = 0;
                 for (SurveyMainModel model : data.getActives()) {
-
-//                    if (model.getStatus() == 1)
-
                     int a = model.getStatus();
-                    if (model.getStatus() <=2)
+                    if (model.getStatus() ==1 || model.getStatus() ==2){
                         active_count++;
+                    }
+
                 }
                 if (active_count != 0 && interaction != null)
                     interaction.activeSurveyCount(String.valueOf(active_count));//badge count for survey page
@@ -472,6 +471,7 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
     private void showDetailsSurveyDialogExpired(SurveyMainModel result, String button_status, int url_type) {
 
         new DialogFactory(getActivity()).createSurveyDetailsDialogExpired(new DialogFactory.DialogFactoryInteraction() {
+//        new DialogFactory(getActivity()).createSurveyDetailsDialog(new DialogFactory.DialogFactoryInteraction() {
             @Override
             public void onAcceptButtonClicked(String... params) {
 

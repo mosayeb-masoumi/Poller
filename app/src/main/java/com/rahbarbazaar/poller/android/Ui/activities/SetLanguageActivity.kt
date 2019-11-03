@@ -67,24 +67,26 @@ class SetLanguageActivity : AppCompatActivity() {
 
 
 
-        //save dynamic currency
-        fun saveCurrency() {
+//        //save dynamic currency
+//        fun saveCurrency() {
+//            val service = provider.getmService()
+//            disposable.add(service.getCurrency(ClientConfig.API_V2).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+//                    .subscribeWith(object : DisposableSingleObserver<GetCurrencyListResult>() {
+//                        override fun onSuccess(result: GetCurrencyListResult) {
+//
+//                            getCurrencyListResult = result
+//                        }
+//
+//                        override fun onError(e: Throwable) {
+//
+//                            Log.e("splash_service", "msg : failed :${e.message}")
+//                        }
+//                    }))
+//        }
+//        saveCurrency()
 
-            val service = provider.getmService()
-            disposable.add(service.getCurrency(ClientConfig.API_V2).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-                    .subscribeWith(object : DisposableSingleObserver<GetCurrencyListResult>() {
-                        override fun onSuccess(result: GetCurrencyListResult) {
 
-                            getCurrencyListResult = result
-                        }
 
-                        override fun onError(e: Throwable) {
-
-                            Log.e("splash_service", "msg : failed :${e.message}")
-                        }
-                    }))
-        }
-        saveCurrency()
     }
 
     private fun checkAccessibility() {

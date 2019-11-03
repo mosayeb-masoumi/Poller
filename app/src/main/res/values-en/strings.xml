@@ -133,7 +133,7 @@
 
     <!--Bottom navigation tabs-->
     <string name="home_tab">Home</string>
-    <string name="survey_tab">Survey</string>
+    <string name="survey_tab">Surveys</string>
     <string name="transaction_tab">Transaction</string>
     <string name="profile_tab">Profile</string>
 
@@ -152,7 +152,7 @@
     <string name="text_newPolls">New Poll</string>
     <string name="text_activePolls">Active Survey</string>
     <string name="text_balance">Balance</string>
-    <string name="text_your_point">Your Score</string>
+    <string name="text_your_point">Score</string>
     <string name="text_leftday">Days Left</string>
     <string name="wallet_balance">Your Wallet Balance</string>
     <string name="text_yearly_lottery">Annual Lottery</string>

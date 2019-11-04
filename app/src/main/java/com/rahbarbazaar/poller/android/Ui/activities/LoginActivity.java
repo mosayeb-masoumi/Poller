@@ -1,5 +1,6 @@
 package com.rahbarbazaar.poller.android.Ui.activities;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
@@ -33,6 +35,8 @@ import com.rahbarbazaar.poller.android.Utilities.GeneralTools;
 import com.rahbarbazaar.poller.android.Utilities.LocaleManager;
 import com.rahbarbazaar.poller.android.Utilities.TypeFaceGenerator;
 import com.wang.avi.AVLoadingIndicatorView;
+
+import java.util.Objects;
 
 import co.ronash.pushe.Pushe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -90,11 +94,19 @@ public class LoginActivity extends CustomBaseActivity implements View.OnClickLis
         et_user_login.setOnEditorActionListener((v, actionId, event) -> {
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 sendLoginRequest();
+                closeKeyboard();
                 return true;
             }
             return false;
         });
 
+    }
+
+    private void closeKeyboard() {
+        InputMethodManager inputMethodManager =
+                (InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(
+                Objects.requireNonNull(getCurrentFocus()).getWindowToken(), 0);
     }
 
     //define views of activity
@@ -146,7 +158,6 @@ public class LoginActivity extends CustomBaseActivity implements View.OnClickLis
                                     Intent intent = new Intent(LoginActivity.this, VerificationActivity.class);
                                     intent.putExtra("user_mobile", et_user_login.getText().toString());
                                     startActivity(intent);
-                                    LoginActivity.this.finish();
                                     finish();
                                     overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
                                 }

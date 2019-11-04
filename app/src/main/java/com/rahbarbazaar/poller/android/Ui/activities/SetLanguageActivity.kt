@@ -31,7 +31,7 @@ class SetLanguageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_set_language)
 
-        val provider = ServiceProvider(this)
+//        val provider = ServiceProvider(this)
         disposable = CompositeDisposable()
         tools = GeneralTools.getInstance()
         dialogFactory = DialogFactory(this@SetLanguageActivity)

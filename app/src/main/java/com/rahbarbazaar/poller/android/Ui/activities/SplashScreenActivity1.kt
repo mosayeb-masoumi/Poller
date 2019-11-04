@@ -1,6 +1,6 @@
 package com.rahbarbazaar.poller.android.Ui.activities
 
-import android.annotation.SuppressLint
+
 import android.app.Dialog
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -10,26 +10,17 @@ import android.net.ConnectivityManager
 import android.os.Bundle
 import android.provider.Settings
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
-import com.google.gson.Gson
-import com.jakewharton.retrofit2.adapter.rxjava2.HttpException
 import com.rahbarbazaar.poller.android.BuildConfig
 import com.rahbarbazaar.poller.android.Models.GetCurrencyListResult
-import com.rahbarbazaar.poller.android.Models.UserConfirmAuthResult
-import com.rahbarbazaar.poller.android.Models.UserDetailsPrefrence
-import com.rahbarbazaar.poller.android.Models.refresh_token.RefreshToken
 import com.rahbarbazaar.poller.android.Network.ServiceProvider
 import com.rahbarbazaar.poller.android.R
 import com.rahbarbazaar.poller.android.Utilities.*
-import com.wang.avi.AVLoadingIndicatorView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_lottery.*
 import kotlinx.android.synthetic.main.activity_splash_screen1.*
 import kotlinx.android.synthetic.main.activity_splash_screen1.view.*
 
@@ -41,11 +32,8 @@ class SplashScreenActivity1 : AppCompatActivity() {
     private lateinit var dialogFactory: DialogFactory
     private var getCurrencyListResult: GetCurrencyListResult? = null
 
-//    private var connectivityReceiver: BroadcastReceiver? = null
 
-//    var av_loading :AVLoadingIndicatorView? = null
-
-    var b: Int = 0
+//    internal var connectivityReceiver: BroadcastReceiver? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,8 +50,7 @@ class SplashScreenActivity1 : AppCompatActivity() {
 //        }
 
 
-
-        txtVersion.setText(BuildConfig.VERSION_NAME)
+        txtVersion.text = BuildConfig.VERSION_NAME
 
 //        val provider = ServiceProvider(this)
         disposable = CompositeDisposable()
@@ -270,41 +257,41 @@ class SplashScreenActivity1 : AppCompatActivity() {
 //    }
 
 
-    private fun createCloseAppDialog() {
-
-        val dialog = Dialog(this)
-        dialog.setContentView(R.layout.close_app_dialog1)
-        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent)
-        val txt = dialog.findViewById<TextView>(R.id.text_close_app)
-        dialog.setCancelable(false)
-
-
-        txt.setOnClickListener {
-            dialog.dismiss()
-            finishAffinity()
-            System.exit(0)
-        }
-
-        dialog.show()
-    }
-
-
-    private fun createTryAgainDialog() {
-        val dialog = Dialog(this)
-        dialog.setContentView(R.layout.try_again_dialog1)
-        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent)
-        val txt = dialog.findViewById<TextView>(R.id.text_tryAgain)
-        dialog.setCancelable(false)
-
-
-        txt.setOnClickListener {
-            saveCurrency()
-            dialog.dismiss()
-            rl_root.av_loading.visibility = View.VISIBLE
-        }
-
-        dialog.show()
-    }
+//    private fun createCloseAppDialog() {
+//
+//        val dialog = Dialog(this)
+//        dialog.setContentView(R.layout.close_app_dialog1)
+//        dialog.window.setBackgroundDrawableResource(android.R.color.transparent)
+//        val txt = dialog.findViewById<TextView>(R.id.text_close_app)
+//        dialog.setCancelable(false)
+//
+//
+//        txt.setOnClickListener {
+//            dialog.dismiss()
+//            finishAffinity()
+//            System.exit(0)
+//        }
+//
+//        dialog.show()
+//    }
+//
+//
+//    private fun createTryAgainDialog() {
+//        val dialog = Dialog(this)
+//        dialog.setContentView(R.layout.try_again_dialog1)
+//        dialog.window.setBackgroundDrawableResource(android.R.color.transparent)
+//        val txt = dialog.findViewById<TextView>(R.id.text_tryAgain)
+//        dialog.setCancelable(false)
+//
+//
+//        txt.setOnClickListener {
+//            saveCurrency()
+//            dialog.dismiss()
+//            rl_root.av_loading.visibility = View.VISIBLE
+//        }
+//
+//        dialog.show()
+//    }
 
 
 //    override fun onDestroy() {
@@ -318,9 +305,6 @@ class SplashScreenActivity1 : AppCompatActivity() {
 //        super.onResume()
 //        registerReceiver(connectivityReceiver, IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
 //    }
-//    protected fun onResume() {
-//        super.onResume()
-//        registerReceiver(connectivityReceiver, IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
-//    }
-//
+
+
 }

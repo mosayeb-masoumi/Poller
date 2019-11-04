@@ -112,7 +112,7 @@
                             android:layout_height="@dimen/_40sdp"
                             android:layout_centerHorizontal="true"
                             android:layout_centerVertical="true"
-                            android:padding="@dimen/_7sdp" />
+                             />
 
                         <ImageView
                             android:id="@+id/img_star_gold"

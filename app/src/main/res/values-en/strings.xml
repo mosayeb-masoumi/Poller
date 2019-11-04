@@ -154,7 +154,7 @@
     <string name="text_balance">Balance</string>
     <string name="text_your_point">Score</string>
     <string name="text_leftday">Days Left</string>
-    <string name="wallet_balance">Your Wallet Balance</string>
+    <string name="wallet_balance">Balance</string>
     <string name="text_yearly_lottery">Annual Lottery</string>
     <string name="social_medias">Follow us on social networks!</string>
     <string name="text_select_lang_header">Change Language</string>
@@ -172,5 +172,9 @@
     <string name="powered_by">Powered by</string>
     <string name="survey_notAvailable">There is no any active lottery</string>
     <string name="empetyReportIssue">Please complete the fields!</string>
+
+    <string name="title">Title</string>
+    <string name="status">Status</string>
+    <string name="time">Time</string>
 
 </resources>

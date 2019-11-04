@@ -2,6 +2,7 @@ package com.rahbarbazaar.poller.android.Ui.activities;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -16,6 +17,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -41,6 +43,7 @@ import com.rahbarbazaar.poller.android.Utilities.TypeFaceGenerator;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 import co.ronash.pushe.Pushe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -140,10 +143,18 @@ public class VerificationActivity extends CustomBaseActivity
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 //Call your method here
                 sendVerifyRequest();
+                closeKeyboard();
                 return true;
             }
             return false;
         });
+    }
+
+    private void closeKeyboard() {
+        InputMethodManager inputMethodManager =
+                (InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(
+                Objects.requireNonNull(getCurrentFocus()).getWindowToken(), 0);
     }
 
     //define views of activity

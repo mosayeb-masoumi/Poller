@@ -246,21 +246,26 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
 //                rl_name_state.setBackgroundDrawable(resources.getDrawable(R.drawable.dialog_btn_shape1))
                 rl_name_state.background = context?.let { ContextCompat.getDrawable(it, R.drawable.dialog_btn_shape1) }
 //                img_star.setImageDrawable(resources.getDrawable(R.drawable.star_gradient))
-                img_star.setImageDrawable(context?.let { ContextCompat.getDrawable(it, R.drawable.star_gradient) })
+//                img_star.setImageDrawable(context?.let { ContextCompat.getDrawable(it, R.drawable.star_gradient) })
+                img_star.setImageDrawable(context?.let { ContextCompat.getDrawable(it, R.drawable.bg_info_guest) })
             }
             "2", "3", "5" -> {
                 rl_name_state.background = context?.let { ContextCompat.getDrawable(it, R.drawable.bg_silver) }
-                img_star.setImageDrawable(context?.let { ContextCompat.getDrawable(it, R.drawable.star_silver) })
+//                img_star.setImageDrawable(context?.let { ContextCompat.getDrawable(it, R.drawable.star_silver) })
+                img_star.setImageDrawable(context?.let { ContextCompat.getDrawable(it, R.drawable.bg_info_silver) })
             }
 
             "4" -> {
                 rl_name_state.background = context?.let { ContextCompat.getDrawable(it, R.drawable.bg_boronze) }
-                img_star.setImageDrawable(context?.let { ContextCompat.getDrawable(it, R.drawable.star_boronze) })
+//                img_star.setImageDrawable(context?.let { ContextCompat.getDrawable(it, R.drawable.star_boronze) })
+                img_star.setImageDrawable(context?.let { ContextCompat.getDrawable(it, R.drawable.bg_info_boronze) })
             }
 
             "6" -> {
                 rl_name_state.background = context?.let { ContextCompat.getDrawable(it, R.drawable.bg_golden) }
-                img_star.setImageDrawable(context?.let { ContextCompat.getDrawable(it, R.drawable.star_gold) })
+//                img_star.setImageDrawable(context?.let { ContextCompat.getDrawable(it, R.drawable.star_gold) })
+                img_star.setImageDrawable(context?.let { ContextCompat.getDrawable(it, R.drawable.bg_info_boronze) })
+
             }
         }
     }

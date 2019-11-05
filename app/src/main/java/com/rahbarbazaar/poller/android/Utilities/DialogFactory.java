@@ -873,4 +873,124 @@ public class DialogFactory {
 
         dialog.show();
     }
+
+
+    public void createHomeInfoDialog(View view,String title,DialogFactoryInteraction interaction){
+        View customView = LayoutInflater.from(context).inflate(R.layout.home_info_dialog1,(ViewGroup) view, false);
+
+
+        TextView txt_header = customView.findViewById(R.id.txt_header);
+        TextView text_content = customView.findViewById(R.id.text_content);
+
+        if(title.equals("homeScore")){
+            txt_header.setText(R.string.text_your_point);
+            text_content.setText(R.string.home_point_content);
+        }
+
+        else if(title.equals("homeBalance")){
+            txt_header.setText(R.string.text_balance);
+            text_content.setText(R.string.home_balance_content);
+        }
+
+        else if(title.equals("homeActiveSurveys")){
+            txt_header.setText(R.string.text_activePolls);
+            text_content.setText(R.string.home_active_survey_content);
+        }
+
+        else if(title.equals("homeLeftDays")){
+            txt_header.setText(R.string.text_leftday);
+            text_content.setText(R.string.home_left_days_content);
+        }
+        else if(title.equals("guest")){
+            txt_header.setText(R.string.guest);
+            text_content.setText(R.string.profile_guest_content);
+        }
+        else if(title.equals("silver")){
+            txt_header.setText(R.string.silver);
+            text_content.setText(R.string.profile_silver_content);
+        }
+        else if(title.equals("boronze")){
+            txt_header.setText(R.string.boronze);
+            text_content.setText(R.string.profile_boronze_content);
+        }
+        else if(title.equals("golden")){
+            txt_header.setText(R.string.text_activePolls);
+            text_content.setText(R.string.home_active_survey_content);
+        }
+
+
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setView(customView);
+
+        //create dialog and set background transparent
+        AlertDialog dialog = builder.create();
+        if (dialog.getWindow() != null)
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+
+        dialog.show();
+    }
+
+    public void createSurveyInfoDialog(View view,String title,DialogFactoryInteraction interaction){
+        View customView = LayoutInflater.from(context).inflate(R.layout.surveys_header_info_dialog,(ViewGroup) view, false);
+
+
+        TextView txt_header = customView.findViewById(R.id.txt_header);
+        TextView text_content = customView.findViewById(R.id.text_content);
+
+        TextView text_golden = customView.findViewById(R.id.text_golden);
+        TextView text_guest = customView.findViewById(R.id.text_guest);
+        TextView text_complete = customView.findViewById(R.id.text_complete);
+        TextView text_expired = customView.findViewById(R.id.text_expired);
+
+        RelativeLayout rl_golden = customView.findViewById(R.id.rl_golden);
+        RelativeLayout rl_guest = customView.findViewById(R.id.rl_guest);
+        RelativeLayout rl_complete = customView.findViewById(R.id.rl_complete);
+        RelativeLayout rl_expired = customView.findViewById(R.id.rl_expired);
+
+
+        if(title.equals("survey_header_status")){
+
+            txt_header.setText(R.string.status);
+            text_content.setText(R.string.survey_header_status);
+
+            rl_golden.setVisibility(View.VISIBLE);
+            rl_guest.setVisibility(View.VISIBLE);
+            rl_complete.setVisibility(View.VISIBLE);
+            rl_expired.setVisibility(View.VISIBLE);
+
+            text_golden.setText(R.string.survey_header_status_golden);
+            text_guest.setText(R.string.survey_header_status_guest);
+            text_complete.setText(R.string.survey_header_status_complete);
+            text_expired.setText(R.string.survey_header_status_expired);
+        }
+        else if(title.equals("survey_header_title")){
+            txt_header.setText(R.string.title);
+            text_content.setText(R.string.survey_header_title);
+        }
+        else if(title.equals("survey_header_score")){
+            txt_header.setText(R.string.text_your_point);
+            text_content.setText(R.string.survey_header_score);
+        }
+        else if(title.equals("survey_header_time")){
+            txt_header.setText(R.string.time);
+            text_content.setText(R.string.survey_header_time);
+        }
+
+
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setView(customView);
+
+        //create dialog and set background transparent
+        AlertDialog dialog = builder.create();
+        if (dialog.getWindow() != null)
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+
+        dialog.show();
+    }
 }

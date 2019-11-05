@@ -10,11 +10,15 @@ import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.rahbarbazaar.poller.android.Models.GetCurrencyListResult;
+import com.rahbarbazaar.poller.android.Models.SurveyMainModel;
 import com.rahbarbazaar.poller.android.Models.eventbus.ModelActiveSurveyCount;
 import com.rahbarbazaar.poller.android.Models.eventbus.ModelTranferDataProfileToHome;
 import com.rahbarbazaar.poller.android.Models.getimages.GetImages;
@@ -25,6 +29,7 @@ import com.rahbarbazaar.poller.android.Ui.activities.HtmlLoaderActivity;
 import com.rahbarbazaar.poller.android.Ui.activities.MainActivity;
 import com.rahbarbazaar.poller.android.Utilities.App;
 import com.rahbarbazaar.poller.android.Utilities.ClientConfig;
+import com.rahbarbazaar.poller.android.Utilities.DialogFactory;
 import com.rahbarbazaar.poller.android.Utilities.LocaleManager;
 
 import org.greenrobot.eventbus.EventBus;
@@ -51,6 +56,7 @@ public class HomeFragment1 extends Fragment implements View.OnClickListener {
     CardView cardview_home_video, cardview_home_image, cardview_home_polls;
     TextView text_leftdays_digit, text_activepoll_digit, text_balance_digit, text_yourpoint_digit;
     SimpleDraweeView img_home_whats_up, img_home_video, img_home_polls;
+    RelativeLayout rlHomeScore,rlHomeBalance,rlHomeActiveSurveys,rlHomeLeftDays;
     int activeSurveys;
     int balance;
     int lotteryDays;
@@ -63,6 +69,7 @@ public class HomeFragment1 extends Fragment implements View.OnClickListener {
 
 
 
+    LinearLayout homeFragment1;
 
     public HomeFragment1() {
         // Required empty public constructor
@@ -118,6 +125,10 @@ public class HomeFragment1 extends Fragment implements View.OnClickListener {
         cardview_home_image.setOnClickListener(this);
         cardview_home_polls.setOnClickListener(this);
 
+        rlHomeScore.setOnClickListener(this);
+        rlHomeBalance.setOnClickListener(this);
+        rlHomeActiveSurveys.setOnClickListener(this);
+        rlHomeLeftDays.setOnClickListener(this);
 
         return view;
     }
@@ -144,6 +155,14 @@ public class HomeFragment1 extends Fragment implements View.OnClickListener {
         img_home_polls = view.findViewById(R.id.img_home_polls);
 
 
+        rlHomeScore= view.findViewById(R.id.rlHomeScore);
+        rlHomeBalance= view.findViewById(R.id.rlHomeBalance);
+        rlHomeActiveSurveys= view.findViewById(R.id.rlHomeActiveSurveys);
+        rlHomeLeftDays= view.findViewById(R.id.rlHomeLeftDays);
+
+        homeFragment1=view.findViewById(R.id.homeFragment1);
+
+
     }
 
     @Override
@@ -161,7 +180,46 @@ public class HomeFragment1 extends Fragment implements View.OnClickListener {
             case R.id.cardview_home_polls:
                 ((MainActivity) getActivity()).onTabSelected(2, false);
                 break;
+
+
+            case R.id.rlHomeScore:
+                String title1 = "homeScore";
+                showHomeInfoDialog(title1);
+                break;
+
+            case R.id.rlHomeBalance:
+                String title2 = "homeBalance";
+                showHomeInfoDialog(title2);
+                break;
+
+            case R.id.rlHomeActiveSurveys:
+                String title3 = "homeActiveSurveys";
+                showHomeInfoDialog(title3);
+                break;
+
+            case R.id.rlHomeLeftDays:
+                String title4 = "homeLeftDays";
+                showHomeInfoDialog(title4);
+                break;
+
+
         }
+    }
+
+    private void showHomeInfoDialog(String title) {
+
+       DialogFactory dialogFactory = new DialogFactory(getContext());
+       dialogFactory.createHomeInfoDialog(homeFragment1,title, new DialogFactory.DialogFactoryInteraction() {
+           @Override
+           public void onAcceptButtonClicked(String... strings) {
+
+           }
+
+           @Override
+           public void onDeniedButtonClicked(boolean cancel_dialog) {
+
+           }
+       });
     }
 
 

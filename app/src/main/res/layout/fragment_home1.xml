@@ -292,6 +292,7 @@
                     <RelativeLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:id="@+id/rlHomeLeftDays"
                         android:layout_weight="2">
 
                         <ImageView
@@ -329,6 +330,7 @@
                     <RelativeLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:id="@+id/rlHomeActiveSurveys"
                         android:layout_weight="2">
 
                         <ImageView
@@ -362,6 +364,7 @@
                     <RelativeLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:id="@+id/rlHomeBalance"
                         android:layout_weight="2">
 
                         <ImageView
@@ -395,6 +398,7 @@
                     <RelativeLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:id="@+id/rlHomeScore"
                         android:layout_weight="2">
 
                         <ImageView

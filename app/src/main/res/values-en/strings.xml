@@ -143,8 +143,8 @@
     <string name="confirmation">Confirm</string>
     <string name="enter">Enter</string>
     <string name="text_access_upgrade">User Access Upgrade</string>
-    <string name="convert_toman">Convert to Toman</string>
-    <string name="convert_papasi">Convert to Papasi</string>
+    <string name="convert_toman">Convert Papasi to Toman</string>
+    <string name="convert_papasi">Convert Toman to Papasi</string>
     <string name="text_polls">Surveys</string>
     <!--<string name="text_whats_up">Whats Up</string>-->
     <string name="text_news">News</string>
@@ -176,5 +176,39 @@
     <string name="title">Title</string>
     <string name="status">Status</string>
     <string name="time">Time</string>
+
+    <string name="home_point_content">بعد از پاسخ دادن به برخی نظرسنجیها، امتیاز شما بصورت پاپاسی
+        در حساب کاربری شما لحاظ میشود. شما میتوانید
+        با پاپاسیهای بدست آمده در قرعهکشی های ماهانه پولر شرکت کنید.</string>
+
+    <string name="home_balance_content">بعد از پاسخ دادن به برخی نظرسنجی ها، امتیاز شما بصورت تومان در حساب کاربری شما لحاظ میشود.
+        شما میتوانید با موجودی بدست آمده از بازارچه پولر خرید کنید.</string>
+    <string name="home_active_survey_content">تعداد نظرسنجی های فعالی که شما میتوانید در آن شرکت کرده و امتیاز مربوطه را کسب کنید.</string>
+
+    <string name="home_left_days_content">ایکس روز مانده به قرعه کشی پولر. قرعه کشی های پولری بصورت ماهانه برگزار می شود.
+        برای کسب اطلاعات پیرامون نحوه شرکت در قرعه کشی،
+        می توانید ویدئو آموزشی آن را ملاحظه فرمایید.</string>
+
+    <string name="survey_header_score">مقدار پاپاسی و یا تومان که با پاسخ دادن به پرسشنامه کسب خواهید کرد.</string>
+    <string name="survey_header_title">موضوع پرسشنامه و نظرسنجی.</string>
+    <string name="survey_header_time">تعداد روز باقی‌مانده که امکان پاسخ دادن به پرسشنامه دارید.</string>
+    <string name="survey_header_status">وضعیت پاسخ یا عدم پاسخ شما به پرسشنامه، در زمان مشخص شده برای هر پرسشنامه : </string>
+
+    <string name="survey_header_status_golden">ddflkalkjdflw oeojfmcwefowjodm emkmkm mefmme mmmcmm</string>
+    <string name="survey_header_status_guest">ddflkalkjdflw oeojfmcwefowjodm emkmkm mefmme mmmcmm</string>
+    <string name="survey_header_status_complete">ddflkalkjdflw oeojfmcwefowjodm emkmkm mefmme mmmcmm</string>
+    <string name="survey_header_status_expired">ddflkalkjdflw oeojfmcwefowjodm emkmkm mefmme mmmcmm</string>
+
+    <string name="guest">Guest</string>
+    <string name="boronze">Boronze</string>
+    <string name="silver">Silver</string>
+
+    <string name="profile_guest_content">jdgfjga kkadsf ljjalsd kljkladlfjojo ojojiod ojojqod </string>
+    <string name="profile_boronze_content">سطح کاربری شما برنز است. درصورت ارتقا کاربری به نقرهای
+        علاوه بر امکان شرکت در قرعهکشی، میتوانید در نظرسنجی های هفتگی پولر مشارکت داشته باشید.
+        این پروسه کمتر از 3 دقیقه زمان نیاز دارد.</string>
+    <string name="profile_silver_content">سطح کاربری شما نقرهای است. درصورتی که بصورت منظم و در اسرع وقت به نظرسنجیهای پولر پاسخ دهید،
+        سطح کاربری شما طلایی خواهد شد و امتیازات بیشتری کسب خواهید کرد.</string>
+
 
 </resources>

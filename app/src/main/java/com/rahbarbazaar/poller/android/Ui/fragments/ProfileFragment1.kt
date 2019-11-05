@@ -114,6 +114,11 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
 
 
 
+
+
+
+
+
         return view
     }
 
@@ -125,6 +130,7 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
         rl_balance_point.setOnClickListener(this)
         rl_point_balance.setOnClickListener(this)
         rl_user_access_upgrade.setOnClickListener(this)
+        img_star.setOnClickListener(this)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -264,7 +270,7 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
             "6" -> {
                 rl_name_state.background = context?.let { ContextCompat.getDrawable(it, R.drawable.bg_golden) }
 //                img_star.setImageDrawable(context?.let { ContextCompat.getDrawable(it, R.drawable.star_gold) })
-                img_star.setImageDrawable(context?.let { ContextCompat.getDrawable(it, R.drawable.bg_info_boronze) })
+                img_star.setImageDrawable(context?.let { ContextCompat.getDrawable(it, R.drawable.bg_info_golden) })
 
             }
         }
@@ -401,7 +407,42 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
                             + preferenceStorage?.retrivePhone(), true)
                 }
             }
+
+            R.id.img_star ->{
+                if(type.equals("1")){
+                    var title : String = "guest"
+                    showInfoDialog(title)
+                }
+                else if(type.equals("2") || type.equals("3")|| type.equals("5")){
+                    var title:String = "silver"
+                    showInfoDialog(title)
+                }
+                else if(type.equals("4")){
+                    var title: String = "boronze"
+                    showInfoDialog(title)
+                }
+                else if(type.equals("6")){
+                    var title:String="golden"
+                    showInfoDialog(title)
+                }
+            }
         }
+    }
+
+    private fun showInfoDialog(title: String) {
+      var a :String = title
+
+        DialogFactory(context).createHomeInfoDialog(view ,title,object : DialogFactory.DialogFactoryInteraction{
+            override fun onAcceptButtonClicked(vararg strings: String?) {
+            }
+
+            override fun onDeniedButtonClicked(cancel_dialog: Boolean) {
+
+            }
+
+        })
+
+
     }
 
 

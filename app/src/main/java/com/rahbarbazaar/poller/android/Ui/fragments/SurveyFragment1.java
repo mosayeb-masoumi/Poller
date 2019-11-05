@@ -79,7 +79,7 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
     RecyclerView home_survey_rv;
     //    LinearLayout linear_header;
     SurveyRecyclerAdapter1 adapter;
-    TextView text_no_active_survey;
+    TextView text_no_active_survey , txt_header_status,txt_header_title,txt_header_score,txt_header_time;
     SwipeRefreshLayout swipe_refesh;
     CompositeDisposable disposable;
     final static int SURVEY_ANSWER_REQ = 12;
@@ -187,8 +187,42 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
             }
         });
 
+        txt_header_status.setOnClickListener(v -> {
+            String title = "survey_header_status";
+            showSurveyInfoDialog(title);
+        });
+        txt_header_title.setOnClickListener(v -> {
+
+            String title = "survey_header_title";
+            showSurveyInfoDialog(title);
+        });
+        txt_header_score.setOnClickListener(v -> {
+            String title = "survey_header_score";
+            showSurveyInfoDialog(title);
+        });
+        txt_header_time.setOnClickListener(v -> {
+            String title = "survey_header_time";
+            showSurveyInfoDialog(title);
+        });
+
 
         return view;
+    }
+
+    private void showSurveyInfoDialog(String title) {
+
+        DialogFactory dialogFactory = new DialogFactory(getContext());
+        dialogFactory.createSurveyInfoDialog(rl_survey_fragment,title, new DialogFactory.DialogFactoryInteraction() {
+            @Override
+            public void onAcceptButtonClicked(String... strings) {
+
+            }
+
+            @Override
+            public void onDeniedButtonClicked(boolean cancel_dialog) {
+
+            }
+        });
     }
 
     private void goToHtmlActivity(String url, boolean shouldBeLoadUrl) {
@@ -208,6 +242,12 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
         swipe_refesh = view.findViewById(R.id.swipe_refresh);
         text_no_active_survey = view.findViewById(R.id.text_no_active_survey);
         rl_user_access_upgrade_survey = view.findViewById(R.id.rl_user_access_upgrade_survey);
+
+        txt_header_status = view.findViewById(R.id.txt_header_status);
+        txt_header_title = view.findViewById(R.id.txt_header_title);
+        txt_header_score = view.findViewById(R.id.txt_header_score);
+        txt_header_time = view.findViewById(R.id.txt_header_time);
+
 
         //set scheme color for swipe refreshing and refresh listener
         swipe_refesh.setColorSchemeResources(R.color.colorPrimary);

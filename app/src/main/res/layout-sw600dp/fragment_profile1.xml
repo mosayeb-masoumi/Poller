@@ -437,7 +437,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <ImageView
-                        android:layout_width="@dimen/_90sdp"
+                        android:layout_width="@dimen/_70sdp"
                         android:layout_height="match_parent"
                         android:id="@+id/img1"
                         android:layout_alignParentEnd="true"
@@ -458,10 +458,11 @@
                 </RelativeLayout>
             </LinearLayout>
 
+            ///////////////////////////////////////////////////////////
             <LinearLayout
                 android:layout_width="match_parent"
                 android:id="@+id/rl_point_balance"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:layout_height="@dimen/_30sdp"
                 android:layout_marginStart="@dimen/_50sdp"
                 android:layout_marginTop="@dimen/_3sdp"
@@ -472,7 +473,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:layout_width="@dimen/_90sdp"
+                        android:layout_width="@dimen/_70sdp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:id="@+id/img2"

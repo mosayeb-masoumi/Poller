@@ -407,20 +407,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_37sdp"
                 android:id="@+id/rl_balance_point"
-                android:layout_marginStart="@dimen/_50sdp"
+                android:layout_marginStart="@dimen/_45sdp"
                 android:layout_marginTop="5dp"
-                android:layout_marginEnd="@dimen/_50sdp"
+                android:layout_marginEnd="@dimen/_45sdp"
                 android:background="@drawable/bg_blue">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <ImageView
-                        android:layout_width="@dimen/_90sdp"
+                        android:layout_width="@dimen/_85sdp"
                         android:layout_height="match_parent"
                         android:id="@+id/img1"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_7sdp"
                         android:src="@drawable/t_to_p"/>
 
                     <com.rahbarbazaar.poller.android.Utilities.CustomTextView
@@ -439,22 +439,22 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:id="@+id/rl_point_balance"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:layout_height="@dimen/_37sdp"
-                android:layout_marginStart="@dimen/_50sdp"
+                android:layout_marginStart="@dimen/_45sdp"
                 android:layout_marginTop="5dp"
-                android:layout_marginEnd="@dimen/_50sdp"
+                android:layout_marginEnd="@dimen/_45sdp"
                 android:background="@drawable/bg_pink">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:layout_width="@dimen/_90sdp"
+                        android:layout_width="@dimen/_85sdp"
                         android:layout_height="match_parent"
                         android:layout_alignParentEnd="true"
                         android:id="@+id/img2"
-                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_7sdp"
                         android:src="@drawable/p_to_t"/>
 
                     <com.rahbarbazaar.poller.android.Utilities.CustomTextView
@@ -475,9 +475,9 @@
                 android:id="@+id/rl_edit_profile"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_37sdp"
-                android:layout_marginStart="@dimen/_50sdp"
+                android:layout_marginStart="@dimen/_45sdp"
                 android:layout_marginTop="5dp"
-                android:layout_marginEnd="@dimen/_50sdp"
+                android:layout_marginEnd="@dimen/_45sdp"
                 android:background="@drawable/bg_blue1"
                 android:gravity="center"
                 android:orientation="vertical">
@@ -496,9 +496,9 @@
                 android:id="@+id/rl_user_access_upgrade"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_37sdp"
-                android:layout_marginStart="@dimen/_50sdp"
+                android:layout_marginStart="@dimen/_45sdp"
                 android:layout_marginTop="5dp"
-                android:layout_marginEnd="@dimen/_50sdp"
+                android:layout_marginEnd="@dimen/_45sdp"
                 android:background="@drawable/bg_pink1"
                 android:gravity="center"
                 android:visibility="visible"

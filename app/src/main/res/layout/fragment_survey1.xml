@@ -49,59 +49,63 @@
         android:layout_height="40dp"
         android:layout_marginTop="5dp"
         android:id="@+id/ll_info"
+        android:background="@drawable/bg_survey_info_remaintime"
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginEnd="@dimen/_10sdp"
         android:orientation="horizontal"
         android:layout_below="@+id/text_no_active_survey">
 
-        <TextView
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
+            android:id="@+id/txt_header_time"
             android:textColor="@color/blue"
-            android:background="@drawable/bg_survey_info_remaintime"
             android:text="@string/time"/>
         <View
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:background="#fff"
             android:layout_weight="0.05">
         </View>
-        <TextView
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:background="#dde7ff"
+            android:id="@+id/txt_header_score"
             android:textColor="@color/blue"
             android:text="@string/text_your_point"/>
         <View
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:background="#fff"
             android:layout_weight="0.05">
         </View>
-        <TextView
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
             android:gravity="center"
+            android:id="@+id/txt_header_title"
             android:textColor="@color/blue"
-            android:background="#dde7ff"
             android:text="@string/title"/>
 
         <View
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:background="#fff"
             android:layout_weight="0.05">
         </View>
 
-        <TextView
+        <com.rahbarbazaar.poller.android.Utilities.CustomTextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
+            android:id="@+id/txt_header_status"
             android:textColor="@color/blue"
-            android:background="@drawable/bg_survey_info_status"
             android:text="@string/status"/>
 
 

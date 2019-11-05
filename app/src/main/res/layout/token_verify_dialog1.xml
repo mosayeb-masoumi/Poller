@@ -24,10 +24,10 @@
 
     <com.rahbarbazaar.poller.android.Utilities.CustomTextView
         android:layout_width="wrap_content"
-        android:gravity="center"
-        android:lineSpacingMultiplier="1.5"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_15"
+        android:gravity="center"
+        android:lineSpacingMultiplier="1.5"
         android:text="@string/token_verify_message"
         android:textSize="@dimen/font_15" />
 

@@ -147,8 +147,8 @@
     <string name="confirmation">تايید</string>
     <string name="enter">ورود</string>
     <string name="text_access_upgrade">ارتقاء سطح کاربری</string>
-    <string name="convert_toman">تبدیل به تومان</string>
-    <string name="convert_papasi">تبدیل به پاپاسی</string>
+    <string name="convert_toman">تبدیل پاپاسی به تومان</string>
+    <string name="convert_papasi">تبدیل تومان به پاپاسی</string>
     <string name="text_polls">نظرسنجی ها</string>
     <string name="text_news">چه خبر!</string>
     <string name="text_video">ویدیوها</string>
@@ -180,5 +180,39 @@
     <string name="time">زمان</string>
 
 
+    <string name="home_point_content">بعد از پاسخ دادن به برخی نظرسنجی ها، امتیاز شما بصورت پاپاسی
+        در حساب کاربری شما لحاظ می شود. شما می توانید
+        با پاپاسی های بدست آمده در قرعه کشی های ماهانه پولر شرکت کنید.</string>
+
+    <string name="home_balance_content">بعد از پاسخ دادن به برخی نظرسنجی ها، امتیاز شما بصورت تومان در حساب کاربری شما لحاظ می شود.
+        شما می توانید با موجودی بدست آمده از بازارچه پولر خرید کنید.</string>
+
+    <string name="home_active_survey_content">تعداد نظرسنجی های فعالی که شما میتوانید در آن شرکت کرده و امتیاز مربوطه را کسب کنید.</string>
+
+    <string name="home_left_days_content">ایکس روز مانده به قرعه کشی پولر. قرعه کشی های پولری بصورت ماهانه برگزار می شود.
+        برای کسب اطلاعات پیرامون نحوه شرکت در قرعه کشی،
+        می توانید ویدئو آموزشی آن را ملاحظه فرمایید.</string>
+
+    <string name="survey_header_score">مقدار پاپاسی و یا تومان که با پاسخ دادن به پرسشنامه کسب خواهید کرد.</string>
+    <string name="survey_header_title">موضوع پرسشنامه و نظرسنجی.</string>
+    <string name="survey_header_time">تعداد روز باقی‌مانده که امکان پاسخ دادن به پرسشنامه دارید.</string>
+    <string name="survey_header_status">وضعیت پاسخ یا عدم پاسخ شما به پرسشنامه، در زمان مشخص شده برای هر پرسشنامه : </string>
+
+    <string name="survey_header_status_golden">در صورتیکه در 48 ساعت اول به پرسشنامه پاسخ دهید, امتیاز بیشتری کسب می کنید.</string>
+    <string name="survey_header_status_guest">شما پرسشنامه را تکمیل نکرده اید ولی فرصت برای پاسخ دادن دارید.</string>
+    <string name="survey_header_status_complete">شما پرسشنامه را تکمیل کرده اید و امتیاز آن را کسب کرده اید.</string>
+    <string name="survey_header_status_expired">شما پرسشنامه را تکمیل نکرده اید و زمان پرسشنامه نیز به اتمام رسیده است.</string>
+
+    <string name="guest">مهمان</string>
+    <string name="boronze">برنز</string>
+    <string name="silver">نقره</string>
+
+    <string name="profile_guest_content">سطح کاربری شما مهمان است. درصورت ارتقا کاربری به برنز،
+        می توانید در نظرسنجی بعدی شرکت کنید. این پروسه کمتر از 1 دقیقه زمان نیاز دارد.</string>
+    <string name="profile_boronze_content">سطح کاربری شما برنز است. درصورت ارتقا کاربری به نقره ای
+        علاوه بر امکان شرکت در قرعه کشی، می توانید در نظرسنجی های هفتگی پولر مشارکت داشته باشید.
+        این پروسه کمتر از 3 دقیقه زمان نیاز دارد.</string>
+    <string name="profile_silver_content">سطح کاربری شما نقره ای است. درصورتی که بصورت منظم و در اسرع وقت به نظرسنجی های پولر پاسخ دهید،
+        سطح کاربری شما طلایی خواهد شد و امتیازات بیشتری کسب خواهید کرد.</string>
 
 </resources>

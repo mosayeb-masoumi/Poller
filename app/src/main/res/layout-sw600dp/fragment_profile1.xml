@@ -46,9 +46,9 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_40sdp"
+                android:layout_marginStart="@dimen/_35sdp"
                 android:layout_marginTop="@dimen/_8sdp"
-                android:layout_marginEnd="@dimen/_40sdp"
+                android:layout_marginEnd="@dimen/_35sdp"
                 android:gravity="center">
 
                 <RelativeLayout
@@ -144,9 +144,9 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_40sdp"
+                android:layout_marginStart="@dimen/_35sdp"
                 android:layout_marginTop="@dimen/_3sdp"
-                android:layout_marginEnd="@dimen/_40sdp"
+                android:layout_marginEnd="@dimen/_35sdp"
                 android:gravity="center">
 
                 <RelativeLayout
@@ -230,7 +230,7 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_40sdp"
+                        android:layout_marginStart="@dimen/_35sdp"
                         android:layout_marginTop="@dimen/_3sdp"
                         android:layout_marginEnd="@dimen/_2sdp"
                         android:gravity="center">
@@ -310,7 +310,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_2sdp"
                         android:layout_marginTop="@dimen/_3sdp"
-                        android:layout_marginEnd="@dimen/_40sdp"
+                        android:layout_marginEnd="@dimen/_35sdp"
                         android:gravity="center">
 
                         <RelativeLayout
@@ -382,9 +382,9 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_30sdp"
-                android:layout_marginStart="@dimen/_40sdp"
+                android:layout_marginStart="@dimen/_35sdp"
                 android:layout_marginTop="@dimen/_3sdp"
-                android:layout_marginEnd="@dimen/_40sdp"
+                android:layout_marginEnd="@dimen/_35sdp"
                 android:background="@drawable/dialog_btn_shape1">
 
                 <com.rahbarbazaar.poller.android.Utilities.CustomTextView
@@ -428,9 +428,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_30sdp"
                 android:id="@+id/rl_balance_point"
-                android:layout_marginStart="@dimen/_50sdp"
+                android:layout_marginStart="@dimen/_45sdp"
                 android:layout_marginTop="@dimen/_3sdp"
-                android:layout_marginEnd="@dimen/_50sdp"
+                android:layout_marginEnd="@dimen/_45sdp"
                 android:background="@drawable/bg_blue">
 
                 <RelativeLayout
@@ -441,7 +441,7 @@
                         android:layout_height="match_parent"
                         android:id="@+id/img1"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
                         android:src="@drawable/t_to_p"/>
 
                     <com.rahbarbazaar.poller.android.Utilities.CustomTextView
@@ -453,7 +453,7 @@
                         android:layout_toStartOf="@+id/img1"
                         android:text="@string/convert_papasi"
                         android:textColor="@color/white_gray"
-                        android:textSize="@dimen/_11ssp"
+                        android:textSize="@dimen/_10ssp"
                         android:textStyle="bold" />
                 </RelativeLayout>
             </LinearLayout>
@@ -464,9 +464,9 @@
                 android:id="@+id/rl_point_balance"
                 android:visibility="visible"
                 android:layout_height="@dimen/_30sdp"
-                android:layout_marginStart="@dimen/_50sdp"
+                android:layout_marginStart="@dimen/_45sdp"
                 android:layout_marginTop="@dimen/_3sdp"
-                android:layout_marginEnd="@dimen/_50sdp"
+                android:layout_marginEnd="@dimen/_45sdp"
                 android:background="@drawable/bg_pink">
 
                 <RelativeLayout
@@ -477,13 +477,13 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:id="@+id/img2"
-                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
                         android:src="@drawable/p_to_t"/>
                     <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:textSize="@dimen/_11ssp"
+                        android:textSize="@dimen/_10ssp"
                         android:textStyle="bold"
                         android:layout_toStartOf="@id/img2"
                         android:layout_marginStart="@dimen/_5sdp"
@@ -497,9 +497,9 @@
                 android:id="@+id/rl_edit_profile"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_30sdp"
-                android:layout_marginStart="@dimen/_50sdp"
+                android:layout_marginStart="@dimen/_45sdp"
                 android:layout_marginTop="@dimen/_3sdp"
-                android:layout_marginEnd="@dimen/_50sdp"
+                android:layout_marginEnd="@dimen/_45sdp"
                 android:background="@drawable/bg_blue1"
                 android:gravity="center"
                 android:orientation="vertical">
@@ -518,9 +518,9 @@
                 android:id="@+id/rl_user_access_upgrade"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_30sdp"
-                android:layout_marginStart="@dimen/_50sdp"
+                android:layout_marginStart="@dimen/_45sdp"
                 android:layout_marginTop="@dimen/_3sdp"
-                android:layout_marginEnd="@dimen/_50sdp"
+                android:layout_marginEnd="@dimen/_45sdp"
                 android:background="@drawable/bg_pink1"
                 android:gravity="center"
                 android:visibility="visible"

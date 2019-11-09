@@ -177,38 +177,37 @@
     <string name="status">Status</string>
     <string name="time">Time</string>
 
-    <string name="home_point_content">بعد از پاسخ دادن به برخی نظرسنجیها، امتیاز شما بصورت پاپاسی
-        در حساب کاربری شما لحاظ میشود. شما میتوانید
-        با پاپاسیهای بدست آمده در قرعهکشی های ماهانه پولر شرکت کنید.</string>
+    <string name="home_point_content">after answering some surveys, your scores will be added to your user account in the form of Papasi.
+        You can attend Poller’s monthly lottery by the Papasi you’ve earned.</string>
 
-    <string name="home_balance_content">بعد از پاسخ دادن به برخی نظرسنجی ها، امتیاز شما بصورت تومان در حساب کاربری شما لحاظ میشود.
-        شما میتوانید با موجودی بدست آمده از بازارچه پولر خرید کنید.</string>
-    <string name="home_active_survey_content">تعداد نظرسنجی های فعالی که شما میتوانید در آن شرکت کرده و امتیاز مربوطه را کسب کنید.</string>
+    <string name="home_balance_content">after answering to some surveys. Your score is automatically added to your user account.
+        You can shop at Poller store by the credit you have.</string>
+    <string name="home_active_survey_content">the number of active surveys that you can attend and gain the scores.</string>
 
-    <string name="home_left_days_content">ایکس روز مانده به قرعه کشی پولر. قرعه کشی های پولری بصورت ماهانه برگزار می شود.
-        برای کسب اطلاعات پیرامون نحوه شرکت در قرعه کشی،
-        می توانید ویدئو آموزشی آن را ملاحظه فرمایید.</string>
+    <string name="home_left_days_content">there are X days left to Poller lottery. They are held monthly.
+        You can watch the tutorial to gain more information about how to attend the lotteries.</string>
 
-    <string name="survey_header_score">مقدار پاپاسی و یا تومان که با پاسخ دادن به پرسشنامه کسب خواهید کرد.</string>
-    <string name="survey_header_title">موضوع پرسشنامه و نظرسنجی.</string>
-    <string name="survey_header_time">تعداد روز باقی‌مانده که امکان پاسخ دادن به پرسشنامه دارید.</string>
-    <string name="survey_header_status">وضعیت پاسخ یا عدم پاسخ شما به پرسشنامه، در زمان مشخص شده برای هر پرسشنامه : </string>
+    <string name="survey_header_score">after answering some surveys, your scores will be added to your user account in the form of Papasi.
+        You can attend Poller’s monthly lottery by the Papasi you’ve earned.</string>
+    <string name="survey_header_title">the subject of the survey and questionnaire</string>
+    <string name="survey_header_time">days left for you to answer the questionnaire.</string>
+    <string name="survey_header_status">answered/ unanswered questionnaire status in the specified time for each questionnaire :</string>
 
-    <string name="survey_header_status_golden">ddflkalkjdflw oeojfmcwefowjodm emkmkm mefmme mmmcmm</string>
-    <string name="survey_header_status_guest">ddflkalkjdflw oeojfmcwefowjodm emkmkm mefmme mmmcmm</string>
-    <string name="survey_header_status_complete">ddflkalkjdflw oeojfmcwefowjodm emkmkm mefmme mmmcmm</string>
-    <string name="survey_header_status_expired">ddflkalkjdflw oeojfmcwefowjodm emkmkm mefmme mmmcmm</string>
+    <string name="survey_header_status_golden">If you answer the questionnaire in the first 48 hours, you will get more points.</string>
+    <string name="survey_header_status_guest">You haven’t answered the questionnaire but have enough time to do it.</string>
+    <string name="survey_header_status_complete">You have answered the questionnaire and gained its score.</string>
+    <string name="survey_header_status_expired">You haven’t answered the questionnaire and you can’t fill it anymore.</string>
 
     <string name="guest">Guest</string>
     <string name="boronze">Boronze</string>
     <string name="silver">Silver</string>
 
-    <string name="profile_guest_content">jdgfjga kkadsf ljjalsd kljkladlfjojo ojojiod ojojqod </string>
-    <string name="profile_boronze_content">سطح کاربری شما برنز است. درصورت ارتقا کاربری به نقرهای
-        علاوه بر امکان شرکت در قرعهکشی، میتوانید در نظرسنجی های هفتگی پولر مشارکت داشته باشید.
-        این پروسه کمتر از 3 دقیقه زمان نیاز دارد.</string>
-    <string name="profile_silver_content">سطح کاربری شما نقرهای است. درصورتی که بصورت منظم و در اسرع وقت به نظرسنجیهای پولر پاسخ دهید،
-        سطح کاربری شما طلایی خواهد شد و امتیازات بیشتری کسب خواهید کرد.</string>
+    <string name="profile_guest_content">you are in “guest” user level. If you are upgraded to bronze user, you can attend the next survey.
+        This process takes less than 1 minute.</string>
+    <string name="profile_boronze_content">your user level is bronze. If you are upgraded to silver user, you have the chance to attend the lotteries and also take the weekly Poller surveys.
+        This process takes less than 3 minutes.</string>
+    <string name="profile_silver_content">your user level is silver. If you answer Poller surveys as soon as possible,
+        you will be upgraded to gold user account and gain more scores.</string>
 
 
 </resources>

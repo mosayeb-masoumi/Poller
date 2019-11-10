@@ -162,7 +162,7 @@ public class CartFragment1 extends Fragment implements View.OnClickListener {
     //define view of fragment
     private void defineViews(View view) {
 
-        tv_indicator = view.findViewById(R.id.tv_indicator);
+//        tv_indicator = view.findViewById(R.id.tv_indicator);
         tv_transaction_tab = view.findViewById(R.id.tv_transaction_tab);
         tv_point_tab = view.findViewById(R.id.tv_point_tab);
         cart_rv = view.findViewById(R.id.cart_rv);

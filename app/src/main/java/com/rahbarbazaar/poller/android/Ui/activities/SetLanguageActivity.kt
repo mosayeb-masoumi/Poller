@@ -16,7 +16,6 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_set_language.*
-import kotlinx.android.synthetic.main.activity_splash_screen.*
 
 
 class SetLanguageActivity : AppCompatActivity() {

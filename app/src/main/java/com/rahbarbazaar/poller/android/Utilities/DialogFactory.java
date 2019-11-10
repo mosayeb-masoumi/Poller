@@ -433,60 +433,60 @@ public class DialogFactory {
     }
 
 
-    public void createAgreementDialog(DialogFactoryInteraction listener, View root) {
-
-        View customLayout = LayoutInflater.from(context).inflate(R.layout.agreement_dialog, (ViewGroup) root, false);
-        //String url_content = "<div style=\"margin:20px;\">\n<p dir=\"RTL\"><strong>سیاست حفظ حریم خصوصی</strong></p>\n\n<p dir=\"RTL\"><strong></strong>سیاست حفظ حریم خصوصی نشان دهنده چگونگی استفاده از اطلاعات شماست که توسط اپلیکیشن جمع آوری می شود. لطفا پیش از استفاده از اپلیکیشن و یا ارسال هرگونه اطلاعات، این قوانین را مطالعه فرمایید. سیاست حفظ حریم خصوصی تکمیل کننده شرایط راهبر بازار بوده و توافقی بین شرکت راهبر بازار و کاربرانش محسوب می شود.</p>\n\n<p dir=\"RTL\">قوانین حفظ حریم شخصی، کلیه وبسایت ها، محصولات و خدمات شرکت راهبر بازار و سایت ها و شرکت ها و نمایندگی های تابعه را شامل می شود، مگر در مواردی که صراحتا ذکر شده باشد. داده های شما هرگز با اشخاص ثالث به اشتراک گذارده نمی شود، مگر با رضایت شما و یا درخواست مراجع قانونی. ما به عنوان پردازشگر داده&zwnj;ها ممکن است اطلاعات شما را توسط خود و شرکت های زیر مجموعه خود، برای اهداف داخلی که در این سند به طور شفاف به آن&zwnj;ها اشاره شده است مورد استفاده و تحلیل قرار دهیم. در راهبر بازار افراد می&zwnj;توانند هر زمان که خودشان بخواهد اطلاعات خود را به روز رسانی ، حذف، اضافه و یا کلا تغییر دهند.</p>\n\n<p dir=\"RTL\">ما هرگز اطلاعات فردی شما را برای اهداف تبلیغاتی و بازاریابی به شرکت های دیگر نمی فروشیم و در اختیار اشخاص خارجی قرار نخواهیم داد. این امر شامل وبسایت&zwnj;ها و یا سایر اشخاصی که به ما در اداره کردن سایت، انجام کار و یا خدمات رسانی به کاربران مان کمک می کنند، تا زمانی که پذیرفته باشند این اطلاعات را محرمانه نگه دارند نمی شود. همچنین ممکن است براساس قانون و یا در جهت اعمال خط مشی ها و یا برای حفظ قانون مالکیت و یا امنیت خود و دیگران، اطلاعاتی را منتشر کنیم.</p>\n\n<p dir=\"RTL\">&nbsp;</p>\n\n<p dir=\"RTL\"><strong>حفظ اطلاعات شخصی</strong></p>\n\n<p dir=\"RTL\"><strong></strong>راهبر بازار اطلاعات فردی شما را با توجه به حساب کاربری&zwnj;تان ذخیره سازی می کند. اطلاعات شخصی شما، شامل اطلاعات نظرسنجی و یا هرگونه اطلاعات دیگری است که برخی اوقات وارد اپلیکیشن می کنید. ما اطلاعات شما را تا زمانی که نزد ما حساب کاربری داشته باشید حفظ خواهیم کرد. در صورت لغو و یا بسته شدن حساب کاربری تمامی اطلاعات شخصی شما و کپی آن&zwnj;ها پاک خواهد شد. اگر بنا به دلایل فنی و یا هر دلیل دیگری، ما موفق به پاک کردن اطلاعات&nbsp; شخصی شما نشویم مطمئن باشید تمامی راهکارها را به کار خواهیم بست تا از پردازش اطلاعات شما در آینده جلوگیری نماییم. این امر شامل اطلاعاتی که پس از پاک کردن حساب کاربری جهت حسابرسی ملزم به حفظ آن هستیم نمی شود.</p>\n\n<p dir=\"RTL\">ما با اتخاذ بالاترین سطح استانداردها، از به خطر افتادن اطلاعات شما در هر مقطعی از زمان جلوگیری خواهیم کرد. تقویت زیرساخت های <span dir=\"LTR\">IT</span> ، پلتفرم&zwnj;های امنیت داده&zwnj;ها و خط مشی&zwnj;های فناوری اطلاعات، به ما این امکان را داده است امنیت پیشرفته دو-سویه را به مشتریان خود ارائه دهیم.</p>\n\n<p dir=\"RTL\">&nbsp;</p>\n\n<p dir=\"RTL\"><strong>حقوق شما</strong></p>\n\n<p dir=\"RTL\"><strong></strong>شما می توانید مشکلات و دغدغه های خود را در هر زمان از طریق <a href=\"mailto:info@rahbarbazaar.com\"><span dir=\"LTR\">info@rahbarbazaar.com</span></a> با ما درمیان بگذارید. ما متعهد می شویم حداکثر ظرف 15 روز کاری با شما تماس بگیریم. این فهرستی از حقوقی می&zwnj;باشد که قوانین حفظ حریم خصوصی برای شما قائل شده است:</p>\n\n<ul dir=\"rtl\">\n\t<li>&nbsp;حق دسترسی به اطلاعاتتان</li>\n\t<li>&nbsp;حق محدود کردن و یا جلوگیری از پردازش اطلاعاتتان</li>\n\t<li>&nbsp;حق به روز رسانی و یا تغییر اطلاعاتتان</li>\n\t<li>&nbsp;حق پاک کردن اطلاعاتتان</li>\n\t<li>&nbsp;حق عدم پذیرش جهت دریافت ایمیل&zwnj;های بازاریابی ما</li>\n\t<li>حق انتقال اطلاعاتتان به پردازشگری دیگر</li>\n</ul>\n\n<p dir=\"RTL\">&nbsp;</p>\n\n<p dir=\"RTL\"><strong>اصلاح سیاست های حفظ حریم شخصی</strong></p>\n\n<p dir=\"RTL\"><strong></strong>راهبر بازار می&zwnj;تواند هر زمان، سیاست&zwnj;های حفظ حریم شخصی خود را تغییر دهد. ما نسخه تغییر یافته را بر روی سایت خود قرار خواهیم داد و در صورت بروز هرگونه تغییر در نحوه جمع آوری و بکارگیری اطلاعات، این تغییرات را از طریق برنامه به اطلاع شما خواهیم رساند.ادامه استفاده شما از خدمات ما به منزله موافقت شما با اصلاحات صورت گرفته در سیاست&zwnj;های حریم خصوصی ماست.</p>\n</div>"; //html url content
-
-        //define views inside of dialog
-        WebView webview_agreement = customLayout.findViewById(R.id.webview_agreement);
-        CheckBox checkbox_agreement = customLayout.findViewById(R.id.checkbox_agreement);
-        AVLoadingIndicatorView av_loading = customLayout.findViewById(R.id.av_loading);
-        TextView btn_send = customLayout.findViewById(R.id.btn_login_dialog);
-        TextView btn_cancel_dialog = customLayout.findViewById(R.id.btn_cancel_dialog);
-
-        /*String pish = "<html><head><style type=\"text/css\">@font-face {font-family: MyFont;src: url(\"file:///android_asset/fonts/BYekan.ttf\")}body {font-family: MyFont;font-size: medium;text-align: justify;}</style></head><body>";
-        String pas = "</body></html>";*/
-
-        //webview_agreement.loadDataWithBaseURL("", pish + url_content + pas, "text/html", "UTF-8", "");
-        webview_agreement.loadUrl("http://pollerws.rahbarbazaar.com:2296/poller/v2/support/agreement/" + LocaleManager.getLocale(context.getResources()).getLanguage());
-        webview_agreement.setWebViewClient(new WebViewClient() {
-
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                view.loadUrl(url);
-                return false;
-            }
-
-            @Override
-            public void onPageFinished(WebView view, String url) {
-                super.onPageFinished(view, url);
-                av_loading.smoothToHide();
-            }
-        });
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setView(customLayout);
-
-        //create dialog and set background transparent
-        AlertDialog dialog = builder.create();
-        if (dialog.getWindow() != null) {
-
-            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        }
-
-        //set click listener for views inside of dialog
-        btn_send.setOnClickListener(view -> {
-
-            if (checkbox_agreement.isChecked())
-                listener.onAcceptButtonClicked("");
-            else
-                new ToastFactory().createToast(R.string.text_accept_terms, context);
-
-        });
-        btn_cancel_dialog.setOnClickListener(view -> dialog.dismiss());
-        dialog.show();
-    }
+//    public void createAgreementDialog(DialogFactoryInteraction listener, View root) {
+//
+//        View customLayout = LayoutInflater.from(context).inflate(R.layout.agreement_dialog, (ViewGroup) root, false);
+//        //String url_content = "<div style=\"margin:20px;\">\n<p dir=\"RTL\"><strong>سیاست حفظ حریم خصوصی</strong></p>\n\n<p dir=\"RTL\"><strong></strong>سیاست حفظ حریم خصوصی نشان دهنده چگونگی استفاده از اطلاعات شماست که توسط اپلیکیشن جمع آوری می شود. لطفا پیش از استفاده از اپلیکیشن و یا ارسال هرگونه اطلاعات، این قوانین را مطالعه فرمایید. سیاست حفظ حریم خصوصی تکمیل کننده شرایط راهبر بازار بوده و توافقی بین شرکت راهبر بازار و کاربرانش محسوب می شود.</p>\n\n<p dir=\"RTL\">قوانین حفظ حریم شخصی، کلیه وبسایت ها، محصولات و خدمات شرکت راهبر بازار و سایت ها و شرکت ها و نمایندگی های تابعه را شامل می شود، مگر در مواردی که صراحتا ذکر شده باشد. داده های شما هرگز با اشخاص ثالث به اشتراک گذارده نمی شود، مگر با رضایت شما و یا درخواست مراجع قانونی. ما به عنوان پردازشگر داده&zwnj;ها ممکن است اطلاعات شما را توسط خود و شرکت های زیر مجموعه خود، برای اهداف داخلی که در این سند به طور شفاف به آن&zwnj;ها اشاره شده است مورد استفاده و تحلیل قرار دهیم. در راهبر بازار افراد می&zwnj;توانند هر زمان که خودشان بخواهد اطلاعات خود را به روز رسانی ، حذف، اضافه و یا کلا تغییر دهند.</p>\n\n<p dir=\"RTL\">ما هرگز اطلاعات فردی شما را برای اهداف تبلیغاتی و بازاریابی به شرکت های دیگر نمی فروشیم و در اختیار اشخاص خارجی قرار نخواهیم داد. این امر شامل وبسایت&zwnj;ها و یا سایر اشخاصی که به ما در اداره کردن سایت، انجام کار و یا خدمات رسانی به کاربران مان کمک می کنند، تا زمانی که پذیرفته باشند این اطلاعات را محرمانه نگه دارند نمی شود. همچنین ممکن است براساس قانون و یا در جهت اعمال خط مشی ها و یا برای حفظ قانون مالکیت و یا امنیت خود و دیگران، اطلاعاتی را منتشر کنیم.</p>\n\n<p dir=\"RTL\">&nbsp;</p>\n\n<p dir=\"RTL\"><strong>حفظ اطلاعات شخصی</strong></p>\n\n<p dir=\"RTL\"><strong></strong>راهبر بازار اطلاعات فردی شما را با توجه به حساب کاربری&zwnj;تان ذخیره سازی می کند. اطلاعات شخصی شما، شامل اطلاعات نظرسنجی و یا هرگونه اطلاعات دیگری است که برخی اوقات وارد اپلیکیشن می کنید. ما اطلاعات شما را تا زمانی که نزد ما حساب کاربری داشته باشید حفظ خواهیم کرد. در صورت لغو و یا بسته شدن حساب کاربری تمامی اطلاعات شخصی شما و کپی آن&zwnj;ها پاک خواهد شد. اگر بنا به دلایل فنی و یا هر دلیل دیگری، ما موفق به پاک کردن اطلاعات&nbsp; شخصی شما نشویم مطمئن باشید تمامی راهکارها را به کار خواهیم بست تا از پردازش اطلاعات شما در آینده جلوگیری نماییم. این امر شامل اطلاعاتی که پس از پاک کردن حساب کاربری جهت حسابرسی ملزم به حفظ آن هستیم نمی شود.</p>\n\n<p dir=\"RTL\">ما با اتخاذ بالاترین سطح استانداردها، از به خطر افتادن اطلاعات شما در هر مقطعی از زمان جلوگیری خواهیم کرد. تقویت زیرساخت های <span dir=\"LTR\">IT</span> ، پلتفرم&zwnj;های امنیت داده&zwnj;ها و خط مشی&zwnj;های فناوری اطلاعات، به ما این امکان را داده است امنیت پیشرفته دو-سویه را به مشتریان خود ارائه دهیم.</p>\n\n<p dir=\"RTL\">&nbsp;</p>\n\n<p dir=\"RTL\"><strong>حقوق شما</strong></p>\n\n<p dir=\"RTL\"><strong></strong>شما می توانید مشکلات و دغدغه های خود را در هر زمان از طریق <a href=\"mailto:info@rahbarbazaar.com\"><span dir=\"LTR\">info@rahbarbazaar.com</span></a> با ما درمیان بگذارید. ما متعهد می شویم حداکثر ظرف 15 روز کاری با شما تماس بگیریم. این فهرستی از حقوقی می&zwnj;باشد که قوانین حفظ حریم خصوصی برای شما قائل شده است:</p>\n\n<ul dir=\"rtl\">\n\t<li>&nbsp;حق دسترسی به اطلاعاتتان</li>\n\t<li>&nbsp;حق محدود کردن و یا جلوگیری از پردازش اطلاعاتتان</li>\n\t<li>&nbsp;حق به روز رسانی و یا تغییر اطلاعاتتان</li>\n\t<li>&nbsp;حق پاک کردن اطلاعاتتان</li>\n\t<li>&nbsp;حق عدم پذیرش جهت دریافت ایمیل&zwnj;های بازاریابی ما</li>\n\t<li>حق انتقال اطلاعاتتان به پردازشگری دیگر</li>\n</ul>\n\n<p dir=\"RTL\">&nbsp;</p>\n\n<p dir=\"RTL\"><strong>اصلاح سیاست های حفظ حریم شخصی</strong></p>\n\n<p dir=\"RTL\"><strong></strong>راهبر بازار می&zwnj;تواند هر زمان، سیاست&zwnj;های حفظ حریم شخصی خود را تغییر دهد. ما نسخه تغییر یافته را بر روی سایت خود قرار خواهیم داد و در صورت بروز هرگونه تغییر در نحوه جمع آوری و بکارگیری اطلاعات، این تغییرات را از طریق برنامه به اطلاع شما خواهیم رساند.ادامه استفاده شما از خدمات ما به منزله موافقت شما با اصلاحات صورت گرفته در سیاست&zwnj;های حریم خصوصی ماست.</p>\n</div>"; //html url content
+//
+//        //define views inside of dialog
+//        WebView webview_agreement = customLayout.findViewById(R.id.webview_agreement);
+//        CheckBox checkbox_agreement = customLayout.findViewById(R.id.checkbox_agreement);
+//        AVLoadingIndicatorView av_loading = customLayout.findViewById(R.id.av_loading);
+//        TextView btn_send = customLayout.findViewById(R.id.btn_login_dialog);
+//        TextView btn_cancel_dialog = customLayout.findViewById(R.id.btn_cancel_dialog);
+//
+//        /*String pish = "<html><head><style type=\"text/css\">@font-face {font-family: MyFont;src: url(\"file:///android_asset/fonts/BYekan.ttf\")}body {font-family: MyFont;font-size: medium;text-align: justify;}</style></head><body>";
+//        String pas = "</body></html>";*/
+//
+//        //webview_agreement.loadDataWithBaseURL("", pish + url_content + pas, "text/html", "UTF-8", "");
+//        webview_agreement.loadUrl("http://pollerws.rahbarbazaar.com:2296/poller/v2/support/agreement/" + LocaleManager.getLocale(context.getResources()).getLanguage());
+//        webview_agreement.setWebViewClient(new WebViewClient() {
+//
+//            @Override
+//            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+//                view.loadUrl(url);
+//                return false;
+//            }
+//
+//            @Override
+//            public void onPageFinished(WebView view, String url) {
+//                super.onPageFinished(view, url);
+//                av_loading.smoothToHide();
+//            }
+//        });
+//
+//        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+//        builder.setView(customLayout);
+//
+//        //create dialog and set background transparent
+//        AlertDialog dialog = builder.create();
+//        if (dialog.getWindow() != null) {
+//
+//            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//        }
+//
+//        //set click listener for views inside of dialog
+//        btn_send.setOnClickListener(view -> {
+//
+//            if (checkbox_agreement.isChecked())
+//                listener.onAcceptButtonClicked("");
+//            else
+//                new ToastFactory().createToast(R.string.text_accept_terms, context);
+//
+//        });
+//        btn_cancel_dialog.setOnClickListener(view -> dialog.dismiss());
+//        dialog.show();
+//    }
 
     public void createTokenDialog(View root) {
 
@@ -514,55 +514,55 @@ public class DialogFactory {
         dialog.show();
     }
 
-    //we can use create token dialog with little modify too:
-    public void createNoRegisterDialog(View root, DialogFactoryInteraction listener) {
-
-        View customLayout = LayoutInflater.from(context).inflate(R.layout.no_register_dialog, (ViewGroup) root, false);
-
-        //define views inside of dialog
-        TextView text_body = customLayout.findViewById(R.id.text_body);
-
-        SpannableString ss = new SpannableString(context.getResources().getString(R.string.text_access_level));
-        ClickableSpan clickableSpan = new ClickableSpan() {
-            @Override
-            public void onClick(@NonNull View textView) {
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("http://landing.poller.ir/register"));
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-                context.startActivity(intent);
-            }
-
-            @Override
-            public void updateDrawState(@NonNull TextPaint ds) {
-                super.updateDrawState(ds);
-                ds.setUnderlineText(false);
-                ds.setColor(context.getResources().getColor(R.color.colorPrimary));
-            }
-        };
-
-        String locale_name = ConfigurationCompat.getLocales(context.getResources().getConfiguration()).get(0).getLanguage();
-        ss.setSpan(clickableSpan, locale_name.equals("fa") ? 53 : 51, locale_name.equals("fa") ? 58 : 59, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-        text_body.setText(ss);
-        text_body.setMovementMethod(LinkMovementMethod.getInstance());
-        text_body.setHighlightColor(Color.TRANSPARENT);
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setView(customLayout);
-
-        //create dialog and set background transparent
-        AlertDialog dialog = builder.create();
-        if (dialog.getWindow() != null) {
-
-            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        }
-        dialog.setOnDismissListener(dialogInterface -> {
-
-            listener.onDeniedButtonClicked(true);
-        });
-        dialog.show();
-    }
+//    //we can use create token dialog with little modify too:
+//    public void createNoRegisterDialog(View root, DialogFactoryInteraction listener) {
+//
+//        View customLayout = LayoutInflater.from(context).inflate(R.layout.no_register_dialog, (ViewGroup) root, false);
+//
+//        //define views inside of dialog
+//        TextView text_body = customLayout.findViewById(R.id.text_body);
+//
+//        SpannableString ss = new SpannableString(context.getResources().getString(R.string.text_access_level));
+//        ClickableSpan clickableSpan = new ClickableSpan() {
+//            @Override
+//            public void onClick(@NonNull View textView) {
+//                Intent intent = new Intent(Intent.ACTION_VIEW);
+//                intent.setData(Uri.parse("http://landing.poller.ir/register"));
+//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//
+//                context.startActivity(intent);
+//            }
+//
+//            @Override
+//            public void updateDrawState(@NonNull TextPaint ds) {
+//                super.updateDrawState(ds);
+//                ds.setUnderlineText(false);
+//                ds.setColor(context.getResources().getColor(R.color.colorPrimary));
+//            }
+//        };
+//
+//        String locale_name = ConfigurationCompat.getLocales(context.getResources().getConfiguration()).get(0).getLanguage();
+//        ss.setSpan(clickableSpan, locale_name.equals("fa") ? 53 : 51, locale_name.equals("fa") ? 58 : 59, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+//
+//        text_body.setText(ss);
+//        text_body.setMovementMethod(LinkMovementMethod.getInstance());
+//        text_body.setHighlightColor(Color.TRANSPARENT);
+//
+//        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+//        builder.setView(customLayout);
+//
+//        //create dialog and set background transparent
+//        AlertDialog dialog = builder.create();
+//        if (dialog.getWindow() != null) {
+//
+//            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//        }
+//        dialog.setOnDismissListener(dialogInterface -> {
+//
+//            listener.onDeniedButtonClicked(true);
+//        });
+//        dialog.show();
+//    }
 
     //we can use create token dialog with little modify too:
     public void createNoRegisterDialog1(View root, DialogFactoryInteraction listener) {

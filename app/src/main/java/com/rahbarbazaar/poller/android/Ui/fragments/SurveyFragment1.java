@@ -658,7 +658,7 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
             adapter.setListener(null);
     }
 
-    SurveyFragment.ActiveSurveyInteraction interaction; //survey interaction interface
+    SurveyFragment1.ActiveSurveyInteraction interaction; //survey interaction interface
 
     public interface ActiveSurveyInteraction {
 
@@ -667,7 +667,7 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
 
     @Override
     public void onAttach(Context context) {
-        interaction = (SurveyFragment.ActiveSurveyInteraction) context;
+        interaction = (SurveyFragment1.ActiveSurveyInteraction) context;
         super.onAttach(context);
     }
 

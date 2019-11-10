@@ -44,7 +44,7 @@
             android:layout_weight="2">
 
             <com.wang.avi.AVLoadingIndicatorView
-                android:id="@+id/av_loading"
+                android:id="@+id/av_loading1"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
                 android:layout_width="@dimen/dimen_20"

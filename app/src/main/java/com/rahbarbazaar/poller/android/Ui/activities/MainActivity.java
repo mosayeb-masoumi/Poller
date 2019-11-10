@@ -51,17 +51,12 @@ import com.rahbarbazaar.poller.android.Models.eventbus.ModelActiveSurveyCount;
 import com.rahbarbazaar.poller.android.Network.Service;
 import com.rahbarbazaar.poller.android.Network.ServiceProvider;
 import com.rahbarbazaar.poller.android.R;
-import com.rahbarbazaar.poller.android.Ui.fragments.CartFragment;
 import com.rahbarbazaar.poller.android.Ui.fragments.CartFragment1;
-import com.rahbarbazaar.poller.android.Ui.fragments.HomeFragment;
 import com.rahbarbazaar.poller.android.Ui.fragments.HomeFragment1;
-import com.rahbarbazaar.poller.android.Ui.fragments.ProfileFragment;
 import com.rahbarbazaar.poller.android.Ui.fragments.ProfileFragment1;
-import com.rahbarbazaar.poller.android.Ui.fragments.SurveyFragment;
 import com.rahbarbazaar.poller.android.Ui.fragments.SurveyFragment1;
 import com.rahbarbazaar.poller.android.Utilities.App;
 import com.rahbarbazaar.poller.android.Utilities.ClientConfig;
-import com.rahbarbazaar.poller.android.Utilities.SnackBarFactory;
 import com.rahbarbazaar.poller.android.Utilities.ToastFactory;
 import com.rahbarbazaar.poller.android.Utilities.DialogFactory;
 import com.rahbarbazaar.poller.android.Utilities.GeneralTools;
@@ -96,7 +91,7 @@ import okhttp3.RequestBody;
 
 public class MainActivity extends CustomBaseActivity implements
         View.OnClickListener, AHBottomNavigation.OnTabSelectedListener, DialogFactory.DialogFactoryInteraction,
-        SurveyFragment.ActiveSurveyInteraction, DrawerRecyclerAdapter.OnDrawerItemClickListener,
+        SurveyFragment1.ActiveSurveyInteraction, DrawerRecyclerAdapter.OnDrawerItemClickListener,
         HomeFragment1.ActiveSurveysInteraction {
 
     //region of views

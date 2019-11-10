@@ -6,10 +6,7 @@ import com.bumptech.glide.Glide
 import com.facebook.drawee.view.SimpleDraweeView
 import com.rahbarbazaar.poller.android.Models.GetShopListResult
 import com.rahbarbazaar.poller.android.R
-import com.rahbarbazaar.poller.android.Ui.fragments.ProfileFragment
-import com.rahbarbazaar.poller.android.Utilities.AsyncImageLoader
 import com.rahbarbazaar.poller.android.Utilities.CustomTextView
-import io.fabric.sdk.android.services.concurrency.AsyncTask
 
 class ShopViewHolder(view: View, val listener: GeneralItemIntraction<GetShopListResult>) : RecyclerView.ViewHolder(view) {
 

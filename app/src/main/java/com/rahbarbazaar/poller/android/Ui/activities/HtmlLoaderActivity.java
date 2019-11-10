@@ -171,7 +171,7 @@ public class HtmlLoaderActivity extends CustomBaseActivity
     //
     private void createTokenDialog() {
 
-        new DialogFactory(HtmlLoaderActivity.this).createTokenDialog(findViewById(R.id.html_root));
+        new DialogFactory(HtmlLoaderActivity.this).createTokenDialog(findViewById(R.id.rl_root));
     }
 
 //    @Override

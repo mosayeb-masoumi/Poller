@@ -12,7 +12,6 @@ import android.view.ViewGroup
 import com.rahbarbazaar.poller.android.Models.*
 import com.rahbarbazaar.poller.android.Network.ServiceProvider
 import com.rahbarbazaar.poller.android.R
-import com.rahbarbazaar.poller.android.Ui.activities.SplashScreenActivity
 import com.rahbarbazaar.poller.android.Utilities.*
 import io.reactivex.Single
 import org.greenrobot.eventbus.EventBus
@@ -24,21 +23,10 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import android.support.v4.os.ConfigurationCompat
-import android.widget.LinearLayout
 import com.rahbarbazaar.poller.android.Models.eventbus.ModelTranferDataProfileToHome
 import com.rahbarbazaar.poller.android.Models.eventbus.ModelUserType
 import com.rahbarbazaar.poller.android.Ui.activities.HtmlLoaderActivity
-import com.rahbarbazaar.poller.android.Ui.activities.MainActivity
 import com.rahbarbazaar.poller.android.Ui.activities.SplashScreenActivity1
-import kotlinx.android.synthetic.main.fragment_profile.profile_root
-import kotlinx.android.synthetic.main.fragment_profile.rl_balance_point
-import kotlinx.android.synthetic.main.fragment_profile.rl_edit_profile
-import kotlinx.android.synthetic.main.fragment_profile.rl_point_balance
-import kotlinx.android.synthetic.main.fragment_profile.text_age
-import kotlinx.android.synthetic.main.fragment_profile.text_gender
-import kotlinx.android.synthetic.main.fragment_profile.text_mobile
-import kotlinx.android.synthetic.main.fragment_profile.text_project_count
-import kotlinx.android.synthetic.main.fragment_profile.text_username
 import kotlinx.android.synthetic.main.fragment_profile1.*
 import kotlinx.android.synthetic.main.fragment_profile1.view.*
 import java.util.ArrayList
@@ -147,7 +135,7 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
 
                 PreferenceStorage.getInstance(context).saveToken("0")
                 if (activity != null) {
-                    startActivity(Intent(context, SplashScreenActivity::class.java))
+                    startActivity(Intent(context, SplashScreenActivity1::class.java))
                     activity!!.finish()
                 }
             }

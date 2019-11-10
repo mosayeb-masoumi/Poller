@@ -17,20 +17,11 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_lottery.*
 import android.view.*
 import com.google.gson.Gson
 import com.jakewharton.retrofit2.adapter.rxjava2.HttpException
 import com.rahbarbazaar.poller.android.Models.*
 import com.rahbarbazaar.poller.android.Utilities.*
-import kotlinx.android.synthetic.main.activity_lottery.av_loading
-import kotlinx.android.synthetic.main.activity_lottery.image_exit
-import kotlinx.android.synthetic.main.activity_lottery.img_lottery_info
-import kotlinx.android.synthetic.main.activity_lottery.linear_actions
-import kotlinx.android.synthetic.main.activity_lottery.tv_cancel
-import kotlinx.android.synthetic.main.activity_lottery.tv_lottery_amount
-import kotlinx.android.synthetic.main.activity_lottery.tv_lottery_title
-import kotlinx.android.synthetic.main.activity_lottery.tv_take_part
 import kotlinx.android.synthetic.main.activity_lottery1.*
 
 class LotteryActivity1 : CustomBaseActivity(),
@@ -49,7 +40,7 @@ class LotteryActivity1 : CustomBaseActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lottery1)
-        setSupportActionBar(toolbar)
+//        setSupportActionBar(toolbar)
 
         fun initViews() {
 

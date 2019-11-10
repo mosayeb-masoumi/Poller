@@ -20,12 +20,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_notification.*
-import kotlinx.android.synthetic.main.activity_notification.av_loading
-import kotlinx.android.synthetic.main.activity_notification.image_exit
 import kotlinx.android.synthetic.main.activity_notification1.*
-import kotlinx.android.synthetic.main.activity_shop.*
-import kotlinx.android.synthetic.main.activity_shop.shop_recycler
 import kotlinx.android.synthetic.main.activity_shop1.*
 import kotlinx.android.synthetic.main.activity_shop1.llbtom
 import okhttp3.MediaType
@@ -91,12 +86,12 @@ class NotificationActivity1 : CustomBaseActivity(), GeneralItemIntraction<GetNot
                 .observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribeWith(object : DisposableSingleObserver<GetNotificationListResult>() {
 
                     override fun onSuccess(result: GetNotificationListResult) {
-                        av_loading.hide()
+                        av_loading1.hide()
                         notifyRecyclerView.adapter = NotificationAdapter(result.messages!!, this@NotificationActivity1)
                     }
 
                     override fun onError(e: Throwable) {
-                        av_loading.hide()
+                        av_loading1.hide()
                     }
                 }))
     }
@@ -111,14 +106,14 @@ class NotificationActivity1 : CustomBaseActivity(), GeneralItemIntraction<GetNot
 
         fun seenMessageById() {
 
-            av_loading.smoothToShow()
+            av_loading1.smoothToShow()
             val messageId = RequestBody.create(MediaType.parse("text/plain"), data.pivot?.message_id.toString())
 
             disposable.add(serviceProvider.getmService().seenMessage(ClientConfig.API_V1, messageId).subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread()).subscribeWith(object : DisposableSingleObserver<GeneralStatusResult>() {
 
                         override fun onSuccess(result: GeneralStatusResult) {
-                            av_loading.smoothToHide()
+                            av_loading1.smoothToHide()
 
                             Intent(this@NotificationActivity1, HtmlLoaderActivity::class.java).let {
 
@@ -129,7 +124,7 @@ class NotificationActivity1 : CustomBaseActivity(), GeneralItemIntraction<GetNot
                         }
 
                         override fun onError(e: Throwable) {
-                            av_loading.smoothToHide()
+                            av_loading1.smoothToHide()
                         }
                     }))
         }

@@ -21,10 +21,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_shop.*
-import kotlinx.android.synthetic.main.activity_shop.av_loading
-import kotlinx.android.synthetic.main.activity_shop.image_exit
-import kotlinx.android.synthetic.main.activity_shop.shop_recycler
+
 import kotlinx.android.synthetic.main.activity_shop1.*
 import org.greenrobot.eventbus.EventBus
 

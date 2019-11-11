@@ -155,26 +155,7 @@ class SplashScreenActivity1 : AppCompatActivity() {
 
                     override fun onError(e: Throwable) {
                         rl_root.av_loading.visibility = View.GONE
-//                        if (e.message?.contains("timed out")!!) {
-//                            Toast.makeText(this@SplashScreenActivity1, "timed out", Toast.LENGTH_SHORT).show()
-//                        } else {
-//                            var a: Int = (e as HttpException).code()
-//                            if (a == 401) {
-////                                requestRefreshToken()
-//                            } else if (a == 403) {
-//                                PreferenceStorage.getInstance(this@SplashScreenActivity1).saveToken("0")
-//                                startActivity(Intent(this@SplashScreenActivity1, LoginActivity::class.java))
-//                                this@SplashScreenActivity1.finish()
-//                                overridePendingTransition(R.anim.slide_in, R.anim.slide_out)
-//                            } else {
-//                                if (b < 2) {
-//                                    b++
-//                                    createTryAgainDialog()
-//                                } else {
-//                                    createCloseAppDialog()
-//                                }
-//                            }
-//                        }
+
                     }
 
                 }))

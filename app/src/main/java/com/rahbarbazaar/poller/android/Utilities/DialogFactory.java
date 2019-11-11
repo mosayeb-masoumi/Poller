@@ -63,6 +63,8 @@ public class DialogFactory {
             TextView text_time = customLayout.findViewById(R.id.text_time);
             TextView text_point = customLayout.findViewById(R.id.text_point);
             TextView text_status = customLayout.findViewById(R.id.text_status);
+            TextView text_income = customLayout.findViewById(R.id.text_income);
+
             TextView text_description = customLayout.findViewById(R.id.text_description);
             TextView btn_go_dialog = customLayout.findViewById(R.id.btn_go_dialog);
             TextView btn_cancel_dialog = customLayout.findViewById(R.id.btn_cancel_dialog);
@@ -71,7 +73,7 @@ public class DialogFactory {
             text_title.setText(data.getTitle());
             btn_go_dialog.setText(button_title);
 
-            if (button_title.contains("منقضی"))
+            if (button_title.contains("منقضی")|| button_title.contains("Expired!"))
                 btn_go_dialog.setEnabled(false);
 
             text_time.setText(new StringBuilder().append(context.getString(R.string.text_survey_time)).append("\u200E").append(" ")
@@ -80,6 +82,7 @@ public class DialogFactory {
                     .append("\u200E").append(data.getEnd_date(), 0, 10));
 
 
+            text_income.setText(new StringBuilder().append(context.getString(R.string.gained_score)).append("\u200E").append(data.getIncome()));
 
 
 
@@ -149,6 +152,7 @@ public class DialogFactory {
             TextView text_point = customLayout.findViewById(R.id.text_point);
             TextView text_status = customLayout.findViewById(R.id.text_status);
             TextView text_description = customLayout.findViewById(R.id.text_description);
+            TextView text_income = customLayout.findViewById(R.id.text_income);
             TextView btn_go_dialog = customLayout.findViewById(R.id.btn_go_dialog);
             TextView btn_cancel_dialog = customLayout.findViewById(R.id.btn_cancel_dialog);
 
@@ -156,8 +160,13 @@ public class DialogFactory {
             text_title.setText(data.getTitle());
             btn_go_dialog.setText(button_title);
 
-            if (button_title.contains("منقضی"))
+            if (button_title.contains("منقضی") || button_title.contains("Expired!")){
                 btn_go_dialog.setEnabled(false);
+                text_income.setText(new StringBuilder().append(context.getString(R.string.gained_score)).append("\u200E").append("0"));
+            }else{
+                text_income.setText(new StringBuilder().append(context.getString(R.string.gained_score)).append("\u200E").append(data.getIncome()));
+            }
+
 
 
 
@@ -678,12 +687,15 @@ public class DialogFactory {
 //        View customLayout = LayoutInflater.from(context).inflate(R.layout.check_update_dialog, (ViewGroup) view, false);
         View customLayout = LayoutInflater.from(context).inflate(R.layout.check_update_dialog_optional, (ViewGroup) view, false);
         //define views inside of dialog
-        TextView btn_dl_dialog = customLayout.findViewById(R.id.btn_dl_dialog);
+//        TextView btn_dl_dialog = customLayout.findViewById(R.id.btn_dl_dialog);
 //        ConstraintLayout google_layout = customLayout.findViewById(R.id.layout_gplay);  // main (old) dialog
 //        ConstraintLayout bazaar_layout = customLayout.findViewById(R.id.layout_bazaar);  //  main (old) dialog
-        RelativeLayout google_layout = customLayout.findViewById(R.id.layout_gplay);
+//        RelativeLayout google_layout = customLayout.findViewById(R.id.layout_gplay);
         RelativeLayout bazaar_layout = customLayout.findViewById(R.id.layout_bazaar);
         ImageView img_close = customLayout.findViewById(R.id.img_close);
+        TextView btn_close = customLayout.findViewById(R.id.btn_close);
+
+        btn_close.setText(context.getResources().getString(R.string.close));
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setView(customLayout);
@@ -697,16 +709,16 @@ public class DialogFactory {
         }
 
         //set click listener for views inside of dialog
-        btn_dl_dialog.setOnClickListener(v -> listener.onAcceptButtonClicked("")
-        );
+//        btn_dl_dialog.setOnClickListener(v -> listener.onAcceptButtonClicked("")
+//        );
 
-        google_layout.setOnClickListener(v -> {
-
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setData(Uri.parse("https://play.google.com/store/apps/details?id=com.rahbarbazaar.poller.android"));
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(intent);
-        });
+//        google_layout.setOnClickListener(v -> {
+//
+//            Intent intent = new Intent(Intent.ACTION_VIEW);
+//            intent.setData(Uri.parse("https://play.google.com/store/apps/details?id=com.rahbarbazaar.poller.android"));
+//            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//            context.startActivity(intent);
+//        });
 
         bazaar_layout.setOnClickListener(v -> {
 
@@ -716,12 +728,8 @@ public class DialogFactory {
             context.startActivity(intent);
         });
 
-        img_close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
+        img_close.setOnClickListener(v -> dialog.dismiss());
+        btn_close.setOnClickListener(v -> dialog.dismiss());
 
         dialog.show();
         return dialog;

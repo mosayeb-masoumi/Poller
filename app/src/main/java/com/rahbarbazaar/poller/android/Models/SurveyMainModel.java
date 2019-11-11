@@ -35,6 +35,16 @@ public class SurveyMainModel {
     private int url_type;
     private boolean isExpired;
 
+    private String income;
+
+    public String getIncome() {
+        return income;
+    }
+
+    public void setIncome(String income) {
+        this.income = income;
+    }
+
     public String getComplete_date() {
         return complete_date;
     }

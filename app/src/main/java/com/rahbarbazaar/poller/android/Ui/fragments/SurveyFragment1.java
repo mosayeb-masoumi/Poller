@@ -394,7 +394,7 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
                                 if (result != null) {
 
                                     SurveyHolder1 surveyHolder1 = new SurveyHolder1(Objects.requireNonNull(getView()));
-                                    int remainindDay = surveyHolder1.getRemainingDate(getCurrentDate(), result.getEnd_date());
+                                    int remainindDay = surveyHolder1.getRemainingDate(result.getCurrent_date(), result.getEnd_date());
 
                                     // make clause to show button participant dialog
                                     if (remainindDay <= 0) {
@@ -696,20 +696,7 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
         getUserSurveyHistory();
     }
 
-    public String getCurrentDate() {
 
-        SolarCalendar solarCalendar = new SolarCalendar();
-        String day = solarCalendar.getCurrentShamsiDay();
-        String month = solarCalendar.getStrMonth();
-        String year = solarCalendar.getCurrentShamsiYear();
-
-        Calendar c = Calendar.getInstance();
-        String currentTime = c.get(Calendar.HOUR_OF_DAY) + ":" + c.get(Calendar.MINUTE) + ":" + c.get(Calendar.SECOND);
-
-        String currentDate = year + "-" + month + "-" + day + " " + currentTime;
-
-        return currentDate;
-    }
 
 
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)

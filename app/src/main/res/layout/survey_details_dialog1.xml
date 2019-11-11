@@ -124,6 +124,33 @@
             android:orientation="horizontal">
 
             <com.rahbarbazaar.poller.android.Utilities.CustomTextView
+                android:id="@+id/text_income"
+                android:layout_marginStart="@dimen/dimen_11"
+                android:layout_width="0dp"
+                android:layout_weight="0.95"
+                android:textColor="@color/blue"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="@dimen/dimen_5"
+                android:textSize="@dimen/font_13" />
+
+            <!--<ImageView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="0.05"-->
+            <!--android:layout_height="@dimen/dimen_14"-->
+            <!--android:layout_gravity="center_vertical"-->
+            <!--android:layout_marginEnd="@dimen/dimen_8"-->
+            <!--android:src="@drawable/tick" />-->
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:orientation="horizontal">
+
+            <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                 android:id="@+id/text_description"
                 android:layout_marginStart="@dimen/dimen_11"
                 android:layout_width="0dp"

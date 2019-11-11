@@ -207,6 +207,9 @@
     <string name="boronze">برنز</string>
     <string name="silver">نقره</string>
 
+    <string name="gained_score">امتیاز کسب شده :</string>
+    <string name="close">بستن</string>
+
     <string name="profile_guest_content">سطح کاربری شما مهمان است. درصورت ارتقا کاربری به برنز،
         می توانید در نظرسنجی بعدی شرکت کنید. این پروسه کمتر از 1 دقیقه زمان نیاز دارد.</string>
     <string name="profile_boronze_content">سطح کاربری شما برنز است. درصورت ارتقا کاربری به نقره ای

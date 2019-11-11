@@ -177,6 +177,9 @@
     <string name="status">Status</string>
     <string name="time">Time</string>
 
+    <string name="gained_score">Gained Score :</string>
+    <string name="close">Close</string>
+
     <string name="home_point_content">after answering some surveys, your scores will be added to your user account in the form of Papasi.
         You can attend Poller’s monthly lottery by the Papasi you’ve earned.</string>
 

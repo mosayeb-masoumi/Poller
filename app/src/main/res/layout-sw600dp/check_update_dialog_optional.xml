@@ -30,7 +30,7 @@
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_2sdp"
             android:src="@drawable/ic_close_optional"/>
     </RelativeLayout>
 
@@ -88,7 +88,7 @@
             android:layout_weight="1"
             android:background="@drawable/dialog_btn_shape_tablet"
             android:gravity="center"
-            android:textSize="@dimen/_13sdp"
+            android:textSize="@dimen/_11sdp"
             android:textColor="@color/blue" />
 
 

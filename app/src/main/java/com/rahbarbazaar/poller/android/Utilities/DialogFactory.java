@@ -82,7 +82,15 @@ public class DialogFactory {
                     .append("\u200E").append(data.getEnd_date(), 0, 10));
 
 
-            text_income.setText(new StringBuilder().append(context.getString(R.string.gained_score)).append("\u200E").append(data.getIncome()));
+            text_income.setText(new StringBuilder().append(context.getString(R.string.gained_score))
+                    .append("\u200E").append(" ")
+                    .append("\u200E")
+                    .append(data.getIncome())
+                    .append("\u200E").append(" ")
+                    .append("\u200E")
+                    .append(data.getCurrency().getName())
+
+            );
 
 
 
@@ -162,9 +170,22 @@ public class DialogFactory {
 
             if (button_title.contains("منقضی") || button_title.contains("Expired!")){
                 btn_go_dialog.setEnabled(false);
-                text_income.setText(new StringBuilder().append(context.getString(R.string.gained_score)).append("\u200E").append("0"));
+                text_income.setText(new StringBuilder().append(context.getString(R.string.gained_score))
+                        .append("\u200E").append(" ")
+                        .append("\u200E").append("0")
+                        .append("\u200E").append(" ")
+                        .append("\u200E")
+                        .append(data.getCurrency().getName()));
             }else{
-                text_income.setText(new StringBuilder().append(context.getString(R.string.gained_score)).append("\u200E").append(data.getIncome()));
+                text_income.setText(new StringBuilder().append(context.getString(R.string.gained_score))
+                        .append("\u200E").append(" ")
+                        .append("\u200E")
+                        .append(data.getIncome())
+                        .append("\u200E").append(" ")
+                        .append("\u200E")
+                        .append(data.getCurrency().getName())
+
+                );
             }
 
 
@@ -907,7 +928,12 @@ public class DialogFactory {
 
         else if(title.equals("homeLeftDays")){
             txt_header.setText(R.string.text_leftday);
-            text_content.setText(R.string.home_left_days_content);
+            String leftDays = App.leftDay;
+//            String content =  Resources.getSystem().getString(R.string.home_left_days_content);
+            String content = context.getResources().getString(R.string.home_left_days_content);
+            text_content.setText(leftDays+" "+content);
+
+
         }
         else if(title.equals("guest")){
             txt_header.setText(R.string.guest);

@@ -267,6 +267,7 @@ public class HomeFragment1 extends Fragment implements View.OnClickListener {
                             text_activepoll_digit.setText(String.valueOf(activeSurveys));
                             text_leftdays_digit.setText(String.valueOf(lotteryDays));
 
+                            App.leftDay = String.valueOf(lotteryDays);
 
                             setImages(newsImgUrl, surveyImgUrl, videoImgUrl);
                         }

@@ -39,6 +39,7 @@ public class App extends MultiDexApplication {
     public static String videoWebUrl = "";
     @NotNull
     public static int balance;
+    public static String leftDay ="";
 
 
 }

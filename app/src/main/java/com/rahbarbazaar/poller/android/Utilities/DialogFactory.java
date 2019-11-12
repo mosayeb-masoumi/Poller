@@ -65,6 +65,8 @@ public class DialogFactory {
             TextView text_status = customLayout.findViewById(R.id.text_status);
             TextView text_income = customLayout.findViewById(R.id.text_income);
 
+            ImageView img_close = customLayout.findViewById(R.id.img_close);
+
             TextView text_description = customLayout.findViewById(R.id.text_description);
             TextView btn_go_dialog = customLayout.findViewById(R.id.btn_go_dialog);
             TextView btn_cancel_dialog = customLayout.findViewById(R.id.btn_cancel_dialog);
@@ -142,6 +144,8 @@ public class DialogFactory {
                 listener.onAcceptButtonClicked(data.getUrl());
 
             });
+
+            img_close.setOnClickListener(view -> dialog.dismiss());
             btn_cancel_dialog.setOnClickListener(view -> dialog.dismiss());
             dialog.show();
 
@@ -163,6 +167,7 @@ public class DialogFactory {
             TextView text_income = customLayout.findViewById(R.id.text_income);
             TextView btn_go_dialog = customLayout.findViewById(R.id.btn_go_dialog);
             TextView btn_cancel_dialog = customLayout.findViewById(R.id.btn_cancel_dialog);
+            ImageView img_close = customLayout.findViewById(R.id.img_close);
 
             //initialize views
             text_title.setText(data.getTitle());
@@ -250,6 +255,7 @@ public class DialogFactory {
                 listener.onAcceptButtonClicked(data.getUrl());
 
             });
+            img_close.setOnClickListener(view -> dialog.dismiss());
             btn_cancel_dialog.setOnClickListener(view -> dialog.dismiss());
             dialog.show();
         }
@@ -295,6 +301,8 @@ public class DialogFactory {
         TextView btn_cancel_dialog = customLayout.findViewById(R.id.btn_cancel_dialog);
         TextView text_body = customLayout.findViewById(R.id.text_body);
 
+        ImageView img_close=customLayout.findViewById(R.id.img_close);
+
         if (survey_exit_confirm)
             text_body.setText(R.string.survey_exit_confirm);
 
@@ -317,6 +325,8 @@ public class DialogFactory {
 
         btn_exit_dialog.setOnClickListener(v -> listener.onAcceptButtonClicked("")
         );
+
+        img_close.setOnClickListener(v -> dialog.dismiss());
 
         dialog.show();
     }
@@ -385,6 +395,8 @@ public class DialogFactory {
 //        edt_comment.setTypeface(Typeface.createFromAsset(context.getAssets(), "fonts/BYekan.ttf"));
         edt_comment.setTypeface(Typeface.createFromAsset(context.getAssets(), "fonts/Vazir-Medium.ttf"));
 
+        ImageView img_close = customLayout.findViewById(R.id.img_close);
+
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setView(customLayout);
 
@@ -401,13 +413,17 @@ public class DialogFactory {
 
             String comment = edt_comment.getText().toString();
 
-            if (comment.trim().length() > 0) {
+            if (comment.trim().length() >= 10) {
                 listener.onAcceptButtonClicked(comment);
                 dialog.dismiss();
-            } else
+            } else if(comment.trim().length()>0 && comment.trim().length()<10){
+                new ToastFactory().createToast(R.string.change_info_failed, context);
+            }else if(comment.trim().length()==0)
                 new ToastFactory().createToast(R.string.text_subject_empty_error, context);
         });
 //        btn_cancel_dialog.setVisibility(ViewGroup.GONE);
+
+        img_close.setOnClickListener(v -> dialog.dismiss());
 
         dialog.show();
     }
@@ -422,6 +438,8 @@ public class DialogFactory {
         EditText edt_description = customLayout.findViewById(R.id.edt_description);
         TextView btn_send = customLayout.findViewById(R.id.btn_send_dialog);
         TextView btn_cancel_dialog = customLayout.findViewById(R.id.btn_cancel_dialog);
+
+        ImageView img_close = customLayout.findViewById(R.id.img_close);
 
         //set default values of views
         edt_title.setTypeface(Typeface.createFromAsset(context.getAssets(), "fonts/BYekan.ttf"));
@@ -458,6 +476,8 @@ public class DialogFactory {
             listener.onDeniedButtonClicked(false);
             dialog.dismiss();
         });
+
+        img_close.setOnClickListener(v -> dialog.dismiss());
 
         dialog.show();
     }
@@ -763,6 +783,7 @@ public class DialogFactory {
 
         TextView btn_en = customView.findViewById(R.id.btn_eng);
         TextView btn_fa = customView.findViewById(R.id.btn_fa);
+        ImageView img_close = customView.findViewById(R.id.img_close);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setView(customView);
@@ -781,6 +802,10 @@ public class DialogFactory {
             interaction.onAcceptButtonClicked();
             dialog.dismiss();
         });
+
+        img_close.setOnClickListener(v -> dialog.dismiss());
+
+
         dialog.show();
     }
 
@@ -793,6 +818,8 @@ public class DialogFactory {
         TextView img_join_lottery = customView.findViewById(R.id.txt_join_lottery);
         EditText edt_lottery_amount = customView.findViewById(R.id.edt_lottery_amount);
         edt_lottery_amount.setTypeface(Typeface.createFromAsset(context.getAssets(), "fonts/Vazir-Medium.ttf"));
+
+        ImageView img_cloase = customView.findViewById(R.id.img_close);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setView(customView);
@@ -816,6 +843,8 @@ public class DialogFactory {
                 dialog.dismiss();
             }
         });
+        img_cloase.setOnClickListener(v -> dialog.dismiss());
+
         dialog.show();
     }
 
@@ -910,6 +939,7 @@ public class DialogFactory {
 
         TextView txt_header = customView.findViewById(R.id.txt_header);
         TextView text_content = customView.findViewById(R.id.text_content);
+        ImageView img_close = customView.findViewById(R.id.img_close);
 
         if(title.equals("homeScore")){
             txt_header.setText(R.string.text_your_point);
@@ -964,6 +994,14 @@ public class DialogFactory {
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
 
+        img_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+
         dialog.show();
     }
 
@@ -978,6 +1016,8 @@ public class DialogFactory {
         TextView text_guest = customView.findViewById(R.id.text_guest);
         TextView text_complete = customView.findViewById(R.id.text_complete);
         TextView text_expired = customView.findViewById(R.id.text_expired);
+
+        ImageView img_close = customView.findViewById(R.id.img_close);
 
         RelativeLayout rl_golden = customView.findViewById(R.id.rl_golden);
         RelativeLayout rl_guest = customView.findViewById(R.id.rl_guest);
@@ -1016,6 +1056,7 @@ public class DialogFactory {
 
 
 
+
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setView(customView);
 
@@ -1023,6 +1064,16 @@ public class DialogFactory {
         AlertDialog dialog = builder.create();
         if (dialog.getWindow() != null)
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+
+
+        img_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              dialog.dismiss();
+            }
+        });
+
 
 
         dialog.show();

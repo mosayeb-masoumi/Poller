@@ -11,16 +11,33 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:background="@drawable/dialog_header_shape"
-        android:gravity="center">
-
+        android:background="@drawable/dialog_header_shape">
         <com.rahbarbazaar.poller.android.Utilities.CustomTextView
-            android:id="@+id/text_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/text_title"
             android:text="@string/report_issue_title"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:textColor="@color/white_gray"
-            android:textSize="@dimen/font_17" />
+            android:textSize="@dimen/font_15" />
+
+        <ImageView
+            android:layout_width="@dimen/_40sdp"
+            android:id="@+id/img_close"
+            android:padding="@dimen/_5sdp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/_2sdp"
+            android:src="@drawable/ic_close_optional"/>
+        <!--<com.rahbarbazaar.poller.android.Utilities.CustomTextView-->
+            <!--android:id="@+id/text_title"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/report_issue_title"-->
+            <!--android:textColor="@color/white_gray"-->
+            <!--android:textSize="@dimen/font_17" />-->
     </RelativeLayout>
 
 

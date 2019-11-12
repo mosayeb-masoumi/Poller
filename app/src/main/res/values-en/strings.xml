@@ -204,6 +204,7 @@
     <string name="guest">Guest</string>
     <string name="boronze">Boronze</string>
     <string name="silver">Silver</string>
+    <string name="change_info_failed">Text is short</string>
 
     <string name="profile_guest_content">you are in “guest” user level. If you are upgraded to bronze user, you can attend the next survey.
         This process takes less than 1 minute.</string>

@@ -208,13 +208,13 @@ public class SurveyHolder1 extends RecyclerView.ViewHolder {
         }
 
 
-        if (remaining_day != 0 && data.getStatus() != 3){
+        if (remaining_day != 0 && data.getStatus() != 3) {
             txt_survey_date.setText(remaining_day + " " + context.getString(R.string.text_remaining_day));
         }
 
 
-            text_survey_unit.setText(data.getCurrency().getName());
-            text_survey_unit.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
+        text_survey_unit.setText(data.getCurrency().getName());
+        text_survey_unit.setTextColor(ContextCompat.getColor(context, R.color.gray_deep));
 
 
 //        else {
@@ -248,6 +248,63 @@ public class SurveyHolder1 extends RecyclerView.ViewHolder {
 
     }
 
+
+    int sum = 0;
+//    public int getRemainingDate(String start, String end) {
+//
+//        // get start day and month
+//        String[] start_array = start.substring(0, 10).split("-");
+//        String[] end_array = end.substring(0, 10).split("-");
+//
+//        int start_day = Integer.valueOf(start_array[2]);
+//        int start_month = Integer.valueOf(start_array[1]);
+//        int start_year = Integer.valueOf(start_array[0]);
+//
+//        int end_day = Integer.valueOf(end_array[2]);
+//        int end_month = Integer.valueOf(end_array[1]);
+//        int end_year = Integer.valueOf(end_array[0]);
+//
+//
+//        if (start_year > end_year) {
+//
+//            sum = 0;
+//        } else {
+//
+//
+//           if (end_month > start_month) { //if this condition was true, so we Certainly have remaining day
+//
+//                sum = (end_month - start_month) * 30;
+//
+//                if (start_day > end_day) {
+//
+//                    sum = sum - (start_day - end_day);
+//
+//                } else if (end_day > start_day) {
+//
+//                    sum = sum + (end_day - start_day);
+//                }
+//
+//            } else if (start_month > end_month) {// if this condition was true, so survey certainly expired
+//
+//                sum = 0;
+//
+//            } else {// if this condition was true, so end and start month is equal so we have to check days
+//
+//                if (end_day > start_day)
+//                    sum = end_day - start_day;
+//                else
+//                    sum = 0;
+//            }
+//        }
+//
+//
+//        return sum;
+//    }
+
+
+    int sum1 = 0;
+    int remainNewYearDays = 0;
+
     public int getRemainingDate(String start, String end) {
 
         // get start day and month
@@ -262,12 +319,12 @@ public class SurveyHolder1 extends RecyclerView.ViewHolder {
         int end_month = Integer.valueOf(end_array[1]);
         int end_year = Integer.valueOf(end_array[0]);
 
-        int sum;
 
         if (start_year > end_year) {
 
             sum = 0;
-        } else {
+        } else if (start_year == end_year) {
+
 
             if (end_month > start_month) { //if this condition was true, so we Certainly have remaining day
 
@@ -293,7 +350,62 @@ public class SurveyHolder1 extends RecyclerView.ViewHolder {
                 else
                     sum = 0;
             }
+
+
+        } else if (end_year > start_year) {
+
+
+            if (end_month > start_month) { //if this condition was true, so we Certainly have remaining day
+
+                sum1 = sum1 + (end_month - start_month) * 30;
+
+                if (start_day > end_day) {
+
+                    sum1 = sum1 - (start_day - end_day);
+
+                } else if (end_day > start_day) {
+
+                    sum1 = sum1 + (end_day - start_day);
+                }
+
+                int year = ((end_year - start_year) - 1) * 365;
+
+                remainNewYearDays = ((end_month - 1) * 30) + 5 + end_day;
+
+                sum = sum1 + (year + remainNewYearDays);
+
+
+            } else if (start_month > end_month) {// if this condition was true, so survey certainly expired
+
+                int currentYearRemainDays = 365-(((start_month-1)*30)+start_day+5);
+
+
+                int year = ((end_year - start_year) - 1) * 365;
+                remainNewYearDays = ((end_month - 1) * 30) + 5 + end_day;
+
+                if(end_month<7){
+                    sum = currentYearRemainDays +((end_month-1)*30)+end_day+(end_month-1)+year;
+                }else{
+                    sum = currentYearRemainDays +((end_month-1)*30)+end_day+5+year;
+                }
+
+
+
+                int a = sum;
+
+
+            } else {// if this condition was true, so end and start month is equal so we have to check days
+
+                if (end_day > start_day)
+                    sum1 = end_day - start_day;
+                else
+                    sum1 = 0;
+            }
+
+
         }
+
+
         return sum;
     }
 

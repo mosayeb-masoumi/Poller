@@ -462,7 +462,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:id="@+id/rl_point_balance"
-                android:visibility="visible"
+                android:visibility="gone"
                 android:layout_height="@dimen/_30sdp"
                 android:layout_marginStart="@dimen/_45sdp"
                 android:layout_marginTop="@dimen/_3sdp"

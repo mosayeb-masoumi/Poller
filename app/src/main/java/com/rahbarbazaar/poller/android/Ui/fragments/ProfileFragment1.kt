@@ -269,7 +269,10 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
 
         val service = provider.getmService()
 
-        disposable.add(service.editUserProfile(ClientConfig.API_V1, comment).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribeWith(object : DisposableSingleObserver<GeneralStatusResult>() {
+        disposable.add(service.editUserProfile(ClientConfig.API_V1, comment)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableSingleObserver<GeneralStatusResult>() {
             override fun onSuccess(result: GeneralStatusResult) {
 
                 if (result.status == "request sent") {
@@ -340,7 +343,8 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
                                 "amount must be a multiple of 100" -> message = R.string.text_multiple_100
                                 "insert successful" -> {
                                     message = R.string.text_success_done
-                                    ProfileTools.getInstance().saveProfileInformation(context).setListener { EventBus.getDefault().post(RefreshBalanceEvent()) }
+                                    ProfileTools.getInstance().saveProfileInformation(context).setListener {
+                                        EventBus.getDefault().post(RefreshBalanceEvent()) }
                                 }
                                 "process failed" -> message = R.string.text_process_failed
 

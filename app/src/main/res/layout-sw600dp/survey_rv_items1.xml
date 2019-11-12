@@ -14,24 +14,23 @@
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1.2">
+            android:layout_weight="1.3">
 
 
             <ImageView
                 android:id="@+id/row_survey_imgLeftday"
                 android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="7dp" />
+                android:layout_centerInParent="true"
+                android:layout_height="35dp" />
 
             <com.rahbarbazaar.poller.android.Utilities.CustomTextView
                 android:id="@+id/txt_survey_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/row_survey_imgLeftday"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="1dp"
-                android:paddingStart="@dimen/_1sdp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="2dp"
+                android:text=""
                 android:textColor="@color/blue"
                 android:textSize="15sp" />
 

@@ -422,7 +422,6 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
     }
 
     private fun showInfoDialog(title: String) {
-      var a :String = title
 
         DialogFactory(context).createHomeInfoDialog(view ,title,object : DialogFactory.DialogFactoryInteraction{
             override fun onAcceptButtonClicked(vararg strings: String?) {

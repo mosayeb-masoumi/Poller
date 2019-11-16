@@ -2,7 +2,9 @@ package com.rahbarbazaar.poller.android.Ui.activities;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.DownloadManager;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -18,7 +20,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Process;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ShareCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.os.ConfigurationCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -57,6 +61,7 @@ import com.rahbarbazaar.poller.android.Ui.fragments.ProfileFragment1;
 import com.rahbarbazaar.poller.android.Ui.fragments.SurveyFragment1;
 import com.rahbarbazaar.poller.android.Utilities.App;
 import com.rahbarbazaar.poller.android.Utilities.ClientConfig;
+import com.rahbarbazaar.poller.android.Utilities.DownloadMAnager;
 import com.rahbarbazaar.poller.android.Utilities.ToastFactory;
 import com.rahbarbazaar.poller.android.Utilities.DialogFactory;
 import com.rahbarbazaar.poller.android.Utilities.GeneralTools;
@@ -135,6 +140,8 @@ public class MainActivity extends CustomBaseActivity implements
 
     int a = 0;
 
+
+    ImageView img_upgrade;
 
     boolean doubleBackToExitPressedOnce = false;
 
@@ -246,6 +253,26 @@ public class MainActivity extends CustomBaseActivity implements
             linear_invite_friend.setVisibility(View.VISIBLE);
         }
 
+
+
+
+
+        img_upgrade=findViewById(R.id.img_upgrade);
+        img_upgrade.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        != PackageManager.PERMISSION_GRANTED){
+                    ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 555);
+
+                }else{
+                    //                new DownloadManager().DownloadUpdateApp(MainActivity.this);
+                    new DownloadMAnager().DownloadUpdateApp(MainActivity.this);
+                }
+
+            }
+        });
 
     }
 

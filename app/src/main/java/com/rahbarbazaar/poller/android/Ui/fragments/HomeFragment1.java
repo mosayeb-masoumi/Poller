@@ -1,5 +1,6 @@
 package com.rahbarbazaar.poller.android.Ui.fragments;
 
+import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;

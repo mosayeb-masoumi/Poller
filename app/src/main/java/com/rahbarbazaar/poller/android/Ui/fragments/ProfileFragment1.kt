@@ -178,7 +178,8 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
                         text_username.text = result.name
 
 
-                        if (type.equals("1") || type.equals("4")) {
+//                        if (type.equals("1") || type.equals("4")) {
+                        if (type.equals("1")) {
                             rl_user_access_upgrade.visibility = View.VISIBLE
                         } else {
                             rl_user_access_upgrade.visibility = View.GONE

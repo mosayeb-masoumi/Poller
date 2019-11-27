@@ -140,7 +140,7 @@
         android:layout_marginBottom="@dimen/_10sdp"
         android:background="@drawable/bg_pink1"
         android:gravity="center"
-        android:visibility="gone"
+        android:visibility="visible"
         android:orientation="vertical">
 
         <com.rahbarbazaar.poller.android.Utilities.CustomTextView

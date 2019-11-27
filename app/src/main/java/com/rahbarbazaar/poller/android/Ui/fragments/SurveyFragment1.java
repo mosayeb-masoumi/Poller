@@ -703,7 +703,8 @@ public class SurveyFragment1 extends Fragment implements SurveyItemInteraction {
     public void onEventMainThread(ModelUserType modelUserType) {
         user_type = modelUserType.getUser_type();
 
-        if (user_type.equals("1") || user_type.equals("4"))
+//        if (user_type.equals("1") || user_type.equals("4"))
+        if (user_type.equals("1"))
             rl_user_access_upgrade_survey.setVisibility(View.VISIBLE);
         else
             rl_user_access_upgrade_survey.setVisibility(View.GONE);

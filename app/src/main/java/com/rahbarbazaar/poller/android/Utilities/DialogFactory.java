@@ -713,7 +713,8 @@ public class DialogFactory {
         bazaar_layout.setOnClickListener(v -> {
 
             Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setData(Uri.parse("https://cafebazaar.ir/app/com.rahbarbazaar.poller.android/?l=fa"));
+//            intent.setData(Uri.parse("https://cafebazaar.ir/app/com.rahbarbazaar.poller.android/?l=fa"));
+            intent.setData(Uri.parse("https://myket.ir/app/com.rahbarbazaar.poller.android"));
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
         });
@@ -764,7 +765,8 @@ public class DialogFactory {
         bazaar_layout.setOnClickListener(v -> {
 
             Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setData(Uri.parse("https://cafebazaar.ir/app/com.rahbarbazaar.poller.android/?l=fa"));
+//            intent.setData(Uri.parse("https://cafebazaar.ir/app/com.rahbarbazaar.poller.android/?l=fa"));
+            intent.setData(Uri.parse("https://myket.ir/app/com.rahbarbazaar.poller.android"));
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
         });

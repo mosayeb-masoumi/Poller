@@ -75,6 +75,7 @@ public class ServiceProvider {
                                 .addHeader("token", PreferenceStorage.getInstance(context).retriveToken())
                                 .build();
                     } else {
+                        context.startActivity(new Intent(context, LoginActivity.class));
                         return null;
                     }
 

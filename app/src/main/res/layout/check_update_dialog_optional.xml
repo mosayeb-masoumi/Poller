@@ -68,6 +68,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:gravity="center"
+                android:id="@+id/ll_myket_optional"
                 android:layout_height="match_parent">
 
                 <ImageView
@@ -75,6 +76,32 @@
                     android:layout_height="wrap_content"
                     android:padding="5dp"
                     android:src="@drawable/myket"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:id="@+id/ll_googleplay_optional"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:src="@drawable/google_play"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:id="@+id/ll_cafebazaar_optional"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:src="@drawable/cafe_bazar"/>
             </LinearLayout>
 
         </RelativeLayout>

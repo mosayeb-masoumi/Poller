@@ -426,7 +426,10 @@ public class MainActivity extends CustomBaseActivity implements
                                     .setText(new StringBuilder().append(getString(R.string.text_invite_from)).append(" ").append(prefrence.getName()).append(" ").
                                             append(getString(R.string.text_invite_friend)).
 //                                            append("\n").append(result.getUrl()))
-        append("\n").append(bazzar_url))
+                                            append("\n")
+//                                            .append(bazzar_url))
+//                                            .append("https://cafebazaar.ir/app/com.rahbarbazaar.poller.android/?l=fa"))
+                                            .append("https://play.google.com/store/apps/details?id=com.rahbarbazaar.poller.android"))
                                     .setType("text/plain")
                                     .setChooserTitle(R.string.share_poller)
                                     .startChooser();

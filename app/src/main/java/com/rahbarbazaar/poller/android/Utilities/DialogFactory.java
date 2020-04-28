@@ -25,6 +25,7 @@ import android.webkit.WebViewClient;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -681,11 +682,18 @@ public class DialogFactory {
 //        View customLayout = LayoutInflater.from(context).inflate(R.layout.check_update_dialog, (ViewGroup) view, false);
         View customLayout = LayoutInflater.from(context).inflate(R.layout.check_update_dialog1, (ViewGroup) view, false);
         //define views inside of dialog
-        TextView btn_dl_dialog = customLayout.findViewById(R.id.btn_dl_dialog);
-//        ConstraintLayout google_layout = customLayout.findViewById(R.id.layout_gplay);  // main (old) dialog
-//        ConstraintLayout bazaar_layout = customLayout.findViewById(R.id.layout_bazaar);  //  main (old) dialog
-        RelativeLayout google_layout = customLayout.findViewById(R.id.layout_gplay);
-        RelativeLayout bazaar_layout = customLayout.findViewById(R.id.layout_bazaar);
+//        TextView btn_dl_dialog = customLayout.findViewById(R.id.btn_dl_dialog);
+//        RelativeLayout google_layout = customLayout.findViewById(R.id.layout_gplay);
+//        RelativeLayout bazaar_layout = customLayout.findViewById(R.id.layout_bazaar);
+
+        RelativeLayout btn_myket = customLayout.findViewById(R.id.rl_myket);
+        RelativeLayout btn_googleplay = customLayout.findViewById(R.id.rl_googleplay);
+        RelativeLayout btn_cafebazaar = customLayout.findViewById(R.id.rl_cafebazaar);
+
+        btn_cafebazaar.setVisibility(View.GONE);
+        btn_googleplay.setVisibility(View.VISIBLE);
+        btn_myket.setVisibility(View.GONE);
+
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setView(customLayout);
@@ -699,10 +707,19 @@ public class DialogFactory {
         }
 
         //set click listener for views inside of dialog
-        btn_dl_dialog.setOnClickListener(v -> listener.onAcceptButtonClicked("")
-        );
+//        btn_dl_dialog.setOnClickListener(v -> listener.onAcceptButtonClicked("")
+//        );
 
-        google_layout.setOnClickListener(v -> {
+        btn_cafebazaar.setOnClickListener(view1 -> {
+
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("https://cafebazaar.ir/app/com.rahbarbazaar.poller.android/?l=fa"));
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        });
+
+
+        btn_googleplay.setOnClickListener(v -> {
 
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse("https://play.google.com/store/apps/details?id=com.rahbarbazaar.poller.android"));
@@ -710,10 +727,9 @@ public class DialogFactory {
             context.startActivity(intent);
         });
 
-        bazaar_layout.setOnClickListener(v -> {
+        btn_myket.setOnClickListener(v -> {
 
             Intent intent = new Intent(Intent.ACTION_VIEW);
-//            intent.setData(Uri.parse("https://cafebazaar.ir/app/com.rahbarbazaar.poller.android/?l=fa"));
             intent.setData(Uri.parse("https://myket.ir/app/com.rahbarbazaar.poller.android"));
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
@@ -737,6 +753,16 @@ public class DialogFactory {
         ImageView img_close = customLayout.findViewById(R.id.img_close);
         TextView btn_close = customLayout.findViewById(R.id.btn_close);
 
+        LinearLayout btn_myket = customLayout.findViewById(R.id.ll_myket_optional);
+        LinearLayout btn_googleplay = customLayout.findViewById(R.id.ll_googleplay_optional);
+        LinearLayout btn_cafebazaar = customLayout.findViewById(R.id.ll_cafebazaar_optional);
+
+
+        btn_cafebazaar.setVisibility(View.GONE);
+        btn_googleplay.setVisibility(View.VISIBLE);
+        btn_myket.setVisibility(View.GONE);
+
+
         btn_close.setText(context.getResources().getString(R.string.close));
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -750,26 +776,33 @@ public class DialogFactory {
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         }
 
-        //set click listener for views inside of dialog
-//        btn_dl_dialog.setOnClickListener(v -> listener.onAcceptButtonClicked("")
-//        );
 
-//        google_layout.setOnClickListener(v -> {
-//
-//            Intent intent = new Intent(Intent.ACTION_VIEW);
-//            intent.setData(Uri.parse("https://play.google.com/store/apps/details?id=com.rahbarbazaar.poller.android"));
-//            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//            context.startActivity(intent);
-//        });
-
-        bazaar_layout.setOnClickListener(v -> {
+        btn_cafebazaar.setOnClickListener(view1 -> {
 
             Intent intent = new Intent(Intent.ACTION_VIEW);
-//            intent.setData(Uri.parse("https://cafebazaar.ir/app/com.rahbarbazaar.poller.android/?l=fa"));
+            intent.setData(Uri.parse("https://cafebazaar.ir/app/com.rahbarbazaar.poller.android/?l=fa"));
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        });
+
+
+        btn_googleplay.setOnClickListener(v -> {
+
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("https://play.google.com/store/apps/details?id=com.rahbarbazaar.poller.android"));
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        });
+
+        btn_myket.setOnClickListener(v -> {
+
+            Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse("https://myket.ir/app/com.rahbarbazaar.poller.android"));
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
         });
+
+
 
         img_close.setOnClickListener(v -> dialog.dismiss());
         btn_close.setOnClickListener(v -> dialog.dismiss());

@@ -31,10 +31,7 @@ import kotlinx.android.synthetic.main.fragment_profile1.*
 import kotlinx.android.synthetic.main.fragment_profile1.view.*
 import java.util.ArrayList
 
-
 class ProfileFragment1 : Fragment(), View.OnClickListener {
-
-
     //region of property
     lateinit var provider: ServiceProvider
     lateinit var disposable: CompositeDisposable
@@ -90,22 +87,12 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
             view.arrow_project_count.rotation = 180F
         }
 
-
-
         provider = ServiceProvider(context)
         disposable = CompositeDisposable()
 
         //initial ui
         getUserProfile()
         checkUserAllowingExchange()
-
-
-
-
-
-
-
-
 
         return view
     }
@@ -178,8 +165,8 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
                         text_username.text = result.name
 
 
-//                        if (type.equals("1") || type.equals("4")) {
-                        if (type.equals("1")) {
+                        if (type.equals("1") || type.equals("4")) {
+//                        if (type.equals("1")) {
                             rl_user_access_upgrade.visibility = View.VISIBLE
                         } else {
                             rl_user_access_upgrade.visibility = View.GONE

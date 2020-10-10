@@ -20,8 +20,8 @@ android {
         applicationId "com.rahbarbazaar.poller.android"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 23
-        versionName "5.2.0"
+        versionCode 24
+        versionName "5.3.0"
     }
     buildTypes {
 
@@ -31,7 +31,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             applicationVariants.all { variant ->
                 variant.outputs.all {
-                    outputFileName = "Poller V${defaultConfig.versionName} test.apk"
+                    outputFileName = "Poller V${defaultConfig.versionName}.apk"
                 }
             }
         }
@@ -64,6 +64,7 @@ dependencies {
     implementation 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
     implementation 'com.google.firebase:firebase-core:16.0.1'
     implementation 'com.crashlytics.sdk.android:crashlytics:2.9.8'
+//    implementation 'com.crashlytics.sdk.android:crashlytics:17.2.2'
     implementation 'com.birbit:android-priority-jobqueue:2.0.1'
 //    implementation 'co.ronash.android:pushe-base:1.4.3'
     implementation 'co.ronash.android:pushe-base:1.6.3'

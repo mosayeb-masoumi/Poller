@@ -1,18 +1,17 @@
 package com.rahbarbazaar.poller.android.Ui.activities
 
+import android.R.attr.data
+import android.app.Activity
 import android.content.Intent
-import android.graphics.Rect
 import android.os.Bundle
 import android.support.v4.os.ConfigurationCompat
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import android.widget.Toast
 import com.rahbarbazaar.poller.android.Controllers.adapters.ShopRecyclerAdapter
 import com.rahbarbazaar.poller.android.Controllers.viewHolders.GeneralItemIntraction
 import com.rahbarbazaar.poller.android.Models.GetShopListResult
-import com.rahbarbazaar.poller.android.Models.RefreshBalanceEvent
 import com.rahbarbazaar.poller.android.Network.ServiceProvider
 import com.rahbarbazaar.poller.android.R
 import com.rahbarbazaar.poller.android.Utilities.ClientConfig
@@ -21,9 +20,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
-
 import kotlinx.android.synthetic.main.activity_shop1.*
-import org.greenrobot.eventbus.EventBus
+
 
 class ShopActivity1 : CustomBaseActivity(), GeneralItemIntraction<GetShopListResult> {
 
@@ -105,8 +103,15 @@ class ShopActivity1 : CustomBaseActivity(), GeneralItemIntraction<GetShopListRes
             it.putExtra("surveyDetails", false)
             it.putExtra("isShopping", true)
             startActivity(it)
+
+            // rating popup should coding in HtmlLoaderActivity class
         }
     }
+
+
+
+
+
 
     override fun onDestroy() {
         super.onDestroy()
@@ -116,4 +121,5 @@ class ShopActivity1 : CustomBaseActivity(), GeneralItemIntraction<GetShopListRes
             clear()
         }
     }
+
 }

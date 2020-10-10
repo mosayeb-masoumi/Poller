@@ -18,8 +18,10 @@ import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.rahbarbazaar.poller.android.R;
+import com.rahbarbazaar.poller.android.Utilities.CustomWebViewClient;
 import com.rahbarbazaar.poller.android.Utilities.DialogFactory;
 import com.rahbarbazaar.poller.android.Utilities.GeneralTools;
 import com.wang.avi.AVLoadingIndicatorView;
@@ -40,14 +42,18 @@ public class HtmlLoaderActivity extends CustomBaseActivity
     boolean isSurveyDetails, isShopping, isUserStartSurvey = false;
     //end of region
 
+    Context context;
+
     @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_html_loader);
 
+        context = this;
         //initialize view
         defineView();
+
 
 
        String locale_name = ConfigurationCompat.getLocales(getResources().getConfiguration()).get(0).getLanguage();
@@ -89,6 +95,8 @@ public class HtmlLoaderActivity extends CustomBaseActivity
         webView.getSettings().setMinimumLogicalFontSize(1);
         webView.setClickable(true);
         webView.clearCache(true);
+
+        webView.setWebViewClient(new CustomWebViewClient(this));
       
 
         if (isSurveyDetails) {
@@ -234,7 +242,12 @@ public class HtmlLoaderActivity extends CustomBaseActivity
                 setResult(RESULT_OK, intent);
 
                 createConfirmExitDialog();
-            } else
+            } else if(isShopping){
+                // show popup googleplay
+                Toast.makeText(this, "backed from shopping", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+            else
                 finish();
 
         }
@@ -275,9 +288,15 @@ public class HtmlLoaderActivity extends CustomBaseActivity
             setResult(RESULT_OK, intent);
 
             createConfirmExitDialog();
+        }else if(isShopping){
+            // show popup googleplay
+            Toast.makeText(this, "backed from shopping", Toast.LENGTH_SHORT).show();
+            finish();
         } else
             finish();
     }
+
+
 
 
 

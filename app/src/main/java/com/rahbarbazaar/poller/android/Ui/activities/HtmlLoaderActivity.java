@@ -11,10 +11,12 @@ import android.os.Bundle;
 import android.support.v4.os.ConfigurationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
@@ -33,7 +35,7 @@ public class HtmlLoaderActivity extends CustomBaseActivity
 
     WebView webView;
     AVLoadingIndicatorView av_loading;
-    LinearLayout linear_exit , web_btnbar;
+    LinearLayout linear_exit, web_btnbar;
     //end of region
 
     //region of property
@@ -55,8 +57,7 @@ public class HtmlLoaderActivity extends CustomBaseActivity
         defineView();
 
 
-
-       String locale_name = ConfigurationCompat.getLocales(getResources().getConfiguration()).get(0).getLanguage();
+        String locale_name = ConfigurationCompat.getLocales(getResources().getConfiguration()).get(0).getLanguage();
         if (locale_name.equals("fa")) {
             getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
             web_btnbar.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
@@ -96,8 +97,22 @@ public class HtmlLoaderActivity extends CustomBaseActivity
         webView.setClickable(true);
         webView.clearCache(true);
 
-        webView.setWebViewClient(new CustomWebViewClient(this));
-      
+//        webView.setWebViewClient(new CustomWebViewClient(this));
+
+
+        //////////////////////////////////////////////////////////////////////////////////////////
+
+//        webView.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View view, MotionEvent motionEvent) {
+//                int a = 6;
+//
+//                return false;
+//            }
+//        });
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////
+
 
         if (isSurveyDetails) {
 
@@ -119,7 +134,13 @@ public class HtmlLoaderActivity extends CustomBaseActivity
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                view.loadUrl(url);
+
+                if (url.equals("poller://home")) {
+                    finish();
+                } else {
+                    view.loadUrl(url);
+                }
+
                 return false;
             }
 
@@ -132,6 +153,7 @@ public class HtmlLoaderActivity extends CustomBaseActivity
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
+
                 av_loading.smoothToHide();
             }
         });
@@ -164,7 +186,7 @@ public class HtmlLoaderActivity extends CustomBaseActivity
 
         new DialogFactory(HtmlLoaderActivity.this).createConfirmExitDialog(new DialogFactory.DialogFactoryInteraction() {
             @Override
-            public void onAcceptButtonClicked(String...params) {
+            public void onAcceptButtonClicked(String... params) {
 
                 finish();
             }
@@ -214,9 +236,6 @@ public class HtmlLoaderActivity extends CustomBaseActivity
 //    }
 
 
-
-
-
     @Override
     public void onClick(View view) {
 
@@ -242,12 +261,11 @@ public class HtmlLoaderActivity extends CustomBaseActivity
                 setResult(RESULT_OK, intent);
 
                 createConfirmExitDialog();
-            } else if(isShopping){
+            } else if (isShopping) {
                 // show popup googleplay
-                Toast.makeText(this, "backed from shopping", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "backed from shopping", Toast.LENGTH_SHORT).show();
                 finish();
-            }
-            else
+            } else
                 finish();
 
         }
@@ -288,17 +306,13 @@ public class HtmlLoaderActivity extends CustomBaseActivity
             setResult(RESULT_OK, intent);
 
             createConfirmExitDialog();
-        }else if(isShopping){
+        } else if (isShopping) {
             // show popup googleplay
-            Toast.makeText(this, "backed from shopping", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "backed from shopping", Toast.LENGTH_SHORT).show();
             finish();
         } else
             finish();
     }
-
-
-
-
 
 
 }

@@ -137,6 +137,14 @@ public class HtmlLoaderActivity extends CustomBaseActivity
 
                 if (url.equals("poller://home")) {
                     finish();
+                } else if (url.equals("poller://gp")) {
+
+                    String gp_url = "https://play.google.com/store/apps/details?id=com.rahbarbazaar.poller.android";
+                    Intent i = new Intent(Intent.ACTION_VIEW);
+                    i.setData(Uri.parse(gp_url));
+                    startActivity(i);
+                    finish();
+
                 } else {
                     view.loadUrl(url);
                 }

@@ -429,6 +429,7 @@ public class MainActivity extends CustomBaseActivity implements
                                             append("\n")
 //                                            .append(bazzar_url))
 //                                            .append("https://cafebazaar.ir/app/com.rahbarbazaar.poller.android/?l=fa"))
+//                                            .append("https://myket.ir/app/com.rahbarbazaar.poller.android?lang=en"))
                                             .append("https://play.google.com/store/apps/details?id=com.rahbarbazaar.poller.android"))
                                     .setType("text/plain")
                                     .setChooserTitle(R.string.share_poller)

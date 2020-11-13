@@ -42,6 +42,9 @@ public class UserConfirmAuthResult {
     private String token;
     private String identity;
     private String membership;
+    private String show;
+
+
 
     public int getSum_score() {
         return sum_score;
@@ -361,5 +364,13 @@ public class UserConfirmAuthResult {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getShow() {
+        return show;
+    }
+
+    public void setShow(String show) {
+        this.show = show;
     }
 }

@@ -63,8 +63,6 @@ class SplashScreenActivity1 : AppCompatActivity() {
         var token: String = preferenceStorage.retriveToken()
 
 
-
-//
         if (preferenceStorage.isUserLangEmpty) {
             startActivity(Intent(this@SplashScreenActivity1, SetLanguageActivity::class.java))
             this@SplashScreenActivity1.finish()
@@ -105,19 +103,7 @@ class SplashScreenActivity1 : AppCompatActivity() {
         }
 
 
-
-
-
-
-
-
-
-
-//
-
-
-//
-//        if(preferenceStorage.isUserLangEmpty){
+//if(preferenceStorage.isUserLangEmpty){
 //            startActivity(Intent(this@SplashScreenActivity1, SetLanguageActivity::class.java))
 //            this@SplashScreenActivity1.finish()
 //            overridePendingTransition(R.anim.slide_in, R.anim.slide_out)
@@ -140,7 +126,6 @@ class SplashScreenActivity1 : AppCompatActivity() {
     private fun saveCurrency() {
 
         if (tools.checkInternetConnection(this)) {
-
 
 
         val provider = ServiceProvider(this)

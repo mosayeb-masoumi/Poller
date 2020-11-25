@@ -96,7 +96,6 @@ public class MainActivity extends CustomBaseActivity implements
 
     //region of views
 
-
     AHBottomNavigation bottom_navigation;
     ImageView image_drawer, image_instagram, image_telegram, img_backbtmbar_left, img_backbtmbar_centerleft, img_backbtmbar_centerright, img_backbtmbar_right, img_arrow;
     ;

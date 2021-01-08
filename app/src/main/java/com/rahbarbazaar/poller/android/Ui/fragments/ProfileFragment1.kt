@@ -146,6 +146,7 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
                     override fun onSuccess(result: UserConfirmAuthResult) {
 
                         type = result.type
+
                         if(type.equals("1")){
                             text_age.text = "---"
                             text_gender.text = "---"

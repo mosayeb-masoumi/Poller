@@ -22,6 +22,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -1113,4 +1114,29 @@ public class DialogFactory {
 
         dialog.show();
     }
+
+
+    public void createGuideFirstLaunchDialog(View view, DialogFactoryInteraction interaction) {
+
+        View customView = LayoutInflater.from(context).inflate(R.layout.guide_first_launch, (ViewGroup) view, false);
+
+
+
+        TextView btn_close = customView.findViewById(R.id.btn_exit_dialog);
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setView(customView);
+
+        //create dialog and set background transparent
+        AlertDialog dialog = builder.create();
+        if (dialog.getWindow() != null)
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+
+        btn_close.setOnClickListener(view1 -> dialog.dismiss());
+
+        dialog.show();
+    }
+
 }

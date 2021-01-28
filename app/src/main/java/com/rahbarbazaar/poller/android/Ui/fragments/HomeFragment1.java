@@ -3,6 +3,7 @@ package com.rahbarbazaar.poller.android.Ui.fragments;
 import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -32,6 +33,7 @@ import com.rahbarbazaar.poller.android.Utilities.App;
 import com.rahbarbazaar.poller.android.Utilities.ClientConfig;
 import com.rahbarbazaar.poller.android.Utilities.DialogFactory;
 import com.rahbarbazaar.poller.android.Utilities.LocaleManager;
+import com.rahbarbazaar.poller.android.Utilities.PreferenceStorage;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -57,7 +59,7 @@ public class HomeFragment1 extends Fragment implements View.OnClickListener {
     CardView cardview_home_video, cardview_home_image, cardview_home_polls;
     TextView text_leftdays_digit, text_activepoll_digit, text_balance_digit, text_yourpoint_digit;
     SimpleDraweeView img_home_whats_up, img_home_video, img_home_polls;
-    RelativeLayout rlHomeScore,rlHomeBalance,rlHomeActiveSurveys,rlHomeLeftDays;
+    RelativeLayout rlHomeScore, rlHomeBalance, rlHomeActiveSurveys, rlHomeLeftDays;
     int activeSurveys;
     int balance;
     int lotteryDays;
@@ -67,7 +69,6 @@ public class HomeFragment1 extends Fragment implements View.OnClickListener {
     String videoImgUrl = "";
     String videoWebUrl = "";
     String newsWebUrl = "";
-
 
 
     LinearLayout homeFragment1;
@@ -131,7 +132,31 @@ public class HomeFragment1 extends Fragment implements View.OnClickListener {
         rlHomeActiveSurveys.setOnClickListener(this);
         rlHomeLeftDays.setOnClickListener(this);
 
+
+        showGuidePopup();
+
         return view;
+    }
+
+    private void showGuidePopup() {
+
+
+        if (PreferenceStorage.getInstance(getContext()).getFirstLaunch()) {
+            PreferenceStorage.getInstance(getContext()).setFirstLaunch(false);
+            DialogFactory dialogFactory = new DialogFactory(getContext());
+            dialogFactory.createGuideFirstLaunchDialog(homeFragment1, new DialogFactory.DialogFactoryInteraction() {
+                @Override
+                public void onAcceptButtonClicked(String... strings) {
+
+                }
+
+                @Override
+                public void onDeniedButtonClicked(boolean cancel_dialog) {
+
+                }
+            });
+
+        }
     }
 
 
@@ -156,12 +181,12 @@ public class HomeFragment1 extends Fragment implements View.OnClickListener {
         img_home_polls = view.findViewById(R.id.img_home_polls);
 
 
-        rlHomeScore= view.findViewById(R.id.rlHomeScore);
-        rlHomeBalance= view.findViewById(R.id.rlHomeBalance);
-        rlHomeActiveSurveys= view.findViewById(R.id.rlHomeActiveSurveys);
-        rlHomeLeftDays= view.findViewById(R.id.rlHomeLeftDays);
+        rlHomeScore = view.findViewById(R.id.rlHomeScore);
+        rlHomeBalance = view.findViewById(R.id.rlHomeBalance);
+        rlHomeActiveSurveys = view.findViewById(R.id.rlHomeActiveSurveys);
+        rlHomeLeftDays = view.findViewById(R.id.rlHomeLeftDays);
 
-        homeFragment1=view.findViewById(R.id.homeFragment1);
+        homeFragment1 = view.findViewById(R.id.homeFragment1);
 
 
     }
@@ -171,11 +196,11 @@ public class HomeFragment1 extends Fragment implements View.OnClickListener {
         switch (view.getId()) {
             case R.id.cardview_home_video:
 
-                goToHtmlActivity(videoWebUrl+"/"+ LocaleManager.getLocale(getResources()).getLanguage(), true);
+                goToHtmlActivity(videoWebUrl + "/" + LocaleManager.getLocale(getResources()).getLanguage(), true);
 
                 break;
             case R.id.cardview_home_image:
-                goToHtmlActivity(newsWebUrl+ "/"+LocaleManager.getLocale(getResources()).getLanguage(), true);
+                goToHtmlActivity(newsWebUrl + "/" + LocaleManager.getLocale(getResources()).getLanguage(), true);
                 break;
 
             case R.id.cardview_home_polls:
@@ -209,18 +234,18 @@ public class HomeFragment1 extends Fragment implements View.OnClickListener {
 
     private void showHomeInfoDialog(String title) {
 
-       DialogFactory dialogFactory = new DialogFactory(getContext());
-       dialogFactory.createHomeInfoDialog(homeFragment1,title, new DialogFactory.DialogFactoryInteraction() {
-           @Override
-           public void onAcceptButtonClicked(String... strings) {
+        DialogFactory dialogFactory = new DialogFactory(getContext());
+        dialogFactory.createHomeInfoDialog(homeFragment1, title, new DialogFactory.DialogFactoryInteraction() {
+            @Override
+            public void onAcceptButtonClicked(String... strings) {
 
-           }
+            }
 
-           @Override
-           public void onDeniedButtonClicked(boolean cancel_dialog) {
+            @Override
+            public void onDeniedButtonClicked(boolean cancel_dialog) {
 
-           }
-       });
+            }
+        });
     }
 
 
@@ -254,13 +279,12 @@ public class HomeFragment1 extends Fragment implements View.OnClickListener {
                             surveyImgUrl = result.getImagesDetail.getSurvey();
                             videoImgUrl = result.getImagesDetail.getVideo();
                             newsWebUrl = result.getImagesDetail.getNews_url();
-                            videoWebUrl= result.getImagesDetail.getVideo_url();
+                            videoWebUrl = result.getImagesDetail.getVideo_url();
 
                             App.videoWebUrl = videoWebUrl;
 
                             if (activeSurveys != 0 && interaction != null)
                                 interaction.activeSurveysCount(String.valueOf(activeSurveys));//badge count for survey page
-
 
 
                             text_yourpoint_digit.setText(String.valueOf(score));
@@ -301,11 +325,6 @@ public class HomeFragment1 extends Fragment implements View.OnClickListener {
     }
 
 
-
-
-
-
-
     HomeFragment1.ActiveSurveysInteraction interaction; //survey interaction interface
 
     public interface ActiveSurveysInteraction {
@@ -327,9 +346,8 @@ public class HomeFragment1 extends Fragment implements View.OnClickListener {
     }
 
 
-
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
-    public void onEventMainThread(ModelActiveSurveyCount modelActiveSurveyCount){
+    public void onEventMainThread(ModelActiveSurveyCount modelActiveSurveyCount) {
         text_activepoll_digit.setText(modelActiveSurveyCount.getActiveSurveyCount());
     }
 }

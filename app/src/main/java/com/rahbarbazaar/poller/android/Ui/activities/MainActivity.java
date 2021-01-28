@@ -609,11 +609,11 @@ public class MainActivity extends CustomBaseActivity implements
             case R.id.image_drawer:
                 drawer_layout_home.openDrawer(Gravity.END);
 
-                if (App.balance>= 1000) {
-                    linear_shopping.setVisibility(View.VISIBLE);
-                }else{
-                    linear_shopping.setVisibility(View.GONE);
-                }
+//                if (App.balance>= 1000) {
+//                    linear_shopping.setVisibility(View.VISIBLE);
+//                }else{
+//                    linear_shopping.setVisibility(View.GONE);
+//                }
 
                 break;
 

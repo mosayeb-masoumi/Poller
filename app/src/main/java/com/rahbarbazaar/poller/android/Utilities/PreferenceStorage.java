@@ -97,4 +97,15 @@ public class PreferenceStorage {
     }
 
 
+
+    public void setFirstLaunch(Boolean firstLaunch) {
+        preferences.edit().putBoolean("firstLaunch", firstLaunch).apply();
+    }
+
+    public Boolean getFirstLaunch() {
+        return preferences.getBoolean("firstLaunch", true);
+    }
+
+
+
 }

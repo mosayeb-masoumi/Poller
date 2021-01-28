@@ -147,6 +147,7 @@ class ProfileFragment1 : Fragment(), View.OnClickListener {
 
                         type = result.type
 
+
                         if(type.equals("1")){
                             text_age.text = "---"
                             text_gender.text = "---"
